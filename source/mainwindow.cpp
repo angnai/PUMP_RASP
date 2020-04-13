@@ -41,7 +41,7 @@ MainWindow::MainWindow(QWidget *parent)
 			ui->comboBox->addItem(port.portName());
 		}
 
-		Select_Window(WIN_1);
+		Select_Window(WIN_99);
 	}
 	else{
 		Select_Window(WIN_1);
