@@ -25,15 +25,45 @@ MainWindow::MainWindow(QWidget *parent)
 
 	ChangeStringList();
 
-	int id = QFontDatabase::addApplicationFont(qApp->applicationDirPath()+"/Roboto-Black.ttf");
+	int id = QFontDatabase::addApplicationFont(qApp->applicationDirPath()+"/Roboto-Bold.ttf");
 	QString family = QFontDatabase::applicationFontFamilies(id).at(0);
 
 	QFont SerifFont(family);
 	this->setFont(SerifFont);
 
+	ui->P1_ValMotor1->setFont(QFont("Roboto",24));
+	ui->P1_ValMotor2->setFont(QFont("Roboto",24));
+	ui->P1_ValMotor3->setFont(QFont("Roboto",24));
+	ui->P1_ValBR1->setFont(QFont("Roboto",24));
+	ui->P1_ValBR2->setFont(QFont("Roboto",24));
+
+	ui->P1_ValRPM->setFont(QFont("Roboto",22));
+	ui->P1_ValOpTime->setFont(QFont("Roboto",15));
+
+	ui->P1_ValRCur->setFont(QFont("Roboto",24));
+	ui->P1_ValSCur->setFont(QFont("Roboto",24));
+	ui->P1_ValTCur->setFont(QFont("Roboto",24));
+
+	ui->P1_ValMaxCur->setFont(QFont("Roboto",21));
+	ui->P1_ValMinCur->setFont(QFont("Roboto",21));
+	ui->P1_ValBP->setFont(QFont("Roboto",21));
+
+	ui->P2_ValMotor1->setFont(QFont("Roboto",24));
+	ui->P2_ValMotor2->setFont(QFont("Roboto",24));
+	ui->P2_ValMotor3->setFont(QFont("Roboto",24));
+	ui->P2_ValBR1->setFont(QFont("Roboto",24));
+	ui->P2_ValBR2->setFont(QFont("Roboto",24));
+
+	ui->P3_ValR->setFont(QFont("Roboto",24));
+	ui->P3_ValS->setFont(QFont("Roboto",24));
+	ui->P3_ValT->setFont(QFont("Roboto",24));
+	ui->P3_ValBAL->setFont(QFont("Roboto",24));
+
 	// label 클릭 설정
 	//ui->label_204->installEventFilter(this);
 	ui->P1_ValRPM->installEventFilter(this);
+
+
 
 	if(Init_Serial()){
 		Q_FOREACH(QSerialPortInfo port, QSerialPortInfo::availablePorts()) {
@@ -41,7 +71,7 @@ MainWindow::MainWindow(QWidget *parent)
 			ui->comboBox->addItem(port.portName());
 		}
 
-		Select_Window(WIN_99);
+		Select_Window(WIN_1);
 	}
 	else{
 		Select_Window(WIN_1);
@@ -461,6 +491,17 @@ void MainWindow::TouchProcess_WIN1(int x, int y)
 #define P1_DEF_EXIT_Y1	0
 #define P1_DEF_EXIT_X2	800
 #define P1_DEF_EXIT_Y2	59
+
+#define P1_DEF_TEMPVIEW_X1	106
+#define P1_DEF_TEMPVIEW_Y1	111
+#define P1_DEF_TEMPVIEW_X2	(106+175)
+#define P1_DEF_TEMPVIEW_Y2	(111+369)
+
+#define P1_DEF_CURVIEW_X1	567
+#define P1_DEF_CURVIEW_Y1	111
+#define P1_DEF_CURVIEW_X2	(567+224)
+#define P1_DEF_CURVIEW_Y2	(111+193)
+
 	QString mm;
 	char uc_temptemp[8] = {
         0x44,0x09,0x02,0x00,0x01,0x00,0x00,0x43
@@ -510,6 +551,16 @@ void MainWindow::TouchProcess_WIN1(int x, int y)
 	else if(TouchMatching(x,P1_DEF_B5_X1,P1_DEF_B5_X2) && TouchMatching(y,P1_DEF_B5_Y1,P1_DEF_B5_Y2)){
 		mm.sprintf("Init");
 		QMessageBox::critical(this, "SERIAL PORT NOT CONNECTED", mm);
+	}
+	else if(TouchMatching(x,P1_DEF_B5_X1,P1_DEF_B5_X2) && TouchMatching(y,P1_DEF_B5_Y1,P1_DEF_B5_Y2)){
+		mm.sprintf("Init");
+		QMessageBox::critical(this, "SERIAL PORT NOT CONNECTED", mm);
+	}
+	else if(TouchMatching(x,P1_DEF_TEMPVIEW_X1,P1_DEF_TEMPVIEW_X2) && TouchMatching(y,P1_DEF_TEMPVIEW_Y1,P1_DEF_TEMPVIEW_Y2)){
+		Select_Window(WIN_2);
+	}
+	else if(TouchMatching(x,P1_DEF_CURVIEW_X1,P1_DEF_CURVIEW_X2) && TouchMatching(y,P1_DEF_CURVIEW_Y1,P1_DEF_CURVIEW_Y2)){
+		Select_Window(WIN_3);
 	}
 	else if(TouchMatching(x,P1_DEF_EXIT_X1,P1_DEF_EXIT_X2) && TouchMatching(y,P1_DEF_EXIT_Y1,P1_DEF_EXIT_Y2)){
 		nExitCnt++;
@@ -936,6 +987,40 @@ void MainWindow::ChangeWindow_WIN1(void)
 {
 	QString m;
 
+
+	if(Motor_Var[PUMP_M1T] >= ERROR_TEMP_VAL) ui->P1_ValMotor1->setStyleSheet("color:rgb(255,0,0)");
+	else if(Motor_Var[PUMP_M1T] >= WARNING_TEMP_VAL) ui->P1_ValMotor1->setStyleSheet("color:rgb(255,242,0)");
+	else ui->P1_ValMotor1->setStyleSheet("color:rgb(255,255,255)");
+
+	if(Motor_Var[PUMP_M2T] >= ERROR_TEMP_VAL) ui->P1_ValMotor2->setStyleSheet("color:rgb(255,0,0)");
+	else if(Motor_Var[PUMP_M2T] >= WARNING_TEMP_VAL) ui->P1_ValMotor2->setStyleSheet("color:rgb(255,242,0)");
+	else ui->P1_ValMotor2->setStyleSheet("color:rgb(255,255,255)");
+
+	if(Motor_Var[PUMP_M3T] >= ERROR_TEMP_VAL) ui->P1_ValMotor3->setStyleSheet("color:rgb(255,0,0)");
+	else if(Motor_Var[PUMP_M3T] >= WARNING_TEMP_VAL) ui->P1_ValMotor3->setStyleSheet("color:rgb(255,242,0)");
+	else ui->P1_ValMotor3->setStyleSheet("color:rgb(255,255,255)");
+
+	if(Motor_Var[PUMP_M4T] >= ERROR_TEMP_VAL) ui->P1_ValBR1->setStyleSheet("color:rgb(255,0,0)");
+	else if(Motor_Var[PUMP_M4T] >= WARNING_TEMP_VAL) ui->P1_ValBR1->setStyleSheet("color:rgb(255,242,0)");
+	else ui->P1_ValBR1->setStyleSheet("color:rgb(255,255,255)");
+
+	if(Motor_Var[PUMP_M5T] >= ERROR_TEMP_VAL) ui->P1_ValBR2->setStyleSheet("color:rgb(255,0,0)");
+	else if(Motor_Var[PUMP_M5T] >= WARNING_TEMP_VAL) ui->P1_ValBR2->setStyleSheet("color:rgb(255,242,0)");
+	else ui->P1_ValBR2->setStyleSheet("color:rgb(255,255,255)");
+
+
+	if(Motor_Var[PUMP_M1C] >= ERROR_TEMP_VAL) ui->P1_ValRCur->setStyleSheet("color:rgb(255,0,0)");
+	else if(Motor_Var[PUMP_M1C] >= WARNING_TEMP_VAL) ui->P1_ValRCur->setStyleSheet("color:rgb(255,242,0)");
+	else ui->P1_ValRCur->setStyleSheet("color:rgb(255,255,255)");
+
+	if(Motor_Var[PUMP_M2C] >= ERROR_TEMP_VAL) ui->P1_ValSCur->setStyleSheet("color:rgb(255,0,0)");
+	else if(Motor_Var[PUMP_M2C] >= WARNING_TEMP_VAL) ui->P1_ValSCur->setStyleSheet("color:rgb(255,242,0)");
+	else ui->P1_ValSCur->setStyleSheet("color:rgb(255,255,255)");
+
+	if(Motor_Var[PUMP_M3C] >= ERROR_TEMP_VAL) ui->P1_ValTCur->setStyleSheet("color:rgb(255,0,0)");
+	else if(Motor_Var[PUMP_M3C] >= WARNING_TEMP_VAL) ui->P1_ValTCur->setStyleSheet("color:rgb(255,242,0)");
+	else ui->P1_ValTCur->setStyleSheet("color:rgb(255,255,255)");
+
     m.sprintf("%d",Motor_Var[PUMP_M1T]);
     ui->P1_ValMotor1->setText(m);
     m.sprintf("%d",Motor_Var[PUMP_M2T]);
@@ -994,12 +1079,8 @@ void MainWindow::ChangeWindow_WIN1(void)
 		return;
 	}
 	if(Motor_Var[PUMP_RUN] == SET_RUN){
-		if(Motor_Var[PUMP_DIR] == SET_CW){
-			mRPMIndex = (mRPMIndex+1)%16;
-		}
-		else{
-			mRPMIndex = (mRPMIndex+15)%16;
-		}
+		mRPMIndex = (mRPMIndex+1)%16;
+
 
 		qp = QPixmap(P1_RPM2_STRList[mRPMIndex]);
 		ui->P1_RPM2->setPixmap(qp);
@@ -1173,6 +1254,27 @@ void MainWindow::ChangeWindow_WIN2(void)
 {
 	QString m;
 
+	if(Motor_Var[PUMP_M1T] >= ERROR_TEMP_VAL) ui->P2_ValMotor1->setStyleSheet("color:rgb(255,0,0)");
+	else if(Motor_Var[PUMP_M1T] >= WARNING_TEMP_VAL) ui->P2_ValMotor1->setStyleSheet("color:rgb(255,242,0)");
+	else ui->P2_ValMotor1->setStyleSheet("color:rgb(255,255,255)");
+
+	if(Motor_Var[PUMP_M2T] >= ERROR_TEMP_VAL) ui->P2_ValMotor2->setStyleSheet("color:rgb(255,0,0)");
+	else if(Motor_Var[PUMP_M2T] >= WARNING_TEMP_VAL) ui->P2_ValMotor2->setStyleSheet("color:rgb(255,242,0)");
+	else ui->P2_ValMotor2->setStyleSheet("color:rgb(255,255,255)");
+
+	if(Motor_Var[PUMP_M3T] >= ERROR_TEMP_VAL) ui->P2_ValMotor3->setStyleSheet("color:rgb(255,0,0)");
+	else if(Motor_Var[PUMP_M3T] >= WARNING_TEMP_VAL) ui->P2_ValMotor3->setStyleSheet("color:rgb(255,242,0)");
+	else ui->P2_ValMotor3->setStyleSheet("color:rgb(255,255,255)");
+
+	if(Motor_Var[PUMP_M4T] >= ERROR_TEMP_VAL) ui->P2_ValBR1->setStyleSheet("color:rgb(255,0,0)");
+	else if(Motor_Var[PUMP_M4T] >= WARNING_TEMP_VAL) ui->P2_ValBR1->setStyleSheet("color:rgb(255,242,0)");
+	else ui->P2_ValBR1->setStyleSheet("color:rgb(255,255,255)");
+
+	if(Motor_Var[PUMP_M5T] >= ERROR_TEMP_VAL) ui->P2_ValBR2->setStyleSheet("color:rgb(255,0,0)");
+	else if(Motor_Var[PUMP_M5T] >= WARNING_TEMP_VAL) ui->P2_ValBR2->setStyleSheet("color:rgb(255,242,0)");
+	else ui->P2_ValBR2->setStyleSheet("color:rgb(255,255,255)");
+
+
     m.sprintf("%d",Motor_Var[PUMP_M1T]);
     ui->P2_ValMotor1->setText(m);
     m.sprintf("%d",Motor_Var[PUMP_M2T]);
@@ -1186,11 +1288,6 @@ void MainWindow::ChangeWindow_WIN2(void)
 
 
 	// change scale.. temp 0 - 200 => range 0 - 144
-	Motor_Var[PUMP_M1T] = 0;
-	Motor_Var[PUMP_M2T] = 0;
-	Motor_Var[PUMP_M3T] = 0;
-	Motor_Var[PUMP_M4T] = 0;
-	Motor_Var[PUMP_M5T] = 0;
 	P1_M1Val = int(((Motor_Var[PUMP_M1T]*144)/MAX_TEMP_VAL));
 	P1_M2Val = int(((Motor_Var[PUMP_M2T]*144)/MAX_TEMP_VAL));
 	P1_M3Val = int(((Motor_Var[PUMP_M3T]*144)/MAX_TEMP_VAL));
@@ -1223,6 +1320,20 @@ void MainWindow::ChangeWindow_WIN2(void)
 void MainWindow::ChangeWindow_WIN3(void)
 {
 	QString m;
+
+
+
+	if(Motor_Var[PUMP_M1C] >= ERROR_TEMP_VAL) ui->P3_ValR->setStyleSheet("color:rgb(255,0,0)");
+	else if(Motor_Var[PUMP_M1C] >= WARNING_TEMP_VAL) ui->P3_ValR->setStyleSheet("color:rgb(255,242,0)");
+	else ui->P3_ValR->setStyleSheet("color:rgb(255,255,255)");
+
+	if(Motor_Var[PUMP_M2C] >= ERROR_TEMP_VAL) ui->P3_ValS->setStyleSheet("color:rgb(255,0,0)");
+	else if(Motor_Var[PUMP_M2C] >= WARNING_TEMP_VAL) ui->P3_ValS->setStyleSheet("color:rgb(255,242,0)");
+	else ui->P3_ValS->setStyleSheet("color:rgb(255,255,255)");
+
+	if(Motor_Var[PUMP_M3C] >= ERROR_TEMP_VAL) ui->P3_ValT->setStyleSheet("color:rgb(255,0,0)");
+	else if(Motor_Var[PUMP_M3C] >= WARNING_TEMP_VAL) ui->P3_ValT->setStyleSheet("color:rgb(255,242,0)");
+	else ui->P3_ValT->setStyleSheet("color:rgb(255,255,255)");
 
     m.sprintf("%d",Motor_Var[PUMP_M1C]);
     ui->P3_ValR->setText(m);

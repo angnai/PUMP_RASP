@@ -23945,16 +23945,16 @@
     </widget>
    </widget>
    <zorder>frame_10</zorder>
-   <zorder>frame_11</zorder>
-   <zorder>frame</zorder>
-   <zorder>frame_2</zorder>
-   <zorder>frame_3</zorder>
    <zorder>frame_7</zorder>
    <zorder>frame_8</zorder>
    <zorder>frame_9</zorder>
    <zorder>frame_4</zorder>
    <zorder>frame_5</zorder>
    <zorder>frame_6</zorder>
+   <zorder>frame_11</zorder>
+   <zorder>frame</zorder>
+   <zorder>frame_2</zorder>
+   <zorder>frame_3</zorder>
   </widget>
  </widget>
  <resources>
