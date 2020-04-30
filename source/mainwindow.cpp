@@ -71,7 +71,7 @@ MainWindow::MainWindow(QWidget *parent)
 			ui->comboBox->addItem(port.portName());
 		}
 
-		Select_Window(WIN_1);
+		Select_Window(WIN_5);
 	}
 	else{
 		Select_Window(WIN_1);
@@ -103,11 +103,183 @@ void MainWindow::Init_Timer(void)
 
 void MainWindow::mousePressEvent (QMouseEvent * event) {
 	b_MousePressed = true;
+
+	if(nNowWindow == WIN_4)
+	{
+
+	}
+	else if(nNowWindow == WIN_5)
+	{
+		ScrollVar[0][0] = ui->P5_Set1_L->x();
+		ScrollVar[0][1] = ui->P5_Set1_L->x() + ui->P5_Set1_L->width();
+		ScrollVar[0][2] = ui->P5_Set1_L->y();
+		ScrollVar[0][3] = ui->P5_Set1_L->y() + ui->P5_Set1_L->height();
+
+		ScrollVar[1][0] = ui->P5_Set1_M->x();
+		ScrollVar[1][1] = ui->P5_Set1_M->x() + ui->P5_Set1_M->width();
+		ScrollVar[1][2] = ui->P5_Set1_M->y();
+		ScrollVar[1][3] = ui->P5_Set1_M->y() + ui->P5_Set1_M->height();
+
+		ScrollVar[2][0] = ui->P5_Set1_H->x();
+		ScrollVar[2][1] = ui->P5_Set1_H->x() + ui->P5_Set1_H->width();
+		ScrollVar[2][2] = ui->P5_Set1_H->y();
+		ScrollVar[2][3] = ui->P5_Set1_H->y() + ui->P5_Set1_H->height();
+
+
+
+		ScrollVar[3][0] = ui->P5_Set2_L->x();
+		ScrollVar[3][1] = ui->P5_Set2_L->x() + ui->P5_Set2_L->width();
+		ScrollVar[3][2] = ui->P5_Set2_L->y();
+		ScrollVar[3][3] = ui->P5_Set2_L->y() + ui->P5_Set2_L->height();
+
+		ScrollVar[4][0] = ui->P5_Set2_M->x();
+		ScrollVar[4][1] = ui->P5_Set2_M->x() + ui->P5_Set2_M->width();
+		ScrollVar[4][2] = ui->P5_Set2_M->y();
+		ScrollVar[4][3] = ui->P5_Set2_M->y() + ui->P5_Set2_M->height();
+
+		ScrollVar[5][0] = ui->P5_Set2_H->x();
+		ScrollVar[5][1] = ui->P5_Set2_H->x() + ui->P5_Set2_H->width();
+		ScrollVar[5][2] = ui->P5_Set2_H->y();
+		ScrollVar[5][3] = ui->P5_Set2_H->y() + ui->P5_Set2_H->height();
+
+
+		ScrollVar[6][0] = ui->P5_Set3_L->x();
+		ScrollVar[6][1] = ui->P5_Set3_L->x() + ui->P5_Set3_L->width();
+		ScrollVar[6][2] = ui->P5_Set3_L->y();
+		ScrollVar[6][3] = ui->P5_Set3_L->y() + ui->P5_Set3_L->height();
+
+		ScrollVar[7][0] = ui->P5_Set3_M->x();
+		ScrollVar[7][1] = ui->P5_Set3_M->x() + ui->P5_Set3_M->width();
+		ScrollVar[7][2] = ui->P5_Set3_M->y();
+		ScrollVar[7][3] = ui->P5_Set3_M->y() + ui->P5_Set3_M->height();
+
+		ScrollVar[8][0] = ui->P5_Set3_H->x();
+		ScrollVar[8][1] = ui->P5_Set3_H->x() + ui->P5_Set3_H->width();
+		ScrollVar[8][2] = ui->P5_Set3_H->y();
+		ScrollVar[8][3] = ui->P5_Set3_H->y() + ui->P5_Set3_H->height();
+
+
+		ScrollVar[9][0] = ui->P5_Set4_L->x();
+		ScrollVar[9][1] = ui->P5_Set4_L->x() + ui->P5_Set4_L->width();
+		ScrollVar[9][2] = ui->P5_Set4_L->y();
+		ScrollVar[9][3] = ui->P5_Set4_L->y() + ui->P5_Set4_L->height();
+
+		ScrollVar[10][0] = ui->P5_Set4_M->x();
+		ScrollVar[10][1] = ui->P5_Set4_M->x() + ui->P5_Set4_M->width();
+		ScrollVar[10][2] = ui->P5_Set4_M->y();
+		ScrollVar[10][3] = ui->P5_Set4_M->y() + ui->P5_Set4_M->height();
+
+		ScrollVar[11][0] = ui->P5_Set4_H->x();
+		ScrollVar[11][1] = ui->P5_Set4_H->x() + ui->P5_Set4_H->width();
+		ScrollVar[11][2] = ui->P5_Set4_H->y();
+		ScrollVar[11][3] = ui->P5_Set4_H->y() + ui->P5_Set4_H->height();
+
+
+		ScrollVar[12][0] = ui->P5_Set5_L->x();
+		ScrollVar[12][1] = ui->P5_Set5_L->x() + ui->P5_Set5_L->width();
+		ScrollVar[12][2] = ui->P5_Set5_L->y();
+		ScrollVar[12][3] = ui->P5_Set5_L->y() + ui->P5_Set5_L->height();
+
+		ScrollVar[13][0] = ui->P5_Set5_M->x();
+		ScrollVar[13][1] = ui->P5_Set5_M->x() + ui->P5_Set5_M->width();
+		ScrollVar[13][2] = ui->P5_Set5_M->y();
+		ScrollVar[13][3] = ui->P5_Set5_M->y() + ui->P5_Set5_M->height();
+
+		ScrollVar[14][0] = ui->P5_Set5_H->x();
+		ScrollVar[14][1] = ui->P5_Set5_H->x() + ui->P5_Set5_H->width();
+		ScrollVar[14][2] = ui->P5_Set5_H->y();
+		ScrollVar[14][3] = ui->P5_Set5_H->y() + ui->P5_Set5_H->height();
+
+	}
+	else if(nNowWindow == WIN_6)
+	{
+
+		ScrollVar[0][0] = ui->P6_L1->x();
+		ScrollVar[0][1] = ui->P6_L1->x() + ui->P6_L1->width();
+		ScrollVar[0][2] = ui->P6_L1->y();
+		ScrollVar[0][3] = ui->P6_L1->y() + ui->P6_L1->height();
+
+		ScrollVar[1][0] = ui->P6_H1->x();
+		ScrollVar[1][1] = ui->P6_H1->x() + ui->P6_H1->width();
+		ScrollVar[1][2] = ui->P6_H1->y();
+		ScrollVar[1][3] = ui->P6_H1->y() + ui->P6_H1->height();
+
+		ScrollVar[2][0] = ui->P6_L2->x();
+		ScrollVar[2][1] = ui->P6_L2->x() + ui->P6_L2->width();
+		ScrollVar[2][2] = ui->P6_L2->y();
+		ScrollVar[2][3] = ui->P6_L2->y() + ui->P6_L2->height();
+
+		ScrollVar[3][0] = ui->P6_H2->x();
+		ScrollVar[3][1] = ui->P6_H2->x() + ui->P6_H2->width();
+		ScrollVar[3][2] = ui->P6_H2->y();
+		ScrollVar[3][3] = ui->P6_H2->y() + ui->P6_H2->height();
+
+		ScrollVar[4][0] = ui->P6_L3->x();
+		ScrollVar[4][1] = ui->P6_L3->x() + ui->P6_L3->width();
+		ScrollVar[4][2] = ui->P6_L3->y();
+		ScrollVar[4][3] = ui->P6_L3->y() + ui->P6_L3->height();
+
+		ScrollVar[5][0] = ui->P6_H3->x();
+		ScrollVar[5][1] = ui->P6_H3->x() + ui->P6_H3->width();
+		ScrollVar[5][2] = ui->P6_H3->y();
+		ScrollVar[5][3] = ui->P6_H3->y() + ui->P6_H3->height();
+
+		ScrollVar[6][0] = ui->P6_T1->x();
+		ScrollVar[6][1] = ui->P6_T1->x() + ui->P6_T1->width();
+		ScrollVar[6][2] = ui->P6_T1->y();
+		ScrollVar[6][3] = ui->P6_T1->y() + ui->P6_T1->height();
+
+		ScrollVar[7][0] = ui->P6_T2->x();
+		ScrollVar[7][1] = ui->P6_T2->x() + ui->P6_T2->width();
+		ScrollVar[7][2] = ui->P6_T2->y();
+		ScrollVar[7][3] = ui->P6_T2->y() + ui->P6_T2->height();
+
+		ScrollVar[8][0] = ui->P6_T3->x();
+		ScrollVar[8][1] = ui->P6_T3->x() + ui->P6_T3->width();
+		ScrollVar[8][2] = ui->P6_T3->y();
+		ScrollVar[8][3] = ui->P6_T3->y() + ui->P6_T3->height();
+
+		ScrollVar[9][0] = ui->P6_T4->x();
+		ScrollVar[9][1] = ui->P6_T4->x() + ui->P6_T4->width();
+		ScrollVar[9][2] = ui->P6_T4->y();
+		ScrollVar[9][3] = ui->P6_T4->y() + ui->P6_T4->height();
+
+		ScrollVar[10][0] = ui->P6_T5->x();
+		ScrollVar[10][1] = ui->P6_T5->x() + ui->P6_T5->width();
+		ScrollVar[10][2] = ui->P6_T5->y();
+		ScrollVar[10][3] = ui->P6_T5->y() + ui->P6_T5->height();
+
+	}
+	else if(nNowWindow == WIN_7)
+	{
+		ScrollVar[0][0] = ui->P7_D1->x();
+		ScrollVar[0][1] = ui->P7_D1->x() + ui->P7_D1->width();
+		ScrollVar[0][2] = ui->P7_D1->y();
+		ScrollVar[0][3] = ui->P7_D1->y() + ui->P7_D1->height();
+
+		ScrollVar[1][0] = ui->P7_D2->x();
+		ScrollVar[1][1] = ui->P7_D2->x() + ui->P7_D2->width();
+		ScrollVar[1][2] = ui->P7_D2->y();
+		ScrollVar[1][3] = ui->P7_D2->y() + ui->P7_D2->height();
+
+		ScrollVar[2][0] = ui->P7_L1->x();
+		ScrollVar[2][1] = ui->P7_L1->x() + ui->P7_L1->width();
+		ScrollVar[2][2] = ui->P7_L1->y();
+		ScrollVar[2][3] = ui->P7_L1->y() + ui->P7_L1->height();
+
+		ScrollVar[3][0] = ui->P7_H1->x();
+		ScrollVar[3][1] = ui->P7_H1->x() + ui->P7_H1->width();
+		ScrollVar[3][2] = ui->P7_H1->y();
+		ScrollVar[3][3] = ui->P7_H1->y() + ui->P7_H1->height();
+
+	}
+
 	QPoint qpMousePressedPoint = QCursor::pos();
 	QPoint qpApploc = this->pos();
 	iXdifferent = qpMousePressedPoint.x() - qpApploc.x();
 	iYdifferent = qpMousePressedPoint.y() - qpApploc.y();
 	QWidget::mousePressEvent(event);
+
 }
 
 void MainWindow::mouseReleaseEvent (QMouseEvent * event)
@@ -161,9 +333,29 @@ break;
 
 }
 
-#if 0
-void MainWindow::mouseMoveEvent ( QMouseEvent * event )
+
+void MainWindow::mouseMoveEvent ( QMouseEvent * event1 )
 {
+
+	if(b_MousePressed)
+	{
+		if(nNowWindow == WIN_4)
+		{
+
+		}
+		else if(nNowWindow == WIN_5)
+		{
+			TouchMove_WIN5(iXdifferent,iYdifferent);
+		}
+		else if(nNowWindow == WIN_6)
+		{
+			TouchMove_WIN6(iXdifferent,iYdifferent);
+		}
+		else if(nNowWindow == WIN_7)
+		{
+			TouchMove_WIN7(iXdifferent,iYdifferent);
+		}
+	}
 /*
 	if(b_MousePressed)
 {
@@ -173,7 +365,7 @@ this->setProperty("pos", qpAppNewLoc);
 QWidget::mouseMoveEvent(event);
 */
 }
-#endif
+
 
 int MainWindow::Init_Serial(void)
 {
@@ -640,6 +832,122 @@ void MainWindow::TouchProcess_WIN5(int x, int y)
 
 }
 
+void MainWindow::TouchMove_WIN5(int orgX, int orgY)
+{
+	if(TouchMatching(orgX,ScrollVar[0][0],ScrollVar[0][1]) && TouchMatching(orgY,ScrollVar[0][2],ScrollVar[0][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[0][0]) < 460 ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[0][0]) > ScrollVar[1][0]-(ui->P5_Set1_M->width()/2) ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[0][0] , ScrollVar[0][2] );
+		ui->P5_Set1_L->setProperty("pos", qpAppNewLoc);
+	}
+	else if(TouchMatching(orgX,ScrollVar[1][0],ScrollVar[1][1]) && TouchMatching(orgY,ScrollVar[1][2],ScrollVar[1][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[1][0]) < ScrollVar[0][1]-(ui->P5_Set1_L->width()/2) ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[1][0]) > ScrollVar[2][0]-(ui->P5_Set1_H->width()/2) ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[1][0] , ScrollVar[1][2] );
+		ui->P5_Set1_M->setProperty("pos", qpAppNewLoc);
+	}
+	else if(TouchMatching(orgX,ScrollVar[2][0],ScrollVar[2][1]) && TouchMatching(orgY,ScrollVar[2][2],ScrollVar[2][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[2][0]) < ScrollVar[1][1]-(ui->P5_Set1_L->width()/2) ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[2][0]) > 757 ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[2][0] , ScrollVar[2][2] );
+		ui->P5_Set1_H->setProperty("pos", qpAppNewLoc);
+	}
+
+	else if(TouchMatching(orgX,ScrollVar[3][0],ScrollVar[3][1]) && TouchMatching(orgY,ScrollVar[3][2],ScrollVar[3][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[3][0]) < 460 ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[3][0]) > ScrollVar[4][0]-(ui->P5_Set2_M->width()/2) ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[3][0] , ScrollVar[3][2] );
+		ui->P5_Set2_L->setProperty("pos", qpAppNewLoc);
+	}
+	else if(TouchMatching(orgX,ScrollVar[4][0],ScrollVar[4][1]) && TouchMatching(orgY,ScrollVar[4][2],ScrollVar[4][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[4][0]) < ScrollVar[3][1]-(ui->P5_Set2_L->width()/2) ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[4][0]) > ScrollVar[5][0]-(ui->P5_Set2_H->width()/2) ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[4][0] , ScrollVar[4][2] );
+		ui->P5_Set2_M->setProperty("pos", qpAppNewLoc);
+	}
+	else if(TouchMatching(orgX,ScrollVar[5][0],ScrollVar[5][1]) && TouchMatching(orgY,ScrollVar[5][2],ScrollVar[5][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[5][0]) < ScrollVar[4][1]-(ui->P5_Set2_L->width()/2) ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[5][0]) > 757 ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[5][0] , ScrollVar[5][2] );
+		ui->P5_Set2_H->setProperty("pos", qpAppNewLoc);
+	}
+
+
+	else if(TouchMatching(orgX,ScrollVar[6][0],ScrollVar[6][1]) && TouchMatching(orgY,ScrollVar[6][2],ScrollVar[6][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[6][0]) < 460 ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[6][0]) > ScrollVar[7][0]-(ui->P5_Set3_M->width()/2) ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[6][0] , ScrollVar[6][2] );
+		ui->P5_Set3_L->setProperty("pos", qpAppNewLoc);
+	}
+	else if(TouchMatching(orgX,ScrollVar[7][0],ScrollVar[7][1]) && TouchMatching(orgY,ScrollVar[7][2],ScrollVar[7][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[7][0]) < ScrollVar[6][1]-(ui->P5_Set3_L->width()/2) ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[7][0]) > ScrollVar[8][0]-(ui->P5_Set3_H->width()/2) ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[7][0] , ScrollVar[7][2] );
+		ui->P5_Set3_M->setProperty("pos", qpAppNewLoc);
+	}
+	else if(TouchMatching(orgX,ScrollVar[8][0],ScrollVar[8][1]) && TouchMatching(orgY,ScrollVar[8][2],ScrollVar[8][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[8][0]) < ScrollVar[7][1]-(ui->P5_Set3_L->width()/2) ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[8][0]) > 757 ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[8][0] , ScrollVar[8][2] );
+		ui->P5_Set3_H->setProperty("pos", qpAppNewLoc);
+	}
+
+
+	else if(TouchMatching(orgX,ScrollVar[9][0],ScrollVar[9][1]) && TouchMatching(orgY,ScrollVar[9][2],ScrollVar[9][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[9][0]) < 460 ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[9][0]) > ScrollVar[10][0]-(ui->P5_Set4_M->width()/2) ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[9][0] , ScrollVar[9][2] );
+		ui->P5_Set4_L->setProperty("pos", qpAppNewLoc);
+	}
+	else if(TouchMatching(orgX,ScrollVar[10][0],ScrollVar[10][1]) && TouchMatching(orgY,ScrollVar[10][2],ScrollVar[10][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[10][0]) < ScrollVar[9][1]-(ui->P5_Set4_L->width()/2) ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[10][0]) > ScrollVar[11][0]-(ui->P5_Set4_H->width()/2) ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[10][0] , ScrollVar[10][2] );
+		ui->P5_Set4_M->setProperty("pos", qpAppNewLoc);
+	}
+	else if(TouchMatching(orgX,ScrollVar[11][0],ScrollVar[11][1]) && TouchMatching(orgY,ScrollVar[11][2],ScrollVar[11][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[11][0]) < ScrollVar[10][1]-(ui->P5_Set4_L->width()/2) ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[11][0]) > 757 ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[11][0] , ScrollVar[11][2] );
+		ui->P5_Set4_H->setProperty("pos", qpAppNewLoc);
+	}
+
+
+	else if(TouchMatching(orgX,ScrollVar[12][0],ScrollVar[12][1]) && TouchMatching(orgY,ScrollVar[12][2],ScrollVar[12][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[12][0]) < 460 ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[12][0]) > ScrollVar[13][0]-(ui->P5_Set5_M->width()/2) ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[12][0] , ScrollVar[12][2] );
+		ui->P5_Set5_L->setProperty("pos", qpAppNewLoc);
+	}
+	else if(TouchMatching(orgX,ScrollVar[13][0],ScrollVar[13][1]) && TouchMatching(orgY,ScrollVar[13][2],ScrollVar[13][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[13][0]) < ScrollVar[12][1]-(ui->P5_Set5_L->width()/2) ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[13][0]) > ScrollVar[14][0]-(ui->P5_Set5_H->width()/2) ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[13][0] , ScrollVar[13][2] );
+		ui->P5_Set5_M->setProperty("pos", qpAppNewLoc);
+	}
+	else if(TouchMatching(orgX,ScrollVar[14][0],ScrollVar[14][1]) && TouchMatching(orgY,ScrollVar[14][2],ScrollVar[14][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[14][0]) < ScrollVar[13][1]-(ui->P5_Set5_L->width()/2) ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[14][0]) > 757 ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[14][0] , ScrollVar[14][2] );
+		ui->P5_Set5_H->setProperty("pos", qpAppNewLoc);
+	}
+}
+
 void MainWindow::TouchProcess_WIN6(int x, int y)
 {
 #define P6_DEF_B1_X1	0
@@ -711,6 +1019,148 @@ void MainWindow::TouchProcess_WIN6(int x, int y)
 
 }
 
+
+void MainWindow::TouchMove_WIN6(int orgX, int orgY)
+{
+	int nVal;
+	QString mm;
+	if(TouchMatching(orgX,ScrollVar[0][0],ScrollVar[0][1]) && TouchMatching(orgY,ScrollVar[0][2],ScrollVar[0][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[0][0]) < 225 ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[0][0]) > ScrollVar[1][0]-(ui->P6_L1->width()/2) ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[0][0] , ScrollVar[0][2] );
+		ui->P6_L1->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P6_L1->x() - 225;
+		nVal = int((25*nVal/(375-225)));
+		mm.sprintf("%d",nVal);
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[0][0] + 2 , ScrollVar[0][2] - 15 );
+		ui->P6_V1->setProperty("pos", qpAppNewLoc1);
+		ui->P6_V1->setText(mm);
+	}
+	else if(TouchMatching(orgX,ScrollVar[1][0],ScrollVar[1][1]) && TouchMatching(orgY,ScrollVar[1][2],ScrollVar[1][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[1][0]) < ScrollVar[0][1]-(ui->P6_L1->width()/2) ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[1][0]) > 375 ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[1][0] , ScrollVar[1][2] );
+		ui->P6_H1->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P6_H1->x() - 225;
+		nVal = int((25*nVal/(375-225)));
+		mm.sprintf("%d",nVal);
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[1][0] + 2 , ScrollVar[1][2] - 15 );
+		ui->P6_V1_2->setProperty("pos", qpAppNewLoc1);
+		ui->P6_V1_2->setText(mm);
+	}
+
+	else if(TouchMatching(orgX,ScrollVar[2][0],ScrollVar[2][1]) && TouchMatching(orgY,ScrollVar[2][2],ScrollVar[2][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[2][0]) < 225 ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[2][0]) > ScrollVar[3][0]-(ui->P6_L2->width()/2) ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[2][0] , ScrollVar[2][2] );
+		ui->P6_L2->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P6_L2->x() - 225;
+		nVal = int((25*nVal/(375-225)));
+		mm.sprintf("%d",nVal);
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[2][0] + 2 , ScrollVar[2][2] - 15 );
+		ui->P6_V1_3->setProperty("pos", qpAppNewLoc1);
+		ui->P6_V1_3->setText(mm);
+	}
+	else if(TouchMatching(orgX,ScrollVar[3][0],ScrollVar[3][1]) && TouchMatching(orgY,ScrollVar[3][2],ScrollVar[3][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[3][0]) < ScrollVar[2][1]-(ui->P6_L2->width()/2) ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[3][0]) > 375 ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[3][0] , ScrollVar[3][2] );
+		ui->P6_H2->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P6_H2->x() - 225;
+		nVal = int((25*nVal/(375-225)));
+		mm.sprintf("%d",nVal);
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[3][0] + 2 , ScrollVar[3][2] - 15 );
+		ui->P6_V1_4->setProperty("pos", qpAppNewLoc1);
+		ui->P6_V1_4->setText(mm);
+	}
+
+
+	else if(TouchMatching(orgX,ScrollVar[4][0],ScrollVar[4][1]) && TouchMatching(orgY,ScrollVar[4][2],ScrollVar[4][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[4][0]) < 225 ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[4][0]) > ScrollVar[5][0]-(ui->P6_L3->width()/2) ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[4][0] , ScrollVar[4][2] );
+		ui->P6_L3->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P6_L3->x() - 225;
+		nVal = int((25*nVal/(375-225)));
+		mm.sprintf("%d",nVal);
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[4][0] + 2 , ScrollVar[4][2] - 15 );
+		ui->P6_V1_5->setProperty("pos", qpAppNewLoc1);
+		ui->P6_V1_5->setText(mm);
+	}
+	else if(TouchMatching(orgX,ScrollVar[5][0],ScrollVar[5][1]) && TouchMatching(orgY,ScrollVar[5][2],ScrollVar[5][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[5][0]) < ScrollVar[4][1]-(ui->P6_L3->width()/2) ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[5][0]) > 375 ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[5][0] , ScrollVar[5][2] );
+		ui->P6_H3->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P6_H3->x() - 225;
+		nVal = int((25*nVal/(375-225)));
+		mm.sprintf("%d",nVal);
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[5][0] + 2 , ScrollVar[5][2] - 15 );
+		ui->P6_V1_6->setProperty("pos", qpAppNewLoc1);
+		ui->P6_V1_6->setText(mm);
+	}
+
+
+	else if(TouchMatching(orgX,ScrollVar[6][0],ScrollVar[6][1]) && TouchMatching(orgY,ScrollVar[6][2],ScrollVar[6][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[6][0]) < 500 ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[6][0]) > 750 ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[6][0] , ScrollVar[6][2] );
+		ui->P6_T1->setProperty("pos", qpAppNewLoc);
+	}
+
+	else if(TouchMatching(orgX,ScrollVar[7][0],ScrollVar[7][1]) && TouchMatching(orgY,ScrollVar[7][2],ScrollVar[7][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[7][0]) < 500 ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[7][0]) > 750 ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[7][0] , ScrollVar[7][2] );
+		ui->P6_T2->setProperty("pos", qpAppNewLoc);
+	}
+
+	else if(TouchMatching(orgX,ScrollVar[8][0],ScrollVar[8][1]) && TouchMatching(orgY,ScrollVar[8][2],ScrollVar[8][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[8][0]) < 500 ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[8][0]) > 750 ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[8][0] , ScrollVar[8][2] );
+		ui->P6_T3->setProperty("pos", qpAppNewLoc);
+	}
+
+	else if(TouchMatching(orgX,ScrollVar[9][0],ScrollVar[9][1]) && TouchMatching(orgY,ScrollVar[9][2],ScrollVar[9][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[9][0]) < 500 ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[9][0]) > 750 ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[9][0] , ScrollVar[9][2] );
+		ui->P6_T4->setProperty("pos", qpAppNewLoc);
+	}
+
+	else if(TouchMatching(orgX,ScrollVar[10][0],ScrollVar[10][1]) && TouchMatching(orgY,ScrollVar[10][2],ScrollVar[10][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[10][0]) < 500 ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[10][0]) > 750 ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[10][0] , ScrollVar[10][2] );
+		ui->P6_T5->setProperty("pos", qpAppNewLoc);
+	}
+
+}
+
 void MainWindow::TouchProcess_WIN7(int x, int y)
 {
 #define P7_DEF_B1_X1	0
@@ -778,6 +1228,40 @@ void MainWindow::TouchProcess_WIN7(int x, int y)
 	}
 	else if(TouchMatching(x,P7_DEF_EXIT_X1,P7_DEF_EXIT_X2) && TouchMatching(y,P7_DEF_EXIT_Y1,P7_DEF_EXIT_Y2)){
 		Select_Window(WIN_1);
+	}
+
+}
+
+void MainWindow::TouchMove_WIN7(int orgX, int orgY)
+{
+	if(TouchMatching(orgX,ScrollVar[0][0],ScrollVar[0][1]) && TouchMatching(orgY,ScrollVar[0][2],ScrollVar[0][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[0][0]) < 500 ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[0][0]) > 760 ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[0][0] , ScrollVar[0][2] );
+		ui->P7_D1->setProperty("pos", qpAppNewLoc);
+	}
+	else if(TouchMatching(orgX,ScrollVar[1][0],ScrollVar[1][1]) && TouchMatching(orgY,ScrollVar[1][2],ScrollVar[1][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[1][0]) < 500 ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[1][0]) > 760 ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[1][0] , ScrollVar[1][2] );
+		ui->P7_D2->setProperty("pos", qpAppNewLoc);
+	}
+
+	else if(TouchMatching(orgX,ScrollVar[2][0],ScrollVar[2][1]) && TouchMatching(orgY,ScrollVar[2][2],ScrollVar[2][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[2][0]) < 155 ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[2][0]) > ScrollVar[3][0]-(ui->P7_H1->width()/2+7) ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[2][0] , ScrollVar[2][2] );
+		ui->P7_L1->setProperty("pos", qpAppNewLoc);
+	}
+	else if(TouchMatching(orgX,ScrollVar[3][0],ScrollVar[3][1]) && TouchMatching(orgY,ScrollVar[3][2],ScrollVar[3][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[3][0]) < ScrollVar[2][1]-(ui->P7_L1->width()/2-7) ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[3][0]) > 745 ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[3][0] , ScrollVar[3][2] );
+		ui->P7_H1->setProperty("pos", qpAppNewLoc);
 	}
 
 }
@@ -1021,7 +1505,7 @@ void MainWindow::ChangeWindow_WIN1(void)
 	else if(Motor_Var[PUMP_M3C] >= WARNING_TEMP_VAL) ui->P1_ValTCur->setStyleSheet("color:rgb(255,242,0)");
 	else ui->P1_ValTCur->setStyleSheet("color:rgb(255,255,255)");
 
-    m.sprintf("%d",Motor_Var[PUMP_M1T]);
+	m.sprintf("%d",Motor_Var[PUMP_M1T]);
     ui->P1_ValMotor1->setText(m);
     m.sprintf("%d",Motor_Var[PUMP_M2T]);
     ui->P1_ValMotor2->setText(m);

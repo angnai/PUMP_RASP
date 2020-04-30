@@ -20933,7 +20933,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/CurrentInfo/6P_Group1 (7).png</pixmap>
+      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/P6_GROUPADD1 (2).png</pixmap>
      </property>
     </widget>
     <widget class="QLabel" name="label_112">
@@ -20949,13 +20949,13 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/CurrentInfo/6P_Group1 (8).png</pixmap>
+      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/P6_GROUPADD1 (2).png</pixmap>
      </property>
     </widget>
     <widget class="QLabel" name="label_113">
      <property name="geometry">
       <rect>
-       <x>230</x>
+       <x>228</x>
        <y>420</y>
        <width>170</width>
        <height>30</height>
@@ -20965,7 +20965,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/CurrentInfo/6P_Group1 (9).png</pixmap>
+      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/P6_GROUPADD1 (2).png</pixmap>
      </property>
     </widget>
     <widget class="QLabel" name="label_114">
@@ -21061,7 +21061,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/CurrentInfo/6P_Group1 (16).png</pixmap>
+      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/P6_GROUPADD1 (1).png</pixmap>
      </property>
     </widget>
     <widget class="QLabel" name="label_120">
@@ -21077,7 +21077,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/CurrentInfo/6P_Group1 (16).png</pixmap>
+      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/P6_GROUPADD1 (1).png</pixmap>
      </property>
     </widget>
     <widget class="QLabel" name="label_121">
@@ -21093,7 +21093,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/CurrentInfo/6P_Group1 (16).png</pixmap>
+      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/P6_GROUPADD1 (1).png</pixmap>
      </property>
     </widget>
     <widget class="QLabel" name="label_122">
@@ -21109,7 +21109,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/CurrentInfo/6P_Group1 (16).png</pixmap>
+      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/P6_GROUPADD1 (1).png</pixmap>
      </property>
     </widget>
     <widget class="QLabel" name="label_123">
@@ -21125,7 +21125,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/CurrentInfo/6P_Group1 (16).png</pixmap>
+      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/P6_GROUPADD1 (1).png</pixmap>
      </property>
     </widget>
     <widget class="QLabel" name="P3_ValTime_3">
@@ -21246,6 +21246,902 @@
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="P6_L1">
+     <property name="geometry">
+      <rect>
+       <x>225</x>
+       <y>195</y>
+       <width>36</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/P6_GROUPADD1 (6).png</pixmap>
+     </property>
+    </widget>
+    <widget class="QLabel" name="P6_H1">
+     <property name="geometry">
+      <rect>
+       <x>375</x>
+       <y>195</y>
+       <width>36</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/P6_GROUPADD1 (5).png</pixmap>
+     </property>
+    </widget>
+    <widget class="QLabel" name="P6_H2">
+     <property name="geometry">
+      <rect>
+       <x>375</x>
+       <y>304</y>
+       <width>36</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/P6_GROUPADD1 (5).png</pixmap>
+     </property>
+    </widget>
+    <widget class="QLabel" name="P6_L2">
+     <property name="geometry">
+      <rect>
+       <x>225</x>
+       <y>304</y>
+       <width>36</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/P6_GROUPADD1 (6).png</pixmap>
+     </property>
+    </widget>
+    <widget class="QLabel" name="P6_H3">
+     <property name="geometry">
+      <rect>
+       <x>375</x>
+       <y>415</y>
+       <width>36</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/P6_GROUPADD1 (5).png</pixmap>
+     </property>
+    </widget>
+    <widget class="QLabel" name="P6_L3">
+     <property name="geometry">
+      <rect>
+       <x>223</x>
+       <y>415</y>
+       <width>36</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/P6_GROUPADD1 (6).png</pixmap>
+     </property>
+    </widget>
+    <widget class="QLabel" name="P6_T1">
+     <property name="geometry">
+      <rect>
+       <x>750</x>
+       <y>188</y>
+       <width>36</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/P6_GROUPADD1 (7).png</pixmap>
+     </property>
+    </widget>
+    <widget class="QLabel" name="P6_T2">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>243</y>
+       <width>36</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/P6_GROUPADD1 (7).png</pixmap>
+     </property>
+    </widget>
+    <widget class="QLabel" name="P6_T3">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>302</y>
+       <width>36</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/P6_GROUPADD1 (7).png</pixmap>
+     </property>
+    </widget>
+    <widget class="QLabel" name="P6_T4">
+     <property name="geometry">
+      <rect>
+       <x>560</x>
+       <y>363</y>
+       <width>36</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/P6_GROUPADD1 (7).png</pixmap>
+     </property>
+    </widget>
+    <widget class="QLabel" name="P6_T5">
+     <property name="geometry">
+      <rect>
+       <x>630</x>
+       <y>422</y>
+       <width>36</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Image.qrc">:/new/6P/UIUX/6p/P6_GROUPADD1 (7).png</pixmap>
+     </property>
+    </widget>
+    <widget class="QLabel" name="P6_V1">
+     <property name="geometry">
+      <rect>
+       <x>227</x>
+       <y>180</y>
+       <width>31</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="palette">
+      <palette>
+       <active>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>120</red>
+           <green>120</green>
+           <blue>120</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>120</red>
+           <green>120</green>
+           <blue>120</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string>25</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="P6_V1_2">
+     <property name="geometry">
+      <rect>
+       <x>378</x>
+       <y>180</y>
+       <width>31</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="palette">
+      <palette>
+       <active>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>120</red>
+           <green>120</green>
+           <blue>120</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>120</red>
+           <green>120</green>
+           <blue>120</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string>25</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="P6_V1_3">
+     <property name="geometry">
+      <rect>
+       <x>227</x>
+       <y>289</y>
+       <width>31</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="palette">
+      <palette>
+       <active>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>120</red>
+           <green>120</green>
+           <blue>120</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>120</red>
+           <green>120</green>
+           <blue>120</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string>25</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="P6_V1_4">
+     <property name="geometry">
+      <rect>
+       <x>378</x>
+       <y>289</y>
+       <width>31</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="palette">
+      <palette>
+       <active>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>120</red>
+           <green>120</green>
+           <blue>120</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>120</red>
+           <green>120</green>
+           <blue>120</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string>25</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="P6_V1_5">
+     <property name="geometry">
+      <rect>
+       <x>227</x>
+       <y>400</y>
+       <width>31</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="palette">
+      <palette>
+       <active>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>120</red>
+           <green>120</green>
+           <blue>120</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>120</red>
+           <green>120</green>
+           <blue>120</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string>25</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="P6_V1_6">
+     <property name="geometry">
+      <rect>
+       <x>378</x>
+       <y>400</y>
+       <width>31</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="palette">
+      <palette>
+       <active>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="WindowText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>120</red>
+           <green>120</green>
+           <blue>120</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Text">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>120</red>
+           <green>120</green>
+           <blue>120</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="PlaceholderText">
+         <brush brushstyle="SolidPattern">
+          <color alpha="128">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string>25</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </widget>
@@ -21392,7 +22288,7 @@
       <pixmap resource="Image.qrc">:/new/7P/UIUX/7p/TimeInfo/7P_Group3 (9).png</pixmap>
      </property>
     </widget>
-    <widget class="QLabel" name="label_128">
+    <widget class="QLabel" name="P7_B1">
      <property name="geometry">
       <rect>
        <x>177</x>
@@ -21517,7 +22413,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="Image.qrc">:/new/7P/UIUX/7p/TimeInfo/7P_Group3 (3).png</pixmap>
+      <pixmap resource="Image.qrc">:/new/7P/UIUX/7p/P7_GROUPADD1 (4).png</pixmap>
      </property>
     </widget>
     <widget class="QLabel" name="label_136">
@@ -21533,7 +22429,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="Image.qrc">:/new/7P/UIUX/7p/TimeInfo/7P_Group3 (3).png</pixmap>
+      <pixmap resource="Image.qrc">:/new/7P/UIUX/7p/P7_GROUPADD1 (4).png</pixmap>
      </property>
     </widget>
     <widget class="QLabel" name="label_137">
@@ -21549,7 +22445,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="Image.qrc">:/new/7P/UIUX/7p/MonitoringRPM/7P_Group1 (2).png</pixmap>
+      <pixmap resource="Image.qrc">:/new/7P/UIUX/7p/P7_GROUPADD1 (3).png</pixmap>
      </property>
     </widget>
     <widget class="QLabel" name="label_139">
@@ -21766,6 +22662,70 @@
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="P7_D1">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>195</y>
+       <width>36</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Image.qrc">:/new/7P/UIUX/7p/P7_GROUPADD1 (5).png</pixmap>
+     </property>
+    </widget>
+    <widget class="QLabel" name="P7_D2">
+     <property name="geometry">
+      <rect>
+       <x>760</x>
+       <y>250</y>
+       <width>36</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Image.qrc">:/new/7P/UIUX/7p/P7_GROUPADD1 (5).png</pixmap>
+     </property>
+    </widget>
+    <widget class="QLabel" name="P7_L1">
+     <property name="geometry">
+      <rect>
+       <x>155</x>
+       <y>385</y>
+       <width>36</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Image.qrc">:/new/7P/UIUX/7p/P7_GROUPADD1 (1).png</pixmap>
+     </property>
+    </widget>
+    <widget class="QLabel" name="P7_H1">
+     <property name="geometry">
+      <rect>
+       <x>745</x>
+       <y>385</y>
+       <width>36</width>
+       <height>36</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Image.qrc">:/new/7P/UIUX/7p/P7_GROUPADD1 (2).png</pixmap>
      </property>
     </widget>
    </widget>
@@ -22144,7 +23104,7 @@
       <pixmap resource="Image.qrc">:/new/8P/UIUX/8p/SetSafety/9P_Group2 (10).png</pixmap>
      </property>
     </widget>
-    <widget class="QLabel" name="label_156">
+    <widget class="QLabel" name="P8_B1">
      <property name="geometry">
       <rect>
        <x>170</x>
@@ -22157,10 +23117,10 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="Image.qrc">:/new/8P/UIUX/8p/SetSafety/9P_Group2 (1).png</pixmap>
+      <pixmap resource="Image.qrc">:/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png</pixmap>
      </property>
     </widget>
-    <widget class="QLabel" name="label_157">
+    <widget class="QLabel" name="P8_B2">
      <property name="geometry">
       <rect>
        <x>171</x>
@@ -22176,7 +23136,7 @@
       <pixmap resource="Image.qrc">:/new/8P/UIUX/8p/SetSafety/9P_Group2 (1).png</pixmap>
      </property>
     </widget>
-    <widget class="QLabel" name="label_158">
+    <widget class="QLabel" name="P8_B3">
      <property name="geometry">
       <rect>
        <x>170</x>
@@ -22192,7 +23152,7 @@
       <pixmap resource="Image.qrc">:/new/8P/UIUX/8p/SetSafety/9P_Group2 (1).png</pixmap>
      </property>
     </widget>
-    <widget class="QLabel" name="label_159">
+    <widget class="QLabel" name="P8_B4">
      <property name="geometry">
       <rect>
        <x>170</x>
@@ -22448,7 +23408,7 @@
       <pixmap resource="Image.qrc">:/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (6).png</pixmap>
      </property>
     </widget>
-    <widget class="QLabel" name="label_175">
+    <widget class="QLabel" name="P8_B5">
      <property name="geometry">
       <rect>
        <x>447</x>
@@ -22464,7 +23424,7 @@
       <pixmap resource="Image.qrc">:/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png</pixmap>
      </property>
     </widget>
-    <widget class="QLabel" name="label_176">
+    <widget class="QLabel" name="P8_B6">
      <property name="geometry">
       <rect>
        <x>504</x>
@@ -22480,7 +23440,7 @@
       <pixmap resource="Image.qrc">:/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png</pixmap>
      </property>
     </widget>
-    <widget class="QLabel" name="label_177">
+    <widget class="QLabel" name="P8_B7">
      <property name="geometry">
       <rect>
        <x>560</x>
@@ -22496,7 +23456,7 @@
       <pixmap resource="Image.qrc">:/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png</pixmap>
      </property>
     </widget>
-    <widget class="QLabel" name="label_178">
+    <widget class="QLabel" name="P8_B8">
      <property name="geometry">
       <rect>
        <x>613</x>
@@ -22608,7 +23568,7 @@
       <pixmap resource="Image.qrc">:/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (40).png</pixmap>
      </property>
     </widget>
-    <widget class="QLabel" name="label_185">
+    <widget class="QLabel" name="P8_B14">
      <property name="geometry">
       <rect>
        <x>452</x>
@@ -22704,7 +23664,7 @@
       <pixmap resource="Image.qrc">:/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (30).png</pixmap>
      </property>
     </widget>
-    <widget class="QLabel" name="label_191">
+    <widget class="QLabel" name="P8_B9">
      <property name="geometry">
       <rect>
        <x>419</x>
@@ -22720,7 +23680,7 @@
       <pixmap resource="Image.qrc">:/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png</pixmap>
      </property>
     </widget>
-    <widget class="QLabel" name="label_192">
+    <widget class="QLabel" name="P8_B10">
      <property name="geometry">
       <rect>
        <x>467</x>
@@ -22736,7 +23696,7 @@
       <pixmap resource="Image.qrc">:/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png</pixmap>
      </property>
     </widget>
-    <widget class="QLabel" name="label_193">
+    <widget class="QLabel" name="P8_B11">
      <property name="geometry">
       <rect>
        <x>520</x>
@@ -22752,7 +23712,7 @@
       <pixmap resource="Image.qrc">:/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png</pixmap>
      </property>
     </widget>
-    <widget class="QLabel" name="label_194">
+    <widget class="QLabel" name="P8_B12">
      <property name="geometry">
       <rect>
        <x>570</x>
@@ -22768,7 +23728,7 @@
       <pixmap resource="Image.qrc">:/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png</pixmap>
      </property>
     </widget>
-    <widget class="QLabel" name="label_195">
+    <widget class="QLabel" name="P8_B13">
      <property name="geometry">
       <rect>
        <x>620</x>
@@ -22960,10 +23920,10 @@
     <zorder>label_153</zorder>
     <zorder>label_154</zorder>
     <zorder>label_155</zorder>
-    <zorder>label_156</zorder>
-    <zorder>label_157</zorder>
-    <zorder>label_158</zorder>
-    <zorder>label_159</zorder>
+    <zorder>P8_B1</zorder>
+    <zorder>P8_B2</zorder>
+    <zorder>P8_B3</zorder>
+    <zorder>P8_B4</zorder>
     <zorder>label_160</zorder>
     <zorder>label_161</zorder>
     <zorder>label_162</zorder>
@@ -22979,27 +23939,27 @@
     <zorder>label_172</zorder>
     <zorder>label_173</zorder>
     <zorder>label_174</zorder>
-    <zorder>label_175</zorder>
-    <zorder>label_176</zorder>
-    <zorder>label_177</zorder>
-    <zorder>label_178</zorder>
+    <zorder>P8_B5</zorder>
+    <zorder>P8_B6</zorder>
+    <zorder>P8_B7</zorder>
+    <zorder>P8_B8</zorder>
     <zorder>label_179</zorder>
     <zorder>label_180</zorder>
     <zorder>label_181</zorder>
     <zorder>label_182</zorder>
     <zorder>label_183</zorder>
     <zorder>label_184</zorder>
-    <zorder>label_185</zorder>
+    <zorder>P8_B14</zorder>
     <zorder>label_186</zorder>
     <zorder>label_187</zorder>
     <zorder>label_188</zorder>
     <zorder>label_189</zorder>
     <zorder>label_190</zorder>
-    <zorder>label_191</zorder>
-    <zorder>label_192</zorder>
-    <zorder>label_193</zorder>
-    <zorder>label_194</zorder>
-    <zorder>label_195</zorder>
+    <zorder>P8_B9</zorder>
+    <zorder>P8_B10</zorder>
+    <zorder>P8_B11</zorder>
+    <zorder>P8_B12</zorder>
+    <zorder>P8_B13</zorder>
     <zorder>label_196</zorder>
     <zorder>label_197</zorder>
     <zorder>label_198</zorder>
@@ -23945,16 +24905,16 @@
     </widget>
    </widget>
    <zorder>frame_10</zorder>
-   <zorder>frame_7</zorder>
-   <zorder>frame_8</zorder>
-   <zorder>frame_9</zorder>
-   <zorder>frame_4</zorder>
-   <zorder>frame_5</zorder>
-   <zorder>frame_6</zorder>
    <zorder>frame_11</zorder>
    <zorder>frame</zorder>
    <zorder>frame_2</zorder>
    <zorder>frame_3</zorder>
+   <zorder>frame_5</zorder>
+   <zorder>frame_9</zorder>
+   <zorder>frame_8</zorder>
+   <zorder>frame_7</zorder>
+   <zorder>frame_4</zorder>
+   <zorder>frame_6</zorder>
   </widget>
  </widget>
  <resources>

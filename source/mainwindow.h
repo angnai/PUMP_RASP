@@ -263,10 +263,12 @@ class MainWindow : public QMainWindow
 	int P1_SCVal = 0;
 	int P1_TCVal = 0;
 
+	int ScrollVar[50][4];
+
 public:
 	MainWindow(QWidget *parent = nullptr);
 	~MainWindow();
-	//void mouseMoveEvent(QMouseEvent *event); //마우스 움직임 이벤트
+	void mouseMoveEvent(QMouseEvent *event1); //마우스 움직임 이벤트
 	void mouseReleaseEvent(QMouseEvent *event); //마우스 클릭 후 떼었을 때 이벤트
 	void mousePressEvent(QMouseEvent *event); //마우스를 클릭하고 있을 때 이벤트
 	int TouchMatching(int val, int minimum, int maximum);
@@ -279,6 +281,9 @@ public:
 	void TouchProcess_WIN8(int x,int y);
 	void TouchProcess_WIN9(int x,int y);
 	void TouchProcess_WIN10(int x,int y);
+	void TouchMove_WIN5(int orgX, int orgY);
+	void TouchMove_WIN6(int orgX, int orgY);
+	void TouchMove_WIN7(int orgX, int orgY);
 	void ChangeWindow_WIN1(void);
 	void ChangeWindow_WIN2(void);
 	void ChangeWindow_WIN3(void);
