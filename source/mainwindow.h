@@ -170,6 +170,74 @@ class MainWindow : public QMainWindow
 
 #define 	MAX_PUMP_DEFINE	100
 
+
+
+#define	S_P5_V1	0
+#define	S_P5_V2	1
+#define	S_P5_V3	2
+#define	S_P5_V4	3
+#define	S_P5_V5	4
+#define	S_P5_V6	5
+#define	S_P5_V7	6
+#define	S_P5_V8	7
+#define	S_P5_V9	8
+#define	S_P5_V10	9
+#define	S_P5_V11	10
+#define	S_P5_V12	11
+#define	S_P5_V13	12
+#define	S_P5_V14	13
+#define	S_P5_V15	14
+#define	S_P5_V16	15
+#define	S_P5_V17	16
+#define	S_P5_V18	17
+#define	S_P5_V19	18
+#define	S_P5_V20	19
+#define	S_P6_V1	20
+#define	S_P6_V2	21
+#define	S_P6_V3	22
+#define	S_P6_V4	23
+#define	S_P6_V5	24
+#define	S_P6_V6	25
+#define	S_P6_V7	26
+#define	S_P6_V8	27
+#define	S_P6_V9	28
+#define	S_P6_V10	29
+#define	S_P6_V11	30
+#define	S_P7_V1	31
+#define	S_P7_V2	32
+#define	S_P7_V3	33
+#define	S_P7_V4	34
+#define	S_P7_V5	35
+#define	S_P8_V1	36
+#define	S_P8_V2	37
+#define	S_P8_V3	38
+#define	S_P8_V4	39
+#define	S_P8_V5	40
+#define	S_P8_V6	41
+#define	S_P8_V7	42
+#define	S_P8_V8	43
+#define	S_P8_V9	44
+#define	S_P8_V10	45
+#define	S_P8_V11	46
+#define	S_P8_V12	47
+#define	S_P8_V13	48
+#define	S_P8_V14	49
+#define	S_P8_V15	50
+#define	S_P8_V16	51
+#define	S_P8_V17	52
+#define	S_P8_V18	53
+#define	S_P8_V19	54
+#define	S_P8_V20	55
+#define	S_P8_V21	56
+#define	S_P8_V22	57
+#define	S_P8_V23	58
+#define	S_P8_V24	59
+#define	S_P8_V25	60
+#define	S_P8_V26	61
+#define	S_P8_V27	62
+
+#define		MAX_SET_DEFINE	100
+
 //frame : 운전
 //frame_2 : 온도히스토리
 //frame_3 : 전류히스토리
@@ -266,6 +334,7 @@ class MainWindow : public QMainWindow
 	int ScrollVar[50][4];
 
 public:
+	void SettingVar_Init();
 	MainWindow(QWidget *parent = nullptr);
 	~MainWindow();
 	void mouseMoveEvent(QMouseEvent *event1); //마우스 움직임 이벤트
@@ -287,6 +356,10 @@ public:
 	void ChangeWindow_WIN1(void);
 	void ChangeWindow_WIN2(void);
 	void ChangeWindow_WIN3(void);
+	void ChangeWindow_WIN5(void);
+	void ChangeWindow_WIN6(void);
+	void ChangeWindow_WIN7(void);
+	void ChangeWindow_WIN8(void);
 	void ChangeStringList(void);
 
 
@@ -308,6 +381,8 @@ public:
 	int i_rcvCRC;
 
 	int Motor_Var[MAX_PUMP_DEFINE];
+
+	int Setting_Var[MAX_SET_DEFINE];
 
 	int iXdifferent,iYdifferent; //X,Y축 움직임 저장변수
 	bool b_MousePressed; //마우스 눌림 상태표시

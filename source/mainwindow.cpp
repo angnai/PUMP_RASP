@@ -63,6 +63,7 @@ MainWindow::MainWindow(QWidget *parent)
 	//ui->label_204->installEventFilter(this);
 	ui->P1_ValRPM->installEventFilter(this);
 
+	SettingVar_Init();
 
 
 	if(Init_Serial()){
@@ -71,7 +72,7 @@ MainWindow::MainWindow(QWidget *parent)
 			ui->comboBox->addItem(port.portName());
 		}
 
-		Select_Window(WIN_5);
+        Select_Window(WIN_99);
 	}
 	else{
 		Select_Window(WIN_1);
@@ -84,6 +85,49 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
 	delete ui;
+}
+
+void MainWindow::SettingVar_Init()
+{
+	Setting_Var[S_P5_V6]=1;
+	Setting_Var[S_P5_V7]=100;
+	Setting_Var[S_P5_V8]=200;
+	Setting_Var[S_P5_V9]=1;
+	Setting_Var[S_P5_V10]=100;
+	Setting_Var[S_P5_V11]=200;
+	Setting_Var[S_P5_V12]=1;
+	Setting_Var[S_P5_V13]=100;
+	Setting_Var[S_P5_V14]=200;
+	Setting_Var[S_P5_V15]=1;
+	Setting_Var[S_P5_V16]=100;
+	Setting_Var[S_P5_V17]=200;
+	Setting_Var[S_P5_V18]=1;
+	Setting_Var[S_P5_V19]=100;
+	Setting_Var[S_P5_V20]=200;
+
+	Setting_Var[S_P6_V1]=1;
+	Setting_Var[S_P6_V2]=25;
+	Setting_Var[S_P6_V3]=1;
+	Setting_Var[S_P6_V4]=25;
+	Setting_Var[S_P6_V5]=1;
+	Setting_Var[S_P6_V6]=25;
+
+	Setting_Var[S_P6_V7]=0;
+	Setting_Var[S_P6_V8]=0;
+	Setting_Var[S_P6_V9]=0;
+	Setting_Var[S_P6_V10]=0;
+	Setting_Var[S_P6_V11]=0;
+
+	Setting_Var[S_P7_V1]=0;
+	Setting_Var[S_P7_V2]=1;
+	Setting_Var[S_P7_V3]=1;
+	Setting_Var[S_P7_V4]=1;
+	Setting_Var[S_P7_V5]=3600;
+
+	for(int i=S_P8_V1;i<=S_P8_V26;i++){
+		Setting_Var[i] = 0;
+	}
+
 }
 
 bool MainWindow::eventFilter(QObject *object, QEvent *event)
@@ -491,6 +535,18 @@ void MainWindow::Display_UI_Value(void)
 	case 0x04:
 		i_VarAddr = 75;
 	break;
+	case 0x35:
+		i_VarAddr = 0;
+		for(i=0;i<i_rcvDataCnt;i+=2){
+			Setting_Var[(i/2) + i_VarAddr] = m_rcvData.at(i)*256 + m_rcvData.at(i+1);
+		}
+		return;
+	case 0x36:
+		i_VarAddr = 50;
+		for(i=0;i<i_rcvDataCnt;i+=2){
+			Setting_Var[(i/2) + i_VarAddr] = m_rcvData.at(i)*256 + m_rcvData.at(i+1);
+		}
+		return;
 	default:
 		QMessageBox::critical(this, "Missmatch", "Commad not defined");
 		return;
@@ -536,15 +592,19 @@ void MainWindow::Select_Window(WIN_VAR nSelWin)
 		ui->frame_4->setHidden(false);
 	break;
 	case WIN_5:
+		ChangeWindow_WIN5();
 		ui->frame_5->setHidden(false);
 	break;
 	case WIN_6:
+		ChangeWindow_WIN6();
 		ui->frame_6->setHidden(false);
 	break;
 	case WIN_7:
+		ChangeWindow_WIN7();
 		ui->frame_7->setHidden(false);
 	break;
 	case WIN_8:
+		ChangeWindow_WIN8();
 		ui->frame_8->setHidden(false);
 	break;
 	case WIN_9:
@@ -825,6 +885,45 @@ void MainWindow::TouchProcess_WIN5(int x, int y)
 	else if(TouchMatching(x,P5_DEF_SAVE_X1,P5_DEF_SAVE_X2) && TouchMatching(y,P5_DEF_SAVE_Y1,P5_DEF_SAVE_Y2)){
 		mm.sprintf("save");
 		QMessageBox::critical(this, "SERIAL PORT NOT CONNECTED", mm);
+		char uc_temptemp[108] = {
+				0x44,0x33,0x02,0x00,0x01,0x00,0x00,0x43
+			};
+		uint i, scnt;
+		scnt = 0;
+		uc_temptemp[scnt++] = 0x44;
+		uc_temptemp[scnt++] = 0x33;
+		uc_temptemp[scnt++] = 100;
+		for(i=0;i<50;i++){
+			uc_temptemp[scnt++] = Setting_Var[i]/256;
+			uc_temptemp[scnt++] = Setting_Var[i]%256;
+		}
+		uc_temptemp[scnt++] = 0;
+		uc_temptemp[scnt++] = 0;
+		uc_temptemp[scnt++] = 0x43;
+
+		m_send.clear();
+		m_send.setRawData(uc_temptemp,scnt);
+
+		m_port->write(m_send,m_send.size());
+		m_port->waitForBytesWritten(1000);
+
+		scnt = 0;
+		uc_temptemp[scnt++] = 0x44;
+		uc_temptemp[scnt++] = 0x34;
+		uc_temptemp[scnt++] = 100;
+		for(i=50;i<100;i++){
+			uc_temptemp[scnt++] = Setting_Var[i]/256;
+			uc_temptemp[scnt++] = Setting_Var[i]%256;
+		}
+		uc_temptemp[scnt++] = 0;
+		uc_temptemp[scnt++] = 0;
+		uc_temptemp[scnt++] = 0x43;
+
+		m_send.clear();
+		m_send.setRawData(uc_temptemp,scnt);
+
+		m_port->write(m_send,m_send.size());
+		m_port->waitForBytesWritten(1000);
 	}
 	else if(TouchMatching(x,P5_DEF_EXIT_X1,P5_DEF_EXIT_X2) && TouchMatching(y,P5_DEF_EXIT_Y1,P5_DEF_EXIT_Y2)){
 		Select_Window(WIN_1);
@@ -834,12 +933,25 @@ void MainWindow::TouchProcess_WIN5(int x, int y)
 
 void MainWindow::TouchMove_WIN5(int orgX, int orgY)
 {
+	int nVal;
+	QString mm;
+
 	if(TouchMatching(orgX,ScrollVar[0][0],ScrollVar[0][1]) && TouchMatching(orgY,ScrollVar[0][2],ScrollVar[0][3])){
 		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[0][0]) < 460 ) return;
 		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[0][0]) > ScrollVar[1][0]-(ui->P5_Set1_M->width()/2) ) return;
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[0][0] , ScrollVar[0][2] );
 		ui->P5_Set1_L->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set1_L->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+
+		Setting_Var[S_P5_V6] = nVal;
+		mm.sprintf("%d",Setting_Var[S_P5_V6]);
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[0][0] + 2 , ScrollVar[0][2] - 10 );
+		ui->P5_Set1_L_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set1_L_txt->setText(mm);
 	}
 	else if(TouchMatching(orgX,ScrollVar[1][0],ScrollVar[1][1]) && TouchMatching(orgY,ScrollVar[1][2],ScrollVar[1][3])){
 		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[1][0]) < ScrollVar[0][1]-(ui->P5_Set1_L->width()/2) ) return;
@@ -847,6 +959,15 @@ void MainWindow::TouchMove_WIN5(int orgX, int orgY)
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[1][0] , ScrollVar[1][2] );
 		ui->P5_Set1_M->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set1_M->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V7] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[1][0] + 2 , ScrollVar[1][2] - 10 );
+		ui->P5_Set1_M_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set1_M_txt->setText(mm);
 	}
 	else if(TouchMatching(orgX,ScrollVar[2][0],ScrollVar[2][1]) && TouchMatching(orgY,ScrollVar[2][2],ScrollVar[2][3])){
 		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[2][0]) < ScrollVar[1][1]-(ui->P5_Set1_L->width()/2) ) return;
@@ -854,6 +975,15 @@ void MainWindow::TouchMove_WIN5(int orgX, int orgY)
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[2][0] , ScrollVar[2][2] );
 		ui->P5_Set1_H->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set1_H->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V8] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[2][0] + 2 , ScrollVar[2][2] - 10 );
+		ui->P5_Set1_H_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set1_H_txt->setText(mm);
 	}
 
 	else if(TouchMatching(orgX,ScrollVar[3][0],ScrollVar[3][1]) && TouchMatching(orgY,ScrollVar[3][2],ScrollVar[3][3])){
@@ -862,6 +992,15 @@ void MainWindow::TouchMove_WIN5(int orgX, int orgY)
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[3][0] , ScrollVar[3][2] );
 		ui->P5_Set2_L->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set2_L->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V9] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[3][0] + 2 , ScrollVar[3][2] - 10 );
+		ui->P5_Set2_L_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set2_L_txt->setText(mm);
 	}
 	else if(TouchMatching(orgX,ScrollVar[4][0],ScrollVar[4][1]) && TouchMatching(orgY,ScrollVar[4][2],ScrollVar[4][3])){
 		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[4][0]) < ScrollVar[3][1]-(ui->P5_Set2_L->width()/2) ) return;
@@ -869,6 +1008,15 @@ void MainWindow::TouchMove_WIN5(int orgX, int orgY)
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[4][0] , ScrollVar[4][2] );
 		ui->P5_Set2_M->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set2_M->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V10] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[4][0] + 2 , ScrollVar[4][2] - 10 );
+		ui->P5_Set2_M_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set2_M_txt->setText(mm);
 	}
 	else if(TouchMatching(orgX,ScrollVar[5][0],ScrollVar[5][1]) && TouchMatching(orgY,ScrollVar[5][2],ScrollVar[5][3])){
 		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[5][0]) < ScrollVar[4][1]-(ui->P5_Set2_L->width()/2) ) return;
@@ -876,6 +1024,15 @@ void MainWindow::TouchMove_WIN5(int orgX, int orgY)
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[5][0] , ScrollVar[5][2] );
 		ui->P5_Set2_H->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set2_H->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V11] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[5][0] + 2 , ScrollVar[5][2] - 10 );
+		ui->P5_Set2_H_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set2_H_txt->setText(mm);
 	}
 
 
@@ -885,6 +1042,15 @@ void MainWindow::TouchMove_WIN5(int orgX, int orgY)
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[6][0] , ScrollVar[6][2] );
 		ui->P5_Set3_L->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set3_L->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V12] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[6][0] + 2 , ScrollVar[6][2] - 10 );
+		ui->P5_Set3_L_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set3_L_txt->setText(mm);
 	}
 	else if(TouchMatching(orgX,ScrollVar[7][0],ScrollVar[7][1]) && TouchMatching(orgY,ScrollVar[7][2],ScrollVar[7][3])){
 		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[7][0]) < ScrollVar[6][1]-(ui->P5_Set3_L->width()/2) ) return;
@@ -892,6 +1058,15 @@ void MainWindow::TouchMove_WIN5(int orgX, int orgY)
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[7][0] , ScrollVar[7][2] );
 		ui->P5_Set3_M->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set3_M->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V13] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[7][0] + 2 , ScrollVar[7][2] - 10 );
+		ui->P5_Set3_M_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set3_M_txt->setText(mm);
 	}
 	else if(TouchMatching(orgX,ScrollVar[8][0],ScrollVar[8][1]) && TouchMatching(orgY,ScrollVar[8][2],ScrollVar[8][3])){
 		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[8][0]) < ScrollVar[7][1]-(ui->P5_Set3_L->width()/2) ) return;
@@ -899,6 +1074,15 @@ void MainWindow::TouchMove_WIN5(int orgX, int orgY)
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[8][0] , ScrollVar[8][2] );
 		ui->P5_Set3_H->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set3_H->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V14] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[8][0] + 2 , ScrollVar[8][2] - 10 );
+		ui->P5_Set3_H_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set3_H_txt->setText(mm);
 	}
 
 
@@ -908,6 +1092,15 @@ void MainWindow::TouchMove_WIN5(int orgX, int orgY)
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[9][0] , ScrollVar[9][2] );
 		ui->P5_Set4_L->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set4_L->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V15] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[9][0] + 2 , ScrollVar[9][2] - 10 );
+		ui->P5_Set4_L_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set4_L_txt->setText(mm);
 	}
 	else if(TouchMatching(orgX,ScrollVar[10][0],ScrollVar[10][1]) && TouchMatching(orgY,ScrollVar[10][2],ScrollVar[10][3])){
 		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[10][0]) < ScrollVar[9][1]-(ui->P5_Set4_L->width()/2) ) return;
@@ -915,6 +1108,15 @@ void MainWindow::TouchMove_WIN5(int orgX, int orgY)
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[10][0] , ScrollVar[10][2] );
 		ui->P5_Set4_M->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set4_M->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V16] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[10][0] + 2 , ScrollVar[10][2] - 10 );
+		ui->P5_Set4_M_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set4_M_txt->setText(mm);
 	}
 	else if(TouchMatching(orgX,ScrollVar[11][0],ScrollVar[11][1]) && TouchMatching(orgY,ScrollVar[11][2],ScrollVar[11][3])){
 		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[11][0]) < ScrollVar[10][1]-(ui->P5_Set4_L->width()/2) ) return;
@@ -922,6 +1124,15 @@ void MainWindow::TouchMove_WIN5(int orgX, int orgY)
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[11][0] , ScrollVar[11][2] );
 		ui->P5_Set4_H->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set4_H->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V17] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[11][0] + 2 , ScrollVar[11][2] - 10 );
+		ui->P5_Set4_H_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set4_H_txt->setText(mm);
 	}
 
 
@@ -931,6 +1142,15 @@ void MainWindow::TouchMove_WIN5(int orgX, int orgY)
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[12][0] , ScrollVar[12][2] );
 		ui->P5_Set5_L->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set5_L->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V18] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[12][0] + 2 , ScrollVar[12][2] - 10 );
+		ui->P5_Set5_L_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set5_L_txt->setText(mm);
 	}
 	else if(TouchMatching(orgX,ScrollVar[13][0],ScrollVar[13][1]) && TouchMatching(orgY,ScrollVar[13][2],ScrollVar[13][3])){
 		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[13][0]) < ScrollVar[12][1]-(ui->P5_Set5_L->width()/2) ) return;
@@ -938,6 +1158,15 @@ void MainWindow::TouchMove_WIN5(int orgX, int orgY)
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[13][0] , ScrollVar[13][2] );
 		ui->P5_Set5_M->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set5_M->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V19] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[13][0] + 2 , ScrollVar[13][2] - 10 );
+		ui->P5_Set5_M_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set5_M_txt->setText(mm);
 	}
 	else if(TouchMatching(orgX,ScrollVar[14][0],ScrollVar[14][1]) && TouchMatching(orgY,ScrollVar[14][2],ScrollVar[14][3])){
 		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[14][0]) < ScrollVar[13][1]-(ui->P5_Set5_L->width()/2) ) return;
@@ -945,6 +1174,15 @@ void MainWindow::TouchMove_WIN5(int orgX, int orgY)
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[14][0] , ScrollVar[14][2] );
 		ui->P5_Set5_H->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set5_H->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V20] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[14][0] + 2 , ScrollVar[14][2] - 10 );
+		ui->P5_Set5_H_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set5_H_txt->setText(mm);
 	}
 }
 
@@ -1012,6 +1250,45 @@ void MainWindow::TouchProcess_WIN6(int x, int y)
 	else if(TouchMatching(x,P6_DEF_SAVE_X1,P6_DEF_SAVE_X2) && TouchMatching(y,P6_DEF_SAVE_Y1,P6_DEF_SAVE_Y2)){
 		mm.sprintf("save");
 		QMessageBox::critical(this, "SERIAL PORT NOT CONNECTED", mm);
+		char uc_temptemp[108] = {
+						0x44,0x33,0x02,0x00,0x01,0x00,0x00,0x43
+					};
+		uint i, scnt;
+		scnt = 0;
+		uc_temptemp[scnt++] = 0x44;
+		uc_temptemp[scnt++] = 0x33;
+		uc_temptemp[scnt++] = 100;
+		for(i=0;i<50;i++){
+			uc_temptemp[scnt++] = Setting_Var[i]/256;
+			uc_temptemp[scnt++] = Setting_Var[i]%256;
+		}
+		uc_temptemp[scnt++] = 0;
+		uc_temptemp[scnt++] = 0;
+		uc_temptemp[scnt++] = 0x43;
+
+		m_send.clear();
+		m_send.setRawData(uc_temptemp,scnt);
+
+		m_port->write(m_send,m_send.size());
+		m_port->waitForBytesWritten(1000);
+
+		scnt = 0;
+		uc_temptemp[scnt++] = 0x44;
+		uc_temptemp[scnt++] = 0x34;
+		uc_temptemp[scnt++] = 100;
+		for(i=50;i<100;i++){
+			uc_temptemp[scnt++] = Setting_Var[i]/256;
+			uc_temptemp[scnt++] = Setting_Var[i]%256;
+		}
+		uc_temptemp[scnt++] = 0;
+		uc_temptemp[scnt++] = 0;
+		uc_temptemp[scnt++] = 0x43;
+
+		m_send.clear();
+		m_send.setRawData(uc_temptemp,scnt);
+
+		m_port->write(m_send,m_send.size());
+		m_port->waitForBytesWritten(1000);
 	}
 	else if(TouchMatching(x,P6_DEF_EXIT_X1,P6_DEF_EXIT_X2) && TouchMatching(y,P6_DEF_EXIT_Y1,P6_DEF_EXIT_Y2)){
 		Select_Window(WIN_1);
@@ -1032,8 +1309,9 @@ void MainWindow::TouchMove_WIN6(int orgX, int orgY)
 		ui->P6_L1->setProperty("pos", qpAppNewLoc);
 
 		nVal = ui->P6_L1->x() - 225;
-		nVal = int((25*nVal/(375-225)));
+		nVal = int((24*nVal/(375-225))+1);
 		mm.sprintf("%d",nVal);
+		Setting_Var[S_P6_V1] = nVal;
 
 		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[0][0] + 2 , ScrollVar[0][2] - 15 );
 		ui->P6_V1->setProperty("pos", qpAppNewLoc1);
@@ -1047,8 +1325,9 @@ void MainWindow::TouchMove_WIN6(int orgX, int orgY)
 		ui->P6_H1->setProperty("pos", qpAppNewLoc);
 
 		nVal = ui->P6_H1->x() - 225;
-		nVal = int((25*nVal/(375-225)));
+		nVal = int((24*nVal/(375-225))+1);
 		mm.sprintf("%d",nVal);
+		Setting_Var[S_P6_V2] = nVal;
 
 		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[1][0] + 2 , ScrollVar[1][2] - 15 );
 		ui->P6_V1_2->setProperty("pos", qpAppNewLoc1);
@@ -1063,8 +1342,9 @@ void MainWindow::TouchMove_WIN6(int orgX, int orgY)
 		ui->P6_L2->setProperty("pos", qpAppNewLoc);
 
 		nVal = ui->P6_L2->x() - 225;
-		nVal = int((25*nVal/(375-225)));
+		nVal = int((24*nVal/(375-225))+1);
 		mm.sprintf("%d",nVal);
+		Setting_Var[S_P6_V3] = nVal;
 
 		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[2][0] + 2 , ScrollVar[2][2] - 15 );
 		ui->P6_V1_3->setProperty("pos", qpAppNewLoc1);
@@ -1078,8 +1358,9 @@ void MainWindow::TouchMove_WIN6(int orgX, int orgY)
 		ui->P6_H2->setProperty("pos", qpAppNewLoc);
 
 		nVal = ui->P6_H2->x() - 225;
-		nVal = int((25*nVal/(375-225)));
+		nVal = int((24*nVal/(375-225))+1);
 		mm.sprintf("%d",nVal);
+		Setting_Var[S_P6_V4] = nVal;
 
 		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[3][0] + 2 , ScrollVar[3][2] - 15 );
 		ui->P6_V1_4->setProperty("pos", qpAppNewLoc1);
@@ -1095,8 +1376,9 @@ void MainWindow::TouchMove_WIN6(int orgX, int orgY)
 		ui->P6_L3->setProperty("pos", qpAppNewLoc);
 
 		nVal = ui->P6_L3->x() - 225;
-		nVal = int((25*nVal/(375-225)));
+		nVal = int((24*nVal/(375-225))+1);
 		mm.sprintf("%d",nVal);
+		Setting_Var[S_P6_V5] = nVal;
 
 		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[4][0] + 2 , ScrollVar[4][2] - 15 );
 		ui->P6_V1_5->setProperty("pos", qpAppNewLoc1);
@@ -1110,8 +1392,9 @@ void MainWindow::TouchMove_WIN6(int orgX, int orgY)
 		ui->P6_H3->setProperty("pos", qpAppNewLoc);
 
 		nVal = ui->P6_H3->x() - 225;
-		nVal = int((25*nVal/(375-225)));
+		nVal = int((24*nVal/(375-225))+1);
 		mm.sprintf("%d",nVal);
+		Setting_Var[S_P6_V6] = nVal;
 
 		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[5][0] + 2 , ScrollVar[5][2] - 15 );
 		ui->P6_V1_6->setProperty("pos", qpAppNewLoc1);
@@ -1125,6 +1408,15 @@ void MainWindow::TouchMove_WIN6(int orgX, int orgY)
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[6][0] , ScrollVar[6][2] );
 		ui->P6_T1->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P6_T1->x() - 500;
+		nVal = int((20*nVal/(750-500)));
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P6_V7] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[6][0] + 2 , ScrollVar[6][2] - 15 );
+		ui->P6_V1_7->setProperty("pos", qpAppNewLoc1);
+		ui->P6_V1_7->setText(mm);
 	}
 
 	else if(TouchMatching(orgX,ScrollVar[7][0],ScrollVar[7][1]) && TouchMatching(orgY,ScrollVar[7][2],ScrollVar[7][3])){
@@ -1133,6 +1425,15 @@ void MainWindow::TouchMove_WIN6(int orgX, int orgY)
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[7][0] , ScrollVar[7][2] );
 		ui->P6_T2->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P6_T2->x() - 500;
+		nVal = int((20*nVal/(750-500)));
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P6_V8] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[7][0] + 2 , ScrollVar[7][2] - 15 );
+		ui->P6_V1_8->setProperty("pos", qpAppNewLoc1);
+		ui->P6_V1_8->setText(mm);
 	}
 
 	else if(TouchMatching(orgX,ScrollVar[8][0],ScrollVar[8][1]) && TouchMatching(orgY,ScrollVar[8][2],ScrollVar[8][3])){
@@ -1141,6 +1442,15 @@ void MainWindow::TouchMove_WIN6(int orgX, int orgY)
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[8][0] , ScrollVar[8][2] );
 		ui->P6_T3->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P6_T3->x() - 500;
+		nVal = int((20*nVal/(750-500)));
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P6_V9] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[8][0] + 2 , ScrollVar[8][2] - 15 );
+		ui->P6_V1_9->setProperty("pos", qpAppNewLoc1);
+		ui->P6_V1_9->setText(mm);
 	}
 
 	else if(TouchMatching(orgX,ScrollVar[9][0],ScrollVar[9][1]) && TouchMatching(orgY,ScrollVar[9][2],ScrollVar[9][3])){
@@ -1149,6 +1459,15 @@ void MainWindow::TouchMove_WIN6(int orgX, int orgY)
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[9][0] , ScrollVar[9][2] );
 		ui->P6_T4->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P6_T4->x() - 500;
+		nVal = int((20*nVal/(750-500)));
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P6_V10] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[9][0] + 2 , ScrollVar[9][2] - 15 );
+		ui->P6_V1_10->setProperty("pos", qpAppNewLoc1);
+		ui->P6_V1_10->setText(mm);
 	}
 
 	else if(TouchMatching(orgX,ScrollVar[10][0],ScrollVar[10][1]) && TouchMatching(orgY,ScrollVar[10][2],ScrollVar[10][3])){
@@ -1157,6 +1476,15 @@ void MainWindow::TouchMove_WIN6(int orgX, int orgY)
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[10][0] , ScrollVar[10][2] );
 		ui->P6_T5->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P6_T5->x() - 500;
+		nVal = int((20*nVal/(750-500)));
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P6_V11] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[10][0] + 2 , ScrollVar[10][2] - 15 );
+		ui->P6_V1_11->setProperty("pos", qpAppNewLoc1);
+		ui->P6_V1_11->setText(mm);
 	}
 
 }
@@ -1188,6 +1516,16 @@ void MainWindow::TouchProcess_WIN7(int x, int y)
 #define P7_DEF_B5_X2	100
 #define P7_DEF_B5_Y2	273
 
+#define P7_DEF_B6_X1	165
+#define P7_DEF_B6_Y1	227
+#define P7_DEF_B6_X2	205
+#define P7_DEF_B6_Y2	267
+
+#define P7_DEF_B7_X1	285
+#define P7_DEF_B7_Y1	227
+#define P7_DEF_B7_X2	325
+#define P7_DEF_B7_Y2	267
+
 #define P7_DEF_DEFAULT_X1	479
 #define P7_DEF_DEFAULT_Y1	93
 #define P7_DEF_DEFAULT_X2	623
@@ -1203,6 +1541,7 @@ void MainWindow::TouchProcess_WIN7(int x, int y)
 #define P7_DEF_EXIT_X2	790
 #define P7_DEF_EXIT_Y2	118
 
+	QPixmap qp;
 	QString mm;
 	if(TouchMatching(x,P7_DEF_B1_X1,P7_DEF_B1_X2) && TouchMatching(y,P7_DEF_B1_Y1,P7_DEF_B1_Y2)){
 		Select_Window(WIN_5);
@@ -1225,21 +1564,83 @@ void MainWindow::TouchProcess_WIN7(int x, int y)
 	else if(TouchMatching(x,P7_DEF_SAVE_X1,P7_DEF_SAVE_X2) && TouchMatching(y,P7_DEF_SAVE_Y1,P7_DEF_SAVE_Y2)){
 		mm.sprintf("save");
 		QMessageBox::critical(this, "SERIAL PORT NOT CONNECTED", mm);
+		char uc_temptemp[108] = {
+						0x44,0x33,0x02,0x00,0x01,0x00,0x00,0x43
+					};
+		uint i, scnt;
+		scnt = 0;
+		uc_temptemp[scnt++] = 0x44;
+		uc_temptemp[scnt++] = 0x33;
+		uc_temptemp[scnt++] = 100;
+		for(i=0;i<50;i++){
+			uc_temptemp[scnt++] = Setting_Var[i]/256;
+			uc_temptemp[scnt++] = Setting_Var[i]%256;
+		}
+		uc_temptemp[scnt++] = 0;
+		uc_temptemp[scnt++] = 0;
+		uc_temptemp[scnt++] = 0x43;
+
+		m_send.clear();
+		m_send.setRawData(uc_temptemp,scnt);
+
+		m_port->write(m_send,m_send.size());
+		m_port->waitForBytesWritten(1000);
+
+		scnt = 0;
+		uc_temptemp[scnt++] = 0x44;
+		uc_temptemp[scnt++] = 0x34;
+		uc_temptemp[scnt++] = 100;
+		for(i=50;i<100;i++){
+			uc_temptemp[scnt++] = Setting_Var[i]/256;
+			uc_temptemp[scnt++] = Setting_Var[i]%256;
+		}
+		uc_temptemp[scnt++] = 0;
+		uc_temptemp[scnt++] = 0;
+		uc_temptemp[scnt++] = 0x43;
+
+		m_send.clear();
+		m_send.setRawData(uc_temptemp,scnt);
+
+		m_port->write(m_send,m_send.size());
+		m_port->waitForBytesWritten(1000);
 	}
 	else if(TouchMatching(x,P7_DEF_EXIT_X1,P7_DEF_EXIT_X2) && TouchMatching(y,P7_DEF_EXIT_Y1,P7_DEF_EXIT_Y2)){
 		Select_Window(WIN_1);
+	}
+	else if(TouchMatching(x,P7_DEF_B6_X1,P7_DEF_B6_X2) && TouchMatching(y,P7_DEF_B6_Y1,P7_DEF_B6_Y2)){
+		qp = QPixmap(":/new/7P/UIUX/7p/TempInfo/7P_Group2 (5).png");
+		ui->P7_B1->setPixmap(qp);
+		Setting_Var[S_P7_V1] = 0;
+	}
+	else if(TouchMatching(x,P7_DEF_B7_X1,P7_DEF_B7_X2) && TouchMatching(y,P7_DEF_B7_Y1,P7_DEF_B7_Y2)){
+		qp = QPixmap(":/new/7P/UIUX/7p/TempInfo/7P_Group2 (3).png");
+		ui->P7_B1->setPixmap(qp);
+		Setting_Var[S_P7_V1] = 1;
 	}
 
 }
 
 void MainWindow::TouchMove_WIN7(int orgX, int orgY)
 {
+	int nVal;
+	QString mm;
+
 	if(TouchMatching(orgX,ScrollVar[0][0],ScrollVar[0][1]) && TouchMatching(orgY,ScrollVar[0][2],ScrollVar[0][3])){
 		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[0][0]) < 500 ) return;
 		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[0][0]) > 760 ) return;
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[0][0] , ScrollVar[0][2] );
 		ui->P7_D1->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P7_D1->x() - 500;
+		nVal = int((199*nVal/(760-500))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P7_V2] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[0][0] + 2 , ScrollVar[0][2] - 15 );
+		ui->P7_V1_1->setProperty("pos", qpAppNewLoc1);
+		ui->P7_V1_1->setText(mm);
+
 	}
 	else if(TouchMatching(orgX,ScrollVar[1][0],ScrollVar[1][1]) && TouchMatching(orgY,ScrollVar[1][2],ScrollVar[1][3])){
 		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[1][0]) < 500 ) return;
@@ -1247,6 +1648,15 @@ void MainWindow::TouchMove_WIN7(int orgX, int orgY)
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[1][0] , ScrollVar[1][2] );
 		ui->P7_D2->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P7_D2->x() - 500;
+		nVal = int((199*nVal/(760-500))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P7_V3] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[1][0] + 2 , ScrollVar[1][2] - 15 );
+		ui->P7_V1_2->setProperty("pos", qpAppNewLoc1);
+		ui->P7_V1_2->setText(mm);
 	}
 
 	else if(TouchMatching(orgX,ScrollVar[2][0],ScrollVar[2][1]) && TouchMatching(orgY,ScrollVar[2][2],ScrollVar[2][3])){
@@ -1255,6 +1665,15 @@ void MainWindow::TouchMove_WIN7(int orgX, int orgY)
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[2][0] , ScrollVar[2][2] );
 		ui->P7_L1->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P7_L1->x() - 155;
+		nVal = int((3599*nVal/(745-155))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P7_V4] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[2][0] - 8 , ScrollVar[2][2] - 15 );
+		ui->P7_V1_3->setProperty("pos", qpAppNewLoc1);
+		ui->P7_V1_3->setText(mm);
 	}
 	else if(TouchMatching(orgX,ScrollVar[3][0],ScrollVar[3][1]) && TouchMatching(orgY,ScrollVar[3][2],ScrollVar[3][3])){
 		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[3][0]) < ScrollVar[2][1]-(ui->P7_L1->width()/2-7) ) return;
@@ -1262,6 +1681,15 @@ void MainWindow::TouchMove_WIN7(int orgX, int orgY)
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[3][0] , ScrollVar[3][2] );
 		ui->P7_H1->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P7_H1->x() - 155;
+		nVal = int((3599*nVal/(745-155))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P7_V5] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[3][0] - 8 , ScrollVar[3][2] - 15 );
+		ui->P7_V1_4->setProperty("pos", qpAppNewLoc1);
+		ui->P7_V1_4->setText(mm);
 	}
 
 }
@@ -1308,6 +1736,137 @@ void MainWindow::TouchProcess_WIN8(int x, int y)
 #define P8_DEF_EXIT_X2	790
 #define P8_DEF_EXIT_Y2	118
 
+#define P8_DEF_V1_X1	170
+#define P8_DEF_V1_Y1	170
+#define P8_DEF_V1_X2	370
+#define P8_DEF_V1_Y2	230
+
+#define P8_DEF_V2_X1	170
+#define P8_DEF_V2_Y1	245
+#define P8_DEF_V2_X2	370
+#define P8_DEF_V2_Y2	305
+
+#define P8_DEF_V3_X1	170
+#define P8_DEF_V3_Y1	320
+#define P8_DEF_V3_X2	370
+#define P8_DEF_V3_Y2	380
+
+#define P8_DEF_V4_X1	170
+#define P8_DEF_V4_Y1	400
+#define P8_DEF_V4_X2	370
+#define P8_DEF_V4_Y2	460
+
+#define P8_DEF_V5_X1	560
+#define P8_DEF_V5_Y1	187
+#define P8_DEF_V5_X2	610
+#define P8_DEF_V5_Y2	217
+
+#define P8_DEF_V6_X1	618
+#define P8_DEF_V6_Y1	187
+#define P8_DEF_V6_X2	668
+#define P8_DEF_V6_Y2	217
+
+#define P8_DEF_V7_X1	672
+#define P8_DEF_V7_Y1	187
+#define P8_DEF_V7_X2	722
+#define P8_DEF_V7_Y2	217
+
+#define P8_DEF_V8_X1	724
+#define P8_DEF_V8_Y1	187
+#define P8_DEF_V8_X2	774
+#define P8_DEF_V8_Y2	217
+
+#define P8_DEF_V9_X1	564
+#define P8_DEF_V9_Y1	250
+#define P8_DEF_V9_X2	604
+#define P8_DEF_V9_Y2	280
+
+#define P8_DEF_V10_X1	620
+#define P8_DEF_V10_Y1	250
+#define P8_DEF_V10_X2	660
+#define P8_DEF_V10_Y2	280
+
+#define P8_DEF_V11_X1	672
+#define P8_DEF_V11_Y1	250
+#define P8_DEF_V11_X2	712
+#define P8_DEF_V11_Y2	280
+
+#define P8_DEF_V12_X1	725
+#define P8_DEF_V12_Y1	250
+#define P8_DEF_V12_X2	765
+#define P8_DEF_V12_Y2	280
+
+#define P8_DEF_V13_X1	532
+#define P8_DEF_V13_Y1	340
+#define P8_DEF_V13_X2	572
+#define P8_DEF_V13_Y2	370
+
+#define P8_DEF_V14_X1	582
+#define P8_DEF_V14_Y1	340
+#define P8_DEF_V14_X2	622
+#define P8_DEF_V14_Y2	370
+
+#define P8_DEF_V15_X1	632
+#define P8_DEF_V15_Y1	340
+#define P8_DEF_V15_X2	672
+#define P8_DEF_V15_Y2	370
+
+#define P8_DEF_V16_X1	682
+#define P8_DEF_V16_Y1	340
+#define P8_DEF_V16_X2	722
+#define P8_DEF_V16_Y2	370
+
+#define P8_DEF_V17_X1	732
+#define P8_DEF_V17_Y1	340
+#define P8_DEF_V17_X2	772
+#define P8_DEF_V17_Y2	370
+
+#define P8_DEF_V18_X1	532
+#define P8_DEF_V18_Y1	370
+#define P8_DEF_V18_X2	572
+#define P8_DEF_V18_Y2	400
+
+#define P8_DEF_V19_X1	582
+#define P8_DEF_V19_Y1	370
+#define P8_DEF_V19_X2	622
+#define P8_DEF_V19_Y2	400
+
+#define P8_DEF_V20_X1	632
+#define P8_DEF_V20_Y1	370
+#define P8_DEF_V20_X2	672
+#define P8_DEF_V20_Y2	400
+
+#define P8_DEF_V21_X1	682
+#define P8_DEF_V21_Y1	370
+#define P8_DEF_V21_X2	722
+#define P8_DEF_V21_Y2	400
+
+#define P8_DEF_V22_X1	732
+#define P8_DEF_V22_Y1	370
+#define P8_DEF_V22_X2	772
+#define P8_DEF_V22_Y2	400
+
+#define P8_DEF_V23_X1	564
+#define P8_DEF_V23_Y1	430
+#define P8_DEF_V23_X2	604
+#define P8_DEF_V23_Y2	460
+
+#define P8_DEF_V24_X1	623
+#define P8_DEF_V24_Y1	430
+#define P8_DEF_V24_X2	663
+#define P8_DEF_V24_Y2	460
+
+#define P8_DEF_V25_X1	675
+#define P8_DEF_V25_Y1	430
+#define P8_DEF_V25_X2	715
+#define P8_DEF_V25_Y2	460
+
+#define P8_DEF_V26_X1	726
+#define P8_DEF_V26_Y1	430
+#define P8_DEF_V26_X2	766
+#define P8_DEF_V26_Y2	460
+
+	QPixmap qp;
 	QString mm;
 	if(TouchMatching(x,P8_DEF_B1_X1,P8_DEF_B1_X2) && TouchMatching(y,P8_DEF_B1_Y1,P8_DEF_B1_Y2)){
 		Select_Window(WIN_5);
@@ -1330,9 +1889,272 @@ void MainWindow::TouchProcess_WIN8(int x, int y)
 	else if(TouchMatching(x,P8_DEF_SAVE_X1,P8_DEF_SAVE_X2) && TouchMatching(y,P8_DEF_SAVE_Y1,P8_DEF_SAVE_Y2)){
 		mm.sprintf("save");
 		QMessageBox::critical(this, "SERIAL PORT NOT CONNECTED", mm);
+		char uc_temptemp[108] = {
+						0x44,0x33,0x02,0x00,0x01,0x00,0x00,0x43
+					};
+		uint i, scnt;
+		scnt = 0;
+		uc_temptemp[scnt++] = 0x44;
+		uc_temptemp[scnt++] = 0x33;
+		uc_temptemp[scnt++] = 100;
+		for(i=0;i<50;i++){
+			uc_temptemp[scnt++] = Setting_Var[i]/256;
+			uc_temptemp[scnt++] = Setting_Var[i]%256;
+		}
+		uc_temptemp[scnt++] = 0;
+		uc_temptemp[scnt++] = 0;
+		uc_temptemp[scnt++] = 0x43;
+
+		m_send.clear();
+		m_send.setRawData(uc_temptemp,scnt);
+
+		m_port->write(m_send,m_send.size());
+		m_port->waitForBytesWritten(1000);
+
+		scnt = 0;
+		uc_temptemp[scnt++] = 0x44;
+		uc_temptemp[scnt++] = 0x34;
+		uc_temptemp[scnt++] = 100;
+		for(i=50;i<100;i++){
+			uc_temptemp[scnt++] = Setting_Var[i]/256;
+			uc_temptemp[scnt++] = Setting_Var[i]%256;
+		}
+		uc_temptemp[scnt++] = 0;
+		uc_temptemp[scnt++] = 0;
+		uc_temptemp[scnt++] = 0x43;
+
+		m_send.clear();
+		m_send.setRawData(uc_temptemp,scnt);
+
+		m_port->write(m_send,m_send.size());
+		m_port->waitForBytesWritten(1000);
 	}
 	else if(TouchMatching(x,P8_DEF_EXIT_X1,P8_DEF_EXIT_X2) && TouchMatching(y,P8_DEF_EXIT_Y1,P8_DEF_EXIT_Y2)){
 		Select_Window(WIN_1);
+	}
+
+	else if(TouchMatching(x,P8_DEF_V1_X1,P8_DEF_V1_X2) && TouchMatching(y,P8_DEF_V1_Y1,P8_DEF_V1_Y2)){
+		if(Setting_Var[S_P8_V1]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+		ui->P8_B1->setPixmap(qp);
+
+		if(Setting_Var[S_P8_V1]) qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (11)");  // 사용안함
+		else qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (12)"); // 사용
+		ui->P8_B1_V2->setPixmap(qp);
+
+		Setting_Var[S_P8_V1] = (Setting_Var[S_P8_V1] + 1) % 2;
+	}
+	else if(TouchMatching(x,P8_DEF_V2_X1,P8_DEF_V2_X2) && TouchMatching(y,P8_DEF_V2_Y1,P8_DEF_V2_Y2)){
+		if(Setting_Var[S_P8_V2]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+		ui->P8_B2->setPixmap(qp);
+
+		if(Setting_Var[S_P8_V2]) qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (11)");  // 사용안함
+		else qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (12)"); // 사용
+		ui->P8_B2_V2->setPixmap(qp);
+
+		Setting_Var[S_P8_V2] = (Setting_Var[S_P8_V2] + 1) % 2;
+	}
+	else if(TouchMatching(x,P8_DEF_V3_X1,P8_DEF_V3_X2) && TouchMatching(y,P8_DEF_V3_Y1,P8_DEF_V3_Y2)){
+		if(Setting_Var[S_P8_V3]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+		ui->P8_B3->setPixmap(qp);
+
+		if(Setting_Var[S_P8_V3]) qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (11)");  // 사용안함
+		else qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (12)"); // 사용
+		ui->P8_B3_V2->setPixmap(qp);
+
+		Setting_Var[S_P8_V3] = (Setting_Var[S_P8_V3] + 1) % 2;
+	}
+	else if(TouchMatching(x,P8_DEF_V4_X1,P8_DEF_V4_X2) && TouchMatching(y,P8_DEF_V4_Y1,P8_DEF_V4_Y2)){
+		if(Setting_Var[S_P8_V4]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+		ui->P8_B4->setPixmap(qp);
+
+		if(Setting_Var[S_P8_V4]) qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (11)");  // 사용안함
+		else qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (12)"); // 사용
+		ui->P8_B4_V2->setPixmap(qp);
+
+		Setting_Var[S_P8_V4] = (Setting_Var[S_P8_V4] + 1) % 2;
+	}
+
+	else if(TouchMatching(x,P8_DEF_V5_X1,P8_DEF_V5_X2) && TouchMatching(y,P8_DEF_V5_Y1,P8_DEF_V5_Y2)){
+		if(Setting_Var[S_P8_V5]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+		ui->P8_B5->setPixmap(qp);
+
+		Setting_Var[S_P8_V5] = (Setting_Var[S_P8_V5] + 1) % 2;
+	}
+	else if(TouchMatching(x,P8_DEF_V6_X1,P8_DEF_V6_X2) && TouchMatching(y,P8_DEF_V6_Y1,P8_DEF_V6_Y2)){
+		if(Setting_Var[S_P8_V6]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+		ui->P8_B6->setPixmap(qp);
+
+		Setting_Var[S_P8_V6] = (Setting_Var[S_P8_V6] + 1) % 2;
+	}
+	else if(TouchMatching(x,P8_DEF_V7_X1,P8_DEF_V7_X2) && TouchMatching(y,P8_DEF_V7_Y1,P8_DEF_V7_Y2)){
+		if(Setting_Var[S_P8_V7]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+		ui->P8_B7->setPixmap(qp);
+
+		Setting_Var[S_P8_V7] = (Setting_Var[S_P8_V7] + 1) % 2;
+	}
+	else if(TouchMatching(x,P8_DEF_V8_X1,P8_DEF_V8_X2) && TouchMatching(y,P8_DEF_V8_Y1,P8_DEF_V8_Y2)){
+		if(Setting_Var[S_P8_V8]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+		ui->P8_B8->setPixmap(qp);
+
+		Setting_Var[S_P8_V8] = (Setting_Var[S_P8_V8] + 1) % 2;
+	}
+
+	else if(TouchMatching(x,P8_DEF_V9_X1,P8_DEF_V9_X2) && TouchMatching(y,P8_DEF_V9_Y1,P8_DEF_V9_Y2)){
+		if(!Setting_Var[S_P8_V9]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (11).png"); // En
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (22).png"); // Dis
+		ui->P8_B19->setPixmap(qp);
+
+		Setting_Var[S_P8_V9] = (Setting_Var[S_P8_V9] + 1) % 2;
+	}
+	else if(TouchMatching(x,P8_DEF_V10_X1,P8_DEF_V10_X2) && TouchMatching(y,P8_DEF_V10_Y1,P8_DEF_V10_Y2)){
+		if(!Setting_Var[S_P8_V10]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (23).png"); // En
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (24).png"); // Dis
+		ui->P8_B20->setPixmap(qp);
+
+		Setting_Var[S_P8_V10] = (Setting_Var[S_P8_V10] + 1) % 2;
+	}
+	else if(TouchMatching(x,P8_DEF_V11_X1,P8_DEF_V11_X2) && TouchMatching(y,P8_DEF_V11_Y1,P8_DEF_V11_Y2)){
+		if(!Setting_Var[S_P8_V11]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (10).png"); // En
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (26).png"); // Dis
+		ui->P8_B21->setPixmap(qp);
+
+		Setting_Var[S_P8_V11] = (Setting_Var[S_P8_V11] + 1) % 2;
+	}
+	else if(TouchMatching(x,P8_DEF_V12_X1,P8_DEF_V12_X2) && TouchMatching(y,P8_DEF_V12_Y1,P8_DEF_V12_Y2)){
+		if(!Setting_Var[S_P8_V12]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (9).png"); // En
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (25).png"); // Dis
+		ui->P8_B22->setPixmap(qp);
+
+		Setting_Var[S_P8_V12] = (Setting_Var[S_P8_V12] + 1) % 2;
+	}
+
+	else if(TouchMatching(x,P8_DEF_V13_X1,P8_DEF_V13_X2) && TouchMatching(y,P8_DEF_V13_Y1,P8_DEF_V13_Y2)){
+		if(!Setting_Var[S_P8_V13]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (12).png"); // En
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (31).png"); // Dis
+		ui->P8_B9_V2->setPixmap(qp);
+
+		Setting_Var[S_P8_V13] = (Setting_Var[S_P8_V13] + 1) % 2;
+	}
+	else if(TouchMatching(x,P8_DEF_V14_X1,P8_DEF_V14_X2) && TouchMatching(y,P8_DEF_V14_Y1,P8_DEF_V14_Y2)){
+		if(!Setting_Var[S_P8_V14]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (13).png"); // En
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (27).png"); // Dis
+		ui->P8_B10_V2->setPixmap(qp);
+
+		Setting_Var[S_P8_V14] = (Setting_Var[S_P8_V14] + 1) % 2;
+	}
+	else if(TouchMatching(x,P8_DEF_V15_X1,P8_DEF_V15_X2) && TouchMatching(y,P8_DEF_V15_Y1,P8_DEF_V15_Y2)){
+		if(!Setting_Var[S_P8_V15]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (33).png"); // En
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (37).png"); // Dis
+		ui->P8_B11_V2->setPixmap(qp);
+
+		Setting_Var[S_P8_V15] = (Setting_Var[S_P8_V15] + 1) % 2;
+	}
+	else if(TouchMatching(x,P8_DEF_V16_X1,P8_DEF_V16_X2) && TouchMatching(y,P8_DEF_V16_Y1,P8_DEF_V16_Y2)){
+		if(!Setting_Var[S_P8_V16]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (19).png"); // En
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (36).png"); // Dis
+		ui->P8_B12_V2->setPixmap(qp);
+
+		Setting_Var[S_P8_V16] = (Setting_Var[S_P8_V16] + 1) % 2;
+	}
+	else if(TouchMatching(x,P8_DEF_V17_X1,P8_DEF_V17_X2) && TouchMatching(y,P8_DEF_V17_Y1,P8_DEF_V17_Y2)){
+		if(!Setting_Var[S_P8_V17]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (21).png"); // En
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (35).png"); // Dis
+		ui->P8_B13_V2->setPixmap(qp);
+
+		Setting_Var[S_P8_V17] = (Setting_Var[S_P8_V17] + 1) % 2;
+	}
+
+	else if(TouchMatching(x,P8_DEF_V18_X1,P8_DEF_V18_X2) && TouchMatching(y,P8_DEF_V18_Y1,P8_DEF_V18_Y2)){
+		if(Setting_Var[S_P8_V18]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+		ui->P8_B9->setPixmap(qp);
+
+		if(Setting_Var[S_P8_V18]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // 사용안함
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // 사용
+		ui->P8_B9_V1->setPixmap(qp);
+
+		Setting_Var[S_P8_V18] = (Setting_Var[S_P8_V18] + 1) % 2;
+	}
+	else if(TouchMatching(x,P8_DEF_V19_X1,P8_DEF_V19_X2) && TouchMatching(y,P8_DEF_V19_Y1,P8_DEF_V19_Y2)){
+		if(Setting_Var[S_P8_V19]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+		ui->P8_B10->setPixmap(qp);
+
+		if(Setting_Var[S_P8_V19]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // 사용안함
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // 사용
+		ui->P8_B10_V1->setPixmap(qp);
+
+		Setting_Var[S_P8_V19] = (Setting_Var[S_P8_V19] + 1) % 2;
+	}
+	else if(TouchMatching(x,P8_DEF_V20_X1,P8_DEF_V20_X2) && TouchMatching(y,P8_DEF_V20_Y1,P8_DEF_V20_Y2)){
+		if(Setting_Var[S_P8_V20]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+		ui->P8_B11->setPixmap(qp);
+
+		if(Setting_Var[S_P8_V20]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // 사용안함
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // 사용
+		ui->P8_B11_V1->setPixmap(qp);
+
+		Setting_Var[S_P8_V20] = (Setting_Var[S_P8_V20] + 1) % 2;
+	}
+	else if(TouchMatching(x,P8_DEF_V21_X1,P8_DEF_V21_X2) && TouchMatching(y,P8_DEF_V21_Y1,P8_DEF_V21_Y2)){
+		if(Setting_Var[S_P8_V21]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+		ui->P8_B12->setPixmap(qp);
+
+		if(Setting_Var[S_P8_V21]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // 사용안함
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // 사용
+		ui->P8_B12_V1->setPixmap(qp);
+
+		Setting_Var[S_P8_V21] = (Setting_Var[S_P8_V21] + 1) % 2;
+	}
+	else if(TouchMatching(x,P8_DEF_V22_X1,P8_DEF_V22_X2) && TouchMatching(y,P8_DEF_V22_Y1,P8_DEF_V22_Y2)){
+		if(Setting_Var[S_P8_V22]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+		ui->P8_B13->setPixmap(qp);
+
+		if(Setting_Var[S_P8_V22]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // 사용안함
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // 사용
+		ui->P8_B13_V1->setPixmap(qp);
+
+		Setting_Var[S_P8_V22] = (Setting_Var[S_P8_V22] + 1) % 2;
+	}
+
+	else if(TouchMatching(x,P8_DEF_V23_X1,P8_DEF_V23_X2) && TouchMatching(y,P8_DEF_V23_Y1,P8_DEF_V23_Y2)){
+		if(!Setting_Var[S_P8_V23]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (34).png"); // En
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (38).png"); // Dis
+		ui->P8_B15->setPixmap(qp);
+
+		Setting_Var[S_P8_V23] = (Setting_Var[S_P8_V23] + 1) % 2;
+	}
+	else if(TouchMatching(x,P8_DEF_V24_X1,P8_DEF_V24_X2) && TouchMatching(y,P8_DEF_V24_Y1,P8_DEF_V24_Y2)){
+		if(!Setting_Var[S_P8_V24]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (33).png"); // En
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (28).png"); // Dis
+		ui->P8_B16->setPixmap(qp);
+
+		Setting_Var[S_P8_V24] = (Setting_Var[S_P8_V24] + 1) % 2;
+	}
+	else if(TouchMatching(x,P8_DEF_V25_X1,P8_DEF_V25_X2) && TouchMatching(y,P8_DEF_V25_Y1,P8_DEF_V25_Y2)){
+		if(!Setting_Var[S_P8_V25]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (32).png"); // En
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (29).png"); // Dis
+		ui->P8_B17->setPixmap(qp);
+
+		Setting_Var[S_P8_V25] = (Setting_Var[S_P8_V25] + 1) % 2;
+	}
+	else if(TouchMatching(x,P8_DEF_V26_X1,P8_DEF_V26_X2) && TouchMatching(y,P8_DEF_V26_Y1,P8_DEF_V26_Y2)){
+		if(!Setting_Var[S_P8_V26]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (20).png"); // En
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (30).png"); // Dis
+		ui->P8_B18->setPixmap(qp);
+
+		Setting_Var[S_P8_V26] = (Setting_Var[S_P8_V26] + 1) % 2;
 	}
 
 }
@@ -1401,6 +2223,45 @@ void MainWindow::TouchProcess_WIN9(int x, int y)
 	else if(TouchMatching(x,P9_DEF_SAVE_X1,P9_DEF_SAVE_X2) && TouchMatching(y,P9_DEF_SAVE_Y1,P9_DEF_SAVE_Y2)){
 		mm.sprintf("save");
 		QMessageBox::critical(this, "SERIAL PORT NOT CONNECTED", mm);
+		char uc_temptemp[108] = {
+						0x44,0x33,0x02,0x00,0x01,0x00,0x00,0x43
+					};
+		uint i, scnt;
+		scnt = 0;
+		uc_temptemp[scnt++] = 0x44;
+		uc_temptemp[scnt++] = 0x33;
+		uc_temptemp[scnt++] = 100;
+		for(i=0;i<50;i++){
+			uc_temptemp[scnt++] = Setting_Var[i]/256;
+			uc_temptemp[scnt++] = Setting_Var[i]%256;
+		}
+		uc_temptemp[scnt++] = 0;
+		uc_temptemp[scnt++] = 0;
+		uc_temptemp[scnt++] = 0x43;
+
+		m_send.clear();
+		m_send.setRawData(uc_temptemp,scnt);
+
+		m_port->write(m_send,m_send.size());
+		m_port->waitForBytesWritten(1000);
+
+		scnt = 0;
+		uc_temptemp[scnt++] = 0x44;
+		uc_temptemp[scnt++] = 0x34;
+		uc_temptemp[scnt++] = 100;
+		for(i=50;i<100;i++){
+			uc_temptemp[scnt++] = Setting_Var[i]/256;
+			uc_temptemp[scnt++] = Setting_Var[i]%256;
+		}
+		uc_temptemp[scnt++] = 0;
+		uc_temptemp[scnt++] = 0;
+		uc_temptemp[scnt++] = 0x43;
+
+		m_send.clear();
+		m_send.setRawData(uc_temptemp,scnt);
+
+		m_port->write(m_send,m_send.size());
+		m_port->waitForBytesWritten(1000);
 	}
 	else if(TouchMatching(x,P9_DEF_EXIT_X1,P9_DEF_EXIT_X2) && TouchMatching(y,P9_DEF_EXIT_Y1,P9_DEF_EXIT_Y2)){
 		Select_Window(WIN_1);
@@ -1829,6 +2690,608 @@ void MainWindow::ChangeWindow_WIN3(void)
     ui->P3_ValBAL->setText(m);
 }
 
+void MainWindow::ChangeWindow_WIN5(void)
+{
+	int nVal,nVal2;
+	QString mm;
+	QPoint qpAppNewLoc;
+
+
+
+
+	nVal = int(((Setting_Var[S_P5_V6]/2)*(757-460))/100+460);
+	nVal2 = ui->P5_Set1_L->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P5_Set1_L->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P5_V6]);
+
+	nVal = int(((Setting_Var[S_P5_V6]/2)*(757-460)/100)+460);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-10);
+	ui->P5_Set1_L_txt->setProperty("pos", qpAppNewLoc);
+	ui->P5_Set1_L_txt->setText(mm);
+
+
+	nVal = int(((Setting_Var[S_P5_V7]/2)*(757-460))/100+460);
+	nVal2 = ui->P5_Set1_M->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P5_Set1_M->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P5_V7]);
+	nVal = int(((Setting_Var[S_P5_V7]/2)*(757-460))/100+460);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-10);
+	ui->P5_Set1_M_txt->setProperty("pos", qpAppNewLoc);
+	ui->P5_Set1_M_txt->setText(mm);
+
+
+	nVal = int(((Setting_Var[S_P5_V8]/2)*(757-460))/100+460);
+	nVal2 = ui->P5_Set1_H->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P5_Set1_H->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P5_V8]);
+	nVal = int(((Setting_Var[S_P5_V8]/2)*(757-460))/100+460);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-10);
+	ui->P5_Set1_H_txt->setProperty("pos", qpAppNewLoc);
+	ui->P5_Set1_H_txt->setText(mm);
+
+
+	nVal = int(((Setting_Var[S_P5_V9]/2)*(757-460))/100+460);
+	nVal2 = ui->P5_Set2_L->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P5_Set2_L->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P5_V9]);
+	nVal = int(((Setting_Var[S_P5_V9]/2)*(757-460))/100+460);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-10);
+	ui->P5_Set2_L_txt->setProperty("pos", qpAppNewLoc);
+	ui->P5_Set2_L_txt->setText(mm);
+
+
+	nVal = int(((Setting_Var[S_P5_V10]/2)*(757-460))/100+460);
+	nVal2 = ui->P5_Set2_M->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P5_Set2_M->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P5_V10]);
+	nVal = int(((Setting_Var[S_P5_V10]/2)*(757-460))/100+460);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-10);
+	ui->P5_Set2_M_txt->setProperty("pos", qpAppNewLoc);
+	ui->P5_Set2_M_txt->setText(mm);
+
+
+	nVal = int(((Setting_Var[S_P5_V11]/2)*(757-460))/100+460);
+	nVal2 = ui->P5_Set2_H->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P5_Set2_H->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P5_V11]);
+	nVal = int(((Setting_Var[S_P5_V11]/2)*(757-460))/100+460);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-10);
+	ui->P5_Set2_H_txt->setProperty("pos", qpAppNewLoc);
+	ui->P5_Set2_H_txt->setText(mm);
+
+
+	nVal = int(((Setting_Var[S_P5_V12]/2)*(757-460))/100+460);
+	nVal2 = ui->P5_Set3_L->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P5_Set3_L->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P5_V12]);
+	nVal = int(((Setting_Var[S_P5_V12]/2)*(757-460))/100+460);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-10);
+	ui->P5_Set3_L_txt->setProperty("pos", qpAppNewLoc);
+	ui->P5_Set3_L_txt->setText(mm);
+
+
+	nVal = int(((Setting_Var[S_P5_V13]/2)*(757-460))/100+460);
+	nVal2 = ui->P5_Set3_M->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P5_Set3_M->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P5_V13]);
+	nVal = int(((Setting_Var[S_P5_V13]/2)*(757-460))/100+460);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-10);
+	ui->P5_Set3_M_txt->setProperty("pos", qpAppNewLoc);
+	ui->P5_Set3_M_txt->setText(mm);
+
+
+	nVal = int(((Setting_Var[S_P5_V14]/2)*(757-460))/100+460);
+	nVal2 = ui->P5_Set3_H->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P5_Set3_H->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P5_V14]);
+	nVal = int(((Setting_Var[S_P5_V14]/2)*(757-460))/100+460);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-10);
+	ui->P5_Set3_H_txt->setProperty("pos", qpAppNewLoc);
+	ui->P5_Set3_H_txt->setText(mm);
+
+
+	nVal = int(((Setting_Var[S_P5_V15]/2)*(757-460))/100+460);
+	nVal2 = ui->P5_Set4_L->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P5_Set4_L->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P5_V15]);
+	nVal = int(((Setting_Var[S_P5_V15]/2)*(757-460))/100+460);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-10);
+	ui->P5_Set4_L_txt->setProperty("pos", qpAppNewLoc);
+	ui->P5_Set4_L_txt->setText(mm);
+
+
+	nVal = int(((Setting_Var[S_P5_V16]/2)*(757-460))/100+460);
+	nVal2 = ui->P5_Set4_M->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P5_Set4_M->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P5_V16]);
+	nVal = int(((Setting_Var[S_P5_V16]/2)*(757-460))/100+460);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-10);
+	ui->P5_Set4_M_txt->setProperty("pos", qpAppNewLoc);
+	ui->P5_Set4_M_txt->setText(mm);
+
+
+	nVal = int(((Setting_Var[S_P5_V17]/2)*(757-460))/100+460);
+	nVal2 = ui->P5_Set4_H->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P5_Set4_H->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P5_V17]);
+	nVal = int(((Setting_Var[S_P5_V17]/2)*(757-460))/100+460);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-10);
+	ui->P5_Set4_H_txt->setProperty("pos", qpAppNewLoc);
+	ui->P5_Set4_H_txt->setText(mm);
+
+
+	nVal = int(((Setting_Var[S_P5_V18]/2)*(757-460))/100+460);
+	nVal2 = ui->P5_Set5_L->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P5_Set5_L->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P5_V18]);
+	nVal = int(((Setting_Var[S_P5_V18]/2)*(757-460))/100+460);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-10);
+	ui->P5_Set5_L_txt->setProperty("pos", qpAppNewLoc);
+	ui->P5_Set5_L_txt->setText(mm);
+
+
+	nVal = int(((Setting_Var[S_P5_V19]/2)*(757-460))/100+460);
+	nVal2 = ui->P5_Set5_M->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P5_Set5_M->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P5_V19]);
+	nVal = int(((Setting_Var[S_P5_V19]/2)*(757-460))/100+460);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-10);
+	ui->P5_Set5_M_txt->setProperty("pos", qpAppNewLoc);
+	ui->P5_Set5_M_txt->setText(mm);
+
+
+	nVal = int(((Setting_Var[S_P5_V20]/2)*(757-460))/100+460);
+	nVal2 = ui->P5_Set5_H->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P5_Set5_H->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P5_V20]);
+	nVal = int(((Setting_Var[S_P5_V20]/2)*(757-460))/100+460);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-10);
+	ui->P5_Set5_H_txt->setProperty("pos", qpAppNewLoc);
+	ui->P5_Set5_H_txt->setText(mm);
+
+}
+
+void MainWindow::ChangeWindow_WIN6(void)
+{
+	int nVal, nVal2;
+	QString mm;
+	QPoint qpAppNewLoc;
+
+	nVal = int((double(Setting_Var[S_P6_V1]/25.0)*(375-225))+225);
+	nVal2 = ui->P6_L1->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P6_L1->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P6_V1]);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-15);
+	ui->P6_V1->setProperty("pos", qpAppNewLoc);
+	ui->P6_V1->setText(mm);
+
+	nVal = int(((Setting_Var[S_P6_V2]/25.0)*(375-225))+225);
+	nVal2 = ui->P6_H1->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P6_H1->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P6_V2]);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-15);
+	ui->P6_V1_2->setProperty("pos", qpAppNewLoc);
+	ui->P6_V1_2->setText(mm);
+
+
+	nVal = int(((Setting_Var[S_P6_V3]/25.0)*(375-225))+225);
+	nVal2 = ui->P6_L2->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P6_L2->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P6_V3]);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-15);
+	ui->P6_V1_3->setProperty("pos", qpAppNewLoc);
+	ui->P6_V1_3->setText(mm);
+
+	nVal = int(((Setting_Var[S_P6_V4]/25.0)*(375-225))+225);
+	nVal2 = ui->P6_H2->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P6_H2->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P6_V4]);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-15);
+	ui->P6_V1_4->setProperty("pos", qpAppNewLoc);
+	ui->P6_V1_4->setText(mm);
+
+
+	nVal = int(((Setting_Var[S_P6_V5]/25.0)*(375-225))+225);
+	nVal2 = ui->P6_L3->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P6_L3->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P6_V5]);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-15);
+	ui->P6_V1_5->setProperty("pos", qpAppNewLoc);
+	ui->P6_V1_5->setText(mm);
+
+	nVal = int(((Setting_Var[S_P6_V6]/25.0)*(375-225))+225);
+	nVal2 = ui->P6_H3->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P6_H3->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P6_V6]);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-15);
+	ui->P6_V1_6->setProperty("pos", qpAppNewLoc);
+	ui->P6_V1_6->setText(mm);
+
+
+
+	nVal = int(((Setting_Var[S_P6_V7]/20.0)*(750-500))+500);
+	nVal2 = ui->P6_T1->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P6_T1->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P6_V7]);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-15);
+	ui->P6_V1_7->setProperty("pos", qpAppNewLoc);
+	ui->P6_V1_7->setText(mm);
+
+	nVal = int(((Setting_Var[S_P6_V8]/20.0)*(750-500))+500);
+	nVal2 = ui->P6_T2->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P6_T2->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P6_V8]);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-15);
+	ui->P6_V1_8->setProperty("pos", qpAppNewLoc);
+	ui->P6_V1_8->setText(mm);
+
+	nVal = int(((Setting_Var[S_P6_V9]/20.0)*(750-500))+500);
+	nVal2 = ui->P6_T3->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P6_T3->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P6_V9]);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-15);
+	ui->P6_V1_9->setProperty("pos", qpAppNewLoc);
+	ui->P6_V1_9->setText(mm);
+
+	nVal = int(((Setting_Var[S_P6_V10]/20.0)*(750-500))+500);
+	nVal2 = ui->P6_T4->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P6_T4->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P6_V10]);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-15);
+	ui->P6_V1_10->setProperty("pos", qpAppNewLoc);
+	ui->P6_V1_10->setText(mm);
+
+	nVal = int(((Setting_Var[S_P6_V11]/20.0)*(750-500))+500);
+	nVal2 = ui->P6_T5->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P6_T5->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P6_V11]);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-15);
+	ui->P6_V1_11->setProperty("pos", qpAppNewLoc);
+	ui->P6_V1_11->setText(mm);
+
+
+}
+
+void MainWindow::ChangeWindow_WIN7(void)
+{
+	int nVal, nVal2;
+	QString mm;
+	QPoint qpAppNewLoc;
+	QPixmap qp;
+
+	if(Setting_Var[S_P7_V1]){
+		qp = QPixmap(":/new/7P/UIUX/7p/TempInfo/7P_Group2 (3).png");
+	}
+	else{
+		qp = QPixmap(":/new/7P/UIUX/7p/TempInfo/7P_Group2 (5).png");
+	}
+	ui->P7_B1->setPixmap(qp);
+
+	nVal = int((double(Setting_Var[S_P7_V2]/200.0)*(760-500))+500);
+	nVal2 = ui->P7_D1->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P7_D1->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P7_V2]);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-15);
+	ui->P7_V1_1->setProperty("pos", qpAppNewLoc);
+	ui->P7_V1_1->setText(mm);
+
+	nVal = int((double(Setting_Var[S_P7_V3]/200.0)*(760-500))+500);
+	nVal2 = ui->P7_D2->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P7_D2->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P7_V3]);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-15);
+	ui->P7_V1_2->setProperty("pos", qpAppNewLoc);
+	ui->P7_V1_2->setText(mm);
+
+
+
+	nVal = int((double(Setting_Var[S_P7_V4]/3600.0)*(745-155))+155);
+	nVal2 = ui->P7_L1->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P7_L1->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P7_V4]);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-15);
+	ui->P7_V1_3->setProperty("pos", qpAppNewLoc);
+	ui->P7_V1_3->setText(mm);
+
+	nVal = int((double(Setting_Var[S_P7_V5]/3600.0)*(745-155))+155);
+	nVal2 = ui->P7_H1->y();
+	qpAppNewLoc.setX(nVal);
+	qpAppNewLoc.setY(nVal2);
+	ui->P7_H1->setProperty("pos", qpAppNewLoc);
+
+	mm.sprintf("%d",Setting_Var[S_P7_V5]);
+	qpAppNewLoc.setX(nVal+2);
+	qpAppNewLoc.setY(nVal2-15);
+	ui->P7_V1_4->setProperty("pos", qpAppNewLoc);
+	ui->P7_V1_4->setText(mm);
+
+
+}
+
+void MainWindow::ChangeWindow_WIN8(void)
+{
+	QPixmap qp;
+
+	if(!Setting_Var[S_P8_V1]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+	ui->P8_B1->setPixmap(qp);
+
+	if(!Setting_Var[S_P8_V1]) qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (11)");  // 사용안함
+	else qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (12)"); // 사용
+	ui->P8_B1_V2->setPixmap(qp);
+
+
+	if(!Setting_Var[S_P8_V2]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+	ui->P8_B2->setPixmap(qp);
+
+	if(!Setting_Var[S_P8_V2]) qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (11)");  // 사용안함
+	else qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (12)"); // 사용
+	ui->P8_B2_V2->setPixmap(qp);
+
+	if(!Setting_Var[S_P8_V3]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+	ui->P8_B3->setPixmap(qp);
+
+	if(!Setting_Var[S_P8_V3]) qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (11)");  // 사용안함
+	else qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (12)"); // 사용
+	ui->P8_B3_V2->setPixmap(qp);
+
+
+	if(!Setting_Var[S_P8_V4]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+	ui->P8_B4->setPixmap(qp);
+
+	if(!Setting_Var[S_P8_V4]) qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (11)");  // 사용안함
+	else qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (12)"); // 사용
+	ui->P8_B4_V2->setPixmap(qp);
+
+
+	if(!Setting_Var[S_P8_V5]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+	ui->P8_B5->setPixmap(qp);
+
+	if(!Setting_Var[S_P8_V6]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+	ui->P8_B6->setPixmap(qp);
+
+
+	if(!Setting_Var[S_P8_V7]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+	ui->P8_B7->setPixmap(qp);
+
+
+	if(!Setting_Var[S_P8_V8]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+	ui->P8_B8->setPixmap(qp);
+
+
+	if(Setting_Var[S_P8_V9]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (11).png"); // En
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (22).png"); // Dis
+	ui->P8_B19->setPixmap(qp);
+
+
+	if(Setting_Var[S_P8_V10]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (23).png"); // En
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (24).png"); // Dis
+	ui->P8_B20->setPixmap(qp);
+
+
+	if(Setting_Var[S_P8_V11]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (10).png"); // En
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (26).png"); // Dis
+	ui->P8_B21->setPixmap(qp);
+
+
+	if(Setting_Var[S_P8_V12]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (9).png"); // En
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (25).png"); // Dis
+	ui->P8_B22->setPixmap(qp);
+
+
+	if(Setting_Var[S_P8_V13]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (12).png"); // En
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (31).png"); // Dis
+	ui->P8_B9_V2->setPixmap(qp);
+
+
+	if(Setting_Var[S_P8_V14]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (13).png"); // En
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (27).png"); // Dis
+	ui->P8_B10_V2->setPixmap(qp);
+
+
+	if(Setting_Var[S_P8_V15]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (33).png"); // En
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (37).png"); // Dis
+	ui->P8_B11_V2->setPixmap(qp);
+
+
+	if(Setting_Var[S_P8_V16]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (19).png"); // En
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (36).png"); // Dis
+	ui->P8_B12_V2->setPixmap(qp);
+
+
+	if(Setting_Var[S_P8_V17]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (21).png"); // En
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (35).png"); // Dis
+	ui->P8_B13_V2->setPixmap(qp);
+
+
+	if(!Setting_Var[S_P8_V18]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+	ui->P8_B9->setPixmap(qp);
+
+	if(!Setting_Var[S_P8_V18]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // 사용안함
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // 사용
+	ui->P8_B9_V1->setPixmap(qp);
+
+
+	if(!Setting_Var[S_P8_V19]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+	ui->P8_B10->setPixmap(qp);
+
+	if(!Setting_Var[S_P8_V19]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // 사용안함
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // 사용
+	ui->P8_B10_V1->setPixmap(qp);
+
+
+	if(!Setting_Var[S_P8_V20]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+	ui->P8_B11->setPixmap(qp);
+
+	if(!Setting_Var[S_P8_V20]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // 사용안함
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // 사용
+	ui->P8_B11_V1->setPixmap(qp);
+
+
+	if(!Setting_Var[S_P8_V21]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+	ui->P8_B12->setPixmap(qp);
+
+	if(!Setting_Var[S_P8_V21]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // 사용안함
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // 사용
+	ui->P8_B12_V1->setPixmap(qp);
+
+
+	if(!Setting_Var[S_P8_V22]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // 사용안함
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // 사용
+	ui->P8_B13->setPixmap(qp);
+
+	if(!Setting_Var[S_P8_V22]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // 사용안함
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // 사용
+	ui->P8_B13_V1->setPixmap(qp);
+
+
+	if(Setting_Var[S_P8_V23]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (34).png"); // En
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (38).png"); // Dis
+	ui->P8_B15->setPixmap(qp);
+
+
+	if(Setting_Var[S_P8_V24]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (33).png"); // En
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (28).png"); // Dis
+	ui->P8_B16->setPixmap(qp);
+
+
+	if(Setting_Var[S_P8_V25]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (32).png"); // En
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (29).png"); // Dis
+	ui->P8_B17->setPixmap(qp);
+
+
+	if(Setting_Var[S_P8_V26]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (20).png"); // En
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (30).png"); // Dis
+	ui->P8_B18->setPixmap(qp);
+
+}
 
 void MainWindow::ChangeStringList(void)
 {
