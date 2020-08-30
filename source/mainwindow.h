@@ -23,12 +23,14 @@ class MainWindow : public QMainWindow
 {
 	Q_OBJECT
 
-#define DEFAULT_TIMER_TIME			50
+#define DEFAULT_TIMER_TIME			100
 #define DEFAULT_WINDOW_CHANGE_TIME (30000 / (DEFAULT_TIMER_TIME))
+#define UPDATE_TEMP_HISTORY_TIME			(1000 / (DEFAULT_TIMER_TIME))
+#define UPDATE_CURRENT_HISTORY_TIME			(1000 / (DEFAULT_TIMER_TIME))
 
 // P1 UI Scale
-#define MIN_RPM_VALUE 1000
-#define MAX_RPM_VALUE 2000
+#define MIN_RPM_VALUE 0
+#define MAX_RPM_VALUE 3600
 
 #define WARNING_TEMP_VAL	90
 #define ERROR_TEMP_VAL		100
@@ -64,9 +66,9 @@ class MainWindow : public QMainWindow
 #define	SET_STOP	0
 #define	SET_RUN	1
 
-#define	SET_RUNTYPE1	0	// °³º°ÀÚµ¿¿îÀü
-#define	SET_RUNTYPE2	1	// ÀÚµ¿¿¬µ¿¿îÀü
-#define	SET_RUNTYPE3	2	// ¼öµ¿¿îÀü
+#define	SET_RUNTYPE1	0	// ê°œë³„ìë™ìš´ì „
+#define	SET_RUNTYPE2	1	// ìë™ì—°ë™ìš´ì „
+#define	SET_RUNTYPE3	2	// ìˆ˜ë™ìš´ì „
 
 #define	SET_LO	0
 #define	SET_LL	1
@@ -76,107 +78,120 @@ class MainWindow : public QMainWindow
 
 
 #define	PUMP_ID	0	// Device ID [ ID_MASTER=Master, ID_SUB1=Sub1, ID_SUB2=Sub2, ID_SUB3=Sub3 ]
-#define	PUMP_ATYPE	1	// ¿îÀü »óÅÂ [ SET_RUNTYPE1=°³º°ÀÚµ¿¿îÀü, SET_RUNTYPE2=ÀÚµ¿¿¬µ¿¿îÀü, SET_RUNTYPE3=¼öµ¿¿îÀü ]
-#define	PUMP_STAT	2	// ÇöÀç ¸ğÅÍ ½ºÅ×ÀÌÅÍ½º [ SET_NORMAL=Á¤»ó, SET_WARNING=°æº¸ ÀÌº¥Æ® ¹ß»ı, SET_ERROR=¿¡·¯ ÀÌº¥Æ® ¹ß»ı ]
-#define	PUMP_RUN	3	// ÇöÀç ¸ğÅÍ »óÅÂ [ SET_STOP=STOP, SET_RUN=RUN ]
-#define	PUMP_DIR	4	// ÇöÀç ¸ğÅÍ È¸Àü ¹æÇâ [ SET_CCW=CCW, SET_CW=CW ]
-#define	PUMP_RPM	5	// ÇöÀç RPM
-#define	PUMP_M1T	6	// ÇöÀç ¸ğÅÍ1 ¿Âµµ
-#define	PUMP_M2T	7	// ÇöÀç ¸ğÅÍ2 ¿Âµµ
-#define	PUMP_M3T	8	// ÇöÀç ¸ğÅÍ3 ¿Âµµ
-#define	PUMP_M4T	9	// ÇöÀç º£¾î¸µ(»ó) ¿Âµµ
-#define	PUMP_M5T	10	// ÇöÀç º£¾î¸µ(ÇÏ) ¿Âµµ
-#define	PUMP_M1C	11	// ÇöÀç ¸ğÅÍ Àü·ù1
-#define	PUMP_M2C	12	// ÇöÀç ¸ğÅÍ Àü·ù2
-#define	PUMP_M3C	13	// ÇöÀç ¸ğÅÍ Àü·ù3
-#define	PUMP_OC	14	// ÇöÀç ÃÖ´ë Àü·ù
-#define	PUMP_UC	15	// ÇöÀç ÃÖ¼Ò Àü·ù
-#define	PUMP_UB	16	// ÇöÀç ºÒÆòÇü
-#define	PUMP_FM	17	// ¸ğÅÍ ´©¼ö ¿©ºÎ [ SET_NORMAL=¾ÈÀü, SET_ERROR=Á¤Áö ]
-#define	PUMP_FO	18	// ¿ÀÀÏ ´©¼ö ¿©ºÎ [ SET_NORMAL=¾ÈÀü, SET_ERROR=Á¤Áö ]
-#define	PUMP_FC	19	// Á¦¾î ´©¼ö ¿©ºÎ [ SET_NORMAL=¾ÈÀü, SET_ERROR=Á¤Áö ]
-#define	PUMP_WL	20	// ÇöÀç ¼öÀ§ À§Ä¡ [ SET_LO=LO, SET_LL=LL, SET_L=L, SET_H=H, SET_HH=HH ]
-#define	PUMP_MP	21	// ÇöÀç °¡µ¿ Áß ÆßÇÁ [ ID_MASTER=Master, ID_SUB1=Sub1, ID_SUB2=Sub2, ID_SUB3=Sub3 ]
-#define	PUMP_EM1T	22	// ¸ğÅÍ1 ¿¡·¯ ¿Âµµ ¼³Á¤ °ª [ ´ÜÀ§ 5¡É , WMxT ~ 200¡É ]
-#define	PUMP_EM2T	23	// ¸ğÅÍ2 ¿¡·¯ ¿Âµµ ¼³Á¤ °ª [ ´ÜÀ§ 5¡É , WMxT ~ 200¡É ]
-#define	PUMP_EM3T	24	// ¸ğÅÍ3 ¿¡·¯ ¿Âµµ ¼³Á¤ °ª [ ´ÜÀ§ 5¡É , WMxT ~ 200¡É ]
-#define	PUMP_EM4T	25	// º£¾î¸µ(»ó) ¿¡·¯ ¿Âµµ ¼³Á¤ °ª [ ´ÜÀ§ 5¡É , WMxT ~ 200¡É ]
-#define	PUMP_EM5T	26	// º£¾î¸µ(ÇÏ) ¿¡·¯ ¿Âµµ ¼³Á¤ °ª [ ´ÜÀ§ 5¡É , WMxT ~ 200¡É ]
-#define	PUMP_WM1T	27	// ¸ğÅÍ1 °æ°í ¿Âµµ ¼³Á¤ °ª [ ´ÜÀ§ 5¡É , 40 ~ EMxT ]
-#define	PUMP_WM2T	28	// ¸ğÅÍ2 °æ°í ¿Âµµ ¼³Á¤ °ª [ ´ÜÀ§ 5¡É , 40 ~ EMxT ]
-#define	PUMP_WM3T	29	// ¸ğÅÍ3 °æ°í ¿Âµµ ¼³Á¤ °ª [ ´ÜÀ§ 5¡É , 40 ~ EMxT ]
-#define	PUMP_WM4T	30	// º£¾î¸µ(»ó) °æ°í ¿Âµµ ¼³Á¤ °ª [ ´ÜÀ§ 5¡É , 40 ~ EMxT ]
-#define	PUMP_WM5T	31	// º£¾î¸µ(ÇÏ) °æ°í ¿Âµµ ¼³Á¤ °ª [ ´ÜÀ§ 5¡É , 40 ~ EMxT ]
-#define	PUMP_RM1T	32	// ¸ğÅÍ1 Àç°¡µ¿ ¿Âµµ ¼³Á¤ °ª [ ´ÜÀ§ 5¡É , 40 ~ WMxT ]
-#define	PUMP_RM2T	33	// ¸ğÅÍ2 Àç°¡µ¿ ¿Âµµ ¼³Á¤ °ª [ ´ÜÀ§ 5¡É , 40 ~ WMxT ]
-#define	PUMP_RM3T	34	// ¸ğÅÍ3 Àç°¡µ¿ ¿Âµµ ¼³Á¤ °ª [ ´ÜÀ§ 5¡É , 40 ~ WMxT ]
-#define	PUMP_RM4T	35	// º£¾î¸µ(»ó) Àç°¡µ¿ ¿Âµµ ¼³Á¤ °ª [ ´ÜÀ§ 5¡É , 40 ~ WMxT ]
-#define	PUMP_RM5T	36	// º£¾î¸µ(ÇÏ) Àç°¡µ¿ ¿Âµµ ¼³Á¤ °ª [ ´ÜÀ§ 5¡É , 40 ~ WMxT ]
-#define	PUMP_EUC	37	// ºñ»ó½ÅÈ£Ãâ·ÂÀÌ ¹ß»ıµÇ´Â ¡°UC¡± °ªÀ» ¼³Á¤ [ ´ÜÀ§ 0.1A , 0.5 ~ WUC ] -> 2Byte ÇÊ¿ä
-#define	PUMP_WUC	38	// °æº¸½ÅÈ£Ãâ·ÂÀÌ ¹ß»ıµÇ´Â ¡°UC¡± °ªÀ» ¼³Á¤ [ ´ÜÀ§ 0.1A , 0.5 ~ WOC ] -> 2Byte ÇÊ¿ä
-#define	PUMP_EOC	39	// ºñ»ó½ÅÈ£Ãâ·ÂÀÌ ¹ß»ıµÇ´Â ¡°OC¡± °ªÀ» ¼³Á¤ [ ´ÜÀ§ 0.1A , WUC ~ 40A ] -> 2Byte ÇÊ¿ä
-#define	PUMP_WOC	40	// °æº¸½ÅÈ£Ãâ·ÂÀÌ ¹ß»ıµÇ´Â ¡°OC¡± °ªÀ» ¼³Á¤ [ ´ÜÀ§ 0.1A , 0.5 ~ EOC ] -> 2Byte ÇÊ¿ä
-#define	PUMP_WRPM	41	// °æ°í RPM ¼³Á¤ °ª (ÇöÀç RPMÀÌ °æ°íRPM ÀÌÇÏ ÀÏ ½Ã °æ°í ¹ß»ı)
-#define	PUMP_ERPM	42	// ¿¡·¯ RPM ¼³Á¤ °ª (ÇöÀç RPMÀÌ °æ°íRPM ÀÌ»ó ÀÏ ½Ã °æ°í ¹ß»ı)
-#define	PUMP_RS	43	// ±âµ¿ ½Ã ÃÖ´ë RPM [ ±âµ¿±¸¼Ó ] (????????????????????????)
-#define	PUMP_RJ	44	// ¿îÀü ½Ã º¯µ¿ RPM [ ¿îÀü±¸¼Ó ] (???????????????????????? RPMÀÌ¶û µ¿ÀÏ ÇÑ °ÍÀÎ°¡?)
-#define	PUMP_RUNT	45	// ÃÑ ´©Àû »ç¿ë½Ã°£
-#define	PUMP_C1	46	// ½ºÆ®·¹ÀÌ³Ê ÁÖ±â ½Ã°£
-#define	PUMP_C2	47	// ÀÓÆç·¯ ÁÖ±â ½Ã°£
-#define	PUMP_C3	48	// º£¾î¸µ ÁÖ±â ½Ã°£
-#define	PUMP_HH	49	// HH ¼öÀ§ ¼¾¼­ °¡µ¿ ¿©ºÎ [ SET_STOP=Á¤Áö, SET_RUN=°¡µ¿ ]
-#define	PUMP_MH	50	// H ¼öÀ§ ¼¾¼­ °¡µ¿ ¿©ºÎ [ SET_STOP=Á¤Áö, SET_RUN=°¡µ¿ ]
-#define	PUMP_ML	51	// L ¼öÀ§ ¼¾¼­ °¡µ¿ ¿©ºÎ [ SET_STOP=Á¤Áö, SET_RUN=°¡µ¿ ]
-#define	PUMP_LL	52	// LL ¼öÀ§ ¼¾¼­ °¡µ¿ ¿©ºÎ [ SET_STOP=Á¤Áö, SET_RUN=°¡µ¿ ]
-#define	PUMP_LO	53	// LO ¼öÀ§ ¼¾¼­ °¡µ¿ ¿©ºÎ [ SET_STOP=Á¤Áö, SET_RUN=°¡µ¿ ]
-#define	PUMP_PL	54	// ÆßÇÁ¼öÀ§ ¿©ºÎ(???????????????????????????????????? ¾îµğ´Â "»ç¿ë¾ÈÇÔ"or"°¡µ¿" ÀÌ°í.. ¾îµğ´Â "High"or"Low" ÀÌ°í..) [ 0=»ç¿ë¾ÈÇÔ, 1=°¡µ¿ ]
-#define	PUMP_Ryqjs_Run	55	// ±³¹ø ¿îÀüÀ¸·Î ¿òÁ÷ÀÌ´Â ¸ğÅÍ À§Ä¡ [ ID_MASTER=Master, ID_SUB1=Sub1, ID_SUB2=Sub2, ID_SUB3=Sub3 ]
-#define	PUMP_YD_Master	56	// MasterÀÇ ¿¬°á »óÅÂ [ SET_NOTCONN=¹Ì¿¬°á, SET_CONN=¿¬°áµÊ ] (¿¬µ¿ ¿îµ¿ Á¤º¸¿¡¼­ Motor Icon Ç¥½Ã ¿©ºÎ)
-#define	PUMP_YD_Sub1	57	// Sub1ÀÇ ¿¬°á »óÅÂ [ SET_NOTCONN=¹Ì¿¬°á, SET_CONN=¿¬°áµÊ ] (¿¬µ¿ ¿îµ¿ Á¤º¸¿¡¼­ Motor Icon Ç¥½Ã ¿©ºÎ)
-#define	PUMP_YD_Sub2	58	// Sub2ÀÇ ¿¬°á »óÅÂ [ SET_NOTCONN=¹Ì¿¬°á, SET_CONN=¿¬°áµÊ ] (¿¬µ¿ ¿îµ¿ Á¤º¸¿¡¼­ Motor Icon Ç¥½Ã ¿©ºÎ)
-#define	PUMP_YD_Sub3	59	// Sub3ÀÇ ¿¬°á »óÅÂ [ SET_NOTCONN=¹Ì¿¬°á, SET_CONN=¿¬°áµÊ ] (¿¬µ¿ ¿îµ¿ Á¤º¸¿¡¼­ Motor Icon Ç¥½Ã ¿©ºÎ)
-#define	PUMP_GYD_Master	60	// MasterÀÇ ±³¹ø¿îÀü ¿¬µ¿ ¿©ºÎ [ SET_NOTUSED=»ç¿ë¾ÈÇÔ, SET_RUN=°¡µ¿ ]
-#define	PUMP_GYD_Sub1	61	// Sub1ÀÇ ±³¹ø¿îÀü ¿¬µ¿ ¿©ºÎ [ SET_NOTUSED=»ç¿ë¾ÈÇÔ, SET_RUN=°¡µ¿ ]
-#define	PUMP_GYD_Sub2	62	// Sub2ÀÇ ±³¹ø¿îÀü ¿¬µ¿ ¿©ºÎ [ SET_NOTUSED=»ç¿ë¾ÈÇÔ, SET_RUN=°¡µ¿ ]
-#define	PUMP_GYD_Sub3	63	// Sub3ÀÇ ±³¹ø¿îÀü ¿¬µ¿ ¿©ºÎ [ SET_NOTUSED=»ç¿ë¾ÈÇÔ, SET_RUN=°¡µ¿ ]
-#define	PUMP_MYD_Master	64	// MasterÀÇ ¸¸¼öÀ§ ¿¬µ¿ ¿©ºÎ [ SET_STOP=Á¤Áö, SET_RUN=°¡µ¿ ]
-#define	PUMP_MYD_Sub1	65	// Sub1ÀÇ ¸¸¼öÀ§ ¿¬µ¿ ¿©ºÎ [ SET_STOP=Á¤Áö, SET_RUN=°¡µ¿ ]
-#define	PUMP_MYD_Sub2	66	// Sub2ÀÇ ¸¸¼öÀ§ ¿¬µ¿ ¿©ºÎ [ SET_STOP=Á¤Áö, SET_RUN=°¡µ¿ ]
-#define	PUMP_MYD_Sub3	67	// Sub3ÀÇ ¸¸¼öÀ§ ¿¬µ¿ ¿©ºÎ [ SET_STOP=Á¤Áö, SET_RUN=°¡µ¿ ]
-#define	PUMP_DIR_Master	68	// MasterÀÇ ¸ğÅÍ ¹æÇâ [ SET_CCW=CCW, SET_CW=CW ]
-#define	PUMP_DIR_Sub1	69	// Sub1ÀÇ ¸ğÅÍ ¹æÇâ [ SET_CCW=CCW, SET_CW=CW ]
-#define	PUMP_DIR_Sub2	70	// Sub2ÀÇ ¸ğÅÍ ¹æÇâ [ SET_CCW=CCW, SET_CW=CW ]
-#define	PUMP_DIR_Sub3	71	// Sub3ÀÇ ¸ğÅÍ ¹æÇâ [ SET_CCW=CCW, SET_CW=CW ]
-#define	PUMP_EVT_RETRY	72	// ÀÌº¥Æ® Àç°¡µ¿ ÇöÀç È½¼ö
-#define	PUMP_EVT_TOT	73	// ÀÌº¥Æ® Àç°¡µ¿ ÃÖ´ë È½¼ö
-#define	PUMP_WF	74	// À§Çè ¼öÀ§ [ SET_STOP=Á¤Áö, SET_RUN=°¡µ¿ ]
-#define	PUMP_RETRY	75	// ¿¡·¯ ½Ã Àç½Ãµµ È½¼ö
-#define	PUMP_DET	76	// ¸ğÅÍ ±âµ¿ ½ÃÀÇ Àü·ù ÃøÁ¤ Áö¿¬½Ã°£ [ ´ÜÀ§ 1ÃÊ , 0 ~ 200 ÃÊ]
-#define	PUMP_OVT	77	// °úÀü·ù µ¿ÀÛ Áö¼Ó½Ã°£ [ ´ÜÀ§ 0.1ÃÊ , 0.2 ~ 25 ÃÊ ] -> ´ÜÀ§ ÃÊ°ú·Î ´ÜÀ§ Á¶Àı
-#define	PUMP_UCT	78	// ÀúÀü·ù µ¿ÀÛ Áö¼Ó½Ã°£ [ ´ÜÀ§ 0,1ÃÊ , 0.5 ~ 25 ÃÊ ] -> ´ÜÀ§ ÃÊ°ú·Î ´ÜÀ§ Á¶Àı
-#define	PUMP_UBT	79	// ºÒÆòÇü µ¿ÀÛ Áö¼Ó½Ã°£ [ ´ÜÀ§ 1ÃÊ , 1 ~ 10 ÃÊ ]
-#define	PUMP_RET	80	// ºñ»óÁ¤Áö ÈÄ Àç°¡µ¿ Áö¿¬½Ã°£ [ ´ÜÀ§ 5ÃÊ , 5 ~ 1250ÃÊ ] -> ´ÜÀ§ ÃÊ°ú·Î ´ÜÀ§ Á¶Àı
-#define	PUMP_WUB	81	// °æº¸½ÅÈ£Ãâ·ÂÀÌ ¹ß»ıµÇ´Â ¡°UB¡± °ªÀ» ¼³Á¤ [ 1% ~ EUC ]
-#define	PUMP_EUB	82	// ºñ»ó½ÅÈ£Ãâ·ÂÀÌ ¹ß»ıµÇ´Â ¡°UB¡± °ªÀ» ¼³Á¤ [ WUB ~ 100% ]
+#define	PUMP_ATYPE	1	// ìš´ì „ ìƒíƒœ [ SET_RUNTYPE1=ê°œë³„ìë™ìš´ì „, SET_RUNTYPE2=ìë™ì—°ë™ìš´ì „, SET_RUNTYPE3=ìˆ˜ë™ìš´ì „ ]
+#define	PUMP_STAT	2	// í˜„ì¬ ëª¨í„° ìŠ¤í…Œì´í„°ìŠ¤ [ SET_NORMAL=ì •ìƒ, SET_WARNING=ê²½ë³´ ì´ë²¤íŠ¸ ë°œìƒ, SET_ERROR=ì—ëŸ¬ ì´ë²¤íŠ¸ ë°œìƒ ]
+#define	PUMP_RUN	3	// í˜„ì¬ ëª¨í„° ìƒíƒœ [ SET_STOP=STOP, SET_RUN=RUN ]
+#define	PUMP_DIR	4	// í˜„ì¬ ëª¨í„° íšŒì „ ë°©í–¥ [ SET_CCW=CCW, SET_CW=CW ]
+#define	PUMP_RPM	5	// í˜„ì¬ RPM
+#define	PUMP_M1T	6	// í˜„ì¬ ëª¨í„°1 ì˜¨ë„
+#define	PUMP_M2T	7	// í˜„ì¬ ëª¨í„°2 ì˜¨ë„
+#define	PUMP_M3T	8	// í˜„ì¬ ëª¨í„°3 ì˜¨ë„
+#define	PUMP_M4T	9	// í˜„ì¬ ë² ì–´ë§(ìƒ) ì˜¨ë„
+#define	PUMP_M5T	10	// í˜„ì¬ ë² ì–´ë§(í•˜) ì˜¨ë„
+#define	PUMP_M1C	11	// í˜„ì¬ ëª¨í„° ì „ë¥˜1
+#define	PUMP_M2C	12	// í˜„ì¬ ëª¨í„° ì „ë¥˜2
+#define	PUMP_M3C	13	// í˜„ì¬ ëª¨í„° ì „ë¥˜3
+#define	PUMP_OC	14	// í˜„ì¬ ìµœëŒ€ ì „ë¥˜
+#define	PUMP_UC	15	// í˜„ì¬ ìµœì†Œ ì „ë¥˜
+#define	PUMP_UB	16	// í˜„ì¬ ë¶ˆí‰í˜•
+#define	PUMP_FM	17	// ëª¨í„° ëˆ„ìˆ˜ ì—¬ë¶€ [ SET_NORMAL=ì•ˆì „, SET_ERROR=ì •ì§€ ]
+#define	PUMP_FO	18	// ì˜¤ì¼ ëˆ„ìˆ˜ ì—¬ë¶€ [ SET_NORMAL=ì•ˆì „, SET_ERROR=ì •ì§€ ]
+#define	PUMP_FC	19	// ì œì–´ ëˆ„ìˆ˜ ì—¬ë¶€ [ SET_NORMAL=ì•ˆì „, SET_ERROR=ì •ì§€ ]
+#define	PUMP_WL	20	// í˜„ì¬ ìˆ˜ìœ„ ìœ„ì¹˜ [ SET_LO=LO, SET_LL=LL, SET_L=L, SET_H=H, SET_HH=HH ]
+#define	PUMP_MP	21	// í˜„ì¬ ê°€ë™ ì¤‘ íŒí”„ [ ID_MASTER=Master, ID_SUB1=Sub1, ID_SUB2=Sub2, ID_SUB3=Sub3 ]
+#define	PUMP_EM1T	22	// ëª¨í„°1 ì—ëŸ¬ ì˜¨ë„ ì„¤ì • ê°’ [ ë‹¨ìœ„ 5â„ƒ , WMxT ~ 200â„ƒ ]
+#define	PUMP_EM2T	23	// ëª¨í„°2 ì—ëŸ¬ ì˜¨ë„ ì„¤ì • ê°’ [ ë‹¨ìœ„ 5â„ƒ , WMxT ~ 200â„ƒ ]
+#define	PUMP_EM3T	24	// ëª¨í„°3 ì—ëŸ¬ ì˜¨ë„ ì„¤ì • ê°’ [ ë‹¨ìœ„ 5â„ƒ , WMxT ~ 200â„ƒ ]
+#define	PUMP_EM4T	25	// ë² ì–´ë§(ìƒ) ì—ëŸ¬ ì˜¨ë„ ì„¤ì • ê°’ [ ë‹¨ìœ„ 5â„ƒ , WMxT ~ 200â„ƒ ]
+#define	PUMP_EM5T	26	// ë² ì–´ë§(í•˜) ì—ëŸ¬ ì˜¨ë„ ì„¤ì • ê°’ [ ë‹¨ìœ„ 5â„ƒ , WMxT ~ 200â„ƒ ]
+#define	PUMP_WM1T	27	// ëª¨í„°1 ê²½ê³  ì˜¨ë„ ì„¤ì • ê°’ [ ë‹¨ìœ„ 5â„ƒ , 40 ~ EMxT ]
+#define	PUMP_WM2T	28	// ëª¨í„°2 ê²½ê³  ì˜¨ë„ ì„¤ì • ê°’ [ ë‹¨ìœ„ 5â„ƒ , 40 ~ EMxT ]
+#define	PUMP_WM3T	29	// ëª¨í„°3 ê²½ê³  ì˜¨ë„ ì„¤ì • ê°’ [ ë‹¨ìœ„ 5â„ƒ , 40 ~ EMxT ]
+#define	PUMP_WM4T	30	// ë² ì–´ë§(ìƒ) ê²½ê³  ì˜¨ë„ ì„¤ì • ê°’ [ ë‹¨ìœ„ 5â„ƒ , 40 ~ EMxT ]
+#define	PUMP_WM5T	31	// ë² ì–´ë§(í•˜) ê²½ê³  ì˜¨ë„ ì„¤ì • ê°’ [ ë‹¨ìœ„ 5â„ƒ , 40 ~ EMxT ]
+#define	PUMP_RM1T	32	// ëª¨í„°1 ì¬ê°€ë™ ì˜¨ë„ ì„¤ì • ê°’ [ ë‹¨ìœ„ 5â„ƒ , 40 ~ WMxT ]
+#define	PUMP_RM2T	33	// ëª¨í„°2 ì¬ê°€ë™ ì˜¨ë„ ì„¤ì • ê°’ [ ë‹¨ìœ„ 5â„ƒ , 40 ~ WMxT ]
+#define	PUMP_RM3T	34	// ëª¨í„°3 ì¬ê°€ë™ ì˜¨ë„ ì„¤ì • ê°’ [ ë‹¨ìœ„ 5â„ƒ , 40 ~ WMxT ]
+#define	PUMP_RM4T	35	// ë² ì–´ë§(ìƒ) ì¬ê°€ë™ ì˜¨ë„ ì„¤ì • ê°’ [ ë‹¨ìœ„ 5â„ƒ , 40 ~ WMxT ]
+#define	PUMP_RM5T	36	// ë² ì–´ë§(í•˜) ì¬ê°€ë™ ì˜¨ë„ ì„¤ì • ê°’ [ ë‹¨ìœ„ 5â„ƒ , 40 ~ WMxT ]
+#define	PUMP_EUC	37	// ë¹„ìƒì‹ í˜¸ì¶œë ¥ì´ ë°œìƒë˜ëŠ” â€œUCâ€ ê°’ì„ ì„¤ì • [ ë‹¨ìœ„ 0.1A , 0.5 ~ WUC ] -> 2Byte í•„ìš”
+#define	PUMP_WUC	38	// ê²½ë³´ì‹ í˜¸ì¶œë ¥ì´ ë°œìƒë˜ëŠ” â€œUCâ€ ê°’ì„ ì„¤ì • [ ë‹¨ìœ„ 0.1A , 0.5 ~ WOC ] -> 2Byte í•„ìš”
+#define	PUMP_EOC	39	// ë¹„ìƒì‹ í˜¸ì¶œë ¥ì´ ë°œìƒë˜ëŠ” â€œOCâ€ ê°’ì„ ì„¤ì • [ ë‹¨ìœ„ 0.1A , WUC ~ 40A ] -> 2Byte í•„ìš”
+#define	PUMP_WOC	40	// ê²½ë³´ì‹ í˜¸ì¶œë ¥ì´ ë°œìƒë˜ëŠ” â€œOCâ€ ê°’ì„ ì„¤ì • [ ë‹¨ìœ„ 0.1A , 0.5 ~ EOC ] -> 2Byte í•„ìš”
+#define	PUMP_WRPM	41	// ê²½ê³  RPM ì„¤ì • ê°’ (í˜„ì¬ RPMì´ ê²½ê³ RPM ì´í•˜ ì¼ ì‹œ ê²½ê³  ë°œìƒ)
+#define	PUMP_ERPM	42	// ì—ëŸ¬ RPM ì„¤ì • ê°’ (í˜„ì¬ RPMì´ ê²½ê³ RPM ì´ìƒ ì¼ ì‹œ ê²½ê³  ë°œìƒ)
+#define	PUMP_RS	43	// ê¸°ë™ ì‹œ ìµœëŒ€ RPM [ ê¸°ë™êµ¬ì† ] (????????????????????????)
+#define	PUMP_RJ	44	// ìš´ì „ ì‹œ ë³€ë™ RPM [ ìš´ì „êµ¬ì† ] (???????????????????????? RPMì´ë‘ ë™ì¼ í•œ ê²ƒì¸ê°€?)
+#define	PUMP_RUNT	45	// ì´ ëˆ„ì  ì‚¬ìš©ì‹œê°„
+#define	PUMP_C1	46	// ìŠ¤íŠ¸ë ˆì´ë„ˆ ì£¼ê¸° ì‹œê°„
+#define	PUMP_C2	47	// ì„í ëŸ¬ ì£¼ê¸° ì‹œê°„
+#define	PUMP_C3	48	// ë² ì–´ë§ ì£¼ê¸° ì‹œê°„
+#define	PUMP_HH	49	// HH ìˆ˜ìœ„ ì„¼ì„œ ê°€ë™ ì—¬ë¶€ [ SET_STOP=ì •ì§€, SET_RUN=ê°€ë™ ]
+#define	PUMP_MH	50	// H ìˆ˜ìœ„ ì„¼ì„œ ê°€ë™ ì—¬ë¶€ [ SET_STOP=ì •ì§€, SET_RUN=ê°€ë™ ]
+#define	PUMP_ML	51	// L ìˆ˜ìœ„ ì„¼ì„œ ê°€ë™ ì—¬ë¶€ [ SET_STOP=ì •ì§€, SET_RUN=ê°€ë™ ]
+#define	PUMP_LL	52	// LL ìˆ˜ìœ„ ì„¼ì„œ ê°€ë™ ì—¬ë¶€ [ SET_STOP=ì •ì§€, SET_RUN=ê°€ë™ ]
+#define	PUMP_LO	53	// LO ìˆ˜ìœ„ ì„¼ì„œ ê°€ë™ ì—¬ë¶€ [ SET_STOP=ì •ì§€, SET_RUN=ê°€ë™ ]
+#define	PUMP_PL	54	// íŒí”„ìˆ˜ìœ„ ì—¬ë¶€(???????????????????????????????????? ì–´ë””ëŠ” "ì‚¬ìš©ì•ˆí•¨"or"ê°€ë™" ì´ê³ .. ì–´ë””ëŠ” "High"or"Low" ì´ê³ ..) [ 0=ì‚¬ìš©ì•ˆí•¨, 1=ê°€ë™ ]
+#define	PUMP_Ryqjs_Run	55	// êµë²ˆ ìš´ì „ìœ¼ë¡œ ì›€ì§ì´ëŠ” ëª¨í„° ìœ„ì¹˜ [ ID_MASTER=Master, ID_SUB1=Sub1, ID_SUB2=Sub2, ID_SUB3=Sub3 ]
+#define	PUMP_YD_Master	56	// Masterì˜ ì—°ê²° ìƒíƒœ [ SET_NOTCONN=ë¯¸ì—°ê²°, SET_CONN=ì—°ê²°ë¨ ] (ì—°ë™ ìš´ë™ ì •ë³´ì—ì„œ Motor Icon í‘œì‹œ ì—¬ë¶€)
+#define	PUMP_YD_Sub1	57	// Sub1ì˜ ì—°ê²° ìƒíƒœ [ SET_NOTCONN=ë¯¸ì—°ê²°, SET_CONN=ì—°ê²°ë¨ ] (ì—°ë™ ìš´ë™ ì •ë³´ì—ì„œ Motor Icon í‘œì‹œ ì—¬ë¶€)
+#define	PUMP_YD_Sub2	58	// Sub2ì˜ ì—°ê²° ìƒíƒœ [ SET_NOTCONN=ë¯¸ì—°ê²°, SET_CONN=ì—°ê²°ë¨ ] (ì—°ë™ ìš´ë™ ì •ë³´ì—ì„œ Motor Icon í‘œì‹œ ì—¬ë¶€)
+#define	PUMP_YD_Sub3	59	// Sub3ì˜ ì—°ê²° ìƒíƒœ [ SET_NOTCONN=ë¯¸ì—°ê²°, SET_CONN=ì—°ê²°ë¨ ] (ì—°ë™ ìš´ë™ ì •ë³´ì—ì„œ Motor Icon í‘œì‹œ ì—¬ë¶€)
+#define	PUMP_GYD_Master	60	// Masterì˜ êµë²ˆìš´ì „ ì—°ë™ ì—¬ë¶€ [ SET_NOTUSED=ì‚¬ìš©ì•ˆí•¨, SET_RUN=ê°€ë™ ]
+#define	PUMP_GYD_Sub1	61	// Sub1ì˜ êµë²ˆìš´ì „ ì—°ë™ ì—¬ë¶€ [ SET_NOTUSED=ì‚¬ìš©ì•ˆí•¨, SET_RUN=ê°€ë™ ]
+#define	PUMP_GYD_Sub2	62	// Sub2ì˜ êµë²ˆìš´ì „ ì—°ë™ ì—¬ë¶€ [ SET_NOTUSED=ì‚¬ìš©ì•ˆí•¨, SET_RUN=ê°€ë™ ]
+#define	PUMP_GYD_Sub3	63	// Sub3ì˜ êµë²ˆìš´ì „ ì—°ë™ ì—¬ë¶€ [ SET_NOTUSED=ì‚¬ìš©ì•ˆí•¨, SET_RUN=ê°€ë™ ]
+#define	PUMP_MYD_Master	64	// Masterì˜ ë§Œìˆ˜ìœ„ ì—°ë™ ì—¬ë¶€ [ SET_STOP=ì •ì§€, SET_RUN=ê°€ë™ ]
+#define	PUMP_MYD_Sub1	65	// Sub1ì˜ ë§Œìˆ˜ìœ„ ì—°ë™ ì—¬ë¶€ [ SET_STOP=ì •ì§€, SET_RUN=ê°€ë™ ]
+#define	PUMP_MYD_Sub2	66	// Sub2ì˜ ë§Œìˆ˜ìœ„ ì—°ë™ ì—¬ë¶€ [ SET_STOP=ì •ì§€, SET_RUN=ê°€ë™ ]
+#define	PUMP_MYD_Sub3	67	// Sub3ì˜ ë§Œìˆ˜ìœ„ ì—°ë™ ì—¬ë¶€ [ SET_STOP=ì •ì§€, SET_RUN=ê°€ë™ ]
+#define	PUMP_DIR_Master	68	// Masterì˜ ëª¨í„° ë°©í–¥ [ SET_CCW=CCW, SET_CW=CW ]
+#define	PUMP_DIR_Sub1	69	// Sub1ì˜ ëª¨í„° ë°©í–¥ [ SET_CCW=CCW, SET_CW=CW ]
+#define	PUMP_DIR_Sub2	70	// Sub2ì˜ ëª¨í„° ë°©í–¥ [ SET_CCW=CCW, SET_CW=CW ]
+#define	PUMP_DIR_Sub3	71	// Sub3ì˜ ëª¨í„° ë°©í–¥ [ SET_CCW=CCW, SET_CW=CW ]
+#define	PUMP_EVT_RETRY	72	// ì´ë²¤íŠ¸ ì¬ê°€ë™ í˜„ì¬ íšŸìˆ˜
+#define	PUMP_EVT_TOT	73	// ì´ë²¤íŠ¸ ì¬ê°€ë™ ìµœëŒ€ íšŸìˆ˜
+#define	PUMP_WF	74	// ìœ„í—˜ ìˆ˜ìœ„ [ SET_STOP=ì •ì§€, SET_RUN=ê°€ë™ ]
+#define	PUMP_RETRY	75	// ì—ëŸ¬ ì‹œ ì¬ì‹œë„ íšŸìˆ˜
+#define	PUMP_DET	76	// ëª¨í„° ê¸°ë™ ì‹œì˜ ì „ë¥˜ ì¸¡ì • ì§€ì—°ì‹œê°„ [ ë‹¨ìœ„ 1ì´ˆ , 0 ~ 200 ì´ˆ]
+#define	PUMP_OVT	77	// ê³¼ì „ë¥˜ ë™ì‘ ì§€ì†ì‹œê°„ [ ë‹¨ìœ„ 0.1ì´ˆ , 0.2 ~ 25 ì´ˆ ] -> ë‹¨ìœ„ ì´ˆê³¼ë¡œ ë‹¨ìœ„ ì¡°ì ˆ
+#define	PUMP_UCT	78	// ì €ì „ë¥˜ ë™ì‘ ì§€ì†ì‹œê°„ [ ë‹¨ìœ„ 0,1ì´ˆ , 0.5 ~ 25 ì´ˆ ] -> ë‹¨ìœ„ ì´ˆê³¼ë¡œ ë‹¨ìœ„ ì¡°ì ˆ
+#define	PUMP_UBT	79	// ë¶ˆí‰í˜• ë™ì‘ ì§€ì†ì‹œê°„ [ ë‹¨ìœ„ 1ì´ˆ , 1 ~ 10 ì´ˆ ]
+#define	PUMP_RET	80	// ë¹„ìƒì •ì§€ í›„ ì¬ê°€ë™ ì§€ì—°ì‹œê°„ [ ë‹¨ìœ„ 5ì´ˆ , 5 ~ 1250ì´ˆ ] -> ë‹¨ìœ„ ì´ˆê³¼ë¡œ ë‹¨ìœ„ ì¡°ì ˆ
+#define	PUMP_WUB	81	// ê²½ë³´ì‹ í˜¸ì¶œë ¥ì´ ë°œìƒë˜ëŠ” â€œUBâ€ ê°’ì„ ì„¤ì • [ 1% ~ EUC ]
+#define	PUMP_EUB	82	// ë¹„ìƒì‹ í˜¸ì¶œë ¥ì´ ë°œìƒë˜ëŠ” â€œUBâ€ ê°’ì„ ì„¤ì • [ WUB ~ 100% ]
 #define	PUMP_RST	83
 #define	PUMP_RJT	84
 #define	PUMP_WRS	85
 #define	PUMP_ERS	86
 #define	PUMP_WRJ	87
 #define	PUMP_ERJ	88
-#define PUMP_CHK_MECHA	89 // ¸ŞÄ«´ÏÁò½Ç È®ÀÎ [SET_NORMAL=Á¤»ó, SET_ERROR=¿¡·¯]
-#define PUMP_CHK_BEARING	90 // º£¾î¸µ È®ÀÎ [SET_NORMAL=Á¤»ó, SET_ERROR=¿¡·¯]
-#define PUMP_CHK_OIL	91 // ¿ÀÀÏ È®ÀÎ [SET_NORMAL=Á¤»ó, SET_ERROR=¿¡·¯]
+#define PUMP_CHK_MECHA	89 // ë©”ì¹´ë‹ˆì¦˜ì‹¤ í™•ì¸ [SET_NORMAL=ì •ìƒ, SET_ERROR=ì—ëŸ¬]
+#define PUMP_CHK_BEARING	90 // ë² ì–´ë§ í™•ì¸ [SET_NORMAL=ì •ìƒ, SET_ERROR=ì—ëŸ¬]
+#define PUMP_CHK_OIL	91 // ì˜¤ì¼ í™•ì¸ [SET_NORMAL=ì •ìƒ, SET_ERROR=ì—ëŸ¬]
+#define PUMP_TIME_YM	92 // ì‹œê°„_ë…„ë„,ì›” [ YYMM ]
+#define PUMP_TIME_DH	93 // ì‹œê°„_ì¼,ì‹œ [ DDhh ]
+#define PUMP_TIME_MS	94 // ì‹œê°„_ë¶„,ì´ˆ [ mmss ]
 
 #define 	MAX_PUMP_DEFINE	100
 
 
 
-#define	S_P5_V1	0
-#define	S_P5_V2	1
-#define	S_P5_V3	2
-#define	S_P5_V4	3
-#define	S_P5_V5	4
+#define T_NONE 0
+#define T_SET_M1	1
+#define T_SET_M2	2
+#define T_SET_M3	3
+#define T_SET_B1	4
+#define T_SET_B2	5
+
+#define SET_DISABLE	0
+#define SET_ENABLE	1
+
+#define	S_P5_V1	0	// [T_NONE / T_SET_M1 / SET_DEF_M2 / T_SET_M2 / T_SET_B1 / T_SET_B2]
+#define	S_P5_V2	1	// [T_NONE / T_SET_M1 / SET_DEF_M2 / T_SET_M2 / T_SET_B1 / T_SET_B2]
+#define	S_P5_V3	2	// [T_NONE / T_SET_M1 / SET_DEF_M2 / T_SET_M2 / T_SET_B1 / T_SET_B2]
+#define	S_P5_V4	3	// [T_NONE / T_SET_M1 / SET_DEF_M2 / T_SET_M2 / T_SET_B1 / T_SET_B2]
+#define	S_P5_V5	4	// [T_NONE / T_SET_M1 / SET_DEF_M2 / T_SET_M2 / T_SET_B1 / T_SET_B2]
 #define	S_P5_V6	5
 #define	S_P5_V7	6
 #define	S_P5_V8	7
@@ -212,10 +227,10 @@ class MainWindow : public QMainWindow
 #define	S_P8_V2	37
 #define	S_P8_V3	38
 #define	S_P8_V4	39
-#define	S_P8_V5	40
-#define	S_P8_V6	41
-#define	S_P8_V7	42
-#define	S_P8_V8	43
+#define	S_P8_V5	40		// [SET_DISABLE / SET_ENABLE ]
+#define	S_P8_V6	41		// [SET_DISABLE / SET_ENABLE ]
+#define	S_P8_V7	42		// [SET_DISABLE / SET_ENABLE ]
+#define	S_P8_V8	43		// [SET_DISABLE / SET_ENABLE ]
 #define	S_P8_V9	44
 #define	S_P8_V10	45
 #define	S_P8_V11	46
@@ -238,17 +253,17 @@ class MainWindow : public QMainWindow
 
 #define		MAX_SET_DEFINE	100
 
-//frame : ¿îÀü
-//frame_2 : ¿ÂµµÈ÷½ºÅä¸®
-//frame_3 : Àü·ùÈ÷½ºÅä¸®
-//frame_4 : ÆßÇÁ¸ğµ¨¼±ÅÃ
-//frame_5 : ¼³Á¤-¿Âµµ¼³Á¤
-//frame_6 : ¼³Á¤-Àü·ù¼³Á¤
-//frame_7 : ¼³Á¤-RPM
-//frame_8 : ¼³Á¤-¿îÀü¼³Á¤
-//frame_9 : ¼³Á¤-½Ã°£¼³Á¤
-//frame_10 : ÀÌº¥Æ®Á¤º¸±â·Ï
-//frame_11 : Serial Port ¼±ÅÃ
+//frame : ìš´ì „
+//frame_2 : ì˜¨ë„íˆìŠ¤í† ë¦¬
+//frame_3 : ì „ë¥˜íˆìŠ¤í† ë¦¬
+//frame_4 : íŒí”„ëª¨ë¸ì„ íƒ
+//frame_5 : ì„¤ì •-ì˜¨ë„ì„¤ì •
+//frame_6 : ì„¤ì •-ì „ë¥˜ì„¤ì •
+//frame_7 : ì„¤ì •-RPM
+//frame_8 : ì„¤ì •-ìš´ì „ì„¤ì •
+//frame_9 : ì„¤ì •-ì‹œê°„ì„¤ì •
+//frame_10 : ì´ë²¤íŠ¸ì •ë³´ê¸°ë¡
+//frame_11 : Serial Port ì„ íƒ
 
 	typedef enum{
 		WIN_1,
@@ -295,6 +310,10 @@ class MainWindow : public QMainWindow
 	QString P1_BRSafe_STR = ":/new/1P/UIUX/1p/safe/1P_Group3 (6).png,:/new/1P/UIUX/1p/safe/1P_Group3 (13).png";
 	// 2
 	QString P1_OilSafe_2_STR = ":/new/1P/UIUX/1p/safe/1P_Group3 (5).png,:/new/1P/UIUX/1p/safe/1P_Group3 (14).png";
+	// 8
+	QString P1_DeviceConn_STR = ":/new/1P/UIUX/1p/level/1P_Group2 (1).png,:/new/1P/UIUX/1p/level/1P_Group2 (6).png,:/new/1P/UIUX/1p/level/1P_Group2 (2).png,:/new/1P/UIUX/1p/level/1P_Group2 (7).png,:/new/1P/UIUX/1p/level/1P_Group2 (3).png,:/new/1P/UIUX/1p/level/1P_Group2 (8).png,:/new/1P/UIUX/1p/level/1P_Group2 (4).png,:/new/1P/UIUX/1p/level/1P_Group2 (9).png";
+	// 12
+	QString P5_TempSel_STR = ":/new/5P/UIUX/5p/SelTempSensor/5P_Group3 (6).png,:/new/5P/UIUX/5p/SelTempSensor/5P_Group3 (17).png,:/new/5P/UIUX/5p/SelTempSensor/5P_Group3 (7).png,:/new/5P/UIUX/5p/SelTempSensor/5P_Group3 (16).png,:/new/5P/UIUX/5p/SelTempSensor/5P_Group3 (8).png,:/new/5P/UIUX/5p/SelTempSensor/5P_Group3 (15).png,:/new/5P/UIUX/5p/SelTempSensor/5P_Group3 (9).png,:/new/5P/UIUX/5p/SelTempSensor/5P_Group3 (14).png,:/new/5P/UIUX/5p/SelTempSensor/5P_Group3 (10).png,:/new/5P/UIUX/5p/SelTempSensor/5P_Group3 (13).png,:/new/5P/UIUX/5p/SelTempSensor/5P_Group3 (11).png,:/new/5P/UIUX/5p/SelTempSensor/5P_Group3 (12).png";
 
 	QStringList P1_RPM1_STRList;
 	QStringList P1_RPM2_STRList;
@@ -307,6 +326,9 @@ class MainWindow : public QMainWindow
 	QStringList P1_SafeMecha_STRList;
 	QStringList P1_BRSafe_STRList;
 	QStringList P1_OilSafe_2_STRList;
+	QStringList P1_DeviceConn_STRList;
+	QStringList P5_TempSel_STRList;
+
 	int P1_RPM1_STRCnt;
 	int P1_RPM2_STRCnt;
 	int P1_MotorDir_STRCnt;
@@ -318,6 +340,8 @@ class MainWindow : public QMainWindow
 	int P1_SafeMecha_STRCnt;
 	int P1_BRSafe_STRCnt;
 	int P1_OilSafe_2_STRCnt;
+	int P1_DeviceConn_STRCnt;
+	int P5_TempSel_STRCnt;
 
 	int mRPMIndex = 0;
 
@@ -326,6 +350,19 @@ class MainWindow : public QMainWindow
 	int P1_M3Val = 0;
 	int P1_M4Val = 0;
 	int P1_M5Val = 0;
+
+	int P2_M1Val = 0;
+	int P2_M2Val = 0;
+	int P2_M3Val = 0;
+	int P2_M4Val = 0;
+	int P2_M5Val = 0;
+
+	int P3_M1Val = 0;
+	int P3_M2Val = 0;
+	int P3_M3Val = 0;
+	int P3_M4Val = 0;
+	int P3_M5Val = 0;
+
 
 	int P1_RCVal = 0;
 	int P1_SCVal = 0;
@@ -337,9 +374,9 @@ public:
 	void SettingVar_Init();
 	MainWindow(QWidget *parent = nullptr);
 	~MainWindow();
-	void mouseMoveEvent(QMouseEvent *event1); //¸¶¿ì½º ¿òÁ÷ÀÓ ÀÌº¥Æ®
-	void mouseReleaseEvent(QMouseEvent *event); //¸¶¿ì½º Å¬¸¯ ÈÄ ¶¼¾úÀ» ¶§ ÀÌº¥Æ®
-	void mousePressEvent(QMouseEvent *event); //¸¶¿ì½º¸¦ Å¬¸¯ÇÏ°í ÀÖÀ» ¶§ ÀÌº¥Æ®
+	void mouseMoveEvent(QMouseEvent *event1); //ë§ˆìš°ìŠ¤ ì›€ì§ì„ ì´ë²¤íŠ¸
+	void mouseReleaseEvent(QMouseEvent *event); //ë§ˆìš°ìŠ¤ í´ë¦­ í›„ ë–¼ì—ˆì„ ë•Œ ì´ë²¤íŠ¸
+	void mousePressEvent(QMouseEvent *event); //ë§ˆìš°ìŠ¤ë¥¼ í´ë¦­í•˜ê³  ìˆì„ ë•Œ ì´ë²¤íŠ¸
 	int TouchMatching(int val, int minimum, int maximum);
 	void TouchProcess_WIN1(int x,int y);
 	void TouchProcess_WIN2(int x,int y);
@@ -368,6 +405,14 @@ public:
 	int count;
 	int nExitCnt;
 
+	int historyTemp[5][10];
+	int historyCurrent[5][10];
+
+	int set_ym;
+	int set_dh;
+	int set_ms;
+	
+
 	// Comport
 	COMM_VAR m_rcvIndex;
 	QSerialPort *m_port;
@@ -380,12 +425,13 @@ public:
 	int i_rcvDataCnt;
 	int i_rcvCRC;
 
+
 	int Motor_Var[MAX_PUMP_DEFINE];
 
 	int Setting_Var[MAX_SET_DEFINE];
 
-	int iXdifferent,iYdifferent; //X,YÃà ¿òÁ÷ÀÓ ÀúÀåº¯¼ö
-	bool b_MousePressed; //¸¶¿ì½º ´­¸² »óÅÂÇ¥½Ã
+	int iXdifferent,iYdifferent; //X,Yì¶• ì›€ì§ì„ ì €ì¥ë³€ìˆ˜
+	bool b_MousePressed; //ë§ˆìš°ìŠ¤ ëˆŒë¦¼ ìƒíƒœí‘œì‹œ
 
 
 private slots:

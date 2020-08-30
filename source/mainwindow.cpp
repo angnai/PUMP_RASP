@@ -12,6 +12,20 @@ MainWindow::MainWindow(QWidget *parent)
 		Motor_Var[i] = 0;
 	}
 
+	for(i=0;i<10;i++){
+		historyTemp[0][i] = 0;
+		historyTemp[1][i] = 0;
+		historyTemp[2][i] = 0;
+		historyTemp[3][i] = 0;
+		historyTemp[4][i] = 0;
+		
+		historyCurrent[0][i] = 0;
+		historyCurrent[1][i] = 0;
+		historyCurrent[2][i] = 0;
+		historyCurrent[3][i] = 0;
+		historyCurrent[4][i] = 0;
+	}
+
 	ui->setupUi(this);
 
 	setWindowFlags(Qt::FramelessWindowHint|Qt::CustomizeWindowHint);
@@ -59,7 +73,8 @@ MainWindow::MainWindow(QWidget *parent)
 	ui->P3_ValT->setFont(QFont("Roboto",24));
 	ui->P3_ValBAL->setFont(QFont("Roboto",24));
 
-	// label Å¬¸¯ ¼³Á¤
+	
+	// label Å¬ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	//ui->label_204->installEventFilter(this);
 	ui->P1_ValRPM->installEventFilter(this);
 
@@ -306,15 +321,15 @@ void MainWindow::mousePressEvent (QMouseEvent * event) {
 		ScrollVar[1][2] = ui->P7_D2->y();
 		ScrollVar[1][3] = ui->P7_D2->y() + ui->P7_D2->height();
 
-		ScrollVar[2][0] = ui->P7_L1->x();
-		ScrollVar[2][1] = ui->P7_L1->x() + ui->P7_L1->width();
-		ScrollVar[2][2] = ui->P7_L1->y();
-		ScrollVar[2][3] = ui->P7_L1->y() + ui->P7_L1->height();
+		ScrollVar[2][0] = ui->P7_H1->x();
+		ScrollVar[2][1] = ui->P7_H1->x() + ui->P7_H1->width();
+		ScrollVar[2][2] = ui->P7_H1->y();
+		ScrollVar[2][3] = ui->P7_H1->y() + ui->P7_H1->height();
 
-		ScrollVar[3][0] = ui->P7_H1->x();
-		ScrollVar[3][1] = ui->P7_H1->x() + ui->P7_H1->width();
-		ScrollVar[3][2] = ui->P7_H1->y();
-		ScrollVar[3][3] = ui->P7_H1->y() + ui->P7_H1->height();
+		ScrollVar[3][0] = ui->P7_L1->x();
+		ScrollVar[3][1] = ui->P7_L1->x() + ui->P7_L1->width();
+		ScrollVar[3][2] = ui->P7_L1->y();
+		ScrollVar[3][3] = ui->P7_L1->y() + ui->P7_L1->height();
 
 	}
 
@@ -555,6 +570,20 @@ void MainWindow::Display_UI_Value(void)
 	for(i=0;i<i_rcvDataCnt;i+=2){
 		Motor_Var[(i/2) + i_VarAddr] = m_rcvData.at(i)*256 + m_rcvData.at(i+1);
 	}
+	
+	QString m;
+	m.sprintf("20%02d. %d. %d  %d:%d:%d",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100));
+	ui->P1_ValTime->setText(m);
+	ui->P2_ValTime->setText(m);
+	ui->P3_ValTime->setText(m);
+	ui->P4_ValTime->setText(m);
+	ui->P5_ValTime->setText(m);
+	ui->P6_ValTime->setText(m);
+	ui->P7_ValTime->setText(m);
+	ui->P8_ValTime->setText(m);
+	ui->P9_ValTime->setText(m);
+	ui->P10_ValTime->setText(m);
+
 }
 
 
@@ -608,6 +637,9 @@ void MainWindow::Select_Window(WIN_VAR nSelWin)
 		ui->frame_8->setHidden(false);
 	break;
 	case WIN_9:
+		set_ym = Motor_Var[PUMP_TIME_YM];
+		set_dh = Motor_Var[PUMP_TIME_DH];
+		set_ms = Motor_Var[PUMP_TIME_MS];
 		ui->frame_9->setHidden(false);
 	break;
 	case WIN_10:
@@ -651,7 +683,138 @@ void MainWindow::on_CMD_SelUART_clicked()
 void MainWindow::timer_Update(void)
 {
 	QString mm;
+	int i;
 	count++;
+	
+
+	if((count%UPDATE_CURRENT_HISTORY_TIME) == 0){
+		for(i=9;i<1;i--){
+			historyCurrent[0][i] = historyCurrent[0][i-1];
+			historyCurrent[1][i] = historyCurrent[1][i-1];
+			historyCurrent[2][i] = historyCurrent[2][i-1];
+			historyCurrent[3][i] = historyCurrent[3][i-1];
+			historyCurrent[4][i] = historyCurrent[4][i-1];
+		}
+
+		historyCurrent[0][0] = Motor_Var[PUMP_M1C];
+		historyCurrent[1][0] = Motor_Var[PUMP_M2C];
+		historyCurrent[2][0] = Motor_Var[PUMP_M3C];
+		historyCurrent[3][0] = Motor_Var[PUMP_UB];
+	}
+
+	if((count%UPDATE_TEMP_HISTORY_TIME) == 0){
+		for(i=9;i<1;i--){
+			historyTemp[0][i] = historyTemp[0][i-1];
+			historyTemp[1][i] = historyTemp[1][i-1];
+			historyTemp[2][i] = historyTemp[2][i-1];
+			historyTemp[3][i] = historyTemp[3][i-1];
+			historyTemp[4][i] = historyTemp[4][i-1];
+		}
+		switch(Setting_Var[S_P5_V1]){
+		case T_NONE	:
+			historyTemp[0][0] = 0;
+		break;
+		case T_SET_M1 :
+			historyTemp[0][0] = Motor_Var[PUMP_M1T];
+		break;
+		case T_SET_M2 :
+			historyTemp[0][0] = Motor_Var[PUMP_M2T];
+		break;
+		case T_SET_M3 :
+			historyTemp[0][0] = Motor_Var[PUMP_M3T];
+		break;
+		case T_SET_B1 :
+			historyTemp[0][0] = Motor_Var[PUMP_M4T];
+		break;
+		case T_SET_B2 :
+			historyTemp[0][0] = Motor_Var[PUMP_M5T];
+		break;
+		}	
+		
+		switch(Setting_Var[S_P5_V2]){
+		case T_NONE	:
+			historyTemp[1][0] = 0;
+		break;
+		case T_SET_M1 :
+			historyTemp[1][0] = Motor_Var[PUMP_M1T];
+		break;
+		case T_SET_M2 :
+			historyTemp[1][0] = Motor_Var[PUMP_M2T];
+		break;
+		case T_SET_M3 :
+			historyTemp[1][0] = Motor_Var[PUMP_M3T];
+		break;
+		case T_SET_B1 :
+			historyTemp[1][0] = Motor_Var[PUMP_M4T];
+		break;
+		case T_SET_B2 :
+			historyTemp[1][0] = Motor_Var[PUMP_M5T];
+		break;
+		}	
+		
+		switch(Setting_Var[S_P5_V3]){
+		case T_NONE	:
+			historyTemp[2][0] = 0;
+		break;
+		case T_SET_M1 :
+			historyTemp[2][0] = Motor_Var[PUMP_M1T];
+		break;
+		case T_SET_M2 :
+			historyTemp[2][0] = Motor_Var[PUMP_M2T];
+		break;
+		case T_SET_M3 :
+			historyTemp[2][0] = Motor_Var[PUMP_M3T];
+		break;
+		case T_SET_B1 :
+			historyTemp[2][0] = Motor_Var[PUMP_M4T];
+		break;
+		case T_SET_B2 :
+			historyTemp[2][0] = Motor_Var[PUMP_M5T];
+		break;
+		}	
+		
+		switch(Setting_Var[S_P5_V4]){
+		case T_NONE	:
+			historyTemp[3][0] = 0;
+		break;
+		case T_SET_M1 :
+			historyTemp[3][0] = Motor_Var[PUMP_M1T];
+		break;
+		case T_SET_M2 :
+			historyTemp[3][0] = Motor_Var[PUMP_M2T];
+		break;
+		case T_SET_M3 :
+			historyTemp[3][0] = Motor_Var[PUMP_M3T];
+		break;
+		case T_SET_B1 :
+			historyTemp[3][0] = Motor_Var[PUMP_M4T];
+		break;
+		case T_SET_B2 :
+			historyTemp[3][0] = Motor_Var[PUMP_M5T];
+		break;
+		}	
+		
+		switch(Setting_Var[S_P5_V5]){
+		case T_NONE	:
+			historyTemp[4][0] = 0;
+		break;
+		case T_SET_M1 :
+			historyTemp[4][0] = Motor_Var[PUMP_M1T];
+		break;
+		case T_SET_M2 :
+			historyTemp[4][0] = Motor_Var[PUMP_M2T];
+		break;
+		case T_SET_M3 :
+			historyTemp[4][0] = Motor_Var[PUMP_M3T];
+		break;
+		case T_SET_B1 :
+			historyTemp[4][0] = Motor_Var[PUMP_M4T];
+		break;
+		case T_SET_B2 :
+			historyTemp[4][0] = Motor_Var[PUMP_M5T];
+		break;
+		}	
+	}
 	
 	switch(nNowWindow)
 	{
@@ -677,9 +840,9 @@ void MainWindow::timer_Update(void)
 
 	if(Motor_Var[PUMP_RUN] == SET_RUN)
 	{	
-		if(0/*DEFAULT_WINDOW_CHANGE_TIME < count*/)
+		if(0/*(DEFAULT_WINDOW_CHANGE_TIME % count) == 0*/)
 		{
-			count = 0;
+			//count = 0;
 			switch(nNowWindow)
 			{
 			case WIN_1:
@@ -760,7 +923,7 @@ void MainWindow::TouchProcess_WIN1(int x, int y)
     };
 
 	if(TouchMatching(x,P1_DEF_B1_X1,P1_DEF_B1_X2) && TouchMatching(y,P1_DEF_B1_Y1,P1_DEF_B1_Y2)){
-		// ÀÚµ¿¿îÀü
+		// ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½
 		//mm.sprintf("Auto run");
 		//QMessageBox::critical(this, "SERIAL PORT NOT CONNECTED", mm);
 		if(Motor_Var[PUMP_RUN] == SET_RUN)
@@ -788,12 +951,12 @@ void MainWindow::TouchProcess_WIN1(int x, int y)
 		}
 	}
 	else if(TouchMatching(x,P1_DEF_B2_X1,P1_DEF_B2_X2) && TouchMatching(y,P1_DEF_B2_Y1,P1_DEF_B2_Y2)){
-		// ¼öµ¿¿îÀü
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		mm.sprintf("Manual run");
 		QMessageBox::critical(this, "SERIAL PORT NOT CONNECTED", mm);
 	}
 	else if(TouchMatching(x,P1_DEF_B3_X1,P1_DEF_B3_X2) && TouchMatching(y,P1_DEF_B3_Y1,P1_DEF_B3_Y2)){
-		// ¼³Á¤È­¸é
+		// ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½
 		Select_Window(WIN_5);
 	}
 	else if(TouchMatching(x,P1_DEF_B4_X1,P1_DEF_B4_X2) && TouchMatching(y,P1_DEF_B4_Y1,P1_DEF_B4_Y2)){
@@ -863,7 +1026,163 @@ void MainWindow::TouchProcess_WIN5(int x, int y)
 #define P5_DEF_EXIT_X2	790
 #define P5_DEF_EXIT_Y2	118
 
+
+//
+#define P5_S1_B1_X1	266
+#define P5_S1_B1_Y1	214
+#define P5_S1_B1_X2	303
+#define P5_S1_B1_Y2	251
+	
+#define P5_S1_B2_X1	297
+#define P5_S1_B2_Y1	214
+#define P5_S1_B2_X2	334
+#define P5_S1_B2_Y2	251
+	
+#define P5_S1_B3_X1	327
+#define P5_S1_B3_Y1	214
+#define P5_S1_B3_X2	364
+#define P5_S1_B3_Y2	251
+	
+#define P5_S1_B4_X1	357
+#define P5_S1_B4_Y1	214
+#define P5_S1_B4_X2	394
+#define P5_S1_B4_Y2	251
+	
+#define P5_S1_B5_X1	386
+#define P5_S1_B5_Y1	214
+#define P5_S1_B5_X2	423
+#define P5_S1_B5_Y2	251
+	
+#define P5_S1_B6_X1	416
+#define P5_S1_B6_Y1	214
+#define P5_S1_B6_X2	453
+#define P5_S1_B6_Y2	251
+
+#define P5_S2_B1_X1	266
+#define P5_S2_B1_Y1	263
+#define P5_S2_B1_X2	303
+#define P5_S2_B1_Y2	300
+	
+#define P5_S2_B2_X1	297
+#define P5_S2_B2_Y1	263
+#define P5_S2_B2_X2	334
+#define P5_S2_B2_Y2	300
+	
+#define P5_S2_B3_X1	327
+#define P5_S2_B3_Y1	263
+#define P5_S2_B3_X2	364
+#define P5_S2_B3_Y2	300
+	
+#define P5_S2_B4_X1	357
+#define P5_S2_B4_Y1	263
+#define P5_S2_B4_X2	394
+#define P5_S2_B4_Y2	300
+	
+#define P5_S2_B5_X1	386
+#define P5_S2_B5_Y1	263
+#define P5_S2_B5_X2	423
+#define P5_S2_B5_Y2	300
+	
+#define P5_S2_B6_X1	416
+#define P5_S2_B6_Y1	263
+#define P5_S2_B6_X2	453
+#define P5_S2_B6_Y2	300
+
+#define P5_S3_B1_X1	266
+#define P5_S3_B1_Y1	313
+#define P5_S3_B1_X2	303
+#define P5_S3_B1_Y2	350
+	
+#define P5_S3_B2_X1	297
+#define P5_S3_B2_Y1	313
+#define P5_S3_B2_X2	334
+#define P5_S3_B2_Y2	350
+	
+#define P5_S3_B3_X1	327
+#define P5_S3_B3_Y1	313
+#define P5_S3_B3_X2	364
+#define P5_S3_B3_Y2	350
+	
+#define P5_S3_B4_X1	357
+#define P5_S3_B4_Y1	313
+#define P5_S3_B4_X2	394
+#define P5_S3_B4_Y2	350
+	
+#define P5_S3_B5_X1	386
+#define P5_S3_B5_Y1	313
+#define P5_S3_B5_X2	423
+#define P5_S3_B5_Y2	350
+	
+#define P5_S3_B6_X1	416
+#define P5_S3_B6_Y1	313
+#define P5_S3_B6_X2	453
+#define P5_S3_B6_Y2	350
+
+#define P5_S4_B1_X1	266
+#define P5_S4_B1_Y1	362
+#define P5_S4_B1_X2	303
+#define P5_S4_B1_Y2	399
+	
+#define P5_S4_B2_X1	297
+#define P5_S4_B2_Y1	362
+#define P5_S4_B2_X2	334
+#define P5_S4_B2_Y2	399
+	
+#define P5_S4_B3_X1	327
+#define P5_S4_B3_Y1	362
+#define P5_S4_B3_X2	364
+#define P5_S4_B3_Y2	399
+	
+#define P5_S4_B4_X1	357
+#define P5_S4_B4_Y1	362
+#define P5_S4_B4_X2	394
+#define P5_S4_B4_Y2	399
+	
+#define P5_S4_B5_X1	386
+#define P5_S4_B5_Y1	362
+#define P5_S4_B5_X2	423
+#define P5_S4_B5_Y2	399
+	
+#define P5_S4_B6_X1	416
+#define P5_S4_B6_Y1	362
+#define P5_S4_B6_X2	453
+#define P5_S4_B6_Y2	399
+
+#define P5_S5_B1_X1	266
+#define P5_S5_B1_Y1	412
+#define P5_S5_B1_X2	303
+#define P5_S5_B1_Y2	449
+	
+#define P5_S5_B2_X1	297
+#define P5_S5_B2_Y1	412
+#define P5_S5_B2_X2	334
+#define P5_S5_B2_Y2	449
+	
+#define P5_S5_B3_X1	327
+#define P5_S5_B3_Y1	412
+#define P5_S5_B3_X2	364
+#define P5_S5_B3_Y2	449
+	
+#define P5_S5_B4_X1	357
+#define P5_S5_B4_Y1	412
+#define P5_S5_B4_X2	394
+#define P5_S5_B4_Y2	449
+	
+#define P5_S5_B5_X1	386
+#define P5_S5_B5_Y1	412
+#define P5_S5_B5_X2	423
+#define P5_S5_B5_Y2	449
+	
+#define P5_S5_B6_X1	416
+#define P5_S5_B6_Y1	412
+#define P5_S5_B6_X2	453
+#define P5_S5_B6_Y2	449
+
+//
+
 	QString mm;
+	QPixmap qp;
+
 	if(TouchMatching(x,P5_DEF_B1_X1,P5_DEF_B1_X2) && TouchMatching(y,P5_DEF_B1_Y1,P5_DEF_B1_Y2)){
 	}
 	else if(TouchMatching(x,P5_DEF_B2_X1,P5_DEF_B2_X2) && TouchMatching(y,P5_DEF_B2_Y1,P5_DEF_B2_Y2)){
@@ -927,6 +1246,614 @@ void MainWindow::TouchProcess_WIN5(int x, int y)
 	}
 	else if(TouchMatching(x,P5_DEF_EXIT_X1,P5_DEF_EXIT_X2) && TouchMatching(y,P5_DEF_EXIT_Y1,P5_DEF_EXIT_Y2)){
 		Select_Window(WIN_1);
+	}
+
+
+	
+	else if(TouchMatching(x,P5_S1_B1_X1,P5_S1_B1_X2) && TouchMatching(y,P5_S1_B1_Y1,P5_S1_B1_Y2)){
+		Setting_Var[S_P5_V1] = T_NONE;
+
+		qp = QPixmap(P5_TempSel_STRList[1]); // 0,1
+		ui->P5_S1_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S1_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S1_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S1_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S1_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S1_6->setPixmap(qp);
+		
+		mm.sprintf("ì‚¬ìš©ì•ˆí•¨");
+		ui->P5_S1_0->setText(mm);
+		ui->P5_S1_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S1_B2_X1,P5_S1_B2_X2) && TouchMatching(y,P5_S1_B2_Y1,P5_S1_B2_Y2)){
+		Setting_Var[S_P5_V1] = T_SET_M1;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S1_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[3]); // 2,3
+		ui->P5_S1_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S1_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S1_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S1_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S1_6->setPixmap(qp);
+		
+		mm.sprintf("ëª¨í„°1");
+		ui->P5_S1_0->setText(mm);
+		ui->P5_S1_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S1_B3_X1,P5_S1_B3_X2) && TouchMatching(y,P5_S1_B3_Y1,P5_S1_B3_Y2)){
+		Setting_Var[S_P5_V1] = T_SET_M2;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S1_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S1_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[5]); // 4,5
+		ui->P5_S1_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S1_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S1_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S1_6->setPixmap(qp);
+		
+		mm.sprintf("ëª¨í„°2");
+		ui->P5_S1_0->setText(mm);
+		ui->P5_S1_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S1_B4_X1,P5_S1_B4_X2) && TouchMatching(y,P5_S1_B4_Y1,P5_S1_B4_Y2)){
+		Setting_Var[S_P5_V1] = T_SET_M3;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S1_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S1_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S1_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[7]); // 6,7
+		ui->P5_S1_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S1_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S1_6->setPixmap(qp);
+		
+		mm.sprintf("ëª¨í„°3");
+		ui->P5_S1_0->setText(mm);
+		ui->P5_S1_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S1_B5_X1,P5_S1_B5_X2) && TouchMatching(y,P5_S1_B5_Y1,P5_S1_B5_Y2)){
+		Setting_Var[S_P5_V1] = T_SET_B1;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S1_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S1_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S1_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S1_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[9]); // 8,9
+		ui->P5_S1_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S1_6->setPixmap(qp);
+		
+		mm.sprintf("ë² ì–´ë§ ìƒ");
+		ui->P5_S1_0->setText(mm);
+		ui->P5_S1_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S1_B6_X1,P5_S1_B6_X2) && TouchMatching(y,P5_S1_B6_Y1,P5_S1_B6_Y2)){
+		Setting_Var[S_P5_V1] = T_SET_B2;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S1_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S1_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S1_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S1_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S1_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[11]); // 10,11
+		ui->P5_S1_6->setPixmap(qp);
+		
+		mm.sprintf("ë² ì–´ë§ í•˜");
+		ui->P5_S1_0->setText(mm);
+		ui->P5_S1_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	
+
+	else if(TouchMatching(x,P5_S2_B1_X1,P5_S2_B1_X2) && TouchMatching(y,P5_S2_B1_Y1,P5_S2_B1_Y2)){
+		Setting_Var[S_P5_V2] = T_NONE;
+
+		qp = QPixmap(P5_TempSel_STRList[1]); // 0,1
+		ui->P5_S2_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S2_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S2_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S2_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S2_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S2_6->setPixmap(qp);
+		
+		mm.sprintf("ì‚¬ìš©ì•ˆí•¨");
+		ui->P5_S2_0->setText(mm);
+		ui->P5_S2_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S2_B2_X1,P5_S2_B2_X2) && TouchMatching(y,P5_S2_B2_Y1,P5_S2_B2_Y2)){
+		Setting_Var[S_P5_V2] = T_SET_M1;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S2_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[3]); // 2,3
+		ui->P5_S2_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S2_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S2_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S2_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S2_6->setPixmap(qp);
+		
+		mm.sprintf("ëª¨í„°1");
+		ui->P5_S2_0->setText(mm);
+		ui->P5_S2_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S2_B3_X1,P5_S2_B3_X2) && TouchMatching(y,P5_S2_B3_Y1,P5_S2_B3_Y2)){
+		Setting_Var[S_P5_V2] = T_SET_M2;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S2_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S2_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[5]); // 4,5
+		ui->P5_S2_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S2_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S2_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S2_6->setPixmap(qp);
+		
+		mm.sprintf("ëª¨í„°2");
+		ui->P5_S2_0->setText(mm);
+		ui->P5_S2_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S2_B4_X1,P5_S2_B4_X2) && TouchMatching(y,P5_S2_B4_Y1,P5_S2_B4_Y2)){
+		Setting_Var[S_P5_V2] = T_SET_M3;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S2_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S2_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S2_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[7]); // 6,7
+		ui->P5_S2_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S2_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S2_6->setPixmap(qp);
+		
+		mm.sprintf("ëª¨í„°3");
+		ui->P5_S2_0->setText(mm);
+		ui->P5_S2_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S2_B5_X1,P5_S2_B5_X2) && TouchMatching(y,P5_S2_B5_Y1,P5_S2_B5_Y2)){
+		Setting_Var[S_P5_V2] = T_SET_B1;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S2_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S2_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S2_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S2_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[9]); // 8,9
+		ui->P5_S2_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S2_6->setPixmap(qp);
+		
+		mm.sprintf("ë² ì–´ë§ ìƒ");
+		ui->P5_S2_0->setText(mm);
+		ui->P5_S2_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S2_B6_X1,P5_S2_B6_X2) && TouchMatching(y,P5_S2_B6_Y1,P5_S2_B6_Y2)){
+		Setting_Var[S_P5_V2] = T_SET_B2;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S2_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S2_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S2_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S2_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S2_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[11]); // 10,11
+		ui->P5_S2_6->setPixmap(qp);
+		
+		mm.sprintf("ë² ì–´ë§ í•˜");
+		ui->P5_S2_0->setText(mm);
+		ui->P5_S2_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	
+	else if(TouchMatching(x,P5_S3_B1_X1,P5_S3_B1_X2) && TouchMatching(y,P5_S3_B1_Y1,P5_S3_B1_Y2)){
+		Setting_Var[S_P5_V3] = T_NONE;
+
+		qp = QPixmap(P5_TempSel_STRList[1]); // 0,1
+		ui->P5_S3_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S3_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S3_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S3_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S3_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S3_6->setPixmap(qp);
+		
+		mm.sprintf("ì‚¬ìš©ì•ˆí•¨");
+		ui->P5_S3_0->setText(mm);
+		ui->P5_S3_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S3_B2_X1,P5_S3_B2_X2) && TouchMatching(y,P5_S3_B2_Y1,P5_S3_B2_Y2)){
+		Setting_Var[S_P5_V3] = T_SET_M1;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S3_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[3]); // 2,3
+		ui->P5_S3_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S3_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S3_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S3_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S3_6->setPixmap(qp);
+		
+		mm.sprintf("ëª¨í„°1");
+		ui->P5_S3_0->setText(mm);
+		ui->P5_S3_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S3_B3_X1,P5_S3_B3_X2) && TouchMatching(y,P5_S3_B3_Y1,P5_S3_B3_Y2)){
+		Setting_Var[S_P5_V3] = T_SET_M2;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S3_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S3_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[5]); // 4,5
+		ui->P5_S3_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S3_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S3_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S3_6->setPixmap(qp);
+		
+		mm.sprintf("ëª¨í„°2");
+		ui->P5_S3_0->setText(mm);
+		ui->P5_S3_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S3_B4_X1,P5_S3_B4_X2) && TouchMatching(y,P5_S3_B4_Y1,P5_S3_B4_Y2)){
+		Setting_Var[S_P5_V3] = T_SET_M3;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S3_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S3_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S3_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[7]); // 6,7
+		ui->P5_S3_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S3_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S3_6->setPixmap(qp);
+		
+		mm.sprintf("ëª¨í„°3");
+		ui->P5_S3_0->setText(mm);
+		ui->P5_S3_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S3_B5_X1,P5_S3_B5_X2) && TouchMatching(y,P5_S3_B5_Y1,P5_S3_B5_Y2)){
+		Setting_Var[S_P5_V3] = T_SET_B1;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S3_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S3_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S3_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S3_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[9]); // 8,9
+		ui->P5_S3_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S3_6->setPixmap(qp);
+		
+		mm.sprintf("ë² ì–´ë§ ìƒ");
+		ui->P5_S3_0->setText(mm);
+		ui->P5_S3_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S3_B6_X1,P5_S3_B6_X2) && TouchMatching(y,P5_S3_B6_Y1,P5_S3_B6_Y2)){
+		Setting_Var[S_P5_V3] = T_SET_B2;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S3_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S3_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S3_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S3_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S3_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[11]); // 10,11
+		ui->P5_S3_6->setPixmap(qp);
+		
+		mm.sprintf("ë² ì–´ë§ í•˜");
+		ui->P5_S3_0->setText(mm);
+		ui->P5_S3_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	
+	else if(TouchMatching(x,P5_S4_B1_X1,P5_S4_B1_X2) && TouchMatching(y,P5_S4_B1_Y1,P5_S4_B1_Y2)){
+		Setting_Var[S_P5_V4] = T_NONE;
+
+		qp = QPixmap(P5_TempSel_STRList[1]); // 0,1
+		ui->P5_S4_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S4_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S4_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S4_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S4_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S4_6->setPixmap(qp);
+		
+		mm.sprintf("ì‚¬ìš©ì•ˆí•¨");
+		ui->P5_S4_0->setText(mm);
+		ui->P5_S4_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S4_B2_X1,P5_S4_B2_X2) && TouchMatching(y,P5_S4_B2_Y1,P5_S4_B2_Y2)){
+		Setting_Var[S_P5_V4] = T_SET_M1;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S4_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[3]); // 2,3
+		ui->P5_S4_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S4_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S4_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S4_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S4_6->setPixmap(qp);
+		
+		mm.sprintf("ëª¨í„°1");
+		ui->P5_S4_0->setText(mm);
+		ui->P5_S4_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S4_B3_X1,P5_S4_B3_X2) && TouchMatching(y,P5_S4_B3_Y1,P5_S4_B3_Y2)){
+		Setting_Var[S_P5_V4] = T_SET_M2;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S4_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S4_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[5]); // 4,5
+		ui->P5_S4_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S4_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S4_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S4_6->setPixmap(qp);
+		
+		mm.sprintf("ëª¨í„°2");
+		ui->P5_S4_0->setText(mm);
+		ui->P5_S4_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S4_B4_X1,P5_S4_B4_X2) && TouchMatching(y,P5_S4_B4_Y1,P5_S4_B4_Y2)){
+		Setting_Var[S_P5_V4] = T_SET_M3;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S4_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S4_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S4_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[7]); // 6,7
+		ui->P5_S4_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S4_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S4_6->setPixmap(qp);
+		
+		mm.sprintf("ëª¨í„°3");
+		ui->P5_S4_0->setText(mm);
+		ui->P5_S4_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S4_B5_X1,P5_S4_B5_X2) && TouchMatching(y,P5_S4_B5_Y1,P5_S4_B5_Y2)){
+		Setting_Var[S_P5_V4] = T_SET_B1;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S4_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S4_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S4_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S4_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[9]); // 8,9
+		ui->P5_S4_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S4_6->setPixmap(qp);
+		
+		mm.sprintf("ë² ì–´ë§ ìƒ");
+		ui->P5_S4_0->setText(mm);
+		ui->P5_S4_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S4_B6_X1,P5_S4_B6_X2) && TouchMatching(y,P5_S4_B6_Y1,P5_S4_B6_Y2)){
+		Setting_Var[S_P5_V4] = T_SET_B2;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S4_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S4_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S4_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S4_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S4_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[11]); // 10,11
+		ui->P5_S4_6->setPixmap(qp);
+		
+		mm.sprintf("ë² ì–´ë§ í•˜");
+		ui->P5_S4_0->setText(mm);
+		ui->P5_S4_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	
+	else if(TouchMatching(x,P5_S5_B1_X1,P5_S5_B1_X2) && TouchMatching(y,P5_S5_B1_Y1,P5_S5_B1_Y2)){
+		Setting_Var[S_P5_V5] = T_NONE;
+
+		qp = QPixmap(P5_TempSel_STRList[1]); // 0,1
+		ui->P5_S5_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S5_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S5_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S5_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S5_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S5_6->setPixmap(qp);
+		
+		mm.sprintf("ì‚¬ìš©ì•ˆí•¨");
+		ui->P5_S5_0->setText(mm);
+		ui->P5_S5_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S5_B2_X1,P5_S5_B2_X2) && TouchMatching(y,P5_S5_B2_Y1,P5_S5_B2_Y2)){
+		Setting_Var[S_P5_V5] = T_SET_M1;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S5_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[3]); // 2,3
+		ui->P5_S5_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S5_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S5_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S5_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S5_6->setPixmap(qp);
+		
+		mm.sprintf("ëª¨í„°1");
+		ui->P5_S5_0->setText(mm);
+		ui->P5_S5_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S5_B3_X1,P5_S5_B3_X2) && TouchMatching(y,P5_S5_B3_Y1,P5_S5_B3_Y2)){
+		Setting_Var[S_P5_V5] = T_SET_M2;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S5_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S5_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[5]); // 4,5
+		ui->P5_S5_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S5_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S5_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S5_6->setPixmap(qp);
+		
+		mm.sprintf("ëª¨í„°2");
+		ui->P5_S5_0->setText(mm);
+		ui->P5_S5_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S5_B4_X1,P5_S5_B4_X2) && TouchMatching(y,P5_S5_B4_Y1,P5_S5_B4_Y2)){
+		Setting_Var[S_P5_V5] = T_SET_M3;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S5_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S5_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S5_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[7]); // 6,7
+		ui->P5_S5_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S5_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S5_6->setPixmap(qp);
+		
+		mm.sprintf("ëª¨í„°3");
+		ui->P5_S5_0->setText(mm);
+		ui->P5_S5_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S5_B5_X1,P5_S5_B5_X2) && TouchMatching(y,P5_S5_B5_Y1,P5_S5_B5_Y2)){
+		Setting_Var[S_P5_V5] = T_SET_B1;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S5_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S5_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S5_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S5_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[9]); // 8,9
+		ui->P5_S5_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+		ui->P5_S5_6->setPixmap(qp);
+		
+		mm.sprintf("ë² ì–´ë§ ìƒ");
+		ui->P5_S5_0->setText(mm);
+		ui->P5_S5_0->setStyleSheet("color:rgb(255,255,255)");
+	}
+	else if(TouchMatching(x,P5_S5_B6_X1,P5_S5_B6_X2) && TouchMatching(y,P5_S5_B6_Y1,P5_S5_B6_Y2)){
+		Setting_Var[S_P5_V5] = T_SET_B2;
+
+		qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+		ui->P5_S5_1->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+		ui->P5_S5_2->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+		ui->P5_S5_3->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+		ui->P5_S5_4->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+		ui->P5_S5_5->setPixmap(qp);
+		qp = QPixmap(P5_TempSel_STRList[11]); // 10,11
+		ui->P5_S5_6->setPixmap(qp);
+		
+		mm.sprintf("ë² ì–´ë§ í•˜");
+		ui->P5_S5_0->setText(mm);
+		ui->P5_S5_0->setStyleSheet("color:rgb(255,255,255)");
 	}
 
 }
@@ -1376,7 +2303,7 @@ void MainWindow::TouchMove_WIN6(int orgX, int orgY)
 		ui->P6_L3->setProperty("pos", qpAppNewLoc);
 
 		nVal = ui->P6_L3->x() - 225;
-		nVal = int((24*nVal/(375-225))+1);
+		nVal = int((100*nVal/(375-225))+1);
 		mm.sprintf("%d",nVal);
 		Setting_Var[S_P6_V5] = nVal;
 
@@ -1392,7 +2319,7 @@ void MainWindow::TouchMove_WIN6(int orgX, int orgY)
 		ui->P6_H3->setProperty("pos", qpAppNewLoc);
 
 		nVal = ui->P6_H3->x() - 225;
-		nVal = int((24*nVal/(375-225))+1);
+		nVal = int((100*nVal/(375-225))+1);
 		mm.sprintf("%d",nVal);
 		Setting_Var[S_P6_V6] = nVal;
 
@@ -1478,7 +2405,7 @@ void MainWindow::TouchMove_WIN6(int orgX, int orgY)
 		ui->P6_T5->setProperty("pos", qpAppNewLoc);
 
 		nVal = ui->P6_T5->x() - 500;
-		nVal = int((20*nVal/(750-500)));
+		nVal = int((1000*nVal/(750-500)));
 		mm.sprintf("%d",nVal);
 		Setting_Var[S_P6_V11] = nVal;
 
@@ -1660,26 +2587,11 @@ void MainWindow::TouchMove_WIN7(int orgX, int orgY)
 	}
 
 	else if(TouchMatching(orgX,ScrollVar[2][0],ScrollVar[2][1]) && TouchMatching(orgY,ScrollVar[2][2],ScrollVar[2][3])){
-		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[2][0]) < 155 ) return;
-		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[2][0]) > ScrollVar[3][0]-(ui->P7_H1->width()/2+7) ) return;
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[2][0]) < ScrollVar[3][1]-(ui->P7_L1->width()/2-7) ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[2][0]) > 745 ) return;
+		
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[2][0] , ScrollVar[2][2] );
-		ui->P7_L1->setProperty("pos", qpAppNewLoc);
-
-		nVal = ui->P7_L1->x() - 155;
-		nVal = int((3599*nVal/(745-155))+1);
-		mm.sprintf("%d",nVal);
-		Setting_Var[S_P7_V4] = nVal;
-
-		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[2][0] - 8 , ScrollVar[2][2] - 15 );
-		ui->P7_V1_3->setProperty("pos", qpAppNewLoc1);
-		ui->P7_V1_3->setText(mm);
-	}
-	else if(TouchMatching(orgX,ScrollVar[3][0],ScrollVar[3][1]) && TouchMatching(orgY,ScrollVar[3][2],ScrollVar[3][3])){
-		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[3][0]) < ScrollVar[2][1]-(ui->P7_L1->width()/2-7) ) return;
-		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[3][0]) > 745 ) return;
-
-		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[3][0] , ScrollVar[3][2] );
 		ui->P7_H1->setProperty("pos", qpAppNewLoc);
 
 		nVal = ui->P7_H1->x() - 155;
@@ -1687,9 +2599,25 @@ void MainWindow::TouchMove_WIN7(int orgX, int orgY)
 		mm.sprintf("%d",nVal);
 		Setting_Var[S_P7_V5] = nVal;
 
-		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[3][0] - 8 , ScrollVar[3][2] - 15 );
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[2][0] - 8 , ScrollVar[2][2] - 15 );
 		ui->P7_V1_4->setProperty("pos", qpAppNewLoc1);
 		ui->P7_V1_4->setText(mm);
+	}
+	else if(TouchMatching(orgX,ScrollVar[3][0],ScrollVar[3][1]) && TouchMatching(orgY,ScrollVar[3][2],ScrollVar[3][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[3][0]) < 155 ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[3][0]) > ScrollVar[2][0]-(ui->P7_H1->width()/2+7) ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[3][0] , ScrollVar[3][2] );
+		ui->P7_L1->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P7_L1->x() - 155;
+		nVal = int((3599*nVal/(745-155))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P7_V4] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[3][0] - 8 , ScrollVar[3][2] - 15 );
+		ui->P7_V1_3->setProperty("pos", qpAppNewLoc1);
+		ui->P7_V1_3->setText(mm);
 	}
 
 }
@@ -1934,77 +2862,115 @@ void MainWindow::TouchProcess_WIN8(int x, int y)
 	}
 
 	else if(TouchMatching(x,P8_DEF_V1_X1,P8_DEF_V1_X2) && TouchMatching(y,P8_DEF_V1_Y1,P8_DEF_V1_Y2)){
-		if(Setting_Var[S_P8_V1]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+		if(Setting_Var[S_P8_V1]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½
 		ui->P8_B1->setPixmap(qp);
 
-		if(Setting_Var[S_P8_V1]) qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (11)");  // »ç¿ë¾ÈÇÔ
-		else qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (12)"); // »ç¿ë
+		if(Setting_Var[S_P8_V1]) qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (11)");  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		else qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (12)"); // ï¿½ï¿½ï¿½
 		ui->P8_B1_V2->setPixmap(qp);
 
 		Setting_Var[S_P8_V1] = (Setting_Var[S_P8_V1] + 1) % 2;
 	}
 	else if(TouchMatching(x,P8_DEF_V2_X1,P8_DEF_V2_X2) && TouchMatching(y,P8_DEF_V2_Y1,P8_DEF_V2_Y2)){
-		if(Setting_Var[S_P8_V2]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+		if(Setting_Var[S_P8_V2]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½
 		ui->P8_B2->setPixmap(qp);
 
-		if(Setting_Var[S_P8_V2]) qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (11)");  // »ç¿ë¾ÈÇÔ
-		else qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (12)"); // »ç¿ë
+		if(Setting_Var[S_P8_V2]) qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (11)");  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		else qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (12)"); // ï¿½ï¿½ï¿½
 		ui->P8_B2_V2->setPixmap(qp);
 
 		Setting_Var[S_P8_V2] = (Setting_Var[S_P8_V2] + 1) % 2;
 	}
 	else if(TouchMatching(x,P8_DEF_V3_X1,P8_DEF_V3_X2) && TouchMatching(y,P8_DEF_V3_Y1,P8_DEF_V3_Y2)){
-		if(Setting_Var[S_P8_V3]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+		if(Setting_Var[S_P8_V3]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½
 		ui->P8_B3->setPixmap(qp);
 
-		if(Setting_Var[S_P8_V3]) qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (11)");  // »ç¿ë¾ÈÇÔ
-		else qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (12)"); // »ç¿ë
+		if(Setting_Var[S_P8_V3]) qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (11)");  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		else qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (12)"); // ï¿½ï¿½ï¿½
 		ui->P8_B3_V2->setPixmap(qp);
 
 		Setting_Var[S_P8_V3] = (Setting_Var[S_P8_V3] + 1) % 2;
 	}
 	else if(TouchMatching(x,P8_DEF_V4_X1,P8_DEF_V4_X2) && TouchMatching(y,P8_DEF_V4_Y1,P8_DEF_V4_Y2)){
-		if(Setting_Var[S_P8_V4]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+		if(Setting_Var[S_P8_V4]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½
 		ui->P8_B4->setPixmap(qp);
 
-		if(Setting_Var[S_P8_V4]) qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (11)");  // »ç¿ë¾ÈÇÔ
-		else qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (12)"); // »ç¿ë
+		if(Setting_Var[S_P8_V4]) qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (11)");  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		else qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (12)"); // ï¿½ï¿½ï¿½
 		ui->P8_B4_V2->setPixmap(qp);
 
 		Setting_Var[S_P8_V4] = (Setting_Var[S_P8_V4] + 1) % 2;
 	}
 
+
 	else if(TouchMatching(x,P8_DEF_V5_X1,P8_DEF_V5_X2) && TouchMatching(y,P8_DEF_V5_Y1,P8_DEF_V5_Y2)){
-		if(Setting_Var[S_P8_V5]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+		
+		Setting_Var[S_P8_V5] = SET_ENABLE;
+		Setting_Var[S_P8_V6] = SET_DISABLE;
+		Setting_Var[S_P8_V7] = SET_DISABLE;
+		Setting_Var[S_P8_V8] = SET_DISABLE;
+		
+		qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		ui->P8_B5->setPixmap(qp);
-
-		Setting_Var[S_P8_V5] = (Setting_Var[S_P8_V5] + 1) % 2;
-	}
-	else if(TouchMatching(x,P8_DEF_V6_X1,P8_DEF_V6_X2) && TouchMatching(y,P8_DEF_V6_Y1,P8_DEF_V6_Y2)){
-		if(Setting_Var[S_P8_V6]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+		qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		ui->P8_B6->setPixmap(qp);
-
-		Setting_Var[S_P8_V6] = (Setting_Var[S_P8_V6] + 1) % 2;
-	}
-	else if(TouchMatching(x,P8_DEF_V7_X1,P8_DEF_V7_X2) && TouchMatching(y,P8_DEF_V7_Y1,P8_DEF_V7_Y2)){
-		if(Setting_Var[S_P8_V7]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+		qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		ui->P8_B7->setPixmap(qp);
-
-		Setting_Var[S_P8_V7] = (Setting_Var[S_P8_V7] + 1) % 2;
-	}
-	else if(TouchMatching(x,P8_DEF_V8_X1,P8_DEF_V8_X2) && TouchMatching(y,P8_DEF_V8_Y1,P8_DEF_V8_Y2)){
-		if(Setting_Var[S_P8_V8]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+		qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		ui->P8_B8->setPixmap(qp);
 
-		Setting_Var[S_P8_V8] = (Setting_Var[S_P8_V8] + 1) % 2;
+	}
+	else if(TouchMatching(x,P8_DEF_V6_X1,P8_DEF_V6_X2) && TouchMatching(y,P8_DEF_V6_Y1,P8_DEF_V6_Y2)){
+		
+		Setting_Var[S_P8_V5] = SET_DISABLE;
+		Setting_Var[S_P8_V6] = SET_ENABLE;
+		Setting_Var[S_P8_V7] = SET_DISABLE;
+		Setting_Var[S_P8_V8] = SET_DISABLE;
+		
+		qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		ui->P8_B5->setPixmap(qp);
+		qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		ui->P8_B6->setPixmap(qp);
+		qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		ui->P8_B7->setPixmap(qp);
+		qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		ui->P8_B8->setPixmap(qp);
+	}
+	else if(TouchMatching(x,P8_DEF_V7_X1,P8_DEF_V7_X2) && TouchMatching(y,P8_DEF_V7_Y1,P8_DEF_V7_Y2)){
+		
+		Setting_Var[S_P8_V5] = SET_DISABLE;
+		Setting_Var[S_P8_V6] = SET_DISABLE;
+		Setting_Var[S_P8_V7] = SET_ENABLE;
+		Setting_Var[S_P8_V8] = SET_DISABLE;
+		
+		qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		ui->P8_B5->setPixmap(qp);
+		qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		ui->P8_B6->setPixmap(qp);
+		qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		ui->P8_B7->setPixmap(qp);
+		qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		ui->P8_B8->setPixmap(qp);
+	}
+	else if(TouchMatching(x,P8_DEF_V8_X1,P8_DEF_V8_X2) && TouchMatching(y,P8_DEF_V8_Y1,P8_DEF_V8_Y2)){
+		
+		Setting_Var[S_P8_V5] = SET_DISABLE;
+		Setting_Var[S_P8_V6] = SET_DISABLE;
+		Setting_Var[S_P8_V7] = SET_DISABLE;
+		Setting_Var[S_P8_V8] = SET_ENABLE;
+		
+		qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		ui->P8_B5->setPixmap(qp);
+		qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		ui->P8_B6->setPixmap(qp);
+		qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		ui->P8_B7->setPixmap(qp);
+		qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		ui->P8_B8->setPixmap(qp);
 	}
 
 	else if(TouchMatching(x,P8_DEF_V9_X1,P8_DEF_V9_X2) && TouchMatching(y,P8_DEF_V9_Y1,P8_DEF_V9_Y2)){
@@ -2073,56 +3039,56 @@ void MainWindow::TouchProcess_WIN8(int x, int y)
 	}
 
 	else if(TouchMatching(x,P8_DEF_V18_X1,P8_DEF_V18_X2) && TouchMatching(y,P8_DEF_V18_Y1,P8_DEF_V18_Y2)){
-		if(Setting_Var[S_P8_V18]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+		if(Setting_Var[S_P8_V18]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½
 		ui->P8_B9->setPixmap(qp);
 
-		if(Setting_Var[S_P8_V18]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // »ç¿ë¾ÈÇÔ
-		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // »ç¿ë
+		if(Setting_Var[S_P8_V18]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // ï¿½ï¿½ï¿½
 		ui->P8_B9_V1->setPixmap(qp);
 
 		Setting_Var[S_P8_V18] = (Setting_Var[S_P8_V18] + 1) % 2;
 	}
 	else if(TouchMatching(x,P8_DEF_V19_X1,P8_DEF_V19_X2) && TouchMatching(y,P8_DEF_V19_Y1,P8_DEF_V19_Y2)){
-		if(Setting_Var[S_P8_V19]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+		if(Setting_Var[S_P8_V19]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½
 		ui->P8_B10->setPixmap(qp);
 
-		if(Setting_Var[S_P8_V19]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // »ç¿ë¾ÈÇÔ
-		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // »ç¿ë
+		if(Setting_Var[S_P8_V19]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // ï¿½ï¿½ï¿½
 		ui->P8_B10_V1->setPixmap(qp);
 
 		Setting_Var[S_P8_V19] = (Setting_Var[S_P8_V19] + 1) % 2;
 	}
 	else if(TouchMatching(x,P8_DEF_V20_X1,P8_DEF_V20_X2) && TouchMatching(y,P8_DEF_V20_Y1,P8_DEF_V20_Y2)){
-		if(Setting_Var[S_P8_V20]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+		if(Setting_Var[S_P8_V20]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½
 		ui->P8_B11->setPixmap(qp);
 
-		if(Setting_Var[S_P8_V20]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // »ç¿ë¾ÈÇÔ
-		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // »ç¿ë
+		if(Setting_Var[S_P8_V20]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // ï¿½ï¿½ï¿½
 		ui->P8_B11_V1->setPixmap(qp);
 
 		Setting_Var[S_P8_V20] = (Setting_Var[S_P8_V20] + 1) % 2;
 	}
 	else if(TouchMatching(x,P8_DEF_V21_X1,P8_DEF_V21_X2) && TouchMatching(y,P8_DEF_V21_Y1,P8_DEF_V21_Y2)){
-		if(Setting_Var[S_P8_V21]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+		if(Setting_Var[S_P8_V21]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½
 		ui->P8_B12->setPixmap(qp);
 
-		if(Setting_Var[S_P8_V21]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // »ç¿ë¾ÈÇÔ
-		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // »ç¿ë
+		if(Setting_Var[S_P8_V21]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // ï¿½ï¿½ï¿½
 		ui->P8_B12_V1->setPixmap(qp);
 
 		Setting_Var[S_P8_V21] = (Setting_Var[S_P8_V21] + 1) % 2;
 	}
 	else if(TouchMatching(x,P8_DEF_V22_X1,P8_DEF_V22_X2) && TouchMatching(y,P8_DEF_V22_Y1,P8_DEF_V22_Y2)){
-		if(Setting_Var[S_P8_V22]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+		if(Setting_Var[S_P8_V22]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½
 		ui->P8_B13->setPixmap(qp);
 
-		if(Setting_Var[S_P8_V22]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // »ç¿ë¾ÈÇÔ
-		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // »ç¿ë
+		if(Setting_Var[S_P8_V22]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // ï¿½ï¿½ï¿½
 		ui->P8_B13_V1->setPixmap(qp);
 
 		Setting_Var[S_P8_V22] = (Setting_Var[S_P8_V22] + 1) % 2;
@@ -2201,7 +3167,69 @@ void MainWindow::TouchProcess_WIN9(int x, int y)
 #define P9_DEF_EXIT_X2	790
 #define P9_DEF_EXIT_Y2	118
 
+#define P9_B1_X1	170
+#define P9_B1_Y1	160
+#define P9_B1_X2	220
+#define P9_B1_Y2	250
+
+#define P9_B2_X1	370
+#define P9_B2_Y1	160
+#define P9_B2_X2	420
+#define P9_B2_Y2	250
+
+#define P9_B3_X1	170
+#define P9_B3_Y1	260
+#define P9_B3_X2	220
+#define P9_B3_Y2	350
+
+#define P9_B4_X1	370
+#define P9_B4_Y1	260
+#define P9_B4_X2	420
+#define P9_B4_Y2	350
+
+#define P9_B5_X1	170
+#define P9_B5_Y1	360
+#define P9_B5_X2	220
+#define P9_B5_Y2	450
+
+#define P9_B6_X1	370
+#define P9_B6_Y1	360
+#define P9_B6_X2	420
+#define P9_B6_Y2	450
+
+#define P9_B7_X1	480
+#define P9_B7_Y1	160
+#define P9_B7_X2	530
+#define P9_B7_Y2	250
+
+#define P9_B8_X1	680
+#define P9_B8_Y1	160
+#define P9_B8_X2	730
+#define P9_B8_Y2	250
+
+#define P9_B9_X1	480
+#define P9_B9_Y1	260
+#define P9_B9_X2	530
+#define P9_B9_Y2	350
+
+#define P9_B10_X1	680
+#define P9_B10_Y1	260
+#define P9_B10_X2	730
+#define P9_B10_Y2	350
+
+#define P9_B11_X1	480
+#define P9_B11_Y1	360
+#define P9_B11_X2	530
+#define P9_B11_Y2	450
+
+#define P9_B12_X1	680
+#define P9_B12_Y1	360
+#define P9_B12_X2	730
+#define P9_B12_Y2	450
+
+
 	QString mm;
+	int tempN;
 	if(TouchMatching(x,P9_DEF_B1_X1,P9_DEF_B1_X2) && TouchMatching(y,P9_DEF_B1_Y1,P9_DEF_B1_Y2)){
 		Select_Window(WIN_5);
 	}
@@ -2267,6 +3295,111 @@ void MainWindow::TouchProcess_WIN9(int x, int y)
 		Select_Window(WIN_1);
 	}
 
+	
+	
+	else if(TouchMatching(x,P9_B1_X1,P9_B1_X2) && TouchMatching(y,P9_B1_Y1,P9_B1_Y2)){
+		tempN = set_ym/100;
+		if((tempN-1) <= 1) tempN = 1;
+		
+		set_ym = (tempN*100) + (set_ym%100);
+		mm.sprintf("20%d",tempN);
+		ui->P9_ValYear->setText(mm);
+	}
+	else if(TouchMatching(x,P9_B2_X1,P9_B2_X2) && TouchMatching(y,P9_B2_Y1,P9_B2_Y2)){
+		tempN = set_ym/100;
+		if((tempN+1) >= 100) tempN = 99;
+		
+		set_ym = (tempN*100) + (set_ym%100);
+		mm.sprintf("20%d",tempN);
+		ui->P9_ValYear->setText(mm);
+	}
+
+	else if(TouchMatching(x,P9_B3_X1,P9_B3_X2) && TouchMatching(y,P9_B3_Y1,P9_B3_Y2)){
+		tempN = set_ym%100;
+		if((tempN-1) <= 1) tempN = 1;
+		
+		set_ym = ((set_ym/100)*100) + (tempN%100);
+		mm.sprintf("%d",tempN);
+		ui->P9_ValMonth->setText(mm);
+	}
+	else if(TouchMatching(x,P9_B4_X1,P9_B4_X2) && TouchMatching(y,P9_B4_Y1,P9_B4_Y2)){
+		tempN = set_ym%100;
+		if((tempN+1) >= 12) tempN = 12;
+		
+		set_ym = ((set_ym/100)*100) + (tempN%100);
+		mm.sprintf("%d",tempN);
+		ui->P9_ValMonth->setText(mm);
+	}
+
+	else if(TouchMatching(x,P9_B5_X1,P9_B5_X2) && TouchMatching(y,P9_B5_Y1,P9_B5_Y2)){
+		tempN = set_dh/100;
+		if((tempN-1) <= 1) tempN = 1;
+		
+		set_dh = (tempN*100) + (set_dh%100);
+		mm.sprintf("%d",tempN);
+		ui->P9_ValDay->setText(mm);
+	}
+	else if(TouchMatching(x,P9_B6_X1,P9_B6_X2) && TouchMatching(y,P9_B6_Y1,P9_B6_Y2)){
+		tempN = set_dh/100;
+		if((tempN+1) >= 31) tempN = 31;
+		
+		set_dh = (tempN*100) + (set_dh%100);
+		mm.sprintf("%d",tempN);
+		ui->P9_ValDay->setText(mm);
+	}
+
+
+	
+
+	else if(TouchMatching(x,P9_B7_X1,P9_B7_X2) && TouchMatching(y,P9_B7_Y1,P9_B7_Y2)){
+		tempN = set_dh%100;
+		if((tempN-1) <= 0) tempN = 0;
+		
+		set_dh = ((set_dh/100)*100) + (tempN%100);
+		mm.sprintf("%d",tempN);
+		ui->P9_ValHour->setText(mm);
+	}
+	else if(TouchMatching(x,P9_B8_X1,P9_B8_X2) && TouchMatching(y,P9_B8_Y1,P9_B8_Y2)){
+		tempN = set_dh%100;
+		if((tempN+1) >= 23) tempN = 23;
+		
+		set_dh = ((set_dh/100)*100) + (tempN%100);
+		mm.sprintf("%d",tempN);
+		ui->P9_ValHour->setText(mm);
+	}
+
+	else if(TouchMatching(x,P9_B9_X1,P9_B9_X2) && TouchMatching(y,P9_B9_Y1,P9_B9_Y2)){
+		tempN = set_ms/100;
+		if((tempN-1) <= 0) tempN = 0;
+		
+		set_ms = (tempN*100) + (set_ms%100);
+		mm.sprintf("%d",tempN);
+		ui->P9_ValMinute->setText(mm);
+	}
+	else if(TouchMatching(x,P9_B10_X1,P9_B10_X2) && TouchMatching(y,P9_B10_Y1,P9_B10_Y2)){
+		tempN = set_ms/100;
+		if((tempN+1) >= 59) tempN = 59;
+		
+		set_ms = (tempN*100) + (set_ms%100);
+		mm.sprintf("%d",tempN);
+		ui->P9_ValMinute->setText(mm);
+	}
+	else if(TouchMatching(x,P9_B11_X1,P9_B11_X2) && TouchMatching(y,P9_B11_Y1,P9_B11_Y2)){
+		tempN = set_ms%100;
+		if((tempN-1) <= 0) tempN = 0;
+		
+		set_ms = ((set_ms/100)*100) + (tempN%100);
+		mm.sprintf("%d",tempN);
+		ui->P9_ValSecond->setText(mm);
+	}
+	else if(TouchMatching(x,P9_B12_X1,P9_B12_X2) && TouchMatching(y,P9_B12_Y1,P9_B12_Y2)){
+		tempN = set_ms%100;
+		if((tempN+1) >= 59) tempN = 59;
+		
+		set_ms = ((set_ms/100)*100) + (tempN%100);
+		mm.sprintf("%d",tempN);
+		ui->P9_ValSecond->setText(mm);
+	}
 }
 
 void MainWindow::TouchProcess_WIN10(int x, int y)
@@ -2332,26 +3465,446 @@ void MainWindow::ChangeWindow_WIN1(void)
 {
 	QString m;
 
+	// change scale.. temp 0 - 200 => range 0 - 144
 
-	if(Motor_Var[PUMP_M1T] >= ERROR_TEMP_VAL) ui->P1_ValMotor1->setStyleSheet("color:rgb(255,0,0)");
-	else if(Motor_Var[PUMP_M1T] >= WARNING_TEMP_VAL) ui->P1_ValMotor1->setStyleSheet("color:rgb(255,242,0)");
-	else ui->P1_ValMotor1->setStyleSheet("color:rgb(255,255,255)");
 
-	if(Motor_Var[PUMP_M2T] >= ERROR_TEMP_VAL) ui->P1_ValMotor2->setStyleSheet("color:rgb(255,0,0)");
-	else if(Motor_Var[PUMP_M2T] >= WARNING_TEMP_VAL) ui->P1_ValMotor2->setStyleSheet("color:rgb(255,242,0)");
-	else ui->P1_ValMotor2->setStyleSheet("color:rgb(255,255,255)");
+	switch(Setting_Var[S_P5_V1]){
+	case T_NONE	:
+		ui->P1_ValMotor1_2->setVisible(true);
+	break;
+	case T_SET_M1 :
+		ui->P1_ValMotor1_2->setVisible(false);
+		if(Motor_Var[PUMP_M1T] >= Setting_Var[S_P5_V8]) ui->P1_ValMotor1->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M1T] >= Setting_Var[S_P5_V7]) ui->P1_ValMotor1->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValMotor1->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M1T]);
+		ui->P1_ValMotor1->setText(m);
 
-	if(Motor_Var[PUMP_M3T] >= ERROR_TEMP_VAL) ui->P1_ValMotor3->setStyleSheet("color:rgb(255,0,0)");
-	else if(Motor_Var[PUMP_M3T] >= WARNING_TEMP_VAL) ui->P1_ValMotor3->setStyleSheet("color:rgb(255,242,0)");
-	else ui->P1_ValMotor3->setStyleSheet("color:rgb(255,255,255)");
+		P1_M1Val = int(((Motor_Var[PUMP_M1T]*144)/Setting_Var[S_P5_V8]));
+		ui->P1_Motor1->setStyleSheet("background:rgb(34,241,188)");
+		ui->P1_Motor1->setFixedWidth(P1_M1Val);
+		ui->P1_Motor1_2->move(100+P1_M1Val,165);
+		ui->P1_ValMotor1_1->setText("ëª¨í„° 1");
+	break;
+	case T_SET_M2 :
+		ui->P1_ValMotor1_2->setVisible(false);
+		if(Motor_Var[PUMP_M2T] >= Setting_Var[S_P5_V8]) ui->P1_ValMotor1->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M2T] >= Setting_Var[S_P5_V7]) ui->P1_ValMotor1->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValMotor1->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M2T]);
+		ui->P1_ValMotor1->setText(m);
 
-	if(Motor_Var[PUMP_M4T] >= ERROR_TEMP_VAL) ui->P1_ValBR1->setStyleSheet("color:rgb(255,0,0)");
-	else if(Motor_Var[PUMP_M4T] >= WARNING_TEMP_VAL) ui->P1_ValBR1->setStyleSheet("color:rgb(255,242,0)");
-	else ui->P1_ValBR1->setStyleSheet("color:rgb(255,255,255)");
+		P1_M1Val = int(((Motor_Var[PUMP_M2T]*144)/Setting_Var[S_P5_V8]));
+		ui->P1_Motor1->setStyleSheet("background:rgb(34,241,188)");
+		ui->P1_Motor1->setFixedWidth(P1_M1Val);
+		ui->P1_Motor1_2->move(100+P1_M1Val,165);
 
-	if(Motor_Var[PUMP_M5T] >= ERROR_TEMP_VAL) ui->P1_ValBR2->setStyleSheet("color:rgb(255,0,0)");
-	else if(Motor_Var[PUMP_M5T] >= WARNING_TEMP_VAL) ui->P1_ValBR2->setStyleSheet("color:rgb(255,242,0)");
-	else ui->P1_ValBR2->setStyleSheet("color:rgb(255,255,255)");
+		ui->P1_ValMotor1_1->setText("ëª¨í„° 2");
+	break;
+	case T_SET_M3 :
+		ui->P1_ValMotor1_2->setVisible(false);
+		if(Motor_Var[PUMP_M3T] >= Setting_Var[S_P5_V8]) ui->P1_ValMotor1->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M3T] >= Setting_Var[S_P5_V7]) ui->P1_ValMotor1->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValMotor1->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M3T]);
+		ui->P1_ValMotor1->setText(m);
+
+		P1_M1Val = int(((Motor_Var[PUMP_M3T]*144)/Setting_Var[S_P5_V8]));
+		ui->P1_Motor1->setStyleSheet("background:rgb(34,241,188)");
+		ui->P1_Motor1->setFixedWidth(P1_M1Val);
+		ui->P1_Motor1_2->move(100+P1_M1Val,165);
+
+		ui->P1_ValMotor1_1->setText("ëª¨í„° 3");
+	break;
+	case T_SET_B1 :
+		ui->P1_ValMotor1_2->setVisible(false);
+		if(Motor_Var[PUMP_M4T] >= Setting_Var[S_P5_V8]) ui->P1_ValMotor1->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M4T] >= Setting_Var[S_P5_V7]) ui->P1_ValMotor1->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValMotor1->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M4T]);
+		ui->P1_ValMotor1->setText(m);
+
+		P1_M1Val = int(((Motor_Var[PUMP_M4T]*144)/Setting_Var[S_P5_V8]));
+		ui->P1_Motor1->setStyleSheet("background:rgb(34,241,188)");
+		ui->P1_Motor1->setFixedWidth(P1_M1Val);
+		ui->P1_Motor1_2->move(100+P1_M1Val,165);
+
+		ui->P1_ValMotor1_1->setText("ë² ì–´ë§ ìƒ");
+	break;
+	case T_SET_B2 :
+		ui->P1_ValMotor1_2->setVisible(false);
+		if(Motor_Var[PUMP_M5T] >= Setting_Var[S_P5_V8]) ui->P1_ValMotor1->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M5T] >= Setting_Var[S_P5_V7]) ui->P1_ValMotor1->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValMotor1->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M5T]);
+		ui->P1_ValMotor1->setText(m);
+
+		P1_M1Val = int(((Motor_Var[PUMP_M5T]*144)/Setting_Var[S_P5_V8]));
+		ui->P1_Motor1->setStyleSheet("background:rgb(34,241,188)");
+		ui->P1_Motor1->setFixedWidth(P1_M1Val);
+		ui->P1_Motor1_2->move(100+P1_M1Val,165);
+		
+		ui->P1_ValMotor1_1->setText("ë² ì–´ë§ í•˜");
+	break;
+	}
+
+	
+	switch(Setting_Var[S_P5_V2]){
+	case T_NONE	:
+		ui->P1_ValMotor2_2->setVisible(true);
+	break;
+	case T_SET_M1 :
+		ui->P1_ValMotor2_2->setVisible(false);
+		if(Motor_Var[PUMP_M1T] >= Setting_Var[S_P5_V11]) ui->P1_ValMotor2->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M1T] >= Setting_Var[S_P5_V10]) ui->P1_ValMotor2->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValMotor2->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M1T]);
+		ui->P1_ValMotor2->setText(m);
+		
+		P1_M2Val = int(((Motor_Var[PUMP_M1T]*144)/Setting_Var[S_P5_V11]));
+		ui->P1_Motor2->setStyleSheet("background:rgb(255,167,92)");
+		ui->P1_Motor2->setFixedWidth(P1_M2Val);
+		ui->P1_Motor2_2->move(100+P1_M2Val,233);
+
+		ui->P1_ValMotor2_1->setText("ëª¨í„° 1");
+	break;
+	case T_SET_M2 :
+		ui->P1_ValMotor2_2->setVisible(false);
+		if(Motor_Var[PUMP_M2T] >= Setting_Var[S_P5_V11]) ui->P1_ValMotor2->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M2T] >= Setting_Var[S_P5_V10]) ui->P1_ValMotor2->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValMotor2->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M2T]);
+		ui->P1_ValMotor2->setText(m);
+		
+		P1_M2Val = int(((Motor_Var[PUMP_M2T]*144)/Setting_Var[S_P5_V11]));
+		ui->P1_Motor2->setStyleSheet("background:rgb(255,167,92)");
+		ui->P1_Motor2->setFixedWidth(P1_M2Val);
+		ui->P1_Motor2_2->move(100+P1_M2Val,233);
+
+		ui->P1_ValMotor2_1->setText("ëª¨í„° 2");
+	break;
+	case T_SET_M3 :
+		ui->P1_ValMotor2_2->setVisible(false);
+		if(Motor_Var[PUMP_M3T] >= Setting_Var[S_P5_V11]) ui->P1_ValMotor2->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M3T] >= Setting_Var[S_P5_V10]) ui->P1_ValMotor2->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValMotor2->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M3T]);
+		ui->P1_ValMotor2->setText(m);
+		
+		P1_M2Val = int(((Motor_Var[PUMP_M3T]*144)/Setting_Var[S_P5_V11]));
+		ui->P1_Motor2->setStyleSheet("background:rgb(255,167,92)");
+		ui->P1_Motor2->setFixedWidth(P1_M2Val);
+		ui->P1_Motor2_2->move(100+P1_M2Val,233);
+
+		ui->P1_ValMotor2_1->setText("ëª¨í„° 3");
+	break;
+	case T_SET_B1 :
+		ui->P1_ValMotor2_2->setVisible(false);
+		if(Motor_Var[PUMP_M4T] >= Setting_Var[S_P5_V11]) ui->P1_ValMotor2->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M4T] >= Setting_Var[S_P5_V10]) ui->P1_ValMotor2->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValMotor2->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M4T]);
+		ui->P1_ValMotor2->setText(m);
+		
+		P1_M2Val = int(((Motor_Var[PUMP_M4T]*144)/Setting_Var[S_P5_V11]));
+		ui->P1_Motor2->setStyleSheet("background:rgb(255,167,92)");
+		ui->P1_Motor2->setFixedWidth(P1_M2Val);
+		ui->P1_Motor2_2->move(100+P1_M2Val,233);
+
+		ui->P1_ValMotor2_1->setText("ë² ì–´ë§ ìƒ");
+	break;
+	case T_SET_B2 :
+		ui->P1_ValMotor2_2->setVisible(false);
+		if(Motor_Var[PUMP_M5T] >= Setting_Var[S_P5_V11]) ui->P1_ValMotor2->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M5T] >= Setting_Var[S_P5_V10]) ui->P1_ValMotor2->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValMotor2->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M5T]);
+		ui->P1_ValMotor2->setText(m);
+		
+		P1_M2Val = int(((Motor_Var[PUMP_M5T]*144)/Setting_Var[S_P5_V11]));
+		ui->P1_Motor2->setStyleSheet("background:rgb(255,167,92)");
+		ui->P1_Motor2->setFixedWidth(P1_M2Val);
+		ui->P1_Motor2_2->move(100+P1_M2Val,233);
+
+		ui->P1_ValMotor2_1->setText("ë² ì–´ë§ í•˜");
+	break;
+	}
+
+	
+	switch(Setting_Var[S_P5_V3]){
+	case T_NONE	:
+		ui->P1_ValMotor3_2->setVisible(true);
+	break;
+	case T_SET_M1 :
+		ui->P1_ValMotor3_2->setVisible(false);
+		if(Motor_Var[PUMP_M1T] >= Setting_Var[S_P5_V14]) ui->P1_ValMotor3->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M1T] >= Setting_Var[S_P5_V13]) ui->P1_ValMotor3->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValMotor3->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M1T]);
+		ui->P1_ValMotor3->setText(m);
+		
+		P1_M3Val = int(((Motor_Var[PUMP_M1T]*144)/Setting_Var[S_P5_V14]));
+		ui->P1_Motor3->setStyleSheet("background:rgb(255,221,134)");
+		ui->P1_Motor3->setFixedWidth(P1_M3Val);
+		ui->P1_Motor3_2->move(100+P1_M3Val,300);
+
+		ui->P1_ValMotor3_1->setText("ëª¨í„° 1");
+	break;
+	case T_SET_M2 :
+		ui->P1_ValMotor3_2->setVisible(false);
+		if(Motor_Var[PUMP_M2T] >= Setting_Var[S_P5_V14]) ui->P1_ValMotor3->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M2T] >= Setting_Var[S_P5_V13]) ui->P1_ValMotor3->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValMotor3->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M2T]);
+		ui->P1_ValMotor3->setText(m);
+		
+		P1_M3Val = int(((Motor_Var[PUMP_M2T]*144)/Setting_Var[S_P5_V14]));
+		ui->P1_Motor3->setStyleSheet("background:rgb(255,221,134)");
+		ui->P1_Motor3->setFixedWidth(P1_M3Val);
+		ui->P1_Motor3_2->move(100+P1_M3Val,300);
+
+		ui->P1_ValMotor3_1->setText("ëª¨í„° 2");
+	break;
+	case T_SET_M3 :
+		ui->P1_ValMotor3_2->setVisible(false);
+		if(Motor_Var[PUMP_M3T] >= Setting_Var[S_P5_V14]) ui->P1_ValMotor3->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M3T] >= Setting_Var[S_P5_V13]) ui->P1_ValMotor3->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValMotor3->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M3T]);
+		ui->P1_ValMotor3->setText(m);
+		
+		P1_M3Val = int(((Motor_Var[PUMP_M3T]*144)/Setting_Var[S_P5_V14]));
+		ui->P1_Motor3->setStyleSheet("background:rgb(255,221,134)");
+		ui->P1_Motor3->setFixedWidth(P1_M3Val);
+		ui->P1_Motor3_2->move(100+P1_M3Val,300);
+
+		ui->P1_ValMotor3_1->setText("ëª¨í„° 3");
+	break;
+	case T_SET_B1 :
+		ui->P1_ValMotor3_2->setVisible(false);
+		if(Motor_Var[PUMP_M4T] >= Setting_Var[S_P5_V14]) ui->P1_ValMotor3->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M4T] >= Setting_Var[S_P5_V13]) ui->P1_ValMotor3->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValMotor3->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M4T]);
+		ui->P1_ValMotor3->setText(m);
+		
+		P1_M3Val = int(((Motor_Var[PUMP_M4T]*144)/Setting_Var[S_P5_V14]));
+		ui->P1_Motor3->setStyleSheet("background:rgb(255,221,134)");
+		ui->P1_Motor3->setFixedWidth(P1_M3Val);
+		ui->P1_Motor3_2->move(100+P1_M3Val,300);
+
+		ui->P1_ValMotor3_1->setText("ë² ì–´ë§ ìƒ");
+	break;
+	case T_SET_B2 :
+		ui->P1_ValMotor3_2->setVisible(false);
+		if(Motor_Var[PUMP_M5T] >= Setting_Var[S_P5_V14]) ui->P1_ValMotor3->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M5T] >= Setting_Var[S_P5_V13]) ui->P1_ValMotor3->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValMotor3->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M5T]);
+		ui->P1_ValMotor3->setText(m);
+		
+		P1_M3Val = int(((Motor_Var[PUMP_M5T]*144)/Setting_Var[S_P5_V14]));
+		ui->P1_Motor3->setStyleSheet("background:rgb(255,221,134)");
+		ui->P1_Motor3->setFixedWidth(P1_M3Val);
+		ui->P1_Motor3_2->move(100+P1_M3Val,300);
+
+		ui->P1_ValMotor3_1->setText("ë² ì–´ë§ í•˜");
+	break;
+	}
+
+	
+	switch(Setting_Var[S_P5_V4]){
+	case T_NONE	:
+		ui->P1_ValBR1_2->setVisible(true);
+	break;
+	case T_SET_M1 :
+		ui->P1_ValBR1_2->setVisible(false);
+		if(Motor_Var[PUMP_M1T] >= Setting_Var[S_P5_V17]) ui->P1_ValBR1->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M1T] >= Setting_Var[S_P5_V16]) ui->P1_ValBR1->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValBR1->setStyleSheet("color:rgb(255,255,255)");
+
+		m.sprintf("%d",Motor_Var[PUMP_M1T]);
+		ui->P1_ValBR1->setText(m);
+		
+		P1_M4Val = int(((Motor_Var[PUMP_M1T]*144)/Setting_Var[S_P5_V17]));
+		ui->P1_Motor4->setStyleSheet("background:rgb(255,168,93)");
+		ui->P1_Motor4->setFixedWidth(P1_M4Val);
+		ui->P1_Motor4_2->move(100+P1_M4Val,366);
+
+		ui->P1_ValBR1_1->setText("ëª¨í„° 1");
+	break;
+	case T_SET_M2 :
+		ui->P1_ValBR1_2->setVisible(false);
+		if(Motor_Var[PUMP_M2T] >= Setting_Var[S_P5_V17]) ui->P1_ValBR1->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M2T] >= Setting_Var[S_P5_V16]) ui->P1_ValBR1->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValBR1->setStyleSheet("color:rgb(255,255,255)");
+
+		m.sprintf("%d",Motor_Var[PUMP_M2T]);
+		ui->P1_ValBR1->setText(m);
+		
+		P1_M4Val = int(((Motor_Var[PUMP_M2T]*144)/Setting_Var[S_P5_V17]));
+		ui->P1_Motor4->setStyleSheet("background:rgb(255,168,93)");
+		ui->P1_Motor4->setFixedWidth(P1_M4Val);
+		ui->P1_Motor4_2->move(100+P1_M4Val,366);
+
+		ui->P1_ValBR1_1->setText("ëª¨í„° 2");
+	break;
+	case T_SET_M3 :
+		ui->P1_ValBR1_2->setVisible(false);
+		if(Motor_Var[PUMP_M3T] >= Setting_Var[S_P5_V17]) ui->P1_ValBR1->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M3T] >= Setting_Var[S_P5_V16]) ui->P1_ValBR1->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValBR1->setStyleSheet("color:rgb(255,255,255)");
+
+		m.sprintf("%d",Motor_Var[PUMP_M3T]);
+		ui->P1_ValBR1->setText(m);
+		
+		P1_M4Val = int(((Motor_Var[PUMP_M3T]*144)/Setting_Var[S_P5_V17]));
+		ui->P1_Motor4->setStyleSheet("background:rgb(255,168,93)");
+		ui->P1_Motor4->setFixedWidth(P1_M4Val);
+		ui->P1_Motor4_2->move(100+P1_M4Val,366);
+
+		ui->P1_ValBR1_1->setText("ëª¨í„° 3");
+	break;
+	case T_SET_B1 :
+		ui->P1_ValBR1_2->setVisible(false);
+		if(Motor_Var[PUMP_M4T] >= Setting_Var[S_P5_V17]) ui->P1_ValBR1->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M4T] >= Setting_Var[S_P5_V16]) ui->P1_ValBR1->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValBR1->setStyleSheet("color:rgb(255,255,255)");
+
+		m.sprintf("%d",Motor_Var[PUMP_M4T]);
+		ui->P1_ValBR1->setText(m);
+		
+		P1_M4Val = int(((Motor_Var[PUMP_M4T]*144)/Setting_Var[S_P5_V17]));
+		ui->P1_Motor4->setStyleSheet("background:rgb(255,168,93)");
+		ui->P1_Motor4->setFixedWidth(P1_M4Val);
+		ui->P1_Motor4_2->move(100+P1_M4Val,366);
+
+		ui->P1_ValBR1_1->setText("ë² ì–´ë§ ìƒ");
+	break;
+	case T_SET_B2 :
+		ui->P1_ValBR1_2->setVisible(false);
+		if(Motor_Var[PUMP_M5T] >= Setting_Var[S_P5_V17]) ui->P1_ValBR1->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M5T] >= Setting_Var[S_P5_V16]) ui->P1_ValBR1->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValBR1->setStyleSheet("color:rgb(255,255,255)");
+
+		m.sprintf("%d",Motor_Var[PUMP_M5T]);
+		ui->P1_ValBR1->setText(m);
+		
+		P1_M4Val = int(((Motor_Var[PUMP_M5T]*144)/Setting_Var[S_P5_V17]));
+		ui->P1_Motor4->setStyleSheet("background:rgb(255,168,93)");
+		ui->P1_Motor4->setFixedWidth(P1_M4Val);
+		ui->P1_Motor4_2->move(100+P1_M4Val,366);
+
+		ui->P1_ValBR1_1->setText("ë² ì–´ë§ í•˜");
+	break;
+	}
+
+	
+	switch(Setting_Var[S_P5_V5]){
+	case T_NONE	:
+		ui->P1_ValBR2_2->setVisible(true);
+	break;
+	case T_SET_M1 :
+		ui->P1_ValBR2_2->setVisible(false);
+		if(Motor_Var[PUMP_M1T] >= Setting_Var[S_P5_V20]) ui->P1_ValBR2->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M1T] >= Setting_Var[S_P5_V19]) ui->P1_ValBR2->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValBR2->setStyleSheet("color:rgb(255,255,255)");
+
+		m.sprintf("%d",Motor_Var[PUMP_M1T]);
+		ui->P1_ValBR2->setText(m);
+		
+		P1_M5Val = int(((Motor_Var[PUMP_M1T]*144)/Setting_Var[S_P5_V20]));
+		ui->P1_Motor5->setStyleSheet("background:rgb(90,126,223)");
+		ui->P1_Motor5->setFixedWidth(P1_M5Val);
+		ui->P1_Motor5_2->move(100+P1_M5Val,433);
+
+		ui->P1_ValBR2_1->setText("ëª¨í„° 1");
+	break;
+	case T_SET_M2 :
+		ui->P1_ValBR2_2->setVisible(false);
+		if(Motor_Var[PUMP_M2T] >= Setting_Var[S_P5_V20]) ui->P1_ValBR2->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M2T] >= Setting_Var[S_P5_V19]) ui->P1_ValBR2->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValBR2->setStyleSheet("color:rgb(255,255,255)");
+
+		m.sprintf("%d",Motor_Var[PUMP_M2T]);
+		ui->P1_ValBR2->setText(m);
+		
+		P1_M5Val = int(((Motor_Var[PUMP_M2T]*144)/Setting_Var[S_P5_V20]));
+		ui->P1_Motor5->setStyleSheet("background:rgb(90,126,223)");
+		ui->P1_Motor5->setFixedWidth(P1_M5Val);
+		ui->P1_Motor5_2->move(100+P1_M5Val,433);
+
+		ui->P1_ValBR2_1->setText("ëª¨í„° 2");
+	break;
+	case T_SET_M3 :
+		ui->P1_ValBR2_2->setVisible(false);
+		if(Motor_Var[PUMP_M3T] >= Setting_Var[S_P5_V20]) ui->P1_ValBR2->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M3T] >= Setting_Var[S_P5_V19]) ui->P1_ValBR2->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValBR2->setStyleSheet("color:rgb(255,255,255)");
+
+		m.sprintf("%d",Motor_Var[PUMP_M3T]);
+		ui->P1_ValBR2->setText(m);
+		
+		P1_M5Val = int(((Motor_Var[PUMP_M3T]*144)/Setting_Var[S_P5_V20]));
+		ui->P1_Motor5->setStyleSheet("background:rgb(90,126,223)");
+		ui->P1_Motor5->setFixedWidth(P1_M5Val);
+		ui->P1_Motor5_2->move(100+P1_M5Val,433);
+
+		ui->P1_ValBR2_1->setText("ëª¨í„° 3");
+	break;
+	case T_SET_B1 :
+		ui->P1_ValBR2_2->setVisible(false);
+		if(Motor_Var[PUMP_M4T] >= Setting_Var[S_P5_V20]) ui->P1_ValBR2->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M4T] >= Setting_Var[S_P5_V19]) ui->P1_ValBR2->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValBR2->setStyleSheet("color:rgb(255,255,255)");
+
+		m.sprintf("%d",Motor_Var[PUMP_M4T]);
+		ui->P1_ValBR2->setText(m);
+		
+		P1_M5Val = int(((Motor_Var[PUMP_M4T]*144)/Setting_Var[S_P5_V20]));
+		ui->P1_Motor5->setStyleSheet("background:rgb(90,126,223)");
+		ui->P1_Motor5->setFixedWidth(P1_M5Val);
+		ui->P1_Motor5_2->move(100+P1_M5Val,433);
+
+		ui->P1_ValBR2_1->setText("ë² ì–´ë§ ìƒ");
+	break;
+	case T_SET_B2 :
+		ui->P1_ValBR2_2->setVisible(false);
+		if(Motor_Var[PUMP_M5T] >= Setting_Var[S_P5_V20]) ui->P1_ValBR2->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M5T] >= Setting_Var[S_P5_V19]) ui->P1_ValBR2->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P1_ValBR2->setStyleSheet("color:rgb(255,255,255)");
+
+		m.sprintf("%d",Motor_Var[PUMP_M5T]);
+		ui->P1_ValBR2->setText(m);
+		
+		P1_M5Val = int(((Motor_Var[PUMP_M5T]*144)/Setting_Var[S_P5_V20]));
+		ui->P1_Motor5->setStyleSheet("background:rgb(90,126,223)");
+		ui->P1_Motor5->setFixedWidth(P1_M5Val);
+		ui->P1_Motor5_2->move(100+P1_M5Val,433);
+
+		ui->P1_ValBR2_1->setText("ë² ì–´ë§ í•˜");
+	break;
+	}
+
+
+
+
+
 
 
 	if(Motor_Var[PUMP_M1C] >= ERROR_TEMP_VAL) ui->P1_ValRCur->setStyleSheet("color:rgb(255,0,0)");
@@ -2366,20 +3919,11 @@ void MainWindow::ChangeWindow_WIN1(void)
 	else if(Motor_Var[PUMP_M3C] >= WARNING_TEMP_VAL) ui->P1_ValTCur->setStyleSheet("color:rgb(255,242,0)");
 	else ui->P1_ValTCur->setStyleSheet("color:rgb(255,255,255)");
 
-	m.sprintf("%d",Motor_Var[PUMP_M1T]);
-    ui->P1_ValMotor1->setText(m);
-    m.sprintf("%d",Motor_Var[PUMP_M2T]);
-    ui->P1_ValMotor2->setText(m);
-    m.sprintf("%d",Motor_Var[PUMP_M3T]);
-    ui->P1_ValMotor3->setText(m);
-    m.sprintf("%d",Motor_Var[PUMP_M4T]);
-    ui->P1_ValBR1->setText(m);
-    m.sprintf("%d",Motor_Var[PUMP_M5T]);
-    ui->P1_ValBR2->setText(m);
+
 
     m.sprintf("%d",Motor_Var[PUMP_RPM]);
     ui->P1_ValRPM->setText(m);
-    m.sprintf("%d",Motor_Var[PUMP_RUNT]);
+    m.sprintf("%dh",Motor_Var[PUMP_RUNT]);
 	ui->P1_ValOpTime->setText(m);
 
 	m.sprintf("%d.%d",Motor_Var[PUMP_M1C]/10,Motor_Var[PUMP_M1C]%10);
@@ -2549,37 +4093,10 @@ void MainWindow::ChangeWindow_WIN1(void)
 	}
 	ui->P1_OilSafe_2->setPixmap(qp);
 
-	// change scale.. temp 0 - 200 => range 0 - 144
-	P1_M1Val = int(((Motor_Var[PUMP_M1T]*144)/MAX_TEMP_VAL));
-	P1_M2Val = int(((Motor_Var[PUMP_M2T]*144)/MAX_TEMP_VAL));
-	P1_M3Val = int(((Motor_Var[PUMP_M3T]*144)/MAX_TEMP_VAL));
-	P1_M4Val = int(((Motor_Var[PUMP_M4T]*144)/MAX_TEMP_VAL));
-	P1_M5Val = int(((Motor_Var[PUMP_M5T]*144)/MAX_TEMP_VAL));
-
 	// range 0 - 100
-	P1_RCVal = int(((Motor_Var[PUMP_M1C]*100)/MAX_CURRENT_VAL));
-	P1_SCVal = int(((Motor_Var[PUMP_M2C]*100)/MAX_CURRENT_VAL));
-	P1_TCVal = int(((Motor_Var[PUMP_M3C]*100)/MAX_CURRENT_VAL));
-
-	ui->P1_Motor1->setStyleSheet("background:rgb(34,241,188)");
-	ui->P1_Motor1->setFixedWidth(P1_M1Val);
-	ui->P1_Motor1_2->move(100+P1_M1Val,165);
-
-	ui->P1_Motor2->setStyleSheet("background:rgb(255,167,92)");
-	ui->P1_Motor2->setFixedWidth(P1_M2Val);
-	ui->P1_Motor2_2->move(100+P1_M2Val,233);
-
-	ui->P1_Motor3->setStyleSheet("background:rgb(255,221,134)");
-	ui->P1_Motor3->setFixedWidth(P1_M3Val);
-	ui->P1_Motor3_2->move(100+P1_M3Val,300);
-
-	ui->P1_Motor4->setStyleSheet("background:rgb(255,168,93)");
-	ui->P1_Motor4->setFixedWidth(P1_M4Val);
-	ui->P1_Motor4_2->move(100+P1_M4Val,366);
-
-	ui->P1_Motor5->setStyleSheet("background:rgb(90,126,223)");
-	ui->P1_Motor5->setFixedWidth(P1_M5Val);
-	ui->P1_Motor5_2->move(100+P1_M5Val,433);
+	P1_RCVal = int(((Motor_Var[PUMP_M1C]*100)/(Setting_Var[S_P6_V2]*10)));
+	P1_SCVal = int(((Motor_Var[PUMP_M2C]*100)/(Setting_Var[S_P6_V2]*10)));
+	P1_TCVal = int(((Motor_Var[PUMP_M3C]*100)/(Setting_Var[S_P6_V2]*10)));
 
 	ui->P1_RCurrent->setStyleSheet("background:rgb(34,241,188)");
 	ui->P1_RCurrent->setFixedWidth(P1_RCVal);
@@ -2593,72 +4110,620 @@ void MainWindow::ChangeWindow_WIN1(void)
 	ui->P1_TCurrent->setFixedWidth(P1_TCVal);
 	ui->P1_TCurrent_2->move(585+P1_TCVal,266);
 
+
+
+	if(Motor_Var[PUMP_YD_Master] == SET_NOTCONN){
+		qp = QPixmap(P1_DeviceConn_STRList[0]);
+	}
+	else{
+		qp = QPixmap(P1_DeviceConn_STRList[1]);
+	}
+	ui->P1_Master->setPixmap(qp);
+
+	if(Motor_Var[PUMP_YD_Sub1] == SET_NOTCONN){
+		qp = QPixmap(P1_DeviceConn_STRList[2]);
+	}
+	else{
+		qp = QPixmap(P1_DeviceConn_STRList[3]);
+	}
+	ui->P1_Slave1->setPixmap(qp);
+
+	if(Motor_Var[PUMP_YD_Sub2] == SET_NOTCONN){
+		qp = QPixmap(P1_DeviceConn_STRList[4]);
+	}
+	else{
+		qp = QPixmap(P1_DeviceConn_STRList[5]);
+	}
+	ui->P1_Slave2->setPixmap(qp);
+
+	if(Motor_Var[PUMP_YD_Sub3] == SET_NOTCONN){
+		qp = QPixmap(P1_DeviceConn_STRList[6]);
+	}
+	else{
+		qp = QPixmap(P1_DeviceConn_STRList[7]);
+	}
+	ui->P1_Slave3->setPixmap(qp);
 }
 
 void MainWindow::ChangeWindow_WIN2(void)
 {
 	QString m;
 
-	if(Motor_Var[PUMP_M1T] >= ERROR_TEMP_VAL) ui->P2_ValMotor1->setStyleSheet("color:rgb(255,0,0)");
-	else if(Motor_Var[PUMP_M1T] >= WARNING_TEMP_VAL) ui->P2_ValMotor1->setStyleSheet("color:rgb(255,242,0)");
-	else ui->P2_ValMotor1->setStyleSheet("color:rgb(255,255,255)");
+	
+	switch(Setting_Var[S_P5_V1]){
+	case T_NONE	:
+		ui->P2_ValMotor1_2->setVisible(true);
+		ui->P2_ValMotor1_3->setVisible(true);
+	break;
+	case T_SET_M1 :
+		ui->P2_ValMotor1_2->setVisible(false);
+		ui->P2_ValMotor1_3->setVisible(false);
+		if(Motor_Var[PUMP_M1T] >= Setting_Var[S_P5_V8]) ui->P2_ValMotor1->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M1T] >= Setting_Var[S_P5_V7]) ui->P2_ValMotor1->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValMotor1->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M1T]);
+		ui->P2_ValMotor1->setText(m);
 
-	if(Motor_Var[PUMP_M2T] >= ERROR_TEMP_VAL) ui->P2_ValMotor2->setStyleSheet("color:rgb(255,0,0)");
-	else if(Motor_Var[PUMP_M2T] >= WARNING_TEMP_VAL) ui->P2_ValMotor2->setStyleSheet("color:rgb(255,242,0)");
-	else ui->P2_ValMotor2->setStyleSheet("color:rgb(255,255,255)");
+		P1_M1Val = int(((Motor_Var[PUMP_M1T]*144)/Setting_Var[S_P5_V8]));
+		ui->P2_Motor1->setStyleSheet("background:rgb(34,241,188)");
+		ui->P2_Motor1->setFixedWidth(P1_M1Val);
+		ui->P2_Motor1_2->move(100+P1_M1Val,165);
+		ui->P2_ValMotor1_1->setText("ëª¨í„° 1");
+	break;
+	case T_SET_M2 :
+		ui->P2_ValMotor1_2->setVisible(false);
+		ui->P2_ValMotor1_3->setVisible(false);
+		if(Motor_Var[PUMP_M2T] >= Setting_Var[S_P5_V8]) ui->P2_ValMotor1->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M2T] >= Setting_Var[S_P5_V7]) ui->P2_ValMotor1->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValMotor1->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M2T]);
+		ui->P2_ValMotor1->setText(m);
 
-	if(Motor_Var[PUMP_M3T] >= ERROR_TEMP_VAL) ui->P2_ValMotor3->setStyleSheet("color:rgb(255,0,0)");
-	else if(Motor_Var[PUMP_M3T] >= WARNING_TEMP_VAL) ui->P2_ValMotor3->setStyleSheet("color:rgb(255,242,0)");
-	else ui->P2_ValMotor3->setStyleSheet("color:rgb(255,255,255)");
+		P1_M1Val = int(((Motor_Var[PUMP_M2T]*144)/Setting_Var[S_P5_V8]));
+		ui->P2_Motor1->setStyleSheet("background:rgb(34,241,188)");
+		ui->P2_Motor1->setFixedWidth(P1_M1Val);
+		ui->P2_Motor1_2->move(100+P1_M1Val,165);
 
-	if(Motor_Var[PUMP_M4T] >= ERROR_TEMP_VAL) ui->P2_ValBR1->setStyleSheet("color:rgb(255,0,0)");
-	else if(Motor_Var[PUMP_M4T] >= WARNING_TEMP_VAL) ui->P2_ValBR1->setStyleSheet("color:rgb(255,242,0)");
-	else ui->P2_ValBR1->setStyleSheet("color:rgb(255,255,255)");
+		ui->P2_ValMotor1_1->setText("ëª¨í„° 2");
+	break;
+	case T_SET_M3 :
+		ui->P2_ValMotor1_2->setVisible(false);
+		ui->P2_ValMotor1_3->setVisible(false);
+		if(Motor_Var[PUMP_M3T] >= Setting_Var[S_P5_V8]) ui->P2_ValMotor1->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M3T] >= Setting_Var[S_P5_V7]) ui->P2_ValMotor1->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValMotor1->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M3T]);
+		ui->P2_ValMotor1->setText(m);
 
-	if(Motor_Var[PUMP_M5T] >= ERROR_TEMP_VAL) ui->P2_ValBR2->setStyleSheet("color:rgb(255,0,0)");
-	else if(Motor_Var[PUMP_M5T] >= WARNING_TEMP_VAL) ui->P2_ValBR2->setStyleSheet("color:rgb(255,242,0)");
-	else ui->P2_ValBR2->setStyleSheet("color:rgb(255,255,255)");
+		P1_M1Val = int(((Motor_Var[PUMP_M3T]*144)/Setting_Var[S_P5_V8]));
+		ui->P2_Motor1->setStyleSheet("background:rgb(34,241,188)");
+		ui->P2_Motor1->setFixedWidth(P1_M1Val);
+		ui->P2_Motor1_2->move(100+P1_M1Val,165);
+
+		ui->P2_ValMotor1_1->setText("ëª¨í„° 3");
+	break;
+	case T_SET_B1 :
+		ui->P2_ValMotor1_2->setVisible(false);
+		ui->P2_ValMotor1_3->setVisible(false);
+		if(Motor_Var[PUMP_M4T] >= Setting_Var[S_P5_V8]) ui->P2_ValMotor1->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M4T] >= Setting_Var[S_P5_V7]) ui->P2_ValMotor1->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValMotor1->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M4T]);
+		ui->P2_ValMotor1->setText(m);
+
+		P1_M1Val = int(((Motor_Var[PUMP_M4T]*144)/Setting_Var[S_P5_V8]));
+		ui->P2_Motor1->setStyleSheet("background:rgb(34,241,188)");
+		ui->P2_Motor1->setFixedWidth(P1_M1Val);
+		ui->P2_Motor1_2->move(100+P1_M1Val,165);
+
+		ui->P2_ValMotor1_1->setText("ë² ì–´ë§ ìƒ");
+	break;
+	case T_SET_B2 :
+		ui->P2_ValMotor1_2->setVisible(false);
+		ui->P2_ValMotor1_3->setVisible(false);
+		if(Motor_Var[PUMP_M5T] >= Setting_Var[S_P5_V8]) ui->P2_ValMotor1->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M5T] >= Setting_Var[S_P5_V7]) ui->P2_ValMotor1->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValMotor1->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M5T]);
+		ui->P2_ValMotor1->setText(m);
+
+		P1_M1Val = int(((Motor_Var[PUMP_M5T]*144)/Setting_Var[S_P5_V8]));
+		ui->P2_Motor1->setStyleSheet("background:rgb(34,241,188)");
+		ui->P2_Motor1->setFixedWidth(P1_M1Val);
+		ui->P2_Motor1_2->move(100+P1_M1Val,165);
+		
+		ui->P2_ValMotor1_1->setText("ë² ì–´ë§ í•˜");
+	break;
+	}
+
+	
+	switch(Setting_Var[S_P5_V2]){
+	case T_NONE	:
+		ui->P2_ValMotor2_2->setVisible(true);
+		ui->P2_ValMotor2_3->setVisible(true);
+	break;
+	case T_SET_M1 :
+		ui->P2_ValMotor2_2->setVisible(false);
+		ui->P2_ValMotor2_3->setVisible(false);
+		if(Motor_Var[PUMP_M1T] >= Setting_Var[S_P5_V11]) ui->P2_ValMotor2->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M1T] >= Setting_Var[S_P5_V10]) ui->P2_ValMotor2->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValMotor2->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M1T]);
+		ui->P2_ValMotor2->setText(m);
+		
+		P2_M2Val = int(((Motor_Var[PUMP_M1T]*144)/Setting_Var[S_P5_V11]));
+		ui->P2_Motor2->setStyleSheet("background:rgb(255,167,92)");
+		ui->P2_Motor2->setFixedWidth(P2_M2Val);
+		ui->P2_Motor2_2->move(100+P2_M2Val,233);
+
+		ui->P2_ValMotor2_1->setText("ëª¨í„° 1");
+	break;
+	case T_SET_M2 :
+		ui->P2_ValMotor2_2->setVisible(false);
+		ui->P2_ValMotor2_3->setVisible(false);
+		if(Motor_Var[PUMP_M2T] >= Setting_Var[S_P5_V11]) ui->P2_ValMotor2->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M2T] >= Setting_Var[S_P5_V10]) ui->P2_ValMotor2->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValMotor2->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M2T]);
+		ui->P2_ValMotor2->setText(m);
+		
+		P2_M2Val = int(((Motor_Var[PUMP_M2T]*144)/Setting_Var[S_P5_V11]));
+		ui->P2_Motor2->setStyleSheet("background:rgb(255,167,92)");
+		ui->P2_Motor2->setFixedWidth(P2_M2Val);
+		ui->P2_Motor2_2->move(100+P2_M2Val,233);
+
+		ui->P2_ValMotor2_1->setText("ëª¨í„° 2");
+	break;
+	case T_SET_M3 :
+		ui->P2_ValMotor2_2->setVisible(false);
+		ui->P2_ValMotor2_3->setVisible(false);
+		if(Motor_Var[PUMP_M3T] >= Setting_Var[S_P5_V11]) ui->P2_ValMotor2->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M3T] >= Setting_Var[S_P5_V10]) ui->P2_ValMotor2->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValMotor2->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M3T]);
+		ui->P2_ValMotor2->setText(m);
+		
+		P2_M2Val = int(((Motor_Var[PUMP_M3T]*144)/Setting_Var[S_P5_V11]));
+		ui->P2_Motor2->setStyleSheet("background:rgb(255,167,92)");
+		ui->P2_Motor2->setFixedWidth(P2_M2Val);
+		ui->P2_Motor2_2->move(100+P2_M2Val,233);
+
+		ui->P2_ValMotor2_1->setText("ëª¨í„° 3");
+	break;
+	case T_SET_B1 :
+		ui->P2_ValMotor2_2->setVisible(false);
+		ui->P2_ValMotor2_3->setVisible(false);
+		if(Motor_Var[PUMP_M4T] >= Setting_Var[S_P5_V11]) ui->P2_ValMotor2->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M4T] >= Setting_Var[S_P5_V10]) ui->P2_ValMotor2->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValMotor2->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M4T]);
+		ui->P2_ValMotor2->setText(m);
+		
+		P2_M2Val = int(((Motor_Var[PUMP_M4T]*144)/Setting_Var[S_P5_V11]));
+		ui->P2_Motor2->setStyleSheet("background:rgb(255,167,92)");
+		ui->P2_Motor2->setFixedWidth(P2_M2Val);
+		ui->P2_Motor2_2->move(100+P2_M2Val,233);
+
+		ui->P2_ValMotor2_1->setText("ë² ì–´ë§ ìƒ");
+	break;
+	case T_SET_B2 :
+		ui->P2_ValMotor2_2->setVisible(false);
+		ui->P2_ValMotor2_3->setVisible(false);
+		if(Motor_Var[PUMP_M5T] >= Setting_Var[S_P5_V11]) ui->P2_ValMotor2->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M5T] >= Setting_Var[S_P5_V10]) ui->P2_ValMotor2->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValMotor2->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M5T]);
+		ui->P2_ValMotor2->setText(m);
+		
+		P2_M2Val = int(((Motor_Var[PUMP_M5T]*144)/Setting_Var[S_P5_V11]));
+		ui->P2_Motor2->setStyleSheet("background:rgb(255,167,92)");
+		ui->P2_Motor2->setFixedWidth(P2_M2Val);
+		ui->P2_Motor2_2->move(100+P2_M2Val,233);
+
+		ui->P2_ValMotor2_1->setText("ë² ì–´ë§ í•˜");
+	break;
+	}
+
+	
+	switch(Setting_Var[S_P5_V3]){
+	case T_NONE	:
+		ui->P2_ValMotor3_2->setVisible(true);
+		ui->P2_ValMotor3_3->setVisible(true);
+	break;
+	case T_SET_M1 :
+		ui->P2_ValMotor3_2->setVisible(false);
+		ui->P2_ValMotor3_3->setVisible(false);
+		if(Motor_Var[PUMP_M1T] >= Setting_Var[S_P5_V14]) ui->P2_ValMotor3->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M1T] >= Setting_Var[S_P5_V13]) ui->P2_ValMotor3->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValMotor3->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M1T]);
+		ui->P2_ValMotor3->setText(m);
+		
+		P2_M3Val = int(((Motor_Var[PUMP_M1T]*144)/Setting_Var[S_P5_V14]));
+		ui->P2_Motor3->setStyleSheet("background:rgb(255,221,134)");
+		ui->P2_Motor3->setFixedWidth(P2_M3Val);
+		ui->P2_Motor3_2->move(100+P2_M3Val,300);
+
+		ui->P2_ValMotor3_1->setText("ëª¨í„° 1");
+	break;
+	case T_SET_M2 :
+		ui->P2_ValMotor3_2->setVisible(false);
+		ui->P2_ValMotor3_3->setVisible(false);
+		if(Motor_Var[PUMP_M2T] >= Setting_Var[S_P5_V14]) ui->P2_ValMotor3->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M2T] >= Setting_Var[S_P5_V13]) ui->P2_ValMotor3->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValMotor3->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M2T]);
+		ui->P2_ValMotor3->setText(m);
+		
+		P2_M3Val = int(((Motor_Var[PUMP_M2T]*144)/Setting_Var[S_P5_V14]));
+		ui->P2_Motor3->setStyleSheet("background:rgb(255,221,134)");
+		ui->P2_Motor3->setFixedWidth(P2_M3Val);
+		ui->P2_Motor3_2->move(100+P2_M3Val,300);
+
+		ui->P2_ValMotor3_1->setText("ëª¨í„° 2");
+	break;
+	case T_SET_M3 :
+		ui->P2_ValMotor3_2->setVisible(false);
+		ui->P2_ValMotor3_3->setVisible(false);
+		if(Motor_Var[PUMP_M3T] >= Setting_Var[S_P5_V14]) ui->P2_ValMotor3->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M3T] >= Setting_Var[S_P5_V13]) ui->P2_ValMotor3->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValMotor3->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M3T]);
+		ui->P2_ValMotor3->setText(m);
+		
+		P2_M3Val = int(((Motor_Var[PUMP_M3T]*144)/Setting_Var[S_P5_V14]));
+		ui->P2_Motor3->setStyleSheet("background:rgb(255,221,134)");
+		ui->P2_Motor3->setFixedWidth(P2_M3Val);
+		ui->P2_Motor3_2->move(100+P2_M3Val,300);
+
+		ui->P2_ValMotor3_1->setText("ëª¨í„° 3");
+	break;
+	case T_SET_B1 :
+		ui->P2_ValMotor3_2->setVisible(false);
+		ui->P2_ValMotor3_3->setVisible(false);
+		if(Motor_Var[PUMP_M4T] >= Setting_Var[S_P5_V14]) ui->P2_ValMotor3->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M4T] >= Setting_Var[S_P5_V13]) ui->P2_ValMotor3->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValMotor3->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M4T]);
+		ui->P2_ValMotor3->setText(m);
+		
+		P2_M3Val = int(((Motor_Var[PUMP_M4T]*144)/Setting_Var[S_P5_V14]));
+		ui->P2_Motor3->setStyleSheet("background:rgb(255,221,134)");
+		ui->P2_Motor3->setFixedWidth(P2_M3Val);
+		ui->P2_Motor3_2->move(100+P2_M3Val,300);
+
+		ui->P2_ValMotor3_1->setText("ë² ì–´ë§ ìƒ");
+	break;
+	case T_SET_B2 :
+		ui->P2_ValMotor3_2->setVisible(false);
+		ui->P2_ValMotor3_3->setVisible(false);
+		if(Motor_Var[PUMP_M5T] >= Setting_Var[S_P5_V14]) ui->P2_ValMotor3->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M5T] >= Setting_Var[S_P5_V13]) ui->P2_ValMotor3->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValMotor3->setStyleSheet("color:rgb(255,255,255)");
+		
+		m.sprintf("%d",Motor_Var[PUMP_M5T]);
+		ui->P2_ValMotor3->setText(m);
+		
+		P2_M3Val = int(((Motor_Var[PUMP_M5T]*144)/Setting_Var[S_P5_V14]));
+		ui->P2_Motor3->setStyleSheet("background:rgb(255,221,134)");
+		ui->P2_Motor3->setFixedWidth(P2_M3Val);
+		ui->P2_Motor3_2->move(100+P2_M3Val,300);
+
+		ui->P2_ValMotor3_1->setText("ë² ì–´ë§ í•˜");
+	break;
+	}
+
+	
+	switch(Setting_Var[S_P5_V4]){
+	case T_NONE	:
+		ui->P2_ValBR1_2->setVisible(true);
+		ui->P2_ValBR1_3->setVisible(true);
+	break;
+	case T_SET_M1 :
+		ui->P2_ValBR1_2->setVisible(false);
+		ui->P2_ValBR1_3->setVisible(false);
+		if(Motor_Var[PUMP_M1T] >= Setting_Var[S_P5_V17]) ui->P2_ValBR1->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M1T] >= Setting_Var[S_P5_V16]) ui->P2_ValBR1->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValBR1->setStyleSheet("color:rgb(255,255,255)");
+
+		m.sprintf("%d",Motor_Var[PUMP_M1T]);
+		ui->P2_ValBR1->setText(m);
+		
+		P2_M4Val = int(((Motor_Var[PUMP_M1T]*144)/Setting_Var[S_P5_V17]));
+		ui->P2_Motor4->setStyleSheet("background:rgb(255,168,93)");
+		ui->P2_Motor4->setFixedWidth(P2_M4Val);
+		ui->P2_Motor4_2->move(100+P2_M4Val,366);
+
+		ui->P2_ValBR1_1->setText("ëª¨í„° 1");
+	break;
+	case T_SET_M2 :
+		ui->P2_ValBR1_2->setVisible(false);
+		ui->P2_ValBR1_3->setVisible(false);
+		if(Motor_Var[PUMP_M2T] >= Setting_Var[S_P5_V17]) ui->P2_ValBR1->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M2T] >= Setting_Var[S_P5_V16]) ui->P2_ValBR1->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValBR1->setStyleSheet("color:rgb(255,255,255)");
+
+		m.sprintf("%d",Motor_Var[PUMP_M2T]);
+		ui->P2_ValBR1->setText(m);
+		
+		P2_M4Val = int(((Motor_Var[PUMP_M2T]*144)/Setting_Var[S_P5_V17]));
+		ui->P2_Motor4->setStyleSheet("background:rgb(255,168,93)");
+		ui->P2_Motor4->setFixedWidth(P2_M4Val);
+		ui->P2_Motor4_2->move(100+P2_M4Val,366);
+
+		ui->P2_ValBR1_1->setText("ëª¨í„° 2");
+	break;
+	case T_SET_M3 :
+		ui->P2_ValBR1_2->setVisible(false);
+		ui->P2_ValBR1_3->setVisible(false);
+		if(Motor_Var[PUMP_M3T] >= Setting_Var[S_P5_V17]) ui->P2_ValBR1->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M3T] >= Setting_Var[S_P5_V16]) ui->P2_ValBR1->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValBR1->setStyleSheet("color:rgb(255,255,255)");
+
+		m.sprintf("%d",Motor_Var[PUMP_M3T]);
+		ui->P2_ValBR1->setText(m);
+		
+		P2_M4Val = int(((Motor_Var[PUMP_M3T]*144)/Setting_Var[S_P5_V17]));
+		ui->P2_Motor4->setStyleSheet("background:rgb(255,168,93)");
+		ui->P2_Motor4->setFixedWidth(P2_M4Val);
+		ui->P2_Motor4_2->move(100+P2_M4Val,366);
+
+		ui->P2_ValBR1_1->setText("ëª¨í„° 3");
+	break;
+	case T_SET_B1 :
+		ui->P2_ValBR1_2->setVisible(false);
+		ui->P2_ValBR1_3->setVisible(false);
+		if(Motor_Var[PUMP_M4T] >= Setting_Var[S_P5_V17]) ui->P2_ValBR1->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M4T] >= Setting_Var[S_P5_V16]) ui->P2_ValBR1->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValBR1->setStyleSheet("color:rgb(255,255,255)");
+
+		m.sprintf("%d",Motor_Var[PUMP_M4T]);
+		ui->P2_ValBR1->setText(m);
+		
+		P2_M4Val = int(((Motor_Var[PUMP_M4T]*144)/Setting_Var[S_P5_V17]));
+		ui->P2_Motor4->setStyleSheet("background:rgb(255,168,93)");
+		ui->P2_Motor4->setFixedWidth(P2_M4Val);
+		ui->P2_Motor4_2->move(100+P2_M4Val,366);
+
+		ui->P2_ValBR1_1->setText("ë² ì–´ë§ ìƒ");
+	break;
+	case T_SET_B2 :
+		ui->P2_ValBR1_2->setVisible(false);
+		ui->P2_ValBR1_3->setVisible(false);
+		if(Motor_Var[PUMP_M5T] >= Setting_Var[S_P5_V17]) ui->P2_ValBR1->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M5T] >= Setting_Var[S_P5_V16]) ui->P2_ValBR1->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValBR1->setStyleSheet("color:rgb(255,255,255)");
+
+		m.sprintf("%d",Motor_Var[PUMP_M5T]);
+		ui->P2_ValBR1->setText(m);
+		
+		P2_M4Val = int(((Motor_Var[PUMP_M5T]*144)/Setting_Var[S_P5_V17]));
+		ui->P2_Motor4->setStyleSheet("background:rgb(255,168,93)");
+		ui->P2_Motor4->setFixedWidth(P2_M4Val);
+		ui->P2_Motor4_2->move(100+P2_M4Val,366);
+
+		ui->P2_ValBR1_1->setText("ë² ì–´ë§ í•˜");
+	break;
+	}
+
+	
+	switch(Setting_Var[S_P5_V5]){
+	case T_NONE	:
+		ui->P2_ValBR2_2->setVisible(true);
+		ui->P2_ValBR2_3->setVisible(true);
+	break;
+	case T_SET_M1 :
+		ui->P2_ValBR2_2->setVisible(false);
+		ui->P2_ValBR2_3->setVisible(false);
+		if(Motor_Var[PUMP_M1T] >= Setting_Var[S_P5_V20]) ui->P2_ValBR2->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M1T] >= Setting_Var[S_P5_V19]) ui->P2_ValBR2->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValBR2->setStyleSheet("color:rgb(255,255,255)");
+
+		m.sprintf("%d",Motor_Var[PUMP_M1T]);
+		ui->P2_ValBR2->setText(m);
+		
+		P2_M5Val = int(((Motor_Var[PUMP_M1T]*144)/Setting_Var[S_P5_V20]));
+		ui->P2_Motor5->setStyleSheet("background:rgb(90,126,223)");
+		ui->P2_Motor5->setFixedWidth(P2_M5Val);
+		ui->P2_Motor5_2->move(100+P2_M5Val,433);
+
+		ui->P2_ValBR2_1->setText("ëª¨í„° 1");
+	break;
+	case T_SET_M2 :
+		ui->P2_ValBR2_2->setVisible(false);
+		ui->P2_ValBR2_3->setVisible(false);
+		if(Motor_Var[PUMP_M2T] >= Setting_Var[S_P5_V20]) ui->P2_ValBR2->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M2T] >= Setting_Var[S_P5_V19]) ui->P2_ValBR2->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValBR2->setStyleSheet("color:rgb(255,255,255)");
+
+		m.sprintf("%d",Motor_Var[PUMP_M2T]);
+		ui->P2_ValBR2->setText(m);
+		
+		P2_M5Val = int(((Motor_Var[PUMP_M2T]*144)/Setting_Var[S_P5_V20]));
+		ui->P2_Motor5->setStyleSheet("background:rgb(90,126,223)");
+		ui->P2_Motor5->setFixedWidth(P2_M5Val);
+		ui->P2_Motor5_2->move(100+P2_M5Val,433);
+
+		ui->P2_ValBR2_1->setText("ëª¨í„° 2");
+	break;
+	case T_SET_M3 :
+		ui->P2_ValBR2_2->setVisible(false);
+		ui->P2_ValBR2_3->setVisible(false);
+		if(Motor_Var[PUMP_M3T] >= Setting_Var[S_P5_V20]) ui->P2_ValBR2->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M3T] >= Setting_Var[S_P5_V19]) ui->P2_ValBR2->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValBR2->setStyleSheet("color:rgb(255,255,255)");
+
+		m.sprintf("%d",Motor_Var[PUMP_M3T]);
+		ui->P2_ValBR2->setText(m);
+		
+		P2_M5Val = int(((Motor_Var[PUMP_M3T]*144)/Setting_Var[S_P5_V20]));
+		ui->P2_Motor5->setStyleSheet("background:rgb(90,126,223)");
+		ui->P2_Motor5->setFixedWidth(P2_M5Val);
+		ui->P2_Motor5_2->move(100+P2_M5Val,433);
+
+		ui->P2_ValBR2_1->setText("ëª¨í„° 3");
+	break;
+	case T_SET_B1 :
+		ui->P2_ValBR2_2->setVisible(false);
+		ui->P2_ValBR2_3->setVisible(false);
+		if(Motor_Var[PUMP_M4T] >= Setting_Var[S_P5_V20]) ui->P2_ValBR2->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M4T] >= Setting_Var[S_P5_V19]) ui->P2_ValBR2->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValBR2->setStyleSheet("color:rgb(255,255,255)");
+
+		m.sprintf("%d",Motor_Var[PUMP_M4T]);
+		ui->P2_ValBR2->setText(m);
+		
+		P2_M5Val = int(((Motor_Var[PUMP_M4T]*144)/Setting_Var[S_P5_V20]));
+		ui->P2_Motor5->setStyleSheet("background:rgb(90,126,223)");
+		ui->P2_Motor5->setFixedWidth(P2_M5Val);
+		ui->P2_Motor5_2->move(100+P2_M5Val,433);
+
+		ui->P2_ValBR2_1->setText("ë² ì–´ë§ ìƒ");
+	break;
+	case T_SET_B2 :
+		ui->P2_ValBR2_2->setVisible(false);
+		ui->P2_ValBR2_3->setVisible(false);
+		if(Motor_Var[PUMP_M5T] >= Setting_Var[S_P5_V20]) ui->P2_ValBR2->setStyleSheet("color:rgb(255,0,0)");
+		else if(Motor_Var[PUMP_M5T] >= Setting_Var[S_P5_V19]) ui->P2_ValBR2->setStyleSheet("color:rgb(255,242,0)");
+		else ui->P2_ValBR2->setStyleSheet("color:rgb(255,255,255)");
+
+		m.sprintf("%d",Motor_Var[PUMP_M5T]);
+		ui->P2_ValBR2->setText(m);
+		
+		P2_M5Val = int(((Motor_Var[PUMP_M5T]*144)/Setting_Var[S_P5_V20]));
+		ui->P2_Motor5->setStyleSheet("background:rgb(90,126,223)");
+		ui->P2_Motor5->setFixedWidth(P2_M5Val);
+		ui->P2_Motor5_2->move(100+P2_M5Val,433);
+
+		ui->P2_ValBR2_1->setText("ë² ì–´ë§ í•˜");
+	break;
+	}
 
 
-    m.sprintf("%d",Motor_Var[PUMP_M1T]);
-    ui->P2_ValMotor1->setText(m);
-    m.sprintf("%d",Motor_Var[PUMP_M2T]);
-    ui->P2_ValMotor2->setText(m);
-    m.sprintf("%d",Motor_Var[PUMP_M3T]);
-    ui->P2_ValMotor3->setText(m);
-    m.sprintf("%d",Motor_Var[PUMP_M4T]);
-    ui->P2_ValBR1->setText(m);
-    m.sprintf("%d",Motor_Var[PUMP_M5T]);
-    ui->P2_ValBR2->setText(m);
+	
 
+	m.sprintf("%d",historyTemp[0][0]);
+	ui->P2_Temp1->setText(m);
+	m.sprintf("%d",historyTemp[0][1]);
+	ui->P2_Temp1_2->setText(m);
+	m.sprintf("%d",historyTemp[0][2]);
+	ui->P2_Temp1_3->setText(m);
+	m.sprintf("%d",historyTemp[0][3]);
+	ui->P2_Temp1_4->setText(m);
+	m.sprintf("%d",historyTemp[0][4]);
+	ui->P2_Temp1_5->setText(m);
+	m.sprintf("%d",historyTemp[0][5]);
+	ui->P2_Temp1_6->setText(m);
+	m.sprintf("%d",historyTemp[0][6]);
+	ui->P2_Temp1_7->setText(m);
+	m.sprintf("%d",historyTemp[0][7]);
+	ui->P2_Temp1_8->setText(m);
+	m.sprintf("%d",historyTemp[0][8]);
+	ui->P2_Temp1_9->setText(m);
+	m.sprintf("%d",historyTemp[0][9]);
+	ui->P2_Temp1_10->setText(m);
+	
 
-	// change scale.. temp 0 - 200 => range 0 - 144
-	P1_M1Val = int(((Motor_Var[PUMP_M1T]*144)/MAX_TEMP_VAL));
-	P1_M2Val = int(((Motor_Var[PUMP_M2T]*144)/MAX_TEMP_VAL));
-	P1_M3Val = int(((Motor_Var[PUMP_M3T]*144)/MAX_TEMP_VAL));
-	P1_M4Val = int(((Motor_Var[PUMP_M4T]*144)/MAX_TEMP_VAL));
-	P1_M5Val = int(((Motor_Var[PUMP_M5T]*144)/MAX_TEMP_VAL));
+	m.sprintf("%d",historyTemp[1][0]);
+	ui->P2_Temp2->setText(m);
+	m.sprintf("%d",historyTemp[1][1]);
+	ui->P2_Temp2_2->setText(m);
+	m.sprintf("%d",historyTemp[1][2]);
+	ui->P2_Temp2_3->setText(m);
+	m.sprintf("%d",historyTemp[1][3]);
+	ui->P2_Temp2_4->setText(m);
+	m.sprintf("%d",historyTemp[1][4]);
+	ui->P2_Temp2_5->setText(m);
+	m.sprintf("%d",historyTemp[1][5]);
+	ui->P2_Temp2_6->setText(m);
+	m.sprintf("%d",historyTemp[1][6]);
+	ui->P2_Temp2_7->setText(m);
+	m.sprintf("%d",historyTemp[1][7]);
+	ui->P2_Temp2_8->setText(m);
+	m.sprintf("%d",historyTemp[1][8]);
+	ui->P2_Temp2_9->setText(m);
+	m.sprintf("%d",historyTemp[1][9]);
+	ui->P2_Temp2_10->setText(m);
+	
 
-	ui->P2_Motor1->setStyleSheet("background:rgb(34,241,188)");
-	ui->P2_Motor1->setFixedWidth(P1_M1Val);
-	ui->P2_Motor1_2->move(100+P1_M1Val,165);
+	m.sprintf("%d",historyTemp[2][0]);
+	ui->P2_Temp3->setText(m);
+	m.sprintf("%d",historyTemp[2][1]);
+	ui->P2_Temp3_2->setText(m);
+	m.sprintf("%d",historyTemp[2][2]);
+	ui->P2_Temp3_3->setText(m);
+	m.sprintf("%d",historyTemp[2][3]);
+	ui->P2_Temp3_4->setText(m);
+	m.sprintf("%d",historyTemp[2][4]);
+	ui->P2_Temp3_5->setText(m);
+	m.sprintf("%d",historyTemp[2][5]);
+	ui->P2_Temp3_6->setText(m);
+	m.sprintf("%d",historyTemp[2][6]);
+	ui->P2_Temp3_7->setText(m);
+	m.sprintf("%d",historyTemp[2][7]);
+	ui->P2_Temp3_8->setText(m);
+	m.sprintf("%d",historyTemp[2][8]);
+	ui->P2_Temp3_9->setText(m);
+	m.sprintf("%d",historyTemp[2][9]);
+	ui->P2_Temp3_10->setText(m);
+	
 
-	ui->P2_Motor2->setStyleSheet("background:rgb(255,167,92)");
-	ui->P2_Motor2->setFixedWidth(P1_M2Val);
-	ui->P2_Motor2_2->move(100+P1_M2Val,231);
+	m.sprintf("%d",historyTemp[3][0]);
+	ui->P2_Temp4->setText(m);
+	m.sprintf("%d",historyTemp[3][1]);
+	ui->P2_Temp4_2->setText(m);
+	m.sprintf("%d",historyTemp[3][2]);
+	ui->P2_Temp4_3->setText(m);
+	m.sprintf("%d",historyTemp[3][3]);
+	ui->P2_Temp4_4->setText(m);
+	m.sprintf("%d",historyTemp[3][4]);
+	ui->P2_Temp4_5->setText(m);
+	m.sprintf("%d",historyTemp[3][5]);
+	ui->P2_Temp4_6->setText(m);
+	m.sprintf("%d",historyTemp[3][6]);
+	ui->P2_Temp4_7->setText(m);
+	m.sprintf("%d",historyTemp[3][7]);
+	ui->P2_Temp4_8->setText(m);
+	m.sprintf("%d",historyTemp[3][8]);
+	ui->P2_Temp4_9->setText(m);
+	m.sprintf("%d",historyTemp[3][9]);
+	ui->P2_Temp4_10->setText(m);
+	
 
-	ui->P2_Motor3->setStyleSheet("background:rgb(255,221,134)");
-	ui->P2_Motor3->setFixedWidth(P1_M3Val);
-	ui->P2_Motor3_2->move(100+P1_M3Val,298);
-
-	ui->P2_Motor4->setStyleSheet("background:rgb(255,168,93)");
-	ui->P2_Motor4->setFixedWidth(P1_M4Val);
-	ui->P2_Motor4_2->move(100+P1_M4Val,364);
-
-	ui->P2_Motor5->setStyleSheet("background:rgb(90,126,223)");
-	ui->P2_Motor5->setFixedWidth(P1_M5Val);
-	ui->P2_Motor5_2->move(100+P1_M5Val,431);
-
+	m.sprintf("%d",historyTemp[4][0]);
+	ui->P2_Temp5->setText(m);
+	m.sprintf("%d",historyTemp[4][1]);
+	ui->P2_Temp5_2->setText(m);
+	m.sprintf("%d",historyTemp[4][2]);
+	ui->P2_Temp5_3->setText(m);
+	m.sprintf("%d",historyTemp[4][3]);
+	ui->P2_Temp5_4->setText(m);
+	m.sprintf("%d",historyTemp[4][4]);
+	ui->P2_Temp5_5->setText(m);
+	m.sprintf("%d",historyTemp[4][5]);
+	ui->P2_Temp5_6->setText(m);
+	m.sprintf("%d",historyTemp[4][6]);
+	ui->P2_Temp5_7->setText(m);
+	m.sprintf("%d",historyTemp[4][7]);
+	ui->P2_Temp5_8->setText(m);
+	m.sprintf("%d",historyTemp[4][8]);
+	ui->P2_Temp5_9->setText(m);
+	m.sprintf("%d",historyTemp[4][9]);
+	ui->P2_Temp5_10->setText(m);
 
 }
 
@@ -2688,6 +4753,93 @@ void MainWindow::ChangeWindow_WIN3(void)
     ui->P3_ValT->setText(m);
     m.sprintf("%d",Motor_Var[PUMP_UB]);
     ui->P3_ValBAL->setText(m);
+
+
+	m.sprintf("%d",historyCurrent[0][0]);
+	ui->P3_CurrentR->setText(m);
+	m.sprintf("%d",historyCurrent[0][1]);
+	ui->P3_CurrentR_2->setText(m);
+	m.sprintf("%d",historyCurrent[0][2]);
+	ui->P3_CurrentR_3->setText(m);
+	m.sprintf("%d",historyCurrent[0][3]);
+	ui->P3_CurrentR_4->setText(m);
+	m.sprintf("%d",historyCurrent[0][4]);
+	ui->P3_CurrentR_5->setText(m);
+	m.sprintf("%d",historyCurrent[0][5]);
+	ui->P3_CurrentR_6->setText(m);
+	m.sprintf("%d",historyCurrent[0][6]);
+	ui->P3_CurrentR_7->setText(m);
+	m.sprintf("%d",historyCurrent[0][7]);
+	ui->P3_CurrentR_8->setText(m);
+	m.sprintf("%d",historyCurrent[0][8]);
+	ui->P3_CurrentR_9->setText(m);
+	m.sprintf("%d",historyCurrent[0][9]);
+	ui->P3_CurrentR_10->setText(m);
+
+	m.sprintf("%d",historyCurrent[1][0]);
+	ui->P3_CurrentS->setText(m);
+	m.sprintf("%d",historyCurrent[1][1]);
+	ui->P3_CurrentS_2->setText(m);
+	m.sprintf("%d",historyCurrent[1][2]);
+	ui->P3_CurrentS_3->setText(m);
+	m.sprintf("%d",historyCurrent[1][3]);
+	ui->P3_CurrentS_4->setText(m);
+	m.sprintf("%d",historyCurrent[1][4]);
+	ui->P3_CurrentS_5->setText(m);
+	m.sprintf("%d",historyCurrent[1][5]);
+	ui->P3_CurrentS_6->setText(m);
+	m.sprintf("%d",historyCurrent[1][6]);
+	ui->P3_CurrentS_7->setText(m);
+	m.sprintf("%d",historyCurrent[1][7]);
+	ui->P3_CurrentS_8->setText(m);
+	m.sprintf("%d",historyCurrent[1][8]);
+	ui->P3_CurrentS_9->setText(m);
+	m.sprintf("%d",historyCurrent[1][9]);
+	ui->P3_CurrentS_10->setText(m);
+
+	m.sprintf("%d",historyCurrent[2][0]);
+	ui->P3_CurrentT->setText(m);
+	m.sprintf("%d",historyCurrent[2][1]);
+	ui->P3_CurrentT_2->setText(m);
+	m.sprintf("%d",historyCurrent[2][2]);
+	ui->P3_CurrentT_3->setText(m);
+	m.sprintf("%d",historyCurrent[2][3]);
+	ui->P3_CurrentT_4->setText(m);
+	m.sprintf("%d",historyCurrent[2][4]);
+	ui->P3_CurrentT_5->setText(m);
+	m.sprintf("%d",historyCurrent[2][5]);
+	ui->P3_CurrentT_6->setText(m);
+	m.sprintf("%d",historyCurrent[2][6]);
+	ui->P3_CurrentT_7->setText(m);
+	m.sprintf("%d",historyCurrent[2][7]);
+	ui->P3_CurrentT_8->setText(m);
+	m.sprintf("%d",historyCurrent[2][8]);
+	ui->P3_CurrentT_9->setText(m);
+	m.sprintf("%d",historyCurrent[2][9]);
+	ui->P3_CurrentT_10->setText(m);
+
+	m.sprintf("%d",historyCurrent[3][0]);
+	ui->P3_CurrentUB->setText(m);
+	m.sprintf("%d",historyCurrent[3][1]);
+	ui->P3_CurrentUB_2->setText(m);
+	m.sprintf("%d",historyCurrent[3][2]);
+	ui->P3_CurrentUB_3->setText(m);
+	m.sprintf("%d",historyCurrent[3][3]);
+	ui->P3_CurrentUB_4->setText(m);
+	m.sprintf("%d",historyCurrent[3][4]);
+	ui->P3_CurrentUB_5->setText(m);
+	m.sprintf("%d",historyCurrent[3][5]);
+	ui->P3_CurrentUB_6->setText(m);
+	m.sprintf("%d",historyCurrent[3][6]);
+	ui->P3_CurrentUB_7->setText(m);
+	m.sprintf("%d",historyCurrent[3][7]);
+	ui->P3_CurrentUB_8->setText(m);
+	m.sprintf("%d",historyCurrent[3][8]);
+	ui->P3_CurrentUB_9->setText(m);
+	m.sprintf("%d",historyCurrent[3][9]);
+	ui->P3_CurrentUB_10->setText(m);
+
+
 }
 
 void MainWindow::ChangeWindow_WIN5(void)
@@ -2695,8 +4847,6 @@ void MainWindow::ChangeWindow_WIN5(void)
 	int nVal,nVal2;
 	QString mm;
 	QPoint qpAppNewLoc;
-
-
 
 
 	nVal = int(((Setting_Var[S_P5_V6]/2)*(757-460))/100+460);
@@ -2967,7 +5117,7 @@ void MainWindow::ChangeWindow_WIN6(void)
 	ui->P6_V1_4->setText(mm);
 
 
-	nVal = int(((Setting_Var[S_P6_V5]/25.0)*(375-225))+225);
+	nVal = int(((Setting_Var[S_P6_V5]/100.0)*(375-225))+225);
 	nVal2 = ui->P6_L3->y();
 	qpAppNewLoc.setX(nVal);
 	qpAppNewLoc.setY(nVal2);
@@ -2979,7 +5129,7 @@ void MainWindow::ChangeWindow_WIN6(void)
 	ui->P6_V1_5->setProperty("pos", qpAppNewLoc);
 	ui->P6_V1_5->setText(mm);
 
-	nVal = int(((Setting_Var[S_P6_V6]/25.0)*(375-225))+225);
+	nVal = int(((Setting_Var[S_P6_V6]/100.0)*(375-225))+225);
 	nVal2 = ui->P6_H3->y();
 	qpAppNewLoc.setX(nVal);
 	qpAppNewLoc.setY(nVal2);
@@ -3041,7 +5191,7 @@ void MainWindow::ChangeWindow_WIN6(void)
 	ui->P6_V1_10->setProperty("pos", qpAppNewLoc);
 	ui->P6_V1_10->setText(mm);
 
-	nVal = int(((Setting_Var[S_P6_V11]/20.0)*(750-500))+500);
+	nVal = int(((Setting_Var[S_P6_V11]/1000.0)*(750-500))+500);
 	nVal2 = ui->P6_T5->y();
 	qpAppNewLoc.setX(nVal);
 	qpAppNewLoc.setY(nVal2);
@@ -3052,7 +5202,6 @@ void MainWindow::ChangeWindow_WIN6(void)
 	qpAppNewLoc.setY(nVal2-15);
 	ui->P6_V1_11->setProperty("pos", qpAppNewLoc);
 	ui->P6_V1_11->setText(mm);
-
 
 }
 
@@ -3121,64 +5270,63 @@ void MainWindow::ChangeWindow_WIN7(void)
 	ui->P7_V1_4->setProperty("pos", qpAppNewLoc);
 	ui->P7_V1_4->setText(mm);
 
-
 }
 
 void MainWindow::ChangeWindow_WIN8(void)
 {
 	QPixmap qp;
 
-	if(!Setting_Var[S_P8_V1]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+	if(!Setting_Var[S_P8_V1]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½
 	ui->P8_B1->setPixmap(qp);
 
-	if(!Setting_Var[S_P8_V1]) qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (11)");  // »ç¿ë¾ÈÇÔ
-	else qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (12)"); // »ç¿ë
+	if(!Setting_Var[S_P8_V1]) qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (11)");  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	else qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (12)"); // ï¿½ï¿½ï¿½
 	ui->P8_B1_V2->setPixmap(qp);
 
 
-	if(!Setting_Var[S_P8_V2]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+	if(!Setting_Var[S_P8_V2]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½
 	ui->P8_B2->setPixmap(qp);
 
-	if(!Setting_Var[S_P8_V2]) qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (11)");  // »ç¿ë¾ÈÇÔ
-	else qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (12)"); // »ç¿ë
+	if(!Setting_Var[S_P8_V2]) qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (11)");  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	else qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (12)"); // ï¿½ï¿½ï¿½
 	ui->P8_B2_V2->setPixmap(qp);
 
-	if(!Setting_Var[S_P8_V3]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+	if(!Setting_Var[S_P8_V3]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½
 	ui->P8_B3->setPixmap(qp);
 
-	if(!Setting_Var[S_P8_V3]) qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (11)");  // »ç¿ë¾ÈÇÔ
-	else qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (12)"); // »ç¿ë
+	if(!Setting_Var[S_P8_V3]) qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (11)");  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	else qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (12)"); // ï¿½ï¿½ï¿½
 	ui->P8_B3_V2->setPixmap(qp);
 
 
-	if(!Setting_Var[S_P8_V4]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+	if(!Setting_Var[S_P8_V4]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½
 	ui->P8_B4->setPixmap(qp);
 
-	if(!Setting_Var[S_P8_V4]) qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (11)");  // »ç¿ë¾ÈÇÔ
-	else qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (12)"); // »ç¿ë
+	if(!Setting_Var[S_P8_V4]) qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (11)");  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	else qp = QPixmap(":/new/8P/UIUX/8p/SetSafety/9P_Group2 (12)"); // ï¿½ï¿½ï¿½
 	ui->P8_B4_V2->setPixmap(qp);
 
 
-	if(!Setting_Var[S_P8_V5]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+	if(!Setting_Var[S_P8_V5]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½
 	ui->P8_B5->setPixmap(qp);
 
-	if(!Setting_Var[S_P8_V6]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+	if(!Setting_Var[S_P8_V6]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½
 	ui->P8_B6->setPixmap(qp);
 
 
-	if(!Setting_Var[S_P8_V7]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+	if(!Setting_Var[S_P8_V7]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½
 	ui->P8_B7->setPixmap(qp);
 
 
-	if(!Setting_Var[S_P8_V8]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+	if(!Setting_Var[S_P8_V8]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½
 	ui->P8_B8->setPixmap(qp);
 
 
@@ -3227,48 +5375,48 @@ void MainWindow::ChangeWindow_WIN8(void)
 	ui->P8_B13_V2->setPixmap(qp);
 
 
-	if(!Setting_Var[S_P8_V18]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+	if(!Setting_Var[S_P8_V18]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½
 	ui->P8_B9->setPixmap(qp);
 
-	if(!Setting_Var[S_P8_V18]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // »ç¿ë¾ÈÇÔ
-	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // »ç¿ë
+	if(!Setting_Var[S_P8_V18]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // ï¿½ï¿½ï¿½
 	ui->P8_B9_V1->setPixmap(qp);
 
 
-	if(!Setting_Var[S_P8_V19]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+	if(!Setting_Var[S_P8_V19]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½
 	ui->P8_B10->setPixmap(qp);
 
-	if(!Setting_Var[S_P8_V19]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // »ç¿ë¾ÈÇÔ
-	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // »ç¿ë
+	if(!Setting_Var[S_P8_V19]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // ï¿½ï¿½ï¿½
 	ui->P8_B10_V1->setPixmap(qp);
 
 
-	if(!Setting_Var[S_P8_V20]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+	if(!Setting_Var[S_P8_V20]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½
 	ui->P8_B11->setPixmap(qp);
 
-	if(!Setting_Var[S_P8_V20]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // »ç¿ë¾ÈÇÔ
-	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // »ç¿ë
+	if(!Setting_Var[S_P8_V20]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // ï¿½ï¿½ï¿½
 	ui->P8_B11_V1->setPixmap(qp);
 
 
-	if(!Setting_Var[S_P8_V21]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+	if(!Setting_Var[S_P8_V21]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½
 	ui->P8_B12->setPixmap(qp);
 
-	if(!Setting_Var[S_P8_V21]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // »ç¿ë¾ÈÇÔ
-	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // »ç¿ë
+	if(!Setting_Var[S_P8_V21]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // ï¿½ï¿½ï¿½
 	ui->P8_B12_V1->setPixmap(qp);
 
 
-	if(!Setting_Var[S_P8_V22]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // »ç¿ë¾ÈÇÔ
-	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // »ç¿ë
+	if(!Setting_Var[S_P8_V22]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (2).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ï¿½ï¿½ï¿½
 	ui->P8_B13->setPixmap(qp);
 
-	if(!Setting_Var[S_P8_V22]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // »ç¿ë¾ÈÇÔ
-	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // »ç¿ë
+	if(!Setting_Var[S_P8_V22]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (46).png"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (8).png"); // ï¿½ï¿½ï¿½
 	ui->P8_B13_V1->setPixmap(qp);
 
 
@@ -3290,7 +5438,6 @@ void MainWindow::ChangeWindow_WIN8(void)
 	if(Setting_Var[S_P8_V26]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (20).png"); // En
 	else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (30).png"); // Dis
 	ui->P8_B18->setPixmap(qp);
-
 }
 
 void MainWindow::ChangeStringList(void)
@@ -3306,6 +5453,10 @@ void MainWindow::ChangeStringList(void)
 	P1_SafeMecha_STRList = P1_SafeMecha_STR.split(",");
 	P1_BRSafe_STRList = P1_BRSafe_STR.split(",");
 	P1_OilSafe_2_STRList = P1_OilSafe_2_STR.split(",");
+	P1_DeviceConn_STRList = P1_DeviceConn_STR.split(",");
+	P5_TempSel_STRList = P5_TempSel_STR.split(",");
+
+
 	P1_RPM1_STRCnt	=	 P1_RPM1_STRList.size();
 	P1_RPM2_STRCnt	=	 P1_RPM2_STRList.size();
 	P1_MotorDir_STRCnt	=	 P1_MotorDir_STRList.size();
@@ -3317,6 +5468,8 @@ void MainWindow::ChangeStringList(void)
 	P1_SafeMecha_STRCnt	=	 P1_SafeMecha_STRList.size();
 	P1_BRSafe_STRCnt	=	 P1_BRSafe_STRList.size();
 	P1_OilSafe_2_STRCnt	=	 P1_OilSafe_2_STRList.size();
+	P1_DeviceConn_STRCnt	=	 P1_DeviceConn_STRList.size();
+	P5_TempSel_STRCnt	=	 P5_TempSel_STRList.size();
 
 	if(P1_RPM1_STRList.size() < 7){
 		qApp->quit();
@@ -3372,6 +5525,17 @@ void MainWindow::ChangeStringList(void)
 		qApp->quit();
 		return;
 	}
+
+	if(P1_DeviceConn_STRList.size() < 8){
+		qApp->quit();
+		return;
+	}
+
+	if(P5_TempSel_STRList.size() < 12){
+		qApp->quit();
+		return;
+	}
+	
 
 
 }
