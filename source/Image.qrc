@@ -15,6 +15,8 @@
         <file>UIUX/Menu_Background/Menu_Group1 (13).png</file>
         <file>UIUX/Menu_Background/Menu_Group1 (14).png</file>
         <file>UIUX/Menu_Background/Menu_Group1 (15).png</file>
+        <file>UIUX/noname1.png</file>
+        <file>UIUX/noname2.png</file>
     </qresource>
     <qresource prefix="/new/1P">
         <file>UIUX/1p/current/1P_Group5 (1).ini</file>

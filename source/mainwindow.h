@@ -14,6 +14,9 @@
 #include <QMouseEvent>
 #include <QThread>
 #include <QFontDatabase>
+#include <QFile>
+#include <QTextStream>
+#include <QDebug>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -27,6 +30,8 @@ class MainWindow : public QMainWindow
 #define DEFAULT_WINDOW_CHANGE_TIME (30000 / (DEFAULT_TIMER_TIME))
 #define UPDATE_TEMP_HISTORY_TIME			(1000 / (DEFAULT_TIMER_TIME))
 #define UPDATE_CURRENT_HISTORY_TIME			(1000 / (DEFAULT_TIMER_TIME))
+
+#define FONT_BLINKING_TIME			(500 / (DEFAULT_TIMER_TIME))
 
 // P1 UI Scale
 #define MIN_RPM_VALUE 0
@@ -207,12 +212,12 @@ class MainWindow : public QMainWindow
 #define	S_P5_V18	17
 #define	S_P5_V19	18
 #define	S_P5_V20	19
-#define	S_P6_V1	20
-#define	S_P6_V2	21
-#define	S_P6_V3	22
-#define	S_P6_V4	23
-#define	S_P6_V5	24
-#define	S_P6_V6	25
+#define	S_P6_V1	20		// 과전류 Warning
+#define	S_P6_V2	21		// 과전류 Error
+#define	S_P6_V3	22		// 저전류 Warning
+#define	S_P6_V4	23		// 저전류 Error
+#define	S_P6_V5	24		// 불평형 Warning
+#define	S_P6_V6	25		// 불평형 Error
 #define	S_P6_V7	26
 #define	S_P6_V8	27
 #define	S_P6_V9	28
@@ -221,8 +226,8 @@ class MainWindow : public QMainWindow
 #define	S_P7_V1	31
 #define	S_P7_V2	32
 #define	S_P7_V3	33
-#define	S_P7_V4	34
-#define	S_P7_V5	35
+#define	S_P7_V4	34		// RPM Warning
+#define	S_P7_V5	35		// RPM Error
 #define	S_P8_V1	36
 #define	S_P8_V2	37
 #define	S_P8_V3	38
@@ -250,8 +255,48 @@ class MainWindow : public QMainWindow
 #define	S_P8_V25	60
 #define	S_P8_V26	61
 #define	S_P8_V27	62
+#define	S_P4_V1		63	// [Using time of Mecha (h) ]
+#define	S_P4_V2		64	// [Using time of bearing (h) ]
+#define	S_P4_V3		65	// [Using time of oil (h) ]
+#define	S_P4_V4		66	// Setting Mode [ 0:SWHP 1:SWVP... ]
+#define	S_P4_V5		67	// 2P KW [ 0:2P_3.7KW 1:2P_4.5KW 2:2P_5.5KW 3:2P_7.5KW 4:4P_3.7KW 5:4P_4.5KW 6:4P_5.5KW 7:4P_7.5KW ... ]
 
 #define		MAX_SET_DEFINE	100
+
+
+
+#define	ERROR_NO1	0	//	온도 모터1 경보
+#define	ERROR_NO2	1	//	온도 모터2 경보
+#define	ERROR_NO3	2	//	온도 모터3 경보
+#define	ERROR_NO4	3	//	온도 베어링 상 경보
+#define	ERROR_NO5	4	//	온도 베어링 하 경보
+#define	ERROR_NO6	5	//	온도 모터1 비상
+#define	ERROR_NO7	6	//	온도 모터2 비상
+#define	ERROR_NO8	7	//	온도 모터3 비상
+#define	ERROR_NO9	8	//	온도 베어링 상 비상
+#define	ERROR_NO10	9	//	온도 베어링 하 비상
+#define	ERROR_NO11	10	//	RPM 경보
+#define	ERROR_NO12	11	//	RPM 비상
+#define	ERROR_NO13	12	//	과전류 R상 경보
+#define	ERROR_NO14	13	//	과전류 S상 경보
+#define	ERROR_NO15	14	//	과전류 T상 경보
+#define	ERROR_NO16	15	//	과전류 R상 비상
+#define	ERROR_NO17	16	//	과전류 S상 비상
+#define	ERROR_NO18	17	//	과전류 T상 비상
+#define	ERROR_NO19	18	//	저전류 R상 경보
+#define	ERROR_NO20	19	//	저전류 S상 경보
+#define	ERROR_NO21	20	//	저전류 T상 경보
+#define	ERROR_NO22	21	//	저전류 R상 비상
+#define	ERROR_NO23	22	//	저전류 S상 비상
+#define	ERROR_NO24	23	//	저전류 T상 비상
+#define	ERROR_NO25	24	//	상전류 불평형 경보
+#define	ERROR_NO26	25	//	상전류 불평형 비상
+#define	ERROR_NO27	26	//	모터 누수 발생
+#define	ERROR_NO28	27	//	오일 누수 발생
+#define	ERROR_NO29	28	//	제어 누수 발생
+#define	ERROR_NO30	29	//	메카니컬실 주기만료
+#define	ERROR_NO31	30	//	베어링 주기만료
+#define	ERROR_NO32	31	//	오일 주기만료
 
 //frame : 운전
 //frame_2 : 온도히스토리
@@ -314,6 +359,10 @@ class MainWindow : public QMainWindow
 	QString P1_DeviceConn_STR = ":/new/1P/UIUX/1p/level/1P_Group2 (1).png,:/new/1P/UIUX/1p/level/1P_Group2 (6).png,:/new/1P/UIUX/1p/level/1P_Group2 (2).png,:/new/1P/UIUX/1p/level/1P_Group2 (7).png,:/new/1P/UIUX/1p/level/1P_Group2 (3).png,:/new/1P/UIUX/1p/level/1P_Group2 (8).png,:/new/1P/UIUX/1p/level/1P_Group2 (4).png,:/new/1P/UIUX/1p/level/1P_Group2 (9).png";
 	// 12
 	QString P5_TempSel_STR = ":/new/5P/UIUX/5p/SelTempSensor/5P_Group3 (6).png,:/new/5P/UIUX/5p/SelTempSensor/5P_Group3 (17).png,:/new/5P/UIUX/5p/SelTempSensor/5P_Group3 (7).png,:/new/5P/UIUX/5p/SelTempSensor/5P_Group3 (16).png,:/new/5P/UIUX/5p/SelTempSensor/5P_Group3 (8).png,:/new/5P/UIUX/5p/SelTempSensor/5P_Group3 (15).png,:/new/5P/UIUX/5p/SelTempSensor/5P_Group3 (9).png,:/new/5P/UIUX/5p/SelTempSensor/5P_Group3 (14).png,:/new/5P/UIUX/5p/SelTempSensor/5P_Group3 (10).png,:/new/5P/UIUX/5p/SelTempSensor/5P_Group3 (13).png,:/new/5P/UIUX/5p/SelTempSensor/5P_Group3 (11).png,:/new/5P/UIUX/5p/SelTempSensor/5P_Group3 (12).png";
+	// 18
+	QString P4_V_STR = ":/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (17).png,:/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (20).png,:/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (19).png,:/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (22).png,:/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (18).png,:/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (23).png,:/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (13).png,:/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (24).png,:/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (14).png,:/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (25).png,:/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (15).png,:/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (26).png,:/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (16).png,:/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (27).png,:/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (11).png,:/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (28).png,:/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (12).png,:/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (29).png";
+	// 8
+	QString P4_KW_STR = ":/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (4).png,:/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (3).png,:/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (6).png,:/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (5).png,:/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (8).png,:/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (7).png,:/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (10).png,:/new/4P/UIUX/4p/SetPumpModel/P4_Group2 (9).png";
 
 	QStringList P1_RPM1_STRList;
 	QStringList P1_RPM2_STRList;
@@ -328,6 +377,8 @@ class MainWindow : public QMainWindow
 	QStringList P1_OilSafe_2_STRList;
 	QStringList P1_DeviceConn_STRList;
 	QStringList P5_TempSel_STRList;
+	QStringList P4_V_STRList;
+	QStringList P4_KW_STRList;
 
 	int P1_RPM1_STRCnt;
 	int P1_RPM2_STRCnt;
@@ -342,6 +393,8 @@ class MainWindow : public QMainWindow
 	int P1_OilSafe_2_STRCnt;
 	int P1_DeviceConn_STRCnt;
 	int P5_TempSel_STRCnt;
+	int P4_V_STRCnt;
+	int P4_KW_STRCnt;
 
 	int mRPMIndex = 0;
 
@@ -370,6 +423,10 @@ class MainWindow : public QMainWindow
 
 	int ScrollVar[50][4];
 
+	QFile file;
+	QString rdFile;
+	QStringList ErrorList;
+
 public:
 	void SettingVar_Init();
 	MainWindow(QWidget *parent = nullptr);
@@ -381,18 +438,21 @@ public:
 	void TouchProcess_WIN1(int x,int y);
 	void TouchProcess_WIN2(int x,int y);
 	void TouchProcess_WIN3(int x,int y);
+	void TouchProcess_WIN4(int x, int y);
 	void TouchProcess_WIN5(int x,int y);
 	void TouchProcess_WIN6(int x,int y);
 	void TouchProcess_WIN7(int x,int y);
 	void TouchProcess_WIN8(int x,int y);
 	void TouchProcess_WIN9(int x,int y);
 	void TouchProcess_WIN10(int x,int y);
+	void TouchMove_WIN4(int orgX, int orgY);
 	void TouchMove_WIN5(int orgX, int orgY);
 	void TouchMove_WIN6(int orgX, int orgY);
 	void TouchMove_WIN7(int orgX, int orgY);
 	void ChangeWindow_WIN1(void);
 	void ChangeWindow_WIN2(void);
 	void ChangeWindow_WIN3(void);
+	void ChangeWindow_WIN4(void);
 	void ChangeWindow_WIN5(void);
 	void ChangeWindow_WIN6(void);
 	void ChangeWindow_WIN7(void);
@@ -404,6 +464,8 @@ public:
 	QTimer *timer;
 	int count;
 	int nExitCnt;
+
+	int i_BlinkTime;
 
 	int historyTemp[5][10];
 	int historyCurrent[5][10];
@@ -429,6 +491,7 @@ public:
 	int Motor_Var[MAX_PUMP_DEFINE];
 
 	int Setting_Var[MAX_SET_DEFINE];
+	int backSetting_Var[MAX_SET_DEFINE];
 
 	int iXdifferent,iYdifferent; //X,Y축 움직임 저장변수
 	bool b_MousePressed; //마우스 눌림 상태표시
