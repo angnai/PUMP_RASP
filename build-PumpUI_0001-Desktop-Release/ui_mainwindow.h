@@ -605,6 +605,42 @@ public:
     QLabel *label_219;
     QLabel *P10_LABEL1;
     QLabel *P10_LABEL2;
+    QLabel *P10_index_0;
+    QLabel *P10_index_1;
+    QLabel *P10_index_2;
+    QLabel *P10_index_3;
+    QLabel *P10_index_4;
+    QLabel *P10_index_5;
+    QLabel *P10_index_6;
+    QLabel *P10_index_7;
+    QLabel *P10_index_8;
+    QLabel *P10_time_0;
+    QLabel *P10_process_0;
+    QLabel *P10_info_0;
+    QLabel *P10_info_1;
+    QLabel *P10_process_1;
+    QLabel *P10_time_1;
+    QLabel *P10_process_2;
+    QLabel *P10_info_2;
+    QLabel *P10_time_2;
+    QLabel *P10_process_3;
+    QLabel *P10_info_3;
+    QLabel *P10_time_3;
+    QLabel *P10_process_4;
+    QLabel *P10_info_4;
+    QLabel *P10_time_4;
+    QLabel *P10_process_5;
+    QLabel *P10_info_5;
+    QLabel *P10_time_5;
+    QLabel *P10_info_6;
+    QLabel *P10_process_6;
+    QLabel *P10_time_6;
+    QLabel *P10_info_7;
+    QLabel *P10_process_7;
+    QLabel *P10_time_7;
+    QLabel *P10_info_8;
+    QLabel *P10_process_8;
+    QLabel *P10_time_8;
     QFrame *frame_11;
     QComboBox *comboBox;
     QPushButton *CMD_SelUART;
@@ -801,7 +837,7 @@ public:
         P1_ValMotor2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         P1_ValMotor3 = new QLabel(frame);
         P1_ValMotor3->setObjectName(QStringLiteral("P1_ValMotor3"));
-        P1_ValMotor3->setGeometry(QRect(173, 276, 70, 41));
+        P1_ValMotor3->setGeometry(QRect(173, 274, 70, 41));
         QPalette palette2;
         palette2.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette2.setBrush(QPalette::Active, QPalette::Text, brush);
@@ -825,7 +861,7 @@ public:
         P1_ValMotor3->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         P1_ValBR1 = new QLabel(frame);
         P1_ValBR1->setObjectName(QStringLiteral("P1_ValBR1"));
-        P1_ValBR1->setGeometry(QRect(173, 346, 70, 41));
+        P1_ValBR1->setGeometry(QRect(173, 340, 70, 41));
         QPalette palette3;
         palette3.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette3.setBrush(QPalette::Active, QPalette::Text, brush);
@@ -1483,7 +1519,7 @@ public:
         P1_ValBR2_1->setAlignment(Qt::AlignCenter);
         P1_ValMotor1_2 = new QLabel(frame);
         P1_ValMotor1_2->setObjectName(QStringLiteral("P1_ValMotor1_2"));
-        P1_ValMotor1_2->setGeometry(QRect(110, 140, 161, 50));
+        P1_ValMotor1_2->setGeometry(QRect(107, 140, 165, 55));
         QPalette palette19;
         palette19.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette19.setBrush(QPalette::Active, QPalette::Button, brush44);
@@ -1540,7 +1576,7 @@ public:
         P1_ValMotor1_2->setAlignment(Qt::AlignCenter);
         P1_ValMotor2_2 = new QLabel(frame);
         P1_ValMotor2_2->setObjectName(QStringLiteral("P1_ValMotor2_2"));
-        P1_ValMotor2_2->setGeometry(QRect(110, 210, 161, 50));
+        P1_ValMotor2_2->setGeometry(QRect(107, 210, 165, 55));
         QPalette palette20;
         palette20.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette20.setBrush(QPalette::Active, QPalette::Button, brush44);
@@ -1597,7 +1633,7 @@ public:
         P1_ValMotor2_2->setAlignment(Qt::AlignCenter);
         P1_ValMotor3_2 = new QLabel(frame);
         P1_ValMotor3_2->setObjectName(QStringLiteral("P1_ValMotor3_2"));
-        P1_ValMotor3_2->setGeometry(QRect(110, 280, 161, 50));
+        P1_ValMotor3_2->setGeometry(QRect(107, 280, 165, 55));
         QPalette palette21;
         palette21.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette21.setBrush(QPalette::Active, QPalette::Button, brush44);
@@ -1654,7 +1690,7 @@ public:
         P1_ValMotor3_2->setAlignment(Qt::AlignCenter);
         P1_ValBR1_2 = new QLabel(frame);
         P1_ValBR1_2->setObjectName(QStringLiteral("P1_ValBR1_2"));
-        P1_ValBR1_2->setGeometry(QRect(110, 350, 161, 50));
+        P1_ValBR1_2->setGeometry(QRect(107, 347, 165, 55));
         QPalette palette22;
         palette22.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette22.setBrush(QPalette::Active, QPalette::Button, brush44);
@@ -1711,7 +1747,7 @@ public:
         P1_ValBR1_2->setAlignment(Qt::AlignCenter);
         P1_ValBR2_2 = new QLabel(frame);
         P1_ValBR2_2->setObjectName(QStringLiteral("P1_ValBR2_2"));
-        P1_ValBR2_2->setGeometry(QRect(110, 410, 161, 50));
+        P1_ValBR2_2->setGeometry(QRect(107, 410, 165, 55));
         QPalette palette23;
         palette23.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette23.setBrush(QPalette::Active, QPalette::Button, brush44);
@@ -1857,7 +1893,6 @@ public:
         P1_Motor5->raise();
         P1_Motor4_2->raise();
         P1_Motor5_2->raise();
-        P1_Motor1_2->raise();
         P1_Motor3_2->raise();
         P1_Motor2_2->raise();
         P1_Current_Background->raise();
@@ -1875,13 +1910,14 @@ public:
         P1_ValMotor3_1->raise();
         P1_ValBR1_1->raise();
         P1_ValBR2_1->raise();
+        P1_LABEL1->raise();
+        P1_LABEL2->raise();
+        P1_Motor1_2->raise();
         P1_ValMotor1_2->raise();
         P1_ValMotor2_2->raise();
         P1_ValMotor3_2->raise();
-        P1_ValBR1_2->raise();
         P1_ValBR2_2->raise();
-        P1_LABEL1->raise();
-        P1_LABEL2->raise();
+        P1_ValBR1_2->raise();
         frame_2 = new QFrame(centralwidget);
         frame_2->setObjectName(QStringLiteral("frame_2"));
         frame_2->setGeometry(QRect(0, 0, 800, 480));
@@ -3605,7 +3641,7 @@ public:
         P2_ValBR2_1->setAlignment(Qt::AlignCenter);
         P2_ValBR1_2 = new QLabel(frame_2);
         P2_ValBR1_2->setObjectName(QStringLiteral("P2_ValBR1_2"));
-        P2_ValBR1_2->setGeometry(QRect(113, 339, 161, 50));
+        P2_ValBR1_2->setGeometry(QRect(111, 339, 164, 55));
         QPalette palette87;
         palette87.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette87.setBrush(QPalette::Active, QPalette::Button, brush44);
@@ -3662,7 +3698,7 @@ public:
         P2_ValBR1_2->setAlignment(Qt::AlignCenter);
         P2_ValBR2_2 = new QLabel(frame_2);
         P2_ValBR2_2->setObjectName(QStringLiteral("P2_ValBR2_2"));
-        P2_ValBR2_2->setGeometry(QRect(113, 405, 161, 50));
+        P2_ValBR2_2->setGeometry(QRect(111, 405, 164, 55));
         QPalette palette88;
         palette88.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette88.setBrush(QPalette::Active, QPalette::Button, brush44);
@@ -3719,7 +3755,7 @@ public:
         P2_ValBR2_2->setAlignment(Qt::AlignCenter);
         P2_ValMotor1_2 = new QLabel(frame_2);
         P2_ValMotor1_2->setObjectName(QStringLiteral("P2_ValMotor1_2"));
-        P2_ValMotor1_2->setGeometry(QRect(113, 140, 161, 50));
+        P2_ValMotor1_2->setGeometry(QRect(111, 140, 164, 55));
         QPalette palette89;
         palette89.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette89.setBrush(QPalette::Active, QPalette::Button, brush44);
@@ -3776,7 +3812,7 @@ public:
         P2_ValMotor1_2->setAlignment(Qt::AlignCenter);
         P2_ValMotor2_2 = new QLabel(frame_2);
         P2_ValMotor2_2->setObjectName(QStringLiteral("P2_ValMotor2_2"));
-        P2_ValMotor2_2->setGeometry(QRect(113, 207, 161, 50));
+        P2_ValMotor2_2->setGeometry(QRect(111, 207, 164, 55));
         QPalette palette90;
         palette90.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette90.setBrush(QPalette::Active, QPalette::Button, brush44);
@@ -3833,7 +3869,7 @@ public:
         P2_ValMotor2_2->setAlignment(Qt::AlignCenter);
         P2_ValMotor3_2 = new QLabel(frame_2);
         P2_ValMotor3_2->setObjectName(QStringLiteral("P2_ValMotor3_2"));
-        P2_ValMotor3_2->setGeometry(QRect(113, 273, 161, 50));
+        P2_ValMotor3_2->setGeometry(QRect(111, 273, 164, 55));
         QPalette palette91;
         palette91.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette91.setBrush(QPalette::Active, QPalette::Button, brush44);
@@ -4221,6 +4257,99 @@ public:
         P2_LABEL2->setLayoutDirection(Qt::LeftToRight);
         P2_LABEL2->setAutoFillBackground(false);
         P2_LABEL2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        P2_Background->raise();
+        P2_LeftMEnu->raise();
+        P2_Info1->raise();
+        P2_Cap5->raise();
+        P2_Info2->raise();
+        P2_Cap6->raise();
+        P2_Cap7->raise();
+        P2_Cap8->raise();
+        P2_Cap9->raise();
+        P2_Cap10->raise();
+        P2_ValTime->raise();
+        P2_ValBR1->raise();
+        P2_ValBR2->raise();
+        P2_ValMotor3->raise();
+        P2_ValMotor2->raise();
+        P2_ValMotor1->raise();
+        P2_Temp1->raise();
+        P2_Temp2->raise();
+        P2_Temp3->raise();
+        P2_Temp4->raise();
+        P2_Temp5->raise();
+        P2_Temp2_2->raise();
+        P2_Temp3_2->raise();
+        P2_Temp4_2->raise();
+        P2_Temp1_2->raise();
+        P2_Temp5_2->raise();
+        P2_Temp2_3->raise();
+        P2_Temp3_3->raise();
+        P2_Temp4_3->raise();
+        P2_Temp1_3->raise();
+        P2_Temp5_3->raise();
+        P2_Temp2_4->raise();
+        P2_Temp3_4->raise();
+        P2_Temp4_4->raise();
+        P2_Temp1_4->raise();
+        P2_Temp5_4->raise();
+        P2_Temp2_5->raise();
+        P2_Temp3_5->raise();
+        P2_Temp4_5->raise();
+        P2_Temp1_5->raise();
+        P2_Temp5_5->raise();
+        P2_Temp2_6->raise();
+        P2_Temp3_6->raise();
+        P2_Temp4_6->raise();
+        P2_Temp1_6->raise();
+        P2_Temp5_6->raise();
+        P2_Temp2_7->raise();
+        P2_Temp3_7->raise();
+        P2_Temp4_7->raise();
+        P2_Temp1_7->raise();
+        P2_Temp5_7->raise();
+        P2_Temp2_8->raise();
+        P2_Temp3_8->raise();
+        P2_Temp4_8->raise();
+        P2_Temp1_8->raise();
+        P2_Temp5_8->raise();
+        P2_Temp2_9->raise();
+        P2_Temp3_9->raise();
+        P2_Temp4_9->raise();
+        P2_Temp1_9->raise();
+        P2_Temp5_9->raise();
+        P2_Temp2_10->raise();
+        P2_Temp3_10->raise();
+        P2_Temp4_10->raise();
+        P2_Temp1_10->raise();
+        P2_Temp5_10->raise();
+        P2_Motor4->raise();
+        P2_Motor4_2->raise();
+        P2_Motor5->raise();
+        P2_Motor5_2->raise();
+        P2_Motor1->raise();
+        P2_Motor2_2->raise();
+        P2_Motor1_2->raise();
+        P2_Motor3_2->raise();
+        P2_Motor3->raise();
+        P2_Motor2->raise();
+        P2_ValMotor1_1->raise();
+        P2_ValMotor2_1->raise();
+        P2_ValMotor3_1->raise();
+        P2_ValBR1_1->raise();
+        P2_ValBR2_1->raise();
+        P2_ValMotor1_3->raise();
+        P2_ValMotor2_3->raise();
+        P2_ValMotor3_3->raise();
+        P2_ValBR1_3->raise();
+        P2_ValBR2_3->raise();
+        P2_LABEL1->raise();
+        P2_LABEL2->raise();
+        P2_ValBR1_2->raise();
+        P2_ValBR2_2->raise();
+        P2_ValMotor1_2->raise();
+        P2_ValMotor2_2->raise();
+        P2_ValMotor3_2->raise();
         frame_3 = new QFrame(centralwidget);
         frame_3->setObjectName(QStringLiteral("frame_3"));
         frame_3->setGeometry(QRect(0, 0, 800, 480));
@@ -6974,11 +7103,11 @@ public:
         P6_H1->setPixmap(QPixmap(QString::fromUtf8(":/new/6P/UIUX/6p/P6_GROUPADD1 (5).png")));
         P6_H2 = new QLabel(frame_6);
         P6_H2->setObjectName(QStringLiteral("P6_H2"));
-        P6_H2->setGeometry(QRect(375, 304, 36, 36));
+        P6_H2->setGeometry(QRect(225, 304, 36, 36));
         P6_H2->setPixmap(QPixmap(QString::fromUtf8(":/new/6P/UIUX/6p/P6_GROUPADD1 (5).png")));
         P6_L2 = new QLabel(frame_6);
         P6_L2->setObjectName(QStringLiteral("P6_L2"));
-        P6_L2->setGeometry(QRect(225, 304, 36, 36));
+        P6_L2->setGeometry(QRect(375, 304, 36, 36));
         P6_L2->setPixmap(QPixmap(QString::fromUtf8(":/new/6P/UIUX/6p/P6_GROUPADD1 (6).png")));
         P6_H3 = new QLabel(frame_6);
         P6_H3->setObjectName(QStringLiteral("P6_H3"));
@@ -7058,7 +7187,7 @@ public:
         P6_V1_2->setAlignment(Qt::AlignCenter);
         P6_V1_3 = new QLabel(frame_6);
         P6_V1_3->setObjectName(QStringLiteral("P6_V1_3"));
-        P6_V1_3->setGeometry(QRect(227, 289, 31, 21));
+        P6_V1_3->setGeometry(QRect(378, 289, 31, 21));
         QPalette palette182;
         palette182.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette182.setBrush(QPalette::Active, QPalette::Text, brush);
@@ -7082,7 +7211,7 @@ public:
         P6_V1_3->setAlignment(Qt::AlignCenter);
         P6_V1_4 = new QLabel(frame_6);
         P6_V1_4->setObjectName(QStringLiteral("P6_V1_4"));
-        P6_V1_4->setGeometry(QRect(378, 289, 31, 21));
+        P6_V1_4->setGeometry(QRect(227, 289, 31, 21));
         QPalette palette183;
         palette183.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette183.setBrush(QPalette::Active, QPalette::Text, brush);
@@ -9007,6 +9136,870 @@ public:
         P10_LABEL2->setLayoutDirection(Qt::LeftToRight);
         P10_LABEL2->setAutoFillBackground(false);
         P10_LABEL2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        P10_index_0 = new QLabel(frame_10);
+        P10_index_0->setObjectName(QStringLiteral("P10_index_0"));
+        P10_index_0->setGeometry(QRect(194, 186, 50, 21));
+        QPalette palette230;
+        palette230.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette230.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush580(QColor(255, 255, 255, 128));
+        brush580.setStyle(Qt::NoBrush);
+
+        palette230.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette230.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush581(QColor(255, 255, 255, 128));
+        brush581.setStyle(Qt::NoBrush);
+
+        palette230.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette230.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush582(QColor(255, 255, 255, 128));
+        brush582.setStyle(Qt::NoBrush);
+
+        P10_index_0->setPalette(palette230);
+        P10_index_0->setFont(font10);
+        P10_index_0->setLayoutDirection(Qt::LeftToRight);
+        P10_index_0->setAutoFillBackground(false);
+        P10_index_0->setAlignment(Qt::AlignCenter);
+        P10_index_1 = new QLabel(frame_10);
+        P10_index_1->setObjectName(QStringLiteral("P10_index_1"));
+        P10_index_1->setGeometry(QRect(194, 214, 50, 21));
+        QPalette palette231;
+        palette231.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette231.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush583(QColor(255, 255, 255, 128));
+        brush583.setStyle(Qt::NoBrush);
+
+        palette231.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette231.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush584(QColor(255, 255, 255, 128));
+        brush584.setStyle(Qt::NoBrush);
+
+        palette231.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette231.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush585(QColor(255, 255, 255, 128));
+        brush585.setStyle(Qt::NoBrush);
+
+        P10_index_1->setPalette(palette231);
+        P10_index_1->setFont(font10);
+        P10_index_1->setLayoutDirection(Qt::LeftToRight);
+        P10_index_1->setAutoFillBackground(false);
+        P10_index_1->setAlignment(Qt::AlignCenter);
+        P10_index_2 = new QLabel(frame_10);
+        P10_index_2->setObjectName(QStringLiteral("P10_index_2"));
+        P10_index_2->setGeometry(QRect(194, 242, 50, 21));
+        QPalette palette232;
+        palette232.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette232.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush586(QColor(255, 255, 255, 128));
+        brush586.setStyle(Qt::NoBrush);
+
+        palette232.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette232.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush587(QColor(255, 255, 255, 128));
+        brush587.setStyle(Qt::NoBrush);
+
+        palette232.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette232.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush588(QColor(255, 255, 255, 128));
+        brush588.setStyle(Qt::NoBrush);
+
+        P10_index_2->setPalette(palette232);
+        P10_index_2->setFont(font10);
+        P10_index_2->setLayoutDirection(Qt::LeftToRight);
+        P10_index_2->setAutoFillBackground(false);
+        P10_index_2->setAlignment(Qt::AlignCenter);
+        P10_index_3 = new QLabel(frame_10);
+        P10_index_3->setObjectName(QStringLiteral("P10_index_3"));
+        P10_index_3->setGeometry(QRect(194, 270, 50, 21));
+        QPalette palette233;
+        palette233.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette233.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush589(QColor(255, 255, 255, 128));
+        brush589.setStyle(Qt::NoBrush);
+
+        palette233.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette233.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush590(QColor(255, 255, 255, 128));
+        brush590.setStyle(Qt::NoBrush);
+
+        palette233.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette233.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush591(QColor(255, 255, 255, 128));
+        brush591.setStyle(Qt::NoBrush);
+
+        P10_index_3->setPalette(palette233);
+        P10_index_3->setFont(font10);
+        P10_index_3->setLayoutDirection(Qt::LeftToRight);
+        P10_index_3->setAutoFillBackground(false);
+        P10_index_3->setAlignment(Qt::AlignCenter);
+        P10_index_4 = new QLabel(frame_10);
+        P10_index_4->setObjectName(QStringLiteral("P10_index_4"));
+        P10_index_4->setGeometry(QRect(194, 298, 50, 21));
+        QPalette palette234;
+        palette234.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette234.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush592(QColor(255, 255, 255, 128));
+        brush592.setStyle(Qt::NoBrush);
+
+        palette234.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette234.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush593(QColor(255, 255, 255, 128));
+        brush593.setStyle(Qt::NoBrush);
+
+        palette234.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette234.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush594(QColor(255, 255, 255, 128));
+        brush594.setStyle(Qt::NoBrush);
+
+        P10_index_4->setPalette(palette234);
+        P10_index_4->setFont(font10);
+        P10_index_4->setLayoutDirection(Qt::LeftToRight);
+        P10_index_4->setAutoFillBackground(false);
+        P10_index_4->setAlignment(Qt::AlignCenter);
+        P10_index_5 = new QLabel(frame_10);
+        P10_index_5->setObjectName(QStringLiteral("P10_index_5"));
+        P10_index_5->setGeometry(QRect(194, 326, 50, 21));
+        QPalette palette235;
+        palette235.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette235.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush595(QColor(255, 255, 255, 128));
+        brush595.setStyle(Qt::NoBrush);
+
+        palette235.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette235.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush596(QColor(255, 255, 255, 128));
+        brush596.setStyle(Qt::NoBrush);
+
+        palette235.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette235.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush597(QColor(255, 255, 255, 128));
+        brush597.setStyle(Qt::NoBrush);
+
+        P10_index_5->setPalette(palette235);
+        P10_index_5->setFont(font10);
+        P10_index_5->setLayoutDirection(Qt::LeftToRight);
+        P10_index_5->setAutoFillBackground(false);
+        P10_index_5->setAlignment(Qt::AlignCenter);
+        P10_index_6 = new QLabel(frame_10);
+        P10_index_6->setObjectName(QStringLiteral("P10_index_6"));
+        P10_index_6->setGeometry(QRect(194, 354, 50, 21));
+        QPalette palette236;
+        palette236.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette236.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush598(QColor(255, 255, 255, 128));
+        brush598.setStyle(Qt::NoBrush);
+
+        palette236.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette236.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush599(QColor(255, 255, 255, 128));
+        brush599.setStyle(Qt::NoBrush);
+
+        palette236.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette236.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush600(QColor(255, 255, 255, 128));
+        brush600.setStyle(Qt::NoBrush);
+
+        P10_index_6->setPalette(palette236);
+        P10_index_6->setFont(font10);
+        P10_index_6->setLayoutDirection(Qt::LeftToRight);
+        P10_index_6->setAutoFillBackground(false);
+        P10_index_6->setAlignment(Qt::AlignCenter);
+        P10_index_7 = new QLabel(frame_10);
+        P10_index_7->setObjectName(QStringLiteral("P10_index_7"));
+        P10_index_7->setGeometry(QRect(194, 382, 50, 21));
+        QPalette palette237;
+        palette237.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette237.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush601(QColor(255, 255, 255, 128));
+        brush601.setStyle(Qt::NoBrush);
+
+        palette237.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette237.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush602(QColor(255, 255, 255, 128));
+        brush602.setStyle(Qt::NoBrush);
+
+        palette237.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette237.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush603(QColor(255, 255, 255, 128));
+        brush603.setStyle(Qt::NoBrush);
+
+        P10_index_7->setPalette(palette237);
+        P10_index_7->setFont(font10);
+        P10_index_7->setLayoutDirection(Qt::LeftToRight);
+        P10_index_7->setAutoFillBackground(false);
+        P10_index_7->setAlignment(Qt::AlignCenter);
+        P10_index_8 = new QLabel(frame_10);
+        P10_index_8->setObjectName(QStringLiteral("P10_index_8"));
+        P10_index_8->setGeometry(QRect(194, 410, 50, 21));
+        QPalette palette238;
+        palette238.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette238.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush604(QColor(255, 255, 255, 128));
+        brush604.setStyle(Qt::NoBrush);
+
+        palette238.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette238.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush605(QColor(255, 255, 255, 128));
+        brush605.setStyle(Qt::NoBrush);
+
+        palette238.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette238.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush606(QColor(255, 255, 255, 128));
+        brush606.setStyle(Qt::NoBrush);
+
+        P10_index_8->setPalette(palette238);
+        P10_index_8->setFont(font10);
+        P10_index_8->setLayoutDirection(Qt::LeftToRight);
+        P10_index_8->setAutoFillBackground(false);
+        P10_index_8->setAlignment(Qt::AlignCenter);
+        P10_time_0 = new QLabel(frame_10);
+        P10_time_0->setObjectName(QStringLiteral("P10_time_0"));
+        P10_time_0->setGeometry(QRect(255, 186, 180, 21));
+        QPalette palette239;
+        palette239.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette239.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush607(QColor(255, 255, 255, 128));
+        brush607.setStyle(Qt::NoBrush);
+
+        palette239.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette239.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush608(QColor(255, 255, 255, 128));
+        brush608.setStyle(Qt::NoBrush);
+
+        palette239.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette239.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush609(QColor(255, 255, 255, 128));
+        brush609.setStyle(Qt::NoBrush);
+
+        P10_time_0->setPalette(palette239);
+        P10_time_0->setFont(font10);
+        P10_time_0->setLayoutDirection(Qt::LeftToRight);
+        P10_time_0->setAutoFillBackground(false);
+        P10_time_0->setAlignment(Qt::AlignCenter);
+        P10_process_0 = new QLabel(frame_10);
+        P10_process_0->setObjectName(QStringLiteral("P10_process_0"));
+        P10_process_0->setGeometry(QRect(455, 186, 60, 21));
+        QPalette palette240;
+        palette240.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette240.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush610(QColor(255, 255, 255, 128));
+        brush610.setStyle(Qt::NoBrush);
+
+        palette240.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette240.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush611(QColor(255, 255, 255, 128));
+        brush611.setStyle(Qt::NoBrush);
+
+        palette240.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette240.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush612(QColor(255, 255, 255, 128));
+        brush612.setStyle(Qt::NoBrush);
+
+        P10_process_0->setPalette(palette240);
+        P10_process_0->setFont(font10);
+        P10_process_0->setLayoutDirection(Qt::LeftToRight);
+        P10_process_0->setAutoFillBackground(false);
+        P10_process_0->setAlignment(Qt::AlignCenter);
+        P10_info_0 = new QLabel(frame_10);
+        P10_info_0->setObjectName(QStringLiteral("P10_info_0"));
+        P10_info_0->setGeometry(QRect(550, 186, 200, 21));
+        QPalette palette241;
+        palette241.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette241.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush613(QColor(255, 255, 255, 128));
+        brush613.setStyle(Qt::NoBrush);
+
+        palette241.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette241.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush614(QColor(255, 255, 255, 128));
+        brush614.setStyle(Qt::NoBrush);
+
+        palette241.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette241.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush615(QColor(255, 255, 255, 128));
+        brush615.setStyle(Qt::NoBrush);
+
+        P10_info_0->setPalette(palette241);
+        P10_info_0->setFont(font10);
+        P10_info_0->setLayoutDirection(Qt::LeftToRight);
+        P10_info_0->setAutoFillBackground(false);
+        P10_info_0->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        P10_info_1 = new QLabel(frame_10);
+        P10_info_1->setObjectName(QStringLiteral("P10_info_1"));
+        P10_info_1->setGeometry(QRect(550, 214, 200, 21));
+        QPalette palette242;
+        palette242.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette242.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush616(QColor(255, 255, 255, 128));
+        brush616.setStyle(Qt::NoBrush);
+
+        palette242.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette242.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush617(QColor(255, 255, 255, 128));
+        brush617.setStyle(Qt::NoBrush);
+
+        palette242.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette242.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush618(QColor(255, 255, 255, 128));
+        brush618.setStyle(Qt::NoBrush);
+
+        P10_info_1->setPalette(palette242);
+        P10_info_1->setFont(font10);
+        P10_info_1->setLayoutDirection(Qt::LeftToRight);
+        P10_info_1->setAutoFillBackground(false);
+        P10_info_1->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        P10_process_1 = new QLabel(frame_10);
+        P10_process_1->setObjectName(QStringLiteral("P10_process_1"));
+        P10_process_1->setGeometry(QRect(455, 214, 60, 21));
+        QPalette palette243;
+        palette243.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette243.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush619(QColor(255, 255, 255, 128));
+        brush619.setStyle(Qt::NoBrush);
+
+        palette243.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette243.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush620(QColor(255, 255, 255, 128));
+        brush620.setStyle(Qt::NoBrush);
+
+        palette243.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette243.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush621(QColor(255, 255, 255, 128));
+        brush621.setStyle(Qt::NoBrush);
+
+        P10_process_1->setPalette(palette243);
+        P10_process_1->setFont(font10);
+        P10_process_1->setLayoutDirection(Qt::LeftToRight);
+        P10_process_1->setAutoFillBackground(false);
+        P10_process_1->setAlignment(Qt::AlignCenter);
+        P10_time_1 = new QLabel(frame_10);
+        P10_time_1->setObjectName(QStringLiteral("P10_time_1"));
+        P10_time_1->setGeometry(QRect(255, 214, 180, 21));
+        QPalette palette244;
+        palette244.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette244.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush622(QColor(255, 255, 255, 128));
+        brush622.setStyle(Qt::NoBrush);
+
+        palette244.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette244.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush623(QColor(255, 255, 255, 128));
+        brush623.setStyle(Qt::NoBrush);
+
+        palette244.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette244.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush624(QColor(255, 255, 255, 128));
+        brush624.setStyle(Qt::NoBrush);
+
+        P10_time_1->setPalette(palette244);
+        P10_time_1->setFont(font10);
+        P10_time_1->setLayoutDirection(Qt::LeftToRight);
+        P10_time_1->setAutoFillBackground(false);
+        P10_time_1->setAlignment(Qt::AlignCenter);
+        P10_process_2 = new QLabel(frame_10);
+        P10_process_2->setObjectName(QStringLiteral("P10_process_2"));
+        P10_process_2->setGeometry(QRect(455, 242, 60, 21));
+        QPalette palette245;
+        palette245.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette245.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush625(QColor(255, 255, 255, 128));
+        brush625.setStyle(Qt::NoBrush);
+
+        palette245.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette245.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush626(QColor(255, 255, 255, 128));
+        brush626.setStyle(Qt::NoBrush);
+
+        palette245.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette245.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush627(QColor(255, 255, 255, 128));
+        brush627.setStyle(Qt::NoBrush);
+
+        P10_process_2->setPalette(palette245);
+        P10_process_2->setFont(font10);
+        P10_process_2->setLayoutDirection(Qt::LeftToRight);
+        P10_process_2->setAutoFillBackground(false);
+        P10_process_2->setAlignment(Qt::AlignCenter);
+        P10_info_2 = new QLabel(frame_10);
+        P10_info_2->setObjectName(QStringLiteral("P10_info_2"));
+        P10_info_2->setGeometry(QRect(550, 242, 200, 21));
+        QPalette palette246;
+        palette246.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette246.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush628(QColor(255, 255, 255, 128));
+        brush628.setStyle(Qt::NoBrush);
+
+        palette246.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette246.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush629(QColor(255, 255, 255, 128));
+        brush629.setStyle(Qt::NoBrush);
+
+        palette246.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette246.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush630(QColor(255, 255, 255, 128));
+        brush630.setStyle(Qt::NoBrush);
+
+        P10_info_2->setPalette(palette246);
+        P10_info_2->setFont(font10);
+        P10_info_2->setLayoutDirection(Qt::LeftToRight);
+        P10_info_2->setAutoFillBackground(false);
+        P10_info_2->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        P10_time_2 = new QLabel(frame_10);
+        P10_time_2->setObjectName(QStringLiteral("P10_time_2"));
+        P10_time_2->setGeometry(QRect(255, 242, 180, 21));
+        QPalette palette247;
+        palette247.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette247.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush631(QColor(255, 255, 255, 128));
+        brush631.setStyle(Qt::NoBrush);
+
+        palette247.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette247.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush632(QColor(255, 255, 255, 128));
+        brush632.setStyle(Qt::NoBrush);
+
+        palette247.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette247.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush633(QColor(255, 255, 255, 128));
+        brush633.setStyle(Qt::NoBrush);
+
+        P10_time_2->setPalette(palette247);
+        P10_time_2->setFont(font10);
+        P10_time_2->setLayoutDirection(Qt::LeftToRight);
+        P10_time_2->setAutoFillBackground(false);
+        P10_time_2->setAlignment(Qt::AlignCenter);
+        P10_process_3 = new QLabel(frame_10);
+        P10_process_3->setObjectName(QStringLiteral("P10_process_3"));
+        P10_process_3->setGeometry(QRect(455, 270, 60, 21));
+        QPalette palette248;
+        palette248.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette248.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush634(QColor(255, 255, 255, 128));
+        brush634.setStyle(Qt::NoBrush);
+
+        palette248.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette248.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush635(QColor(255, 255, 255, 128));
+        brush635.setStyle(Qt::NoBrush);
+
+        palette248.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette248.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush636(QColor(255, 255, 255, 128));
+        brush636.setStyle(Qt::NoBrush);
+
+        P10_process_3->setPalette(palette248);
+        P10_process_3->setFont(font10);
+        P10_process_3->setLayoutDirection(Qt::LeftToRight);
+        P10_process_3->setAutoFillBackground(false);
+        P10_process_3->setAlignment(Qt::AlignCenter);
+        P10_info_3 = new QLabel(frame_10);
+        P10_info_3->setObjectName(QStringLiteral("P10_info_3"));
+        P10_info_3->setGeometry(QRect(550, 270, 200, 21));
+        QPalette palette249;
+        palette249.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette249.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush637(QColor(255, 255, 255, 128));
+        brush637.setStyle(Qt::NoBrush);
+
+        palette249.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette249.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush638(QColor(255, 255, 255, 128));
+        brush638.setStyle(Qt::NoBrush);
+
+        palette249.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette249.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush639(QColor(255, 255, 255, 128));
+        brush639.setStyle(Qt::NoBrush);
+
+        P10_info_3->setPalette(palette249);
+        P10_info_3->setFont(font10);
+        P10_info_3->setLayoutDirection(Qt::LeftToRight);
+        P10_info_3->setAutoFillBackground(false);
+        P10_info_3->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        P10_time_3 = new QLabel(frame_10);
+        P10_time_3->setObjectName(QStringLiteral("P10_time_3"));
+        P10_time_3->setGeometry(QRect(255, 270, 180, 21));
+        QPalette palette250;
+        palette250.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette250.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush640(QColor(255, 255, 255, 128));
+        brush640.setStyle(Qt::NoBrush);
+
+        palette250.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette250.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush641(QColor(255, 255, 255, 128));
+        brush641.setStyle(Qt::NoBrush);
+
+        palette250.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette250.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush642(QColor(255, 255, 255, 128));
+        brush642.setStyle(Qt::NoBrush);
+
+        P10_time_3->setPalette(palette250);
+        P10_time_3->setFont(font10);
+        P10_time_3->setLayoutDirection(Qt::LeftToRight);
+        P10_time_3->setAutoFillBackground(false);
+        P10_time_3->setAlignment(Qt::AlignCenter);
+        P10_process_4 = new QLabel(frame_10);
+        P10_process_4->setObjectName(QStringLiteral("P10_process_4"));
+        P10_process_4->setGeometry(QRect(455, 298, 60, 21));
+        QPalette palette251;
+        palette251.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette251.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush643(QColor(255, 255, 255, 128));
+        brush643.setStyle(Qt::NoBrush);
+
+        palette251.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette251.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush644(QColor(255, 255, 255, 128));
+        brush644.setStyle(Qt::NoBrush);
+
+        palette251.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette251.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush645(QColor(255, 255, 255, 128));
+        brush645.setStyle(Qt::NoBrush);
+
+        P10_process_4->setPalette(palette251);
+        P10_process_4->setFont(font10);
+        P10_process_4->setLayoutDirection(Qt::LeftToRight);
+        P10_process_4->setAutoFillBackground(false);
+        P10_process_4->setAlignment(Qt::AlignCenter);
+        P10_info_4 = new QLabel(frame_10);
+        P10_info_4->setObjectName(QStringLiteral("P10_info_4"));
+        P10_info_4->setGeometry(QRect(550, 298, 200, 21));
+        QPalette palette252;
+        palette252.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette252.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush646(QColor(255, 255, 255, 128));
+        brush646.setStyle(Qt::NoBrush);
+
+        palette252.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette252.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush647(QColor(255, 255, 255, 128));
+        brush647.setStyle(Qt::NoBrush);
+
+        palette252.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette252.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush648(QColor(255, 255, 255, 128));
+        brush648.setStyle(Qt::NoBrush);
+
+        P10_info_4->setPalette(palette252);
+        P10_info_4->setFont(font10);
+        P10_info_4->setLayoutDirection(Qt::LeftToRight);
+        P10_info_4->setAutoFillBackground(false);
+        P10_info_4->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        P10_time_4 = new QLabel(frame_10);
+        P10_time_4->setObjectName(QStringLiteral("P10_time_4"));
+        P10_time_4->setGeometry(QRect(255, 298, 180, 21));
+        QPalette palette253;
+        palette253.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette253.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush649(QColor(255, 255, 255, 128));
+        brush649.setStyle(Qt::NoBrush);
+
+        palette253.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette253.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush650(QColor(255, 255, 255, 128));
+        brush650.setStyle(Qt::NoBrush);
+
+        palette253.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette253.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush651(QColor(255, 255, 255, 128));
+        brush651.setStyle(Qt::NoBrush);
+
+        P10_time_4->setPalette(palette253);
+        P10_time_4->setFont(font10);
+        P10_time_4->setLayoutDirection(Qt::LeftToRight);
+        P10_time_4->setAutoFillBackground(false);
+        P10_time_4->setAlignment(Qt::AlignCenter);
+        P10_process_5 = new QLabel(frame_10);
+        P10_process_5->setObjectName(QStringLiteral("P10_process_5"));
+        P10_process_5->setGeometry(QRect(455, 326, 60, 21));
+        QPalette palette254;
+        palette254.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette254.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush652(QColor(255, 255, 255, 128));
+        brush652.setStyle(Qt::NoBrush);
+
+        palette254.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette254.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush653(QColor(255, 255, 255, 128));
+        brush653.setStyle(Qt::NoBrush);
+
+        palette254.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette254.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush654(QColor(255, 255, 255, 128));
+        brush654.setStyle(Qt::NoBrush);
+
+        P10_process_5->setPalette(palette254);
+        P10_process_5->setFont(font10);
+        P10_process_5->setLayoutDirection(Qt::LeftToRight);
+        P10_process_5->setAutoFillBackground(false);
+        P10_process_5->setAlignment(Qt::AlignCenter);
+        P10_info_5 = new QLabel(frame_10);
+        P10_info_5->setObjectName(QStringLiteral("P10_info_5"));
+        P10_info_5->setGeometry(QRect(550, 326, 200, 21));
+        QPalette palette255;
+        palette255.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette255.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush655(QColor(255, 255, 255, 128));
+        brush655.setStyle(Qt::NoBrush);
+
+        palette255.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette255.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush656(QColor(255, 255, 255, 128));
+        brush656.setStyle(Qt::NoBrush);
+
+        palette255.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette255.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush657(QColor(255, 255, 255, 128));
+        brush657.setStyle(Qt::NoBrush);
+
+        P10_info_5->setPalette(palette255);
+        P10_info_5->setFont(font10);
+        P10_info_5->setLayoutDirection(Qt::LeftToRight);
+        P10_info_5->setAutoFillBackground(false);
+        P10_info_5->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        P10_time_5 = new QLabel(frame_10);
+        P10_time_5->setObjectName(QStringLiteral("P10_time_5"));
+        P10_time_5->setGeometry(QRect(255, 326, 180, 21));
+        QPalette palette256;
+        palette256.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette256.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush658(QColor(255, 255, 255, 128));
+        brush658.setStyle(Qt::NoBrush);
+
+        palette256.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette256.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush659(QColor(255, 255, 255, 128));
+        brush659.setStyle(Qt::NoBrush);
+
+        palette256.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette256.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush660(QColor(255, 255, 255, 128));
+        brush660.setStyle(Qt::NoBrush);
+
+        P10_time_5->setPalette(palette256);
+        P10_time_5->setFont(font10);
+        P10_time_5->setLayoutDirection(Qt::LeftToRight);
+        P10_time_5->setAutoFillBackground(false);
+        P10_time_5->setAlignment(Qt::AlignCenter);
+        P10_info_6 = new QLabel(frame_10);
+        P10_info_6->setObjectName(QStringLiteral("P10_info_6"));
+        P10_info_6->setGeometry(QRect(550, 354, 200, 21));
+        QPalette palette257;
+        palette257.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette257.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush661(QColor(255, 255, 255, 128));
+        brush661.setStyle(Qt::NoBrush);
+
+        palette257.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette257.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush662(QColor(255, 255, 255, 128));
+        brush662.setStyle(Qt::NoBrush);
+
+        palette257.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette257.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush663(QColor(255, 255, 255, 128));
+        brush663.setStyle(Qt::NoBrush);
+
+        P10_info_6->setPalette(palette257);
+        P10_info_6->setFont(font10);
+        P10_info_6->setLayoutDirection(Qt::LeftToRight);
+        P10_info_6->setAutoFillBackground(false);
+        P10_info_6->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        P10_process_6 = new QLabel(frame_10);
+        P10_process_6->setObjectName(QStringLiteral("P10_process_6"));
+        P10_process_6->setGeometry(QRect(455, 354, 60, 21));
+        QPalette palette258;
+        palette258.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette258.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush664(QColor(255, 255, 255, 128));
+        brush664.setStyle(Qt::NoBrush);
+
+        palette258.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette258.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush665(QColor(255, 255, 255, 128));
+        brush665.setStyle(Qt::NoBrush);
+
+        palette258.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette258.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush666(QColor(255, 255, 255, 128));
+        brush666.setStyle(Qt::NoBrush);
+
+        P10_process_6->setPalette(palette258);
+        P10_process_6->setFont(font10);
+        P10_process_6->setLayoutDirection(Qt::LeftToRight);
+        P10_process_6->setAutoFillBackground(false);
+        P10_process_6->setAlignment(Qt::AlignCenter);
+        P10_time_6 = new QLabel(frame_10);
+        P10_time_6->setObjectName(QStringLiteral("P10_time_6"));
+        P10_time_6->setGeometry(QRect(255, 354, 180, 21));
+        QPalette palette259;
+        palette259.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette259.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush667(QColor(255, 255, 255, 128));
+        brush667.setStyle(Qt::NoBrush);
+
+        palette259.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette259.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush668(QColor(255, 255, 255, 128));
+        brush668.setStyle(Qt::NoBrush);
+
+        palette259.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette259.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush669(QColor(255, 255, 255, 128));
+        brush669.setStyle(Qt::NoBrush);
+
+        P10_time_6->setPalette(palette259);
+        P10_time_6->setFont(font10);
+        P10_time_6->setLayoutDirection(Qt::LeftToRight);
+        P10_time_6->setAutoFillBackground(false);
+        P10_time_6->setAlignment(Qt::AlignCenter);
+        P10_info_7 = new QLabel(frame_10);
+        P10_info_7->setObjectName(QStringLiteral("P10_info_7"));
+        P10_info_7->setGeometry(QRect(550, 382, 200, 21));
+        QPalette palette260;
+        palette260.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette260.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush670(QColor(255, 255, 255, 128));
+        brush670.setStyle(Qt::NoBrush);
+
+        palette260.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette260.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush671(QColor(255, 255, 255, 128));
+        brush671.setStyle(Qt::NoBrush);
+
+        palette260.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette260.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush672(QColor(255, 255, 255, 128));
+        brush672.setStyle(Qt::NoBrush);
+
+        P10_info_7->setPalette(palette260);
+        P10_info_7->setFont(font10);
+        P10_info_7->setLayoutDirection(Qt::LeftToRight);
+        P10_info_7->setAutoFillBackground(false);
+        P10_info_7->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        P10_process_7 = new QLabel(frame_10);
+        P10_process_7->setObjectName(QStringLiteral("P10_process_7"));
+        P10_process_7->setGeometry(QRect(455, 382, 60, 21));
+        QPalette palette261;
+        palette261.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette261.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush673(QColor(255, 255, 255, 128));
+        brush673.setStyle(Qt::NoBrush);
+
+        palette261.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette261.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush674(QColor(255, 255, 255, 128));
+        brush674.setStyle(Qt::NoBrush);
+
+        palette261.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette261.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush675(QColor(255, 255, 255, 128));
+        brush675.setStyle(Qt::NoBrush);
+
+        P10_process_7->setPalette(palette261);
+        P10_process_7->setFont(font10);
+        P10_process_7->setLayoutDirection(Qt::LeftToRight);
+        P10_process_7->setAutoFillBackground(false);
+        P10_process_7->setAlignment(Qt::AlignCenter);
+        P10_time_7 = new QLabel(frame_10);
+        P10_time_7->setObjectName(QStringLiteral("P10_time_7"));
+        P10_time_7->setGeometry(QRect(255, 382, 180, 21));
+        QPalette palette262;
+        palette262.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette262.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush676(QColor(255, 255, 255, 128));
+        brush676.setStyle(Qt::NoBrush);
+
+        palette262.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette262.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush677(QColor(255, 255, 255, 128));
+        brush677.setStyle(Qt::NoBrush);
+
+        palette262.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette262.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush678(QColor(255, 255, 255, 128));
+        brush678.setStyle(Qt::NoBrush);
+
+        P10_time_7->setPalette(palette262);
+        P10_time_7->setFont(font10);
+        P10_time_7->setLayoutDirection(Qt::LeftToRight);
+        P10_time_7->setAutoFillBackground(false);
+        P10_time_7->setAlignment(Qt::AlignCenter);
+        P10_info_8 = new QLabel(frame_10);
+        P10_info_8->setObjectName(QStringLiteral("P10_info_8"));
+        P10_info_8->setGeometry(QRect(550, 410, 200, 21));
+        QPalette palette263;
+        palette263.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette263.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush679(QColor(255, 255, 255, 128));
+        brush679.setStyle(Qt::NoBrush);
+
+        palette263.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette263.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush680(QColor(255, 255, 255, 128));
+        brush680.setStyle(Qt::NoBrush);
+
+        palette263.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette263.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush681(QColor(255, 255, 255, 128));
+        brush681.setStyle(Qt::NoBrush);
+
+        P10_info_8->setPalette(palette263);
+        P10_info_8->setFont(font10);
+        P10_info_8->setLayoutDirection(Qt::LeftToRight);
+        P10_info_8->setAutoFillBackground(false);
+        P10_info_8->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        P10_process_8 = new QLabel(frame_10);
+        P10_process_8->setObjectName(QStringLiteral("P10_process_8"));
+        P10_process_8->setGeometry(QRect(455, 410, 60, 21));
+        QPalette palette264;
+        palette264.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette264.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush682(QColor(255, 255, 255, 128));
+        brush682.setStyle(Qt::NoBrush);
+
+        palette264.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette264.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush683(QColor(255, 255, 255, 128));
+        brush683.setStyle(Qt::NoBrush);
+
+        palette264.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette264.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush684(QColor(255, 255, 255, 128));
+        brush684.setStyle(Qt::NoBrush);
+
+        P10_process_8->setPalette(palette264);
+        P10_process_8->setFont(font10);
+        P10_process_8->setLayoutDirection(Qt::LeftToRight);
+        P10_process_8->setAutoFillBackground(false);
+        P10_process_8->setAlignment(Qt::AlignCenter);
+        P10_time_8 = new QLabel(frame_10);
+        P10_time_8->setObjectName(QStringLiteral("P10_time_8"));
+        P10_time_8->setGeometry(QRect(255, 410, 180, 21));
+        QPalette palette265;
+        palette265.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette265.setBrush(QPalette::Active, QPalette::Text, brush);
+        QBrush brush685(QColor(255, 255, 255, 128));
+        brush685.setStyle(Qt::NoBrush);
+
+        palette265.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette265.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        QBrush brush686(QColor(255, 255, 255, 128));
+        brush686.setStyle(Qt::NoBrush);
+
+        palette265.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette265.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        QBrush brush687(QColor(255, 255, 255, 128));
+        brush687.setStyle(Qt::NoBrush);
+
+        P10_time_8->setPalette(palette265);
+        P10_time_8->setFont(font10);
+        P10_time_8->setLayoutDirection(Qt::LeftToRight);
+        P10_time_8->setAutoFillBackground(false);
+        P10_time_8->setAlignment(Qt::AlignCenter);
         frame_11 = new QFrame(centralwidget);
         frame_11->setObjectName(QStringLiteral("frame_11"));
         frame_11->setGeometry(QRect(0, 0, 800, 480));
@@ -9020,16 +10013,16 @@ public:
         CMD_SelUART->setGeometry(QRect(80, 110, 181, 71));
         MainWindow->setCentralWidget(centralwidget);
         frame_2->raise();
-        frame_3->raise();
         frame_5->raise();
+        frame_6->raise();
+        frame_7->raise();
         frame_8->raise();
         frame_9->raise();
-        frame_10->raise();
-        frame_11->raise();
+        frame_3->raise();
         frame_4->raise();
-        frame_7->raise();
         frame->raise();
-        frame_6->raise();
+        frame_11->raise();
+        frame_10->raise();
 
         retranslateUi(MainWindow);
 
@@ -9609,6 +10602,42 @@ public:
         label_219->setText(QString());
         P10_LABEL1->setText(QApplication::translate("MainWindow", "SWHP 2P 3.7KW", nullptr));
         P10_LABEL2->setText(QApplication::translate("MainWindow", "PUMP MASTER", nullptr));
+        P10_index_0->setText(QApplication::translate("MainWindow", "999", nullptr));
+        P10_index_1->setText(QApplication::translate("MainWindow", "999", nullptr));
+        P10_index_2->setText(QApplication::translate("MainWindow", "999", nullptr));
+        P10_index_3->setText(QApplication::translate("MainWindow", "999", nullptr));
+        P10_index_4->setText(QApplication::translate("MainWindow", "999", nullptr));
+        P10_index_5->setText(QApplication::translate("MainWindow", "999", nullptr));
+        P10_index_6->setText(QApplication::translate("MainWindow", "999", nullptr));
+        P10_index_7->setText(QApplication::translate("MainWindow", "999", nullptr));
+        P10_index_8->setText(QApplication::translate("MainWindow", "999", nullptr));
+        P10_time_0->setText(QApplication::translate("MainWindow", "2020-10-03 13:00:20", nullptr));
+        P10_process_0->setText(QApplication::translate("MainWindow", "\352\260\200\353\217\231", nullptr));
+        P10_info_0->setText(QApplication::translate("MainWindow", "\354\203\201\354\240\204\353\245\230 \353\266\210\355\217\211\355\230\225 \352\262\275\353\263\264", nullptr));
+        P10_info_1->setText(QApplication::translate("MainWindow", "\354\203\201\354\240\204\353\245\230 \353\266\210\355\217\211\355\230\225 \352\262\275\353\263\264", nullptr));
+        P10_process_1->setText(QApplication::translate("MainWindow", "\352\260\200\353\217\231", nullptr));
+        P10_time_1->setText(QApplication::translate("MainWindow", "2020-10-03 13:00:20", nullptr));
+        P10_process_2->setText(QApplication::translate("MainWindow", "\352\260\200\353\217\231", nullptr));
+        P10_info_2->setText(QApplication::translate("MainWindow", "\354\203\201\354\240\204\353\245\230 \353\266\210\355\217\211\355\230\225 \352\262\275\353\263\264", nullptr));
+        P10_time_2->setText(QApplication::translate("MainWindow", "2020-10-03 13:00:20", nullptr));
+        P10_process_3->setText(QApplication::translate("MainWindow", "\352\260\200\353\217\231", nullptr));
+        P10_info_3->setText(QApplication::translate("MainWindow", "\354\203\201\354\240\204\353\245\230 \353\266\210\355\217\211\355\230\225 \352\262\275\353\263\264", nullptr));
+        P10_time_3->setText(QApplication::translate("MainWindow", "2020-10-03 13:00:20", nullptr));
+        P10_process_4->setText(QApplication::translate("MainWindow", "\352\260\200\353\217\231", nullptr));
+        P10_info_4->setText(QApplication::translate("MainWindow", "\354\203\201\354\240\204\353\245\230 \353\266\210\355\217\211\355\230\225 \352\262\275\353\263\264", nullptr));
+        P10_time_4->setText(QApplication::translate("MainWindow", "2020-10-03 13:00:20", nullptr));
+        P10_process_5->setText(QApplication::translate("MainWindow", "\352\260\200\353\217\231", nullptr));
+        P10_info_5->setText(QApplication::translate("MainWindow", "\354\203\201\354\240\204\353\245\230 \353\266\210\355\217\211\355\230\225 \352\262\275\353\263\264", nullptr));
+        P10_time_5->setText(QApplication::translate("MainWindow", "2020-10-03 13:00:20", nullptr));
+        P10_info_6->setText(QApplication::translate("MainWindow", "\354\203\201\354\240\204\353\245\230 \353\266\210\355\217\211\355\230\225 \352\262\275\353\263\264", nullptr));
+        P10_process_6->setText(QApplication::translate("MainWindow", "\352\260\200\353\217\231", nullptr));
+        P10_time_6->setText(QApplication::translate("MainWindow", "2020-10-03 13:00:20", nullptr));
+        P10_info_7->setText(QApplication::translate("MainWindow", "\354\203\201\354\240\204\353\245\230 \353\266\210\355\217\211\355\230\225 \352\262\275\353\263\264", nullptr));
+        P10_process_7->setText(QApplication::translate("MainWindow", "\352\260\200\353\217\231", nullptr));
+        P10_time_7->setText(QApplication::translate("MainWindow", "2020-10-03 13:00:20", nullptr));
+        P10_info_8->setText(QApplication::translate("MainWindow", "\354\203\201\354\240\204\353\245\230 \353\266\210\355\217\211\355\230\225 \352\262\275\353\263\264", nullptr));
+        P10_process_8->setText(QApplication::translate("MainWindow", "\352\260\200\353\217\231", nullptr));
+        P10_time_8->setText(QApplication::translate("MainWindow", "2020-10-03 13:00:20", nullptr));
         CMD_SelUART->setText(QApplication::translate("MainWindow", "\354\204\244\354\240\225", nullptr));
         Q_UNUSED(MainWindow);
     } // retranslateUi
@@ -9622,3 +10651,4 @@ namespace Ui {
 QT_END_NAMESPACE
 
 #endif // UI_MAINWINDOW_H
+

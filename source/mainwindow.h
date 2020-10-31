@@ -17,6 +17,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QDebug>
+#include <QStringList>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -192,69 +193,69 @@ class MainWindow : public QMainWindow
 #define SET_DISABLE	0
 #define SET_ENABLE	1
 
-#define	S_P5_V1	0	// [T_NONE / T_SET_M1 / SET_DEF_M2 / T_SET_M2 / T_SET_B1 / T_SET_B2]
-#define	S_P5_V2	1	// [T_NONE / T_SET_M1 / SET_DEF_M2 / T_SET_M2 / T_SET_B1 / T_SET_B2]
-#define	S_P5_V3	2	// [T_NONE / T_SET_M1 / SET_DEF_M2 / T_SET_M2 / T_SET_B1 / T_SET_B2]
-#define	S_P5_V4	3	// [T_NONE / T_SET_M1 / SET_DEF_M2 / T_SET_M2 / T_SET_B1 / T_SET_B2]
-#define	S_P5_V5	4	// [T_NONE / T_SET_M1 / SET_DEF_M2 / T_SET_M2 / T_SET_B1 / T_SET_B2]
-#define	S_P5_V6	5
-#define	S_P5_V7	6
-#define	S_P5_V8	7
-#define	S_P5_V9	8
-#define	S_P5_V10	9
-#define	S_P5_V11	10
-#define	S_P5_V12	11
-#define	S_P5_V13	12
-#define	S_P5_V14	13
-#define	S_P5_V15	14
-#define	S_P5_V16	15
-#define	S_P5_V17	16
-#define	S_P5_V18	17
-#define	S_P5_V19	18
-#define	S_P5_V20	19
-#define	S_P6_V1	20		// 과전류 Warning
-#define	S_P6_V2	21		// 과전류 Error
-#define	S_P6_V3	22		// 저전류 Warning
-#define	S_P6_V4	23		// 저전류 Error
-#define	S_P6_V5	24		// 불평형 Warning
-#define	S_P6_V6	25		// 불평형 Error
-#define	S_P6_V7	26
-#define	S_P6_V8	27
-#define	S_P6_V9	28
-#define	S_P6_V10	29
-#define	S_P6_V11	30
-#define	S_P7_V1	31
-#define	S_P7_V2	32
-#define	S_P7_V3	33
-#define	S_P7_V4	34		// RPM Warning
-#define	S_P7_V5	35		// RPM Error
-#define	S_P8_V1	36
-#define	S_P8_V2	37
-#define	S_P8_V3	38
-#define	S_P8_V4	39
-#define	S_P8_V5	40		// [SET_DISABLE / SET_ENABLE ]
-#define	S_P8_V6	41		// [SET_DISABLE / SET_ENABLE ]
-#define	S_P8_V7	42		// [SET_DISABLE / SET_ENABLE ]
-#define	S_P8_V8	43		// [SET_DISABLE / SET_ENABLE ]
-#define	S_P8_V9	44
-#define	S_P8_V10	45
-#define	S_P8_V11	46
-#define	S_P8_V12	47
-#define	S_P8_V13	48
-#define	S_P8_V14	49
-#define	S_P8_V15	50
-#define	S_P8_V16	51
-#define	S_P8_V17	52
-#define	S_P8_V18	53
-#define	S_P8_V19	54
-#define	S_P8_V20	55
-#define	S_P8_V21	56
-#define	S_P8_V22	57
-#define	S_P8_V23	58
-#define	S_P8_V24	59
-#define	S_P8_V25	60
-#define	S_P8_V26	61
-#define	S_P8_V27	62
+#define	S_P5_V1		0	// S1 [T_NONE / T_SET_M1 / SET_DEF_M2 / T_SET_M2 / T_SET_B1 / T_SET_B2]
+#define	S_P5_V2		1	// S2 [T_NONE / T_SET_M1 / SET_DEF_M2 / T_SET_M2 / T_SET_B1 / T_SET_B2]
+#define	S_P5_V3		2	// S3 [T_NONE / T_SET_M1 / SET_DEF_M2 / T_SET_M2 / T_SET_B1 / T_SET_B2]
+#define	S_P5_V4		3	// S4 [T_NONE / T_SET_M1 / SET_DEF_M2 / T_SET_M2 / T_SET_B1 / T_SET_B2]
+#define	S_P5_V5		4	// S5 [T_NONE / T_SET_M1 / SET_DEF_M2 / T_SET_M2 / T_SET_B1 / T_SET_B2]
+#define	S_P5_V6		5	// P5_Set1_L 
+#define	S_P5_V7		6	// P5_Set1_M
+#define	S_P5_V8		7	// P5_Set1_H
+#define	S_P5_V9		8	// P5_Set2_L
+#define	S_P5_V10	9	// P5_Set2_M
+#define	S_P5_V11	10	// P5_Set2_H
+#define	S_P5_V12	11	// P5_Set3_L
+#define	S_P5_V13	12	// P5_Set3_M
+#define	S_P5_V14	13	// P5_Set3_H
+#define	S_P5_V15	14	// P5_Set4_L
+#define	S_P5_V16	15	// P5_Set4_M
+#define	S_P5_V17	16	// P5_Set4_H
+#define	S_P5_V18	17	// P5_Set5_L
+#define	S_P5_V19	18	// P5_Set5_M
+#define	S_P5_V20	19	// P5_Set5_H
+#define	S_P6_V1		20	// OC Warning
+#define	S_P6_V2		21	// OC Error
+#define	S_P6_V3		22	// UC Warning
+#define	S_P6_V4		23	// UC Error
+#define	S_P6_V5		24	// UB Warning
+#define	S_P6_V6		25	// UB Error
+#define	S_P6_V7		26	// DT
+#define	S_P6_V8		27	// OC OT
+#define	S_P6_V9		28	// UC OT
+#define	S_P6_V10	29	// UB OT
+#define	S_P6_V11	30	// RT
+#define	S_P7_V1		31	// Motor Driection
+#define	S_P7_V2		32	// Delay time
+#define	S_P7_V3		33	// Over time
+#define	S_P7_V4		34	// RPM Warning
+#define	S_P7_V5		35	// RPM Error
+#define	S_P8_V1		36	// Motor 
+#define	S_P8_V2		37	// Oil 
+#define	S_P8_V3		38	// Control
+#define	S_P8_V4		39	// Auto
+#define	S_P8_V5		40	// Master [SET_DISABLE / SET_ENABLE ]
+#define	S_P8_V6		41	// Slave1 [SET_DISABLE / SET_ENABLE ]
+#define	S_P8_V7		42	// Slave2 [SET_DISABLE / SET_ENABLE ]
+#define	S_P8_V8		43	// Slave3 [SET_DISABLE / SET_ENABLE ]
+#define	S_P8_V9		44	// M
+#define	S_P8_V10	45	// S1
+#define	S_P8_V11	46	// S2
+#define	S_P8_V12	47	// S3
+#define	S_P8_V13	48	// O
+#define	S_P8_V14	49	// E
+#define	S_P8_V15	50	// L
+#define	S_P8_V16	51	// H
+#define	S_P8_V17	52	// F
+#define	S_P8_V18	53	// 
+#define	S_P8_V19	54	//
+#define	S_P8_V20	55	//
+#define	S_P8_V21	56	//
+#define	S_P8_V22	57	//
+#define	S_P8_V23	58	// E
+#define	S_P8_V24	59	// L
+#define	S_P8_V25	60	// H
+#define	S_P8_V26	61	// F
+#define	S_P8_V27	62	// xxxxxxx
 #define	S_P4_V1		63	// [Using time of Mecha (h) ]
 #define	S_P4_V2		64	// [Using time of bearing (h) ]
 #define	S_P4_V3		65	// [Using time of oil (h) ]
@@ -427,6 +428,9 @@ class MainWindow : public QMainWindow
 	QString rdFile;
 	QStringList ErrorList;
 
+	int P10_PageIndex = 0;
+	int P10_LineCnt = 0;
+
 public:
 	void SettingVar_Init();
 	MainWindow(QWidget *parent = nullptr);
@@ -458,6 +462,9 @@ public:
 	void ChangeWindow_WIN7(void);
 	void ChangeWindow_WIN8(void);
 	void ChangeStringList(void);
+	int Check_Range(int nLeft, int nValue, int nRight);
+	QString toUniString(QString str);
+	void ShowEventPage(void);
 
 
 	WIN_VAR nNowWindow;

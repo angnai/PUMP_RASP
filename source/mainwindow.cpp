@@ -1,11 +1,14 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <qstring.h>
+#include <QTextCodec>
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
 	, ui(new Ui::MainWindow)
 {
 	int i;
+
 
 	for(i=0;i<MAX_PUMP_DEFINE;i++)
 	{
@@ -34,15 +37,15 @@ MainWindow::MainWindow(QWidget *parent)
 
 	rdFile = "";
 	file.setFileName("ErrorList.txt");
-	file.open(QFile::ReadOnly | QFile::Text);//QIODevice::ReadWrite | QIODevice::Append | QFile::read);
+	file.open(QFile::ReadOnly);//QIODevice::ReadWrite | QIODevice::Append | QFile::read);
 	QTextStream stream(&file);
-	rdFile = stream.readAll();
+	while (!stream.atEnd()) { 
+		rdFile.append(stream.readLine());
+		rdFile.append("\r\n");
+		P10_LineCnt = P10_LineCnt + 1;
+	} 
 	file.close();
-	file.open(QFile::WriteOnly | QFile::Append | QFile::Text);//QIODevice::ReadWrite | QIODevice::Append | QFile::read);
-
-
-
-
+	file.open(QFile::WriteOnly | QFile::Append );//QIODevice::ReadWrite | QIODevice::Append | QFile::read);
 
 	ui->setupUi(this);
 
@@ -115,8 +118,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 	i_BlinkTime = 0;
-	
-	// label Ŭ�� ����
+
+
 	//ui->label_204->installEventFilter(this);
 	ui->P1_ValRPM->installEventFilter(this);
 
@@ -165,8 +168,8 @@ void MainWindow::SettingVar_Init()
 
 	Setting_Var[S_P6_V1]=1;
 	Setting_Var[S_P6_V2]=25;
-	Setting_Var[S_P6_V3]=1;
-	Setting_Var[S_P6_V4]=25;
+	Setting_Var[S_P6_V3]=25;
+	Setting_Var[S_P6_V4]=1;
 	Setting_Var[S_P6_V5]=1;
 	Setting_Var[S_P6_V6]=25;
 
@@ -589,9 +592,22 @@ void MainWindow::on_readyRead(void)
 	m_rcv.clear();
 }
 
+int MainWindow::Check_Range(int nLeft, int nValue, int nRight)
+{
+	int ret;
+
+	ret = 0;
+	if (nValue >= nLeft)		ret = 1;
+	else if(nValue <= nRight)	ret = 1;
+	else ret = 0;
+
+	return ret; 
+}
+
 void MainWindow::Display_UI_Value(void)
 {
 	int i, i_VarAddr;
+	int nLeftVal,valueCheck,nRightVal;
 	QString mm;
 
 
@@ -611,54 +627,126 @@ void MainWindow::Display_UI_Value(void)
 	case 0x35:
 		i_VarAddr = 0;
 		for(i=0;i<i_rcvDataCnt;i+=2){
-			Setting_Var[(i/2) + i_VarAddr] = m_rcvData.at(i)*256 + m_rcvData.at(i+1);
+			valueCheck = m_rcvData.at(i)*256 + m_rcvData.at(i+1);
+
+			switch((i/2) + i_VarAddr){
+				/////////////// Page 5
+				case S_P5_V6:
+				case S_P5_V9:
+				case S_P5_V12:
+				case S_P5_V15:
+				case S_P5_V18:
+					nLeftVal = 1; nRightVal = (m_rcvData.at(i+2)*256 + m_rcvData.at(i+3));	
+				break;
+				case S_P5_V7:
+				case S_P5_V10:
+				case S_P5_V13:
+				case S_P5_V16:
+				case S_P5_V19:	
+					nLeftVal = (m_rcvData.at(i-2)*256 + m_rcvData.at(i-1)); nRightVal = (m_rcvData.at(i+2)*256 + m_rcvData.at(i+3));
+				break;
+				case S_P5_V8:
+				case S_P5_V11:
+				case S_P5_V14:
+				case S_P5_V17:
+				case S_P5_V20:	
+					nLeftVal = (m_rcvData.at(i-2)*256 + m_rcvData.at(i-1)); nRightVal = 200;
+				break;
+				///////////////// Page 6
+				case S_P6_V1:
+				case S_P6_V3:
+				case S_P6_V5:
+					nLeftVal = 1; nRightVal = (m_rcvData.at(i+2)*256 + m_rcvData.at(i+3));
+				break;
+				case S_P6_V2:
+				case S_P6_V4:	
+					nLeftVal = (m_rcvData.at(i-2)*256 + m_rcvData.at(i-1)); nRightVal = 25;
+				break;
+				case S_P6_V6:
+					nLeftVal = (m_rcvData.at(i-2)*256 + m_rcvData.at(i-1)); nRightVal = 100;
+				break;
+				case S_P6_V7:
+					nLeftVal = 0; nRightVal = 200;
+				break;
+				case S_P6_V8:
+				case S_P6_V9:
+				case S_P6_V10:
+					nLeftVal = 0; nRightVal = 20;
+				break;
+				case S_P6_V11:
+					nLeftVal = 0; nRightVal = 1000;
+				break;
+				///////////////// Page 7
+				case S_P7_V2:
+				case S_P7_V3:
+					nLeftVal = 1; nRightVal = 200;
+				break;	
+				case S_P7_V4:
+					nLeftVal = 1; nRightVal = (m_rcvData.at(i+2)*256 + m_rcvData.at(i+3));
+				break;	
+				case S_P7_V5:
+					nLeftVal = (m_rcvData.at(i-2)*256 + m_rcvData.at(i-1)); nRightVal = 3600;
+				break;
+
+			}
+			if( Check_Range(nLeftVal,valueCheck,nRightVal) ) Setting_Var[(i/2) + i_VarAddr] = valueCheck;
 		}
 		return;
 	case 0x36:
 		i_VarAddr = 50;
 		for(i=0;i<i_rcvDataCnt;i+=2){
-			Setting_Var[(i/2) + i_VarAddr] = m_rcvData.at(i)*256 + m_rcvData.at(i+1);
+			valueCheck = m_rcvData.at(i)*256 + m_rcvData.at(i+1);
+			switch((i/2) + i_VarAddr){
+				///////////////// Page 4
+				case S_P4_V1:
+				case S_P4_V2:
+				case S_P4_V3:
+					nLeftVal = 0; nRightVal = 30000;
+				break;
+			}
+			if( Check_Range(nLeftVal,valueCheck,nRightVal) ) Setting_Var[(i/2) + i_VarAddr] = valueCheck;
 		}
 		return;
 	case 0x10:
 		switch(m_rcvData.at(1))
 		{
-		case ERROR_NO1:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,온도 모터1 경보\r\n"); break;
-		case ERROR_NO2:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,온도 모터2 경보\r\n"); break;
-		case ERROR_NO3:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,온도 모터3 경보\r\n"); break;
-		case ERROR_NO4:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,온도 베어링 상 경보\r\n"); break;
-		case ERROR_NO5:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,온도 베어링 하 경보\r\n"); break;
-		case ERROR_NO6:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,온도 모터1 비상\r\n"); break;
-		case ERROR_NO7:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,온도 모터2 비상\r\n"); break;
-		case ERROR_NO8:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,온도 모터3 비상\r\n"); break;
-		case ERROR_NO9:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,온도 베어링 상 비상\r\n"); break;
-		case ERROR_NO10:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,온도 베어링 하 비상\r\n"); break;
-		case ERROR_NO11:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,RPM 경보\r\n"); break;
-		case ERROR_NO12:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,RPM 비상\r\n"); break;
-		case ERROR_NO13:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,과전류 R상 경보\r\n"); break;
-		case ERROR_NO14:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,과전류 S상 경보\r\n"); break;
-		case ERROR_NO15:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,과전류 T상 경보\r\n"); break;
-		case ERROR_NO16:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,과전류 R상 비상\r\n"); break;
-		case ERROR_NO17:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,과전류 S상 비상\r\n"); break;
-		case ERROR_NO18:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,과전류 T상 비상\r\n"); break;
-		case ERROR_NO19:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,저전류 R상 경보\r\n"); break;
-		case ERROR_NO20:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,저전류 S상 경보\r\n"); break;
-		case ERROR_NO21:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,저전류 T상 경보\r\n"); break;
-		case ERROR_NO22:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,저전류 R상 비상\r\n"); break;
-		case ERROR_NO23:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,저전류 S상 비상\r\n"); break;
-		case ERROR_NO24:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,저전류 T상 비상\r\n"); break;
-		case ERROR_NO25:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,상전류 불평형 경보\r\n"); break;
-		case ERROR_NO26:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,상전류 불평형 비상\r\n"); break;
-		case ERROR_NO27:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,모터 누수 발생\r\n"); break;
-		case ERROR_NO28:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,오일 누수 발생\r\n"); break;
-		case ERROR_NO29:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,제어 누수 발생\r\n"); break;
-		case ERROR_NO30:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,메카니컬실 주기만료\r\n"); break;
-		case ERROR_NO31:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,베어링 주기만료\r\n"); break;
-		case ERROR_NO32:		mm.sprintf("20%02d-%d-%d  %d:%d:%d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,오일 주기만료\r\n"); break;
+		case ERROR_NO1:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,온도 모터1 경보\r\n"); break;
+		case ERROR_NO2:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,온도 모터2 경보\r\n"); break;
+		case ERROR_NO3:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,온도 모터3 경보\r\n"); break;
+		case ERROR_NO4:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,온도 베어링 상 경보\r\n"); break;
+		case ERROR_NO5:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,온도 베어링 하 경보\r\n"); break;
+		case ERROR_NO6:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,온도 모터1 비상\r\n"); break;
+		case ERROR_NO7:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,온도 모터2 비상\r\n"); break;
+		case ERROR_NO8:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,온도 모터3 비상\r\n"); break;
+		case ERROR_NO9:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,온도 베어링 상 비상\r\n"); break;
+		case ERROR_NO10:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,온도 베어링 하 비상\r\n"); break;
+		case ERROR_NO11:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,RPM 경보\r\n"); break;
+		case ERROR_NO12:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,RPM 비상\r\n"); break;
+		case ERROR_NO13:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,과전류 R상 경보\r\n"); break;
+		case ERROR_NO14:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,과전류 S상 경보\r\n"); break;
+		case ERROR_NO15:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,과전류 T상 경보\r\n"); break;
+		case ERROR_NO16:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,과전류 R상 비상\r\n"); break;
+		case ERROR_NO17:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,과전류 S상 비상\r\n"); break;
+		case ERROR_NO18:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,과전류 T상 비상\r\n"); break;
+		case ERROR_NO19:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,저전류 R상 경보\r\n"); break;
+		case ERROR_NO20:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,저전류 S상 경보\r\n"); break;
+		case ERROR_NO21:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,저전류 T상 경보\r\n"); break;
+		case ERROR_NO22:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,저전류 R상 비상\r\n"); break;
+		case ERROR_NO23:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,저전류 S상 비상\r\n"); break;
+		case ERROR_NO24:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,저전류 T상 비상\r\n"); break;
+		case ERROR_NO25:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,상전류 불평형 경보\r\n"); break;
+		case ERROR_NO26:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,상전류 불평형 비상\r\n"); break;
+		case ERROR_NO27:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,모터 누수 발생\r\n"); break;
+		case ERROR_NO28:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,오일 누수 발생\r\n"); break;
+		case ERROR_NO29:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("정지,제어 누수 발생\r\n"); break;
+		case ERROR_NO30:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,메카니컬실 주기만료\r\n"); break;
+		case ERROR_NO31:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,베어링 주기만료\r\n"); break;
+		case ERROR_NO32:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,오일 주기만료\r\n"); break;
 		}
 
 		rdFile.append(mm);
-		file.write(mm.toUtf8());
+		file.write(mm.toLocal8Bit());
+		P10_LineCnt++;
 		return;
 	default:
 		QMessageBox::critical(this, "Missmatch", "Commad not defined");
@@ -742,6 +830,7 @@ void MainWindow::Select_Window(WIN_VAR nSelWin)
 		ui->frame_9->setHidden(false);
 	break;
 	case WIN_10:
+		ShowEventPage();
 		ui->frame_10->setHidden(false);
 	break;
 	case WIN_99:
@@ -777,6 +866,13 @@ void MainWindow::on_CMD_SelUART_clicked()
 	{
 		QMessageBox::critical(this, "SERIAL PORT NOT CONNECTED", "Unable to connect to the radio.\n\nPlease check your connections\nand configuration and try again.");
 	}
+}
+
+QString MainWindow::toUniString(QString str)
+{
+	QTextCodec * codec = QTextCodec::codecForName("eucKR");
+	QString localeStr = codec->toUnicode(str.toStdString().c_str());
+	return (str.toLocal8Bit());
 }
 
 void MainWindow::timer_Update(void)
@@ -1059,7 +1155,7 @@ void MainWindow::TouchProcess_WIN1(int x, int y)
 		// ��������
 		mm.sprintf("Manual run");
 		//QMessageBox::critical(this, "SERIAL PORT NOT CONNECTED", mm);
-		QMessageBox::critical(this, "SERIAL PORT NOT CONNECTED", rdFile);
+		QMessageBox::critical(this, "SERIAL PORT NOT CONNECTED", toUniString(rdFile));
 	}
 	else if(TouchMatching(x,P1_DEF_B3_X1,P1_DEF_B3_X2) && TouchMatching(y,P1_DEF_B3_Y1,P1_DEF_B3_Y2)){
 		// ����ȭ��
@@ -1084,6 +1180,7 @@ void MainWindow::TouchProcess_WIN1(int x, int y)
 		m_port->write(m_send,m_send.size());
 		m_port->waitForBytesWritten(1000);
 		QMessageBox::critical(this, "SERIAL PORT NOT CONNECTED", mm);
+
 	}
 	else if(TouchMatching(x,P1_DEF_TEMPVIEW_X1,P1_DEF_TEMPVIEW_X2) && TouchMatching(y,P1_DEF_TEMPVIEW_Y1,P1_DEF_TEMPVIEW_Y2)){
 		Select_Window(WIN_2);
@@ -2252,8 +2349,8 @@ void MainWindow::TouchMove_WIN6(int orgX, int orgY)
 	}
 
 	else if(TouchMatching(orgX,ScrollVar[2][0],ScrollVar[2][1]) && TouchMatching(orgY,ScrollVar[2][2],ScrollVar[2][3])){
-		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[2][0]) < 225 ) return;
-		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[2][0]) > ScrollVar[3][0]-(ui->P6_L2->width()/2) ) return;
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[2][0]) < ScrollVar[3][1]-(ui->P6_H2->width()/2) ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[2][0]) > 375 ) return;
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[2][0] , ScrollVar[2][2] );
 		ui->P6_L2->setProperty("pos", qpAppNewLoc);
@@ -2268,8 +2365,8 @@ void MainWindow::TouchMove_WIN6(int orgX, int orgY)
 		ui->P6_V1_3->setText(mm);
 	}
 	else if(TouchMatching(orgX,ScrollVar[3][0],ScrollVar[3][1]) && TouchMatching(orgY,ScrollVar[3][2],ScrollVar[3][3])){
-		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[3][0]) < ScrollVar[2][1]-(ui->P6_L2->width()/2) ) return;
-		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[3][0]) > 375 ) return;
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[3][0]) < 225 ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[3][0]) > ScrollVar[2][0]-(ui->P6_H2->width()/2) ) return;
 
 		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[3][0] , ScrollVar[3][2] );
 		ui->P6_H2->setProperty("pos", qpAppNewLoc);
@@ -2309,7 +2406,7 @@ void MainWindow::TouchMove_WIN6(int orgX, int orgY)
 		ui->P6_H3->setProperty("pos", qpAppNewLoc);
 
 		nVal = ui->P6_H3->x() - 225;
-		nVal = int((100*nVal/(375-225))+1);
+		nVal = int((100*nVal/(375-225)));
 		mm.sprintf("%d",nVal);
 		Setting_Var[S_P6_V6] = nVal;
 
@@ -3430,14 +3527,24 @@ void MainWindow::TouchProcess_WIN10(int x, int y)
 		Select_Window(WIN_1);
 	}
 	else if(TouchMatching(x,P10_DEF_B2_X1,P10_DEF_B2_X2) && TouchMatching(y,P10_DEF_B2_Y1,P10_DEF_B2_Y2)){
-		mm.sprintf("Prev page");
-		QMessageBox::critical(this, "SERIAL PORT NOT CONNECTED", mm);
+		//mm.sprintf("Prev page");
+		//QMessageBox::critical(this, "SERIAL PORT NOT CONNECTED", mm);
+		if(P10_PageIndex > 0){
+			P10_PageIndex--;
+
+			ShowEventPage();
+		}
 	}
 	else if(TouchMatching(x,P10_DEF_B3_X1,P10_DEF_B3_X2) && TouchMatching(y,P10_DEF_B3_Y1,P10_DEF_B3_Y2)){
-		mm.sprintf("Next page");
-		QMessageBox::critical(this, "SERIAL PORT NOT CONNECTED", mm);
-	}
+		//mm.sprintf("Next page");
+		//QMessageBox::critical(this, "SERIAL PORT NOT CONNECTED", mm);
+		if(((P10_LineCnt/9)) > P10_PageIndex){
+			if((((P10_LineCnt%9) == 0)) && ((P10_LineCnt/9) == (P10_PageIndex+1))) P10_PageIndex--;
+			P10_PageIndex++;
 
+			ShowEventPage();
+		} 
+	}
 }
 
 void MainWindow::TouchProcess_WIN2(int x, int y)
@@ -6373,4 +6480,232 @@ void MainWindow::ChangeStringList(void)
 		return;
 	}
 	
+}
+
+void MainWindow::ShowEventPage(void)
+{
+	QString mm;
+	QStringList strlist1,strlist2;
+	int lineCnt;
+	
+	strlist1 = rdFile.split("\n");
+
+	for(lineCnt=P10_PageIndex*9;lineCnt<(P10_PageIndex*9)+9;lineCnt++){
+		if(lineCnt >= P10_LineCnt){
+
+			switch(lineCnt%9){
+			case 0:
+				ui->P10_index_0->setVisible(false);
+				ui->P10_time_0->setVisible(false);
+				ui->P10_process_0->setVisible(false);
+				ui->P10_info_0->setVisible(false);
+			break;
+			case 1:
+				ui->P10_index_1->setVisible(false);
+				ui->P10_time_1->setVisible(false);
+				ui->P10_process_1->setVisible(false);
+				ui->P10_info_1->setVisible(false);
+			break;
+			case 2:
+				ui->P10_index_2->setVisible(false);
+				ui->P10_time_2->setVisible(false);
+				ui->P10_process_2->setVisible(false);
+				ui->P10_info_2->setVisible(false);
+			break;
+			case 3:
+				ui->P10_index_3->setVisible(false);
+				ui->P10_time_3->setVisible(false);
+				ui->P10_process_3->setVisible(false);
+				ui->P10_info_3->setVisible(false);
+			break;
+			case 4:
+				ui->P10_index_4->setVisible(false);
+				ui->P10_time_4->setVisible(false);
+				ui->P10_process_4->setVisible(false);
+				ui->P10_info_4->setVisible(false);
+			break;
+			case 5:
+				ui->P10_index_5->setVisible(false);
+				ui->P10_time_5->setVisible(false);
+				ui->P10_process_5->setVisible(false);
+				ui->P10_info_5->setVisible(false);
+			break;
+			case 6:
+				ui->P10_index_6->setVisible(false);
+				ui->P10_time_6->setVisible(false);
+				ui->P10_process_6->setVisible(false);
+				ui->P10_info_6->setVisible(false);
+			break;
+			case 7:
+				ui->P10_index_7->setVisible(false);
+				ui->P10_time_7->setVisible(false);
+				ui->P10_process_7->setVisible(false);
+				ui->P10_info_7->setVisible(false);
+			break;
+			case 8:
+				ui->P10_index_8->setVisible(false);
+				ui->P10_time_8->setVisible(false);
+				ui->P10_process_8->setVisible(false);
+				ui->P10_info_8->setVisible(false);
+			break;
+			}
+		}
+		else{
+			switch(lineCnt%9){
+			case 0:
+				ui->P10_index_0->setVisible(true);
+				ui->P10_time_0->setVisible(true);
+				ui->P10_process_0->setVisible(true);
+				ui->P10_info_0->setVisible(true);
+
+				mm.sprintf("%d",lineCnt+1);
+				ui->P10_index_0->setText(mm);
+				mm = strlist1[lineCnt];
+				strlist2 = mm.split(",");
+				mm = strlist2[0].toUtf8();
+				ui->P10_time_0->setText(mm);
+				mm = strlist2[1].toUtf8();
+				ui->P10_process_0->setText(mm);
+				mm = strlist2[2].toUtf8();
+				ui->P10_info_0->setText(mm);
+			break;
+			case 1:
+				ui->P10_index_1->setVisible(true);
+				ui->P10_time_1->setVisible(true);
+				ui->P10_process_1->setVisible(true);
+				ui->P10_info_1->setVisible(true);
+
+				mm.sprintf("%d",lineCnt+1);
+				ui->P10_index_1->setText(mm);
+				mm = strlist1[lineCnt];
+				strlist2 = mm.split(",");
+				mm = strlist2[0].toUtf8();
+				ui->P10_time_1->setText(mm);
+				mm = strlist2[1].toUtf8();
+				ui->P10_process_1->setText(mm);
+				mm = strlist2[2].toUtf8();
+				ui->P10_info_1->setText(mm);
+			break;
+			case 2:
+				ui->P10_index_2->setVisible(true);
+				ui->P10_time_2->setVisible(true);
+				ui->P10_process_2->setVisible(true);
+				ui->P10_info_2->setVisible(true);
+
+				mm.sprintf("%d",lineCnt+1);
+				ui->P10_index_2->setText(mm);
+				mm = strlist1[lineCnt];
+				strlist2 = mm.split(",");
+				mm = strlist2[0].toUtf8();
+				ui->P10_time_2->setText(mm);
+				mm = strlist2[1].toUtf8();
+				ui->P10_process_2->setText(mm);
+				mm = strlist2[2].toUtf8();
+				ui->P10_info_2->setText(mm);
+			break;
+			case 3:
+				ui->P10_index_3->setVisible(true);
+				ui->P10_time_3->setVisible(true);
+				ui->P10_process_3->setVisible(true);
+				ui->P10_info_3->setVisible(true);
+
+				mm.sprintf("%d",lineCnt+1);
+				ui->P10_index_3->setText(mm);
+				mm = strlist1[lineCnt];
+				strlist2 = mm.split(",");
+				mm = strlist2[0].toUtf8();
+				ui->P10_time_3->setText(mm);
+				mm = strlist2[1].toUtf8();
+				ui->P10_process_3->setText(mm);
+				mm = strlist2[2].toUtf8();
+				ui->P10_info_3->setText(mm);
+			break;
+			case 4:
+				ui->P10_index_4->setVisible(true);
+				ui->P10_time_4->setVisible(true);
+				ui->P10_process_4->setVisible(true);
+				ui->P10_info_4->setVisible(true);
+
+				mm.sprintf("%d",lineCnt+1);
+				ui->P10_index_4->setText(mm);
+				mm = strlist1[lineCnt];
+				strlist2 = mm.split(",");
+				mm = strlist2[0].toUtf8();
+				ui->P10_time_4->setText(mm);
+				mm = strlist2[1].toUtf8();
+				ui->P10_process_4->setText(mm);
+				mm = strlist2[2].toUtf8();
+				ui->P10_info_4->setText(mm);
+			break;
+			case 5:
+				ui->P10_index_5->setVisible(true);
+				ui->P10_time_5->setVisible(true);
+				ui->P10_process_5->setVisible(true);
+				ui->P10_info_5->setVisible(true);
+
+				mm.sprintf("%d",lineCnt+1);
+				ui->P10_index_5->setText(mm);
+				mm = strlist1[lineCnt];
+				strlist2 = mm.split(",");
+				mm = strlist2[0].toUtf8();
+				ui->P10_time_5->setText(mm);
+				mm = strlist2[1].toUtf8();
+				ui->P10_process_5->setText(mm);
+				mm = strlist2[2].toUtf8();
+				ui->P10_info_5->setText(mm);
+			break;
+			case 6:
+				ui->P10_index_6->setVisible(true);
+				ui->P10_time_6->setVisible(true);
+				ui->P10_process_6->setVisible(true);
+				ui->P10_info_6->setVisible(true);
+
+				mm.sprintf("%d",lineCnt+1);
+				ui->P10_index_6->setText(mm);
+				mm = strlist1[lineCnt];
+				strlist2 = mm.split(",");
+				mm = strlist2[0].toUtf8();
+				ui->P10_time_6->setText(mm);
+				mm = strlist2[1].toUtf8();
+				ui->P10_process_6->setText(mm);
+				mm = strlist2[2].toUtf8();
+				ui->P10_info_6->setText(mm);
+			break;
+			case 7:
+				ui->P10_index_7->setVisible(true);
+				ui->P10_time_7->setVisible(true);
+				ui->P10_process_7->setVisible(true);
+				ui->P10_info_7->setVisible(true);
+
+				mm.sprintf("%d",lineCnt+1);
+				ui->P10_index_7->setText(mm);
+				mm = strlist1[lineCnt];
+				strlist2 = mm.split(",");
+				mm = strlist2[0].toUtf8();
+				ui->P10_time_7->setText(mm);
+				mm = strlist2[1].toUtf8();
+				ui->P10_process_7->setText(mm);
+				mm = strlist2[2].toUtf8();
+				ui->P10_info_7->setText(mm);
+			break;
+			case 8:
+				ui->P10_index_8->setVisible(true);
+				ui->P10_time_8->setVisible(true);
+				ui->P10_process_8->setVisible(true);
+				ui->P10_info_8->setVisible(true);
+
+				mm.sprintf("%d",lineCnt+1);
+				ui->P10_index_8->setText(mm);
+				mm = strlist1[lineCnt];
+				strlist2 = mm.split(",");
+				mm = strlist2[0].toUtf8();
+				ui->P10_time_8->setText(mm);
+				mm = strlist2[1].toUtf8();
+				ui->P10_process_8->setText(mm);
+				mm = strlist2[2].toUtf8();
+				ui->P10_info_8->setText(mm);
+			break;
+			}
+		}
+	}
 }
