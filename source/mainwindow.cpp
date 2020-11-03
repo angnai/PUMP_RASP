@@ -37,6 +37,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 	rdFile = "";
 	file.setFileName("ErrorList.txt");
+	
 	file.open(QFile::ReadOnly);//QIODevice::ReadWrite | QIODevice::Append | QFile::read);
 	QTextStream stream(&file);
 	while (!stream.atEnd()) { 
@@ -51,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 	setWindowFlags(Qt::FramelessWindowHint|Qt::CustomizeWindowHint);
 	this->setGeometry(0,0,800,480);
-
+ 
 	nExitCnt = 0;
 
 	iXdifferent=-1;
@@ -687,22 +688,30 @@ void MainWindow::Display_UI_Value(void)
 				case S_P7_V5:
 					nLeftVal = (m_rcvData.at(i-2)*256 + m_rcvData.at(i-1)); nRightVal = 3600;
 				break;
-
+				default:
+					Setting_Var[(i/2) + i_VarAddr] = valueCheck;
+					continue;
+				break;
 			}
 			if( Check_Range(nLeftVal,valueCheck,nRightVal) ) Setting_Var[(i/2) + i_VarAddr] = valueCheck;
 		}
 		return;
+	break;
 	case 0x36:
 		i_VarAddr = 50;
 		for(i=0;i<i_rcvDataCnt;i+=2){
 			valueCheck = m_rcvData.at(i)*256 + m_rcvData.at(i+1);
 			switch((i/2) + i_VarAddr){
-				///////////////// Page 4
-				case S_P4_V1:
-				case S_P4_V2:
-				case S_P4_V3:
-					nLeftVal = 0; nRightVal = 30000;
-				break;
+			///////////////// Page 4
+			case S_P4_V1:
+			case S_P4_V2:
+			case S_P4_V3:
+				nLeftVal = 0; nRightVal = 30000;
+			break;
+			default:
+				Setting_Var[(i/2) + i_VarAddr] = valueCheck;
+				continue;
+			break;
 			}
 			if( Check_Range(nLeftVal,valueCheck,nRightVal) ) Setting_Var[(i/2) + i_VarAddr] = valueCheck;
 		}
@@ -1170,12 +1179,16 @@ void MainWindow::TouchProcess_WIN1(int x, int y)
 	}
 	else if(TouchMatching(x,P1_DEF_B5_X1,P1_DEF_B5_X2) && TouchMatching(y,P1_DEF_B5_Y1,P1_DEF_B5_Y2)){
 		mm.sprintf("Init"); 
-		uc_temptemp[2] = 0x03;
-		uc_temptemp[3] = 0x01;
-		uc_temptemp[4] = 0x01;
+		uc_temptemp[0] = 0x44;
+		uc_temptemp[1] = 0x09;
+		uc_temptemp[2] = 0x02;
+		uc_temptemp[3] = 0x00;
+		uc_temptemp[4] = 0x00;
+		uc_temptemp[5] = 0x00;
+		uc_temptemp[6] = 0x43;
 
 		m_send.clear();
-		m_send.setRawData(uc_temptemp,8);
+		m_send.setRawData(uc_temptemp,7);
 
 		m_port->write(m_send,m_send.size());
 		m_port->waitForBytesWritten(1000);
@@ -2143,6 +2156,7 @@ void MainWindow::TouchMove_WIN5(int orgX, int orgY)
 	int nVal;
 	QString mm;
 
+	// line1
 	if(TouchMatching(orgX,ScrollVar[0][0],ScrollVar[0][1]) && TouchMatching(orgY,ScrollVar[0][2],ScrollVar[0][3])){
 		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[0][0]) < 460 ) return;
 		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[0][0]) > ScrollVar[1][0]-(ui->P5_Set1_M->width()/2) ) return;
@@ -2152,9 +2166,8 @@ void MainWindow::TouchMove_WIN5(int orgX, int orgY)
 
 		nVal = ui->P5_Set1_L->x() - 460;
 		nVal = int((199*nVal/(757-460))+1);
-
+		mm.sprintf("%d",nVal);
 		Setting_Var[S_P5_V6] = nVal;
-		mm.sprintf("%d",Setting_Var[S_P5_V6]);
 
 		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[0][0] + 2 , ScrollVar[0][2] - 10 );
 		ui->P5_Set1_L_txt->setProperty("pos", qpAppNewLoc1);
@@ -2191,6 +2204,206 @@ void MainWindow::TouchMove_WIN5(int orgX, int orgY)
 		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[2][0] + 2 , ScrollVar[2][2] - 10 );
 		ui->P5_Set1_H_txt->setProperty("pos", qpAppNewLoc1);
 		ui->P5_Set1_H_txt->setText(mm);
+	}
+
+	// line2
+	else if(TouchMatching(orgX,ScrollVar[3][0],ScrollVar[3][1]) && TouchMatching(orgY,ScrollVar[3][2],ScrollVar[3][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[3][0]) < 460 ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[3][0]) > ScrollVar[4][0]-(ui->P5_Set2_M->width()/2) ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[3][0] , ScrollVar[3][2] );
+		ui->P5_Set2_L->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set2_L->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V9] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[3][0] + 2 , ScrollVar[3][2] - 10 );
+		ui->P5_Set2_L_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set2_L_txt->setText(mm);
+	}
+	else if(TouchMatching(orgX,ScrollVar[4][0],ScrollVar[4][1]) && TouchMatching(orgY,ScrollVar[4][2],ScrollVar[4][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[4][0]) < ScrollVar[3][1]-(ui->P5_Set2_L->width()/2) ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[4][0]) > ScrollVar[5][0]-(ui->P5_Set2_H->width()/2) ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[4][0] , ScrollVar[4][2] );
+		ui->P5_Set2_M->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set2_M->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V10] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[4][0] + 2 , ScrollVar[4][2] - 10 );
+		ui->P5_Set2_M_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set2_M_txt->setText(mm);
+	}
+	else if(TouchMatching(orgX,ScrollVar[5][0],ScrollVar[5][1]) && TouchMatching(orgY,ScrollVar[5][2],ScrollVar[5][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[5][0]) < ScrollVar[4][1]-(ui->P5_Set2_L->width()/2) ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[5][0]) > 757 ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[5][0] , ScrollVar[5][2] );
+		ui->P5_Set2_H->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set2_H->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V11] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[5][0] + 2 , ScrollVar[5][2] - 10 );
+		ui->P5_Set2_H_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set2_H_txt->setText(mm);
+	}
+
+	// line3
+	else if(TouchMatching(orgX,ScrollVar[6][0],ScrollVar[6][1]) && TouchMatching(orgY,ScrollVar[6][2],ScrollVar[6][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[6][0]) < 460 ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[6][0]) > ScrollVar[7][0]-(ui->P5_Set3_M->width()/2) ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[6][0] , ScrollVar[6][2] );
+		ui->P5_Set3_L->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set3_L->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V12] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[6][0] + 2 , ScrollVar[6][2] - 10 );
+		ui->P5_Set3_L_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set3_L_txt->setText(mm);
+	}
+	else if(TouchMatching(orgX,ScrollVar[7][0],ScrollVar[7][1]) && TouchMatching(orgY,ScrollVar[7][2],ScrollVar[7][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[7][0]) < ScrollVar[6][1]-(ui->P5_Set3_L->width()/2) ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[7][0]) > ScrollVar[8][0]-(ui->P5_Set3_H->width()/2) ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[7][0] , ScrollVar[7][2] );
+		ui->P5_Set3_M->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set3_M->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V13] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[7][0] + 2 , ScrollVar[7][2] - 10 );
+		ui->P5_Set3_M_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set3_M_txt->setText(mm);
+	}
+	else if(TouchMatching(orgX,ScrollVar[8][0],ScrollVar[8][1]) && TouchMatching(orgY,ScrollVar[8][2],ScrollVar[8][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[8][0]) < ScrollVar[7][1]-(ui->P5_Set3_L->width()/2) ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[8][0]) > 757 ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[8][0] , ScrollVar[8][2] );
+		ui->P5_Set3_H->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set3_H->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V14] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[8][0] + 2 , ScrollVar[8][2] - 10 );
+		ui->P5_Set3_H_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set3_H_txt->setText(mm);
+	}
+	
+	// line4
+	if(TouchMatching(orgX,ScrollVar[9][0],ScrollVar[9][1]) && TouchMatching(orgY,ScrollVar[9][2],ScrollVar[9][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[9][0]) < 460 ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[9][0]) > ScrollVar[10][0]-(ui->P5_Set4_M->width()/2) ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[9][0] , ScrollVar[9][2] );
+		ui->P5_Set4_L->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set4_L->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V15] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[9][0] + 2 , ScrollVar[9][2] - 10 );
+		ui->P5_Set4_L_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set4_L_txt->setText(mm);
+	}
+	else if(TouchMatching(orgX,ScrollVar[10][0],ScrollVar[10][1]) && TouchMatching(orgY,ScrollVar[10][2],ScrollVar[10][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[10][0]) < ScrollVar[9][1]-(ui->P5_Set4_L->width()/2) ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[10][0]) > ScrollVar[11][0]-(ui->P5_Set4_H->width()/2) ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[10][0] , ScrollVar[10][2] );
+		ui->P5_Set4_M->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set4_M->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V16] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[10][0] + 2 , ScrollVar[10][2] - 10 );
+		ui->P5_Set4_M_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set4_M_txt->setText(mm);
+	}
+	else if(TouchMatching(orgX,ScrollVar[11][0],ScrollVar[11][1]) && TouchMatching(orgY,ScrollVar[11][2],ScrollVar[11][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[11][0]) < ScrollVar[10][1]-(ui->P5_Set4_L->width()/2) ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[11][0]) > 757 ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[11][0] , ScrollVar[11][2] );
+		ui->P5_Set4_H->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set4_H->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V17] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[11][0] + 2 , ScrollVar[11][2] - 10 );
+		ui->P5_Set4_H_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set4_H_txt->setText(mm);
+	}
+
+	// line5
+	else if(TouchMatching(orgX,ScrollVar[12][0],ScrollVar[12][1]) && TouchMatching(orgY,ScrollVar[12][2],ScrollVar[12][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[12][0]) < 460 ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[12][0]) > ScrollVar[13][0]-(ui->P5_Set5_M->width()/2) ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[12][0] , ScrollVar[12][2] );
+		ui->P5_Set5_L->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set5_L->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V6] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[12][0] + 2 , ScrollVar[12][2] - 10 );
+		ui->P5_Set5_L_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set5_L_txt->setText(mm);
+	}
+	else if(TouchMatching(orgX,ScrollVar[13][0],ScrollVar[13][1]) && TouchMatching(orgY,ScrollVar[13][2],ScrollVar[13][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[13][0]) < ScrollVar[12][1]-(ui->P5_Set5_L->width()/2) ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[13][0]) > ScrollVar[14][0]-(ui->P5_Set5_H->width()/2) ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[13][0] , ScrollVar[13][2] );
+		ui->P5_Set5_M->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set5_M->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V7] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[13][0] + 2 , ScrollVar[13][2] - 10 );
+		ui->P5_Set5_M_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set5_M_txt->setText(mm);
+	}
+	else if(TouchMatching(orgX,ScrollVar[14][0],ScrollVar[14][1]) && TouchMatching(orgY,ScrollVar[14][2],ScrollVar[14][3])){
+		if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[14][0]) < ScrollVar[13][1]-(ui->P5_Set5_L->width()/2) ) return;
+		else if( ((QCursor::pos().x() - iXdifferent) + ScrollVar[14][0]) > 757 ) return;
+
+		QPoint qpAppNewLoc( (QCursor::pos().x() - iXdifferent) + ScrollVar[14][0] , ScrollVar[14][2] );
+		ui->P5_Set5_H->setProperty("pos", qpAppNewLoc);
+
+		nVal = ui->P5_Set5_H->x() - 460;
+		nVal = int((199*nVal/(757-460))+1);
+		mm.sprintf("%d",nVal);
+		Setting_Var[S_P5_V8] = nVal;
+
+		QPoint qpAppNewLoc1( (QCursor::pos().x() - iXdifferent) + ScrollVar[14][0] + 2 , ScrollVar[14][2] - 10 );
+		ui->P5_Set5_H_txt->setProperty("pos", qpAppNewLoc1);
+		ui->P5_Set5_H_txt->setText(mm);
 	}
 
 }
@@ -3069,7 +3282,8 @@ void MainWindow::TouchProcess_WIN8(int x, int y)
 		qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (1).png"); // ������
 		ui->P8_B8->setPixmap(qp);
 	}
-
+#if 0
+	// 201106 Disable touch event
 	else if(TouchMatching(x,P8_DEF_V9_X1,P8_DEF_V9_X2) && TouchMatching(y,P8_DEF_V9_Y1,P8_DEF_V9_Y2)){
 		if(!Setting_Var[S_P8_V9]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (11).png"); // En
 		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (22).png"); // Dis
@@ -3098,6 +3312,7 @@ void MainWindow::TouchProcess_WIN8(int x, int y)
 
 		Setting_Var[S_P8_V12] = (Setting_Var[S_P8_V12] + 1) % 2;
 	}
+#endif
 
 	else if(TouchMatching(x,P8_DEF_V13_X1,P8_DEF_V13_X2) && TouchMatching(y,P8_DEF_V13_Y1,P8_DEF_V13_Y2)){
 		if(!Setting_Var[S_P8_V13]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (12).png"); // En
@@ -3191,6 +3406,8 @@ void MainWindow::TouchProcess_WIN8(int x, int y)
 		Setting_Var[S_P8_V22] = (Setting_Var[S_P8_V22] + 1) % 2;
 	}
 
+#if 0
+	// 201106 Disable touch event
 	else if(TouchMatching(x,P8_DEF_V23_X1,P8_DEF_V23_X2) && TouchMatching(y,P8_DEF_V23_Y1,P8_DEF_V23_Y2)){
 		if(!Setting_Var[S_P8_V23]) qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (34).png"); // En
 		else qp = QPixmap(":/new/8P/UIUX/8p/SelMonitoringTemp/8P_Group1 (38).png"); // Dis
@@ -3219,6 +3436,7 @@ void MainWindow::TouchProcess_WIN8(int x, int y)
 
 		Setting_Var[S_P8_V26] = (Setting_Var[S_P8_V26] + 1) % 2;
 	}
+#endif
 
 }
 
@@ -5777,8 +5995,86 @@ void MainWindow::ChangeWindow_WIN5(void)
 	int nVal,nVal2;
 	QString mm;
 	QPoint qpAppNewLoc;
+	QPixmap qp;
 
-
+	qp = QPixmap(P5_TempSel_STRList[0]); // 0,1
+	ui->P5_S1_1->setPixmap(qp);
+	ui->P5_S2_1->setPixmap(qp);
+	ui->P5_S3_1->setPixmap(qp);
+	ui->P5_S4_1->setPixmap(qp);
+	ui->P5_S5_1->setPixmap(qp);
+	qp = QPixmap(P5_TempSel_STRList[2]); // 2,3
+	ui->P5_S1_2->setPixmap(qp);
+	ui->P5_S2_2->setPixmap(qp);
+	ui->P5_S3_2->setPixmap(qp);
+	ui->P5_S4_2->setPixmap(qp);
+	ui->P5_S5_2->setPixmap(qp);
+	qp = QPixmap(P5_TempSel_STRList[4]); // 4,5
+	ui->P5_S1_3->setPixmap(qp);
+	ui->P5_S2_3->setPixmap(qp);
+	ui->P5_S3_3->setPixmap(qp);
+	ui->P5_S4_3->setPixmap(qp);
+	ui->P5_S5_3->setPixmap(qp);
+	qp = QPixmap(P5_TempSel_STRList[6]); // 6,7
+	ui->P5_S1_4->setPixmap(qp);
+	ui->P5_S2_4->setPixmap(qp);
+	ui->P5_S3_4->setPixmap(qp);
+	ui->P5_S4_4->setPixmap(qp);
+	ui->P5_S5_4->setPixmap(qp);
+	qp = QPixmap(P5_TempSel_STRList[8]); // 8,9
+	ui->P5_S1_5->setPixmap(qp);
+	ui->P5_S2_5->setPixmap(qp);
+	ui->P5_S3_5->setPixmap(qp);
+	ui->P5_S4_5->setPixmap(qp);
+	ui->P5_S5_5->setPixmap(qp);
+	qp = QPixmap(P5_TempSel_STRList[10]); // 10,11
+	ui->P5_S1_6->setPixmap(qp);
+	ui->P5_S2_6->setPixmap(qp);
+	ui->P5_S3_6->setPixmap(qp);
+	ui->P5_S4_6->setPixmap(qp);
+	ui->P5_S5_6->setPixmap(qp);
+	
+	switch(Setting_Var[S_P5_V1]) {
+	case T_NONE:	qp = QPixmap(P5_TempSel_STRList[1]);	ui->P5_S1_1->setPixmap(qp); 	break;
+	case T_SET_M1:	qp = QPixmap(P5_TempSel_STRList[3]);	ui->P5_S1_2->setPixmap(qp); 	break;
+	case T_SET_M2:	qp = QPixmap(P5_TempSel_STRList[5]);	ui->P5_S1_3->setPixmap(qp); 	break;
+	case T_SET_M3:	qp = QPixmap(P5_TempSel_STRList[7]);	ui->P5_S1_4->setPixmap(qp); 	break;
+	case T_SET_B1:	qp = QPixmap(P5_TempSel_STRList[9]);	ui->P5_S1_5->setPixmap(qp); 	break;
+	case T_SET_B2:	qp = QPixmap(P5_TempSel_STRList[11]);	ui->P5_S1_6->setPixmap(qp); 	break;
+	}
+	switch(Setting_Var[S_P5_V2]) {
+	case T_NONE:	qp = QPixmap(P5_TempSel_STRList[1]);	ui->P5_S2_1->setPixmap(qp); 	break;
+	case T_SET_M1:	qp = QPixmap(P5_TempSel_STRList[3]);	ui->P5_S2_2->setPixmap(qp); 	break;
+	case T_SET_M2:	qp = QPixmap(P5_TempSel_STRList[5]);	ui->P5_S2_3->setPixmap(qp); 	break;
+	case T_SET_M3:	qp = QPixmap(P5_TempSel_STRList[7]);	ui->P5_S2_4->setPixmap(qp); 	break;
+	case T_SET_B1:	qp = QPixmap(P5_TempSel_STRList[9]);	ui->P5_S2_5->setPixmap(qp); 	break;
+	case T_SET_B2:	qp = QPixmap(P5_TempSel_STRList[11]);	ui->P5_S2_6->setPixmap(qp); 	break;
+	}
+	switch(Setting_Var[S_P5_V3]) {
+	case T_NONE:	qp = QPixmap(P5_TempSel_STRList[1]);	ui->P5_S3_1->setPixmap(qp); 	break;
+	case T_SET_M1:	qp = QPixmap(P5_TempSel_STRList[3]);	ui->P5_S3_2->setPixmap(qp); 	break;
+	case T_SET_M2:	qp = QPixmap(P5_TempSel_STRList[5]);	ui->P5_S3_3->setPixmap(qp); 	break;
+	case T_SET_M3:	qp = QPixmap(P5_TempSel_STRList[7]);	ui->P5_S3_4->setPixmap(qp); 	break;
+	case T_SET_B1:	qp = QPixmap(P5_TempSel_STRList[9]);	ui->P5_S3_5->setPixmap(qp); 	break;
+	case T_SET_B2:	qp = QPixmap(P5_TempSel_STRList[11]);	ui->P5_S3_6->setPixmap(qp); 	break;
+	}
+	switch(Setting_Var[S_P5_V4]) {
+	case T_NONE:	qp = QPixmap(P5_TempSel_STRList[1]);	ui->P5_S4_1->setPixmap(qp); 	break;
+	case T_SET_M1:	qp = QPixmap(P5_TempSel_STRList[3]);	ui->P5_S4_2->setPixmap(qp); 	break;
+	case T_SET_M2:	qp = QPixmap(P5_TempSel_STRList[5]);	ui->P5_S4_3->setPixmap(qp); 	break;
+	case T_SET_M3:	qp = QPixmap(P5_TempSel_STRList[7]);	ui->P5_S4_4->setPixmap(qp); 	break;
+	case T_SET_B1:	qp = QPixmap(P5_TempSel_STRList[9]);	ui->P5_S4_5->setPixmap(qp); 	break;
+	case T_SET_B2:	qp = QPixmap(P5_TempSel_STRList[11]);	ui->P5_S4_6->setPixmap(qp); 	break;
+	}
+	switch(Setting_Var[S_P5_V5]) {
+	case T_NONE:	qp = QPixmap(P5_TempSel_STRList[1]);	ui->P5_S5_1->setPixmap(qp); 	break;
+	case T_SET_M1:	qp = QPixmap(P5_TempSel_STRList[3]);	ui->P5_S5_2->setPixmap(qp); 	break;
+	case T_SET_M2:	qp = QPixmap(P5_TempSel_STRList[5]);	ui->P5_S5_3->setPixmap(qp); 	break;
+	case T_SET_M3:	qp = QPixmap(P5_TempSel_STRList[7]);	ui->P5_S5_4->setPixmap(qp); 	break;
+	case T_SET_B1:	qp = QPixmap(P5_TempSel_STRList[9]);	ui->P5_S5_5->setPixmap(qp); 	break;
+	case T_SET_B2:	qp = QPixmap(P5_TempSel_STRList[11]);	ui->P5_S5_6->setPixmap(qp); 	break;
+	}
+	
 	nVal = int(((Setting_Var[S_P5_V6]/2)*(757-460))/100+460);
 	nVal2 = ui->P5_Set1_L->y();
 	qpAppNewLoc.setX(nVal);

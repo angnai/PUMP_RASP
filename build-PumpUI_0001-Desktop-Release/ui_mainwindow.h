@@ -787,21 +787,12 @@ public:
         brush.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush1(QColor(255, 255, 255, 128));
-        brush1.setStyle(Qt::NoBrush);
-
         palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush2(QColor(255, 255, 255, 128));
-        brush2.setStyle(Qt::NoBrush);
-
-        QBrush brush3(QColor(120, 120, 120, 255));
-        brush3.setStyle(Qt::SolidPattern);
-        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush4(QColor(255, 255, 255, 128));
-        brush4.setStyle(Qt::NoBrush);
-
+        QBrush brush1(QColor(120, 120, 120, 255));
+        brush1.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P1_ValMotor1->setPalette(palette);
         QFont font;
         font.setPointSize(26);
@@ -817,19 +808,10 @@ public:
         QPalette palette1;
         palette1.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette1.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush5(QColor(255, 255, 255, 128));
-        brush5.setStyle(Qt::NoBrush);
-
         palette1.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette1.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush6(QColor(255, 255, 255, 128));
-        brush6.setStyle(Qt::NoBrush);
-
-        palette1.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette1.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush7(QColor(255, 255, 255, 128));
-        brush7.setStyle(Qt::NoBrush);
-
+        palette1.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette1.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P1_ValMotor2->setPalette(palette1);
         P1_ValMotor2->setFont(font);
         P1_ValMotor2->setLayoutDirection(Qt::LeftToRight);
@@ -841,19 +823,10 @@ public:
         QPalette palette2;
         palette2.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette2.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush8(QColor(255, 255, 255, 128));
-        brush8.setStyle(Qt::NoBrush);
-
         palette2.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette2.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush9(QColor(255, 255, 255, 128));
-        brush9.setStyle(Qt::NoBrush);
-
-        palette2.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette2.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush10(QColor(255, 255, 255, 128));
-        brush10.setStyle(Qt::NoBrush);
-
+        palette2.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette2.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P1_ValMotor3->setPalette(palette2);
         P1_ValMotor3->setFont(font);
         P1_ValMotor3->setLayoutDirection(Qt::LeftToRight);
@@ -865,19 +838,10 @@ public:
         QPalette palette3;
         palette3.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette3.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush11(QColor(255, 255, 255, 128));
-        brush11.setStyle(Qt::NoBrush);
-
         palette3.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette3.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush12(QColor(255, 255, 255, 128));
-        brush12.setStyle(Qt::NoBrush);
-
-        palette3.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette3.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush13(QColor(255, 255, 255, 128));
-        brush13.setStyle(Qt::NoBrush);
-
+        palette3.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette3.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P1_ValBR1->setPalette(palette3);
         P1_ValBR1->setFont(font);
         P1_ValBR1->setLayoutDirection(Qt::LeftToRight);
@@ -889,19 +853,10 @@ public:
         QPalette palette4;
         palette4.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette4.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush14(QColor(255, 255, 255, 128));
-        brush14.setStyle(Qt::NoBrush);
-
         palette4.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette4.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush15(QColor(255, 255, 255, 128));
-        brush15.setStyle(Qt::NoBrush);
-
-        palette4.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette4.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush16(QColor(255, 255, 255, 128));
-        brush16.setStyle(Qt::NoBrush);
-
+        palette4.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette4.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P1_ValBR2->setPalette(palette4);
         P1_ValBR2->setFont(font);
         P1_ValBR2->setLayoutDirection(Qt::LeftToRight);
@@ -913,19 +868,10 @@ public:
         QPalette palette5;
         palette5.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette5.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush17(QColor(255, 255, 255, 128));
-        brush17.setStyle(Qt::NoBrush);
-
         palette5.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette5.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush18(QColor(255, 255, 255, 128));
-        brush18.setStyle(Qt::NoBrush);
-
-        palette5.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette5.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush19(QColor(255, 255, 255, 128));
-        brush19.setStyle(Qt::NoBrush);
-
+        palette5.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette5.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P1_ValRPM->setPalette(palette5);
         QFont font1;
         font1.setPointSize(25);
@@ -941,19 +887,10 @@ public:
         QPalette palette6;
         palette6.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette6.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush20(QColor(255, 255, 255, 128));
-        brush20.setStyle(Qt::NoBrush);
-
         palette6.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette6.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush21(QColor(255, 255, 255, 128));
-        brush21.setStyle(Qt::NoBrush);
-
-        palette6.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette6.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush22(QColor(255, 255, 255, 128));
-        brush22.setStyle(Qt::NoBrush);
-
+        palette6.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette6.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P1_ValOpTime->setPalette(palette6);
         QFont font2;
         font2.setPointSize(17);
@@ -969,19 +906,10 @@ public:
         QPalette palette7;
         palette7.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette7.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush23(QColor(255, 255, 255, 128));
-        brush23.setStyle(Qt::NoBrush);
-
         palette7.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette7.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush24(QColor(255, 255, 255, 128));
-        brush24.setStyle(Qt::NoBrush);
-
-        palette7.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette7.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush25(QColor(255, 255, 255, 128));
-        brush25.setStyle(Qt::NoBrush);
-
+        palette7.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette7.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P1_ValRCur->setPalette(palette7);
         P1_ValRCur->setFont(font);
         P1_ValRCur->setLayoutDirection(Qt::LeftToRight);
@@ -993,19 +921,10 @@ public:
         QPalette palette8;
         palette8.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette8.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush26(QColor(255, 255, 255, 128));
-        brush26.setStyle(Qt::NoBrush);
-
         palette8.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette8.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush27(QColor(255, 255, 255, 128));
-        brush27.setStyle(Qt::NoBrush);
-
-        palette8.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette8.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush28(QColor(255, 255, 255, 128));
-        brush28.setStyle(Qt::NoBrush);
-
+        palette8.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette8.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P1_ValSCur->setPalette(palette8);
         P1_ValSCur->setFont(font);
         P1_ValSCur->setLayoutDirection(Qt::LeftToRight);
@@ -1017,19 +936,10 @@ public:
         QPalette palette9;
         palette9.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette9.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush29(QColor(255, 255, 255, 128));
-        brush29.setStyle(Qt::NoBrush);
-
         palette9.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette9.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush30(QColor(255, 255, 255, 128));
-        brush30.setStyle(Qt::NoBrush);
-
-        palette9.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette9.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush31(QColor(255, 255, 255, 128));
-        brush31.setStyle(Qt::NoBrush);
-
+        palette9.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette9.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P1_ValTCur->setPalette(palette9);
         P1_ValTCur->setFont(font);
         P1_ValTCur->setLayoutDirection(Qt::LeftToRight);
@@ -1053,19 +963,10 @@ public:
         QPalette palette10;
         palette10.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette10.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush32(QColor(255, 255, 255, 128));
-        brush32.setStyle(Qt::NoBrush);
-
         palette10.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette10.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush33(QColor(255, 255, 255, 128));
-        brush33.setStyle(Qt::NoBrush);
-
-        palette10.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette10.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush34(QColor(255, 255, 255, 128));
-        brush34.setStyle(Qt::NoBrush);
-
+        palette10.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette10.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P1_ValMaxCur->setPalette(palette10);
         QFont font3;
         font3.setPointSize(23);
@@ -1081,19 +982,10 @@ public:
         QPalette palette11;
         palette11.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette11.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush35(QColor(255, 255, 255, 128));
-        brush35.setStyle(Qt::NoBrush);
-
         palette11.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette11.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush36(QColor(255, 255, 255, 128));
-        brush36.setStyle(Qt::NoBrush);
-
-        palette11.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette11.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush37(QColor(255, 255, 255, 128));
-        brush37.setStyle(Qt::NoBrush);
-
+        palette11.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette11.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P1_ValMinCur->setPalette(palette11);
         P1_ValMinCur->setFont(font3);
         P1_ValMinCur->setLayoutDirection(Qt::LeftToRight);
@@ -1105,19 +997,10 @@ public:
         QPalette palette12;
         palette12.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette12.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush38(QColor(255, 255, 255, 128));
-        brush38.setStyle(Qt::NoBrush);
-
         palette12.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette12.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush39(QColor(255, 255, 255, 128));
-        brush39.setStyle(Qt::NoBrush);
-
-        palette12.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette12.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush40(QColor(255, 255, 255, 128));
-        brush40.setStyle(Qt::NoBrush);
-
+        palette12.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette12.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P1_ValBP->setPalette(palette12);
         P1_ValBP->setFont(font3);
         P1_ValBP->setLayoutDirection(Qt::LeftToRight);
@@ -1129,19 +1012,10 @@ public:
         QPalette palette13;
         palette13.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette13.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush41(QColor(255, 255, 255, 128));
-        brush41.setStyle(Qt::NoBrush);
-
         palette13.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette13.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush42(QColor(255, 255, 255, 128));
-        brush42.setStyle(Qt::NoBrush);
-
-        palette13.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette13.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush43(QColor(255, 255, 255, 128));
-        brush43.setStyle(Qt::NoBrush);
-
+        palette13.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette13.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P1_ValTime->setPalette(palette13);
         QFont font4;
         font4.setPointSize(16);
@@ -1217,69 +1091,64 @@ public:
         P1_ValMotor1_1->setGeometry(QRect(108, 143, 70, 30));
         QPalette palette14;
         palette14.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        QBrush brush44(QColor(23, 41, 123, 255));
-        brush44.setStyle(Qt::SolidPattern);
-        palette14.setBrush(QPalette::Active, QPalette::Button, brush44);
-        QBrush brush45(QColor(34, 61, 185, 255));
-        brush45.setStyle(Qt::SolidPattern);
-        palette14.setBrush(QPalette::Active, QPalette::Light, brush45);
-        QBrush brush46(QColor(28, 51, 154, 255));
-        brush46.setStyle(Qt::SolidPattern);
-        palette14.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        QBrush brush47(QColor(11, 20, 61, 255));
-        brush47.setStyle(Qt::SolidPattern);
-        palette14.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        QBrush brush48(QColor(15, 27, 82, 255));
-        brush48.setStyle(Qt::SolidPattern);
-        palette14.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        QBrush brush2(QColor(23, 41, 123, 255));
+        brush2.setStyle(Qt::SolidPattern);
+        palette14.setBrush(QPalette::Active, QPalette::Button, brush2);
+        QBrush brush3(QColor(34, 61, 185, 255));
+        brush3.setStyle(Qt::SolidPattern);
+        palette14.setBrush(QPalette::Active, QPalette::Light, brush3);
+        QBrush brush4(QColor(28, 51, 154, 255));
+        brush4.setStyle(Qt::SolidPattern);
+        palette14.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        QBrush brush5(QColor(11, 20, 61, 255));
+        brush5.setStyle(Qt::SolidPattern);
+        palette14.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        QBrush brush6(QColor(15, 27, 82, 255));
+        brush6.setStyle(Qt::SolidPattern);
+        palette14.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette14.setBrush(QPalette::Active, QPalette::Text, brush);
         palette14.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette14.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        QBrush brush49(QColor(0, 0, 0, 255));
-        brush49.setStyle(Qt::SolidPattern);
-        palette14.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette14.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette14.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette14.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        QBrush brush50(QColor(255, 255, 220, 255));
-        brush50.setStyle(Qt::SolidPattern);
-        palette14.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette14.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-        QBrush brush51(QColor(255, 255, 255, 128));
-        brush51.setStyle(Qt::SolidPattern);
-
+        QBrush brush7(QColor(0, 0, 0, 255));
+        brush7.setStyle(Qt::SolidPattern);
+        palette14.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette14.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette14.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette14.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        QBrush brush8(QColor(255, 255, 220, 255));
+        brush8.setStyle(Qt::SolidPattern);
+        palette14.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette14.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette14.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette14.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette14.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette14.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette14.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette14.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette14.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette14.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette14.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette14.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette14.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette14.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette14.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette14.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette14.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette14.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette14.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette14.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette14.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette14.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette14.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette14.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette14.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette14.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette14.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette14.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette14.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette14.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette14.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette14.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette14.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette14.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette14.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette14.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette14.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette14.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette14.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette14.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette14.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette14.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette14.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette14.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette14.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette14.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette14.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette14.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette14.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette14.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette14.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette14.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette14.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette14.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette14.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette14.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette14.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P1_ValMotor1_1->setPalette(palette14);
         QFont font5;
         font5.setPointSize(10);
@@ -1294,53 +1163,50 @@ public:
         P1_ValMotor2_1->setGeometry(QRect(108, 210, 70, 30));
         QPalette palette15;
         palette15.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette15.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette15.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette15.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette15.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette15.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette15.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette15.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette15.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette15.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette15.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette15.setBrush(QPalette::Active, QPalette::Text, brush);
         palette15.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette15.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette15.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette15.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette15.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette15.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette15.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette15.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette15.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette15.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette15.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette15.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette15.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette15.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette15.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette15.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette15.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette15.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette15.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette15.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette15.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette15.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette15.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette15.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette15.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette15.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette15.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette15.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette15.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette15.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette15.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette15.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette15.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette15.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette15.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette15.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette15.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette15.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette15.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette15.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette15.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette15.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette15.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette15.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette15.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette15.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette15.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette15.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette15.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette15.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette15.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette15.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette15.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette15.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette15.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette15.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette15.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette15.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette15.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette15.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette15.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette15.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette15.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette15.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette15.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette15.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette15.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette15.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette15.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P1_ValMotor2_1->setPalette(palette15);
         P1_ValMotor2_1->setFont(font5);
         P1_ValMotor2_1->setLayoutDirection(Qt::LeftToRight);
@@ -1351,53 +1217,50 @@ public:
         P1_ValMotor3_1->setGeometry(QRect(108, 280, 70, 30));
         QPalette palette16;
         palette16.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette16.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette16.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette16.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette16.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette16.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette16.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette16.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette16.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette16.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette16.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette16.setBrush(QPalette::Active, QPalette::Text, brush);
         palette16.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette16.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette16.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette16.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette16.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette16.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette16.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette16.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette16.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette16.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette16.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette16.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette16.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette16.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette16.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette16.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette16.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette16.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette16.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette16.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette16.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette16.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette16.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette16.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette16.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette16.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette16.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette16.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette16.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette16.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette16.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette16.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette16.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette16.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette16.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette16.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette16.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette16.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette16.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette16.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette16.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette16.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette16.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette16.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette16.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette16.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette16.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette16.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette16.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette16.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette16.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette16.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette16.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette16.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette16.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette16.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette16.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette16.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette16.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette16.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette16.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette16.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette16.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette16.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette16.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette16.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette16.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette16.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette16.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P1_ValMotor3_1->setPalette(palette16);
         P1_ValMotor3_1->setFont(font5);
         P1_ValMotor3_1->setLayoutDirection(Qt::LeftToRight);
@@ -1408,53 +1271,50 @@ public:
         P1_ValBR1_1->setGeometry(QRect(108, 350, 70, 30));
         QPalette palette17;
         palette17.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette17.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette17.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette17.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette17.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette17.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette17.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette17.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette17.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette17.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette17.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette17.setBrush(QPalette::Active, QPalette::Text, brush);
         palette17.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette17.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette17.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette17.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette17.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette17.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette17.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette17.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette17.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette17.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette17.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette17.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette17.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette17.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette17.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette17.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette17.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette17.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette17.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette17.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette17.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette17.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette17.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette17.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette17.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette17.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette17.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette17.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette17.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette17.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette17.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette17.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette17.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette17.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette17.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette17.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette17.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette17.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette17.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette17.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette17.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette17.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette17.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette17.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette17.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette17.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette17.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette17.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette17.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette17.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette17.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette17.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette17.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette17.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette17.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette17.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette17.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette17.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette17.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette17.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette17.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette17.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette17.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette17.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette17.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette17.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette17.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette17.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette17.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P1_ValBR1_1->setPalette(palette17);
         P1_ValBR1_1->setFont(font5);
         P1_ValBR1_1->setLayoutDirection(Qt::LeftToRight);
@@ -1465,53 +1325,50 @@ public:
         P1_ValBR2_1->setGeometry(QRect(108, 410, 70, 30));
         QPalette palette18;
         palette18.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette18.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette18.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette18.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette18.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette18.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette18.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette18.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette18.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette18.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette18.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette18.setBrush(QPalette::Active, QPalette::Text, brush);
         palette18.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette18.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette18.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette18.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette18.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette18.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette18.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette18.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette18.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette18.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette18.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette18.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette18.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette18.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette18.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette18.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette18.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette18.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette18.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette18.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette18.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette18.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette18.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette18.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette18.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette18.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette18.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette18.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette18.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette18.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette18.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette18.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette18.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette18.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette18.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette18.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette18.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette18.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette18.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette18.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette18.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette18.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette18.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette18.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette18.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette18.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette18.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette18.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette18.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette18.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette18.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette18.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette18.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette18.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette18.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette18.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette18.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette18.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette18.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette18.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette18.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette18.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette18.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette18.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette18.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette18.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette18.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette18.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette18.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P1_ValBR2_1->setPalette(palette18);
         P1_ValBR2_1->setFont(font5);
         P1_ValBR2_1->setLayoutDirection(Qt::LeftToRight);
@@ -1522,53 +1379,50 @@ public:
         P1_ValMotor1_2->setGeometry(QRect(107, 140, 165, 55));
         QPalette palette19;
         palette19.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette19.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette19.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette19.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette19.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette19.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette19.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette19.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette19.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette19.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette19.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette19.setBrush(QPalette::Active, QPalette::Text, brush);
         palette19.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette19.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette19.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette19.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette19.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette19.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette19.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette19.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette19.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette19.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette19.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette19.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette19.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette19.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette19.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette19.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette19.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette19.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette19.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette19.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette19.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette19.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette19.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette19.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette19.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette19.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette19.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette19.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette19.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette19.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette19.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette19.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette19.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette19.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette19.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette19.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette19.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette19.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette19.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette19.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette19.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette19.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette19.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette19.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette19.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette19.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette19.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette19.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette19.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette19.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette19.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette19.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette19.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette19.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette19.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette19.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette19.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette19.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette19.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette19.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette19.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette19.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette19.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette19.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette19.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette19.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette19.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette19.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette19.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P1_ValMotor1_2->setPalette(palette19);
         P1_ValMotor1_2->setFont(font5);
         P1_ValMotor1_2->setLayoutDirection(Qt::LeftToRight);
@@ -1579,53 +1433,50 @@ public:
         P1_ValMotor2_2->setGeometry(QRect(107, 210, 165, 55));
         QPalette palette20;
         palette20.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette20.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette20.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette20.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette20.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette20.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette20.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette20.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette20.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette20.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette20.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette20.setBrush(QPalette::Active, QPalette::Text, brush);
         palette20.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette20.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette20.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette20.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette20.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette20.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette20.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette20.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette20.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette20.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette20.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette20.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette20.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette20.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette20.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette20.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette20.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette20.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette20.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette20.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette20.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette20.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette20.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette20.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette20.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette20.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette20.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette20.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette20.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette20.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette20.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette20.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette20.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette20.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette20.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette20.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette20.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette20.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette20.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette20.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette20.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette20.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette20.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette20.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette20.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette20.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette20.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette20.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette20.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette20.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette20.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette20.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette20.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette20.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette20.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette20.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette20.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette20.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette20.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette20.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette20.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette20.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette20.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette20.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette20.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette20.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette20.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette20.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette20.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P1_ValMotor2_2->setPalette(palette20);
         P1_ValMotor2_2->setFont(font5);
         P1_ValMotor2_2->setLayoutDirection(Qt::LeftToRight);
@@ -1636,53 +1487,50 @@ public:
         P1_ValMotor3_2->setGeometry(QRect(107, 280, 165, 55));
         QPalette palette21;
         palette21.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette21.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette21.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette21.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette21.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette21.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette21.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette21.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette21.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette21.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette21.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette21.setBrush(QPalette::Active, QPalette::Text, brush);
         palette21.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette21.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette21.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette21.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette21.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette21.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette21.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette21.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette21.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette21.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette21.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette21.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette21.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette21.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette21.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette21.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette21.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette21.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette21.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette21.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette21.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette21.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette21.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette21.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette21.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette21.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette21.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette21.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette21.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette21.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette21.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette21.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette21.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette21.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette21.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette21.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette21.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette21.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette21.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette21.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette21.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette21.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette21.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette21.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette21.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette21.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette21.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette21.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette21.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette21.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette21.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette21.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette21.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette21.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette21.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette21.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette21.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette21.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette21.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette21.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette21.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette21.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette21.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette21.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette21.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette21.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette21.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette21.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette21.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P1_ValMotor3_2->setPalette(palette21);
         P1_ValMotor3_2->setFont(font5);
         P1_ValMotor3_2->setLayoutDirection(Qt::LeftToRight);
@@ -1693,53 +1541,50 @@ public:
         P1_ValBR1_2->setGeometry(QRect(107, 347, 165, 55));
         QPalette palette22;
         palette22.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette22.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette22.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette22.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette22.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette22.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette22.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette22.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette22.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette22.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette22.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette22.setBrush(QPalette::Active, QPalette::Text, brush);
         palette22.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette22.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette22.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette22.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette22.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette22.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette22.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette22.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette22.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette22.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette22.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette22.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette22.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette22.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette22.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette22.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette22.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette22.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette22.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette22.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette22.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette22.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette22.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette22.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette22.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette22.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette22.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette22.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette22.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette22.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette22.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette22.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette22.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette22.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette22.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette22.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette22.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette22.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette22.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette22.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette22.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette22.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette22.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette22.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette22.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette22.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette22.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette22.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette22.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette22.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette22.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette22.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette22.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette22.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette22.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette22.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette22.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette22.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette22.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette22.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette22.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette22.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette22.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette22.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette22.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette22.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette22.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette22.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette22.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P1_ValBR1_2->setPalette(palette22);
         P1_ValBR1_2->setFont(font5);
         P1_ValBR1_2->setLayoutDirection(Qt::LeftToRight);
@@ -1750,53 +1595,50 @@ public:
         P1_ValBR2_2->setGeometry(QRect(107, 410, 165, 55));
         QPalette palette23;
         palette23.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette23.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette23.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette23.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette23.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette23.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette23.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette23.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette23.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette23.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette23.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette23.setBrush(QPalette::Active, QPalette::Text, brush);
         palette23.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette23.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette23.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette23.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette23.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette23.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette23.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette23.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette23.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette23.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette23.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette23.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette23.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette23.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette23.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette23.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette23.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette23.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette23.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette23.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette23.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette23.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette23.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette23.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette23.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette23.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette23.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette23.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette23.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette23.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette23.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette23.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette23.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette23.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette23.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette23.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette23.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette23.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette23.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette23.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette23.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette23.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette23.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette23.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette23.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette23.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette23.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette23.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette23.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette23.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette23.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette23.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette23.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette23.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette23.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette23.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette23.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette23.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette23.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette23.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette23.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette23.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette23.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette23.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette23.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette23.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette23.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette23.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette23.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P1_ValBR2_2->setPalette(palette23);
         P1_ValBR2_2->setFont(font5);
         P1_ValBR2_2->setLayoutDirection(Qt::LeftToRight);
@@ -1808,19 +1650,10 @@ public:
         QPalette palette24;
         palette24.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette24.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush52(QColor(255, 255, 255, 128));
-        brush52.setStyle(Qt::NoBrush);
-
         palette24.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette24.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush53(QColor(255, 255, 255, 128));
-        brush53.setStyle(Qt::NoBrush);
-
-        palette24.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette24.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush54(QColor(255, 255, 255, 128));
-        brush54.setStyle(Qt::NoBrush);
-
+        palette24.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette24.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P1_LABEL1->setPalette(palette24);
         P1_LABEL1->setFont(font4);
         P1_LABEL1->setLayoutDirection(Qt::LeftToRight);
@@ -1832,19 +1665,10 @@ public:
         QPalette palette25;
         palette25.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette25.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush55(QColor(255, 255, 255, 128));
-        brush55.setStyle(Qt::NoBrush);
-
         palette25.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette25.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush56(QColor(255, 255, 255, 128));
-        brush56.setStyle(Qt::NoBrush);
-
-        palette25.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette25.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush57(QColor(255, 255, 255, 128));
-        brush57.setStyle(Qt::NoBrush);
-
+        palette25.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette25.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P1_LABEL2->setPalette(palette25);
         P1_LABEL2->setFont(font4);
         P1_LABEL2->setLayoutDirection(Qt::LeftToRight);
@@ -1969,19 +1793,10 @@ public:
         QPalette palette26;
         palette26.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette26.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush58(QColor(255, 255, 255, 128));
-        brush58.setStyle(Qt::NoBrush);
-
         palette26.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette26.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush59(QColor(255, 255, 255, 128));
-        brush59.setStyle(Qt::NoBrush);
-
-        palette26.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette26.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush60(QColor(255, 255, 255, 128));
-        brush60.setStyle(Qt::NoBrush);
-
+        palette26.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette26.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_ValTime->setPalette(palette26);
         P2_ValTime->setFont(font4);
         P2_ValTime->setLayoutDirection(Qt::LeftToRight);
@@ -1993,19 +1808,10 @@ public:
         QPalette palette27;
         palette27.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette27.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush61(QColor(255, 255, 255, 128));
-        brush61.setStyle(Qt::NoBrush);
-
         palette27.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette27.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush62(QColor(255, 255, 255, 128));
-        brush62.setStyle(Qt::NoBrush);
-
-        palette27.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette27.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush63(QColor(255, 255, 255, 128));
-        brush63.setStyle(Qt::NoBrush);
-
+        palette27.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette27.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_ValBR1->setPalette(palette27);
         P2_ValBR1->setFont(font);
         P2_ValBR1->setLayoutDirection(Qt::LeftToRight);
@@ -2017,19 +1823,10 @@ public:
         QPalette palette28;
         palette28.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette28.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush64(QColor(255, 255, 255, 128));
-        brush64.setStyle(Qt::NoBrush);
-
         palette28.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette28.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush65(QColor(255, 255, 255, 128));
-        brush65.setStyle(Qt::NoBrush);
-
-        palette28.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette28.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush66(QColor(255, 255, 255, 128));
-        brush66.setStyle(Qt::NoBrush);
-
+        palette28.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette28.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_ValBR2->setPalette(palette28);
         P2_ValBR2->setFont(font);
         P2_ValBR2->setLayoutDirection(Qt::LeftToRight);
@@ -2041,19 +1838,10 @@ public:
         QPalette palette29;
         palette29.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette29.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush67(QColor(255, 255, 255, 128));
-        brush67.setStyle(Qt::NoBrush);
-
         palette29.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette29.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush68(QColor(255, 255, 255, 128));
-        brush68.setStyle(Qt::NoBrush);
-
-        palette29.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette29.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush69(QColor(255, 255, 255, 128));
-        brush69.setStyle(Qt::NoBrush);
-
+        palette29.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette29.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_ValMotor3->setPalette(palette29);
         P2_ValMotor3->setFont(font);
         P2_ValMotor3->setLayoutDirection(Qt::LeftToRight);
@@ -2065,19 +1853,10 @@ public:
         QPalette palette30;
         palette30.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette30.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush70(QColor(255, 255, 255, 128));
-        brush70.setStyle(Qt::NoBrush);
-
         palette30.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette30.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush71(QColor(255, 255, 255, 128));
-        brush71.setStyle(Qt::NoBrush);
-
-        palette30.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette30.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush72(QColor(255, 255, 255, 128));
-        brush72.setStyle(Qt::NoBrush);
-
+        palette30.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette30.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_ValMotor2->setPalette(palette30);
         P2_ValMotor2->setFont(font);
         P2_ValMotor2->setLayoutDirection(Qt::LeftToRight);
@@ -2089,19 +1868,10 @@ public:
         QPalette palette31;
         palette31.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette31.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush73(QColor(255, 255, 255, 128));
-        brush73.setStyle(Qt::NoBrush);
-
         palette31.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette31.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush74(QColor(255, 255, 255, 128));
-        brush74.setStyle(Qt::NoBrush);
-
-        palette31.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette31.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush75(QColor(255, 255, 255, 128));
-        brush75.setStyle(Qt::NoBrush);
-
+        palette31.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette31.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_ValMotor1->setPalette(palette31);
         P2_ValMotor1->setFont(font);
         P2_ValMotor1->setLayoutDirection(Qt::LeftToRight);
@@ -2113,19 +1883,10 @@ public:
         QPalette palette32;
         palette32.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette32.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush76(QColor(255, 255, 255, 128));
-        brush76.setStyle(Qt::NoBrush);
-
         palette32.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette32.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush77(QColor(255, 255, 255, 128));
-        brush77.setStyle(Qt::NoBrush);
-
-        palette32.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette32.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush78(QColor(255, 255, 255, 128));
-        brush78.setStyle(Qt::NoBrush);
-
+        palette32.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette32.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp1->setPalette(palette32);
         QFont font6;
         font6.setPointSize(12);
@@ -2141,19 +1902,10 @@ public:
         QPalette palette33;
         palette33.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette33.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush79(QColor(255, 255, 255, 128));
-        brush79.setStyle(Qt::NoBrush);
-
         palette33.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette33.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush80(QColor(255, 255, 255, 128));
-        brush80.setStyle(Qt::NoBrush);
-
-        palette33.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette33.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush81(QColor(255, 255, 255, 128));
-        brush81.setStyle(Qt::NoBrush);
-
+        palette33.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette33.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp2->setPalette(palette33);
         P2_Temp2->setFont(font6);
         P2_Temp2->setLayoutDirection(Qt::LeftToRight);
@@ -2165,19 +1917,10 @@ public:
         QPalette palette34;
         palette34.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette34.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush82(QColor(255, 255, 255, 128));
-        brush82.setStyle(Qt::NoBrush);
-
         palette34.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette34.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush83(QColor(255, 255, 255, 128));
-        brush83.setStyle(Qt::NoBrush);
-
-        palette34.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette34.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush84(QColor(255, 255, 255, 128));
-        brush84.setStyle(Qt::NoBrush);
-
+        palette34.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette34.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp3->setPalette(palette34);
         P2_Temp3->setFont(font6);
         P2_Temp3->setLayoutDirection(Qt::LeftToRight);
@@ -2189,19 +1932,10 @@ public:
         QPalette palette35;
         palette35.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette35.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush85(QColor(255, 255, 255, 128));
-        brush85.setStyle(Qt::NoBrush);
-
         palette35.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette35.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush86(QColor(255, 255, 255, 128));
-        brush86.setStyle(Qt::NoBrush);
-
-        palette35.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette35.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush87(QColor(255, 255, 255, 128));
-        brush87.setStyle(Qt::NoBrush);
-
+        palette35.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette35.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp4->setPalette(palette35);
         P2_Temp4->setFont(font6);
         P2_Temp4->setLayoutDirection(Qt::LeftToRight);
@@ -2213,19 +1947,10 @@ public:
         QPalette palette36;
         palette36.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette36.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush88(QColor(255, 255, 255, 128));
-        brush88.setStyle(Qt::NoBrush);
-
         palette36.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette36.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush89(QColor(255, 255, 255, 128));
-        brush89.setStyle(Qt::NoBrush);
-
-        palette36.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette36.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush90(QColor(255, 255, 255, 128));
-        brush90.setStyle(Qt::NoBrush);
-
+        palette36.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette36.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp5->setPalette(palette36);
         P2_Temp5->setFont(font6);
         P2_Temp5->setLayoutDirection(Qt::LeftToRight);
@@ -2237,19 +1962,10 @@ public:
         QPalette palette37;
         palette37.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette37.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush91(QColor(255, 255, 255, 128));
-        brush91.setStyle(Qt::NoBrush);
-
         palette37.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette37.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush92(QColor(255, 255, 255, 128));
-        brush92.setStyle(Qt::NoBrush);
-
-        palette37.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette37.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush93(QColor(255, 255, 255, 128));
-        brush93.setStyle(Qt::NoBrush);
-
+        palette37.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette37.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp2_2->setPalette(palette37);
         P2_Temp2_2->setFont(font6);
         P2_Temp2_2->setLayoutDirection(Qt::LeftToRight);
@@ -2261,19 +1977,10 @@ public:
         QPalette palette38;
         palette38.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette38.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush94(QColor(255, 255, 255, 128));
-        brush94.setStyle(Qt::NoBrush);
-
         palette38.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette38.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush95(QColor(255, 255, 255, 128));
-        brush95.setStyle(Qt::NoBrush);
-
-        palette38.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette38.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush96(QColor(255, 255, 255, 128));
-        brush96.setStyle(Qt::NoBrush);
-
+        palette38.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette38.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp3_2->setPalette(palette38);
         P2_Temp3_2->setFont(font6);
         P2_Temp3_2->setLayoutDirection(Qt::LeftToRight);
@@ -2285,19 +1992,10 @@ public:
         QPalette palette39;
         palette39.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette39.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush97(QColor(255, 255, 255, 128));
-        brush97.setStyle(Qt::NoBrush);
-
         palette39.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette39.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush98(QColor(255, 255, 255, 128));
-        brush98.setStyle(Qt::NoBrush);
-
-        palette39.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette39.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush99(QColor(255, 255, 255, 128));
-        brush99.setStyle(Qt::NoBrush);
-
+        palette39.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette39.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp4_2->setPalette(palette39);
         P2_Temp4_2->setFont(font6);
         P2_Temp4_2->setLayoutDirection(Qt::LeftToRight);
@@ -2309,19 +2007,10 @@ public:
         QPalette palette40;
         palette40.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette40.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush100(QColor(255, 255, 255, 128));
-        brush100.setStyle(Qt::NoBrush);
-
         palette40.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette40.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush101(QColor(255, 255, 255, 128));
-        brush101.setStyle(Qt::NoBrush);
-
-        palette40.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette40.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush102(QColor(255, 255, 255, 128));
-        brush102.setStyle(Qt::NoBrush);
-
+        palette40.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette40.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp1_2->setPalette(palette40);
         P2_Temp1_2->setFont(font6);
         P2_Temp1_2->setLayoutDirection(Qt::LeftToRight);
@@ -2333,19 +2022,10 @@ public:
         QPalette palette41;
         palette41.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette41.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush103(QColor(255, 255, 255, 128));
-        brush103.setStyle(Qt::NoBrush);
-
         palette41.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette41.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush104(QColor(255, 255, 255, 128));
-        brush104.setStyle(Qt::NoBrush);
-
-        palette41.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette41.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush105(QColor(255, 255, 255, 128));
-        brush105.setStyle(Qt::NoBrush);
-
+        palette41.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette41.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp5_2->setPalette(palette41);
         P2_Temp5_2->setFont(font6);
         P2_Temp5_2->setLayoutDirection(Qt::LeftToRight);
@@ -2357,19 +2037,10 @@ public:
         QPalette palette42;
         palette42.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette42.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush106(QColor(255, 255, 255, 128));
-        brush106.setStyle(Qt::NoBrush);
-
         palette42.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette42.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush107(QColor(255, 255, 255, 128));
-        brush107.setStyle(Qt::NoBrush);
-
-        palette42.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette42.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush108(QColor(255, 255, 255, 128));
-        brush108.setStyle(Qt::NoBrush);
-
+        palette42.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette42.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp2_3->setPalette(palette42);
         P2_Temp2_3->setFont(font6);
         P2_Temp2_3->setLayoutDirection(Qt::LeftToRight);
@@ -2381,19 +2052,10 @@ public:
         QPalette palette43;
         palette43.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette43.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush109(QColor(255, 255, 255, 128));
-        brush109.setStyle(Qt::NoBrush);
-
         palette43.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette43.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush110(QColor(255, 255, 255, 128));
-        brush110.setStyle(Qt::NoBrush);
-
-        palette43.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette43.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush111(QColor(255, 255, 255, 128));
-        brush111.setStyle(Qt::NoBrush);
-
+        palette43.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette43.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp3_3->setPalette(palette43);
         P2_Temp3_3->setFont(font6);
         P2_Temp3_3->setLayoutDirection(Qt::LeftToRight);
@@ -2405,19 +2067,10 @@ public:
         QPalette palette44;
         palette44.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette44.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush112(QColor(255, 255, 255, 128));
-        brush112.setStyle(Qt::NoBrush);
-
         palette44.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette44.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush113(QColor(255, 255, 255, 128));
-        brush113.setStyle(Qt::NoBrush);
-
-        palette44.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette44.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush114(QColor(255, 255, 255, 128));
-        brush114.setStyle(Qt::NoBrush);
-
+        palette44.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette44.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp4_3->setPalette(palette44);
         P2_Temp4_3->setFont(font6);
         P2_Temp4_3->setLayoutDirection(Qt::LeftToRight);
@@ -2429,19 +2082,10 @@ public:
         QPalette palette45;
         palette45.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette45.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush115(QColor(255, 255, 255, 128));
-        brush115.setStyle(Qt::NoBrush);
-
         palette45.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette45.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush116(QColor(255, 255, 255, 128));
-        brush116.setStyle(Qt::NoBrush);
-
-        palette45.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette45.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush117(QColor(255, 255, 255, 128));
-        brush117.setStyle(Qt::NoBrush);
-
+        palette45.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette45.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp1_3->setPalette(palette45);
         P2_Temp1_3->setFont(font6);
         P2_Temp1_3->setLayoutDirection(Qt::LeftToRight);
@@ -2453,19 +2097,10 @@ public:
         QPalette palette46;
         palette46.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette46.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush118(QColor(255, 255, 255, 128));
-        brush118.setStyle(Qt::NoBrush);
-
         palette46.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette46.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush119(QColor(255, 255, 255, 128));
-        brush119.setStyle(Qt::NoBrush);
-
-        palette46.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette46.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush120(QColor(255, 255, 255, 128));
-        brush120.setStyle(Qt::NoBrush);
-
+        palette46.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette46.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp5_3->setPalette(palette46);
         P2_Temp5_3->setFont(font6);
         P2_Temp5_3->setLayoutDirection(Qt::LeftToRight);
@@ -2477,19 +2112,10 @@ public:
         QPalette palette47;
         palette47.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette47.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush121(QColor(255, 255, 255, 128));
-        brush121.setStyle(Qt::NoBrush);
-
         palette47.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette47.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush122(QColor(255, 255, 255, 128));
-        brush122.setStyle(Qt::NoBrush);
-
-        palette47.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette47.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush123(QColor(255, 255, 255, 128));
-        brush123.setStyle(Qt::NoBrush);
-
+        palette47.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette47.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp2_4->setPalette(palette47);
         P2_Temp2_4->setFont(font6);
         P2_Temp2_4->setLayoutDirection(Qt::LeftToRight);
@@ -2501,19 +2127,10 @@ public:
         QPalette palette48;
         palette48.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette48.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush124(QColor(255, 255, 255, 128));
-        brush124.setStyle(Qt::NoBrush);
-
         palette48.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette48.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush125(QColor(255, 255, 255, 128));
-        brush125.setStyle(Qt::NoBrush);
-
-        palette48.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette48.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush126(QColor(255, 255, 255, 128));
-        brush126.setStyle(Qt::NoBrush);
-
+        palette48.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette48.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp3_4->setPalette(palette48);
         P2_Temp3_4->setFont(font6);
         P2_Temp3_4->setLayoutDirection(Qt::LeftToRight);
@@ -2525,19 +2142,10 @@ public:
         QPalette palette49;
         palette49.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette49.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush127(QColor(255, 255, 255, 128));
-        brush127.setStyle(Qt::NoBrush);
-
         palette49.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette49.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush128(QColor(255, 255, 255, 128));
-        brush128.setStyle(Qt::NoBrush);
-
-        palette49.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette49.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush129(QColor(255, 255, 255, 128));
-        brush129.setStyle(Qt::NoBrush);
-
+        palette49.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette49.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp4_4->setPalette(palette49);
         P2_Temp4_4->setFont(font6);
         P2_Temp4_4->setLayoutDirection(Qt::LeftToRight);
@@ -2549,19 +2157,10 @@ public:
         QPalette palette50;
         palette50.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette50.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush130(QColor(255, 255, 255, 128));
-        brush130.setStyle(Qt::NoBrush);
-
         palette50.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette50.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush131(QColor(255, 255, 255, 128));
-        brush131.setStyle(Qt::NoBrush);
-
-        palette50.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette50.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush132(QColor(255, 255, 255, 128));
-        brush132.setStyle(Qt::NoBrush);
-
+        palette50.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette50.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp1_4->setPalette(palette50);
         P2_Temp1_4->setFont(font6);
         P2_Temp1_4->setLayoutDirection(Qt::LeftToRight);
@@ -2573,19 +2172,10 @@ public:
         QPalette palette51;
         palette51.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette51.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush133(QColor(255, 255, 255, 128));
-        brush133.setStyle(Qt::NoBrush);
-
         palette51.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette51.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush134(QColor(255, 255, 255, 128));
-        brush134.setStyle(Qt::NoBrush);
-
-        palette51.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette51.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush135(QColor(255, 255, 255, 128));
-        brush135.setStyle(Qt::NoBrush);
-
+        palette51.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette51.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp5_4->setPalette(palette51);
         P2_Temp5_4->setFont(font6);
         P2_Temp5_4->setLayoutDirection(Qt::LeftToRight);
@@ -2597,19 +2187,10 @@ public:
         QPalette palette52;
         palette52.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette52.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush136(QColor(255, 255, 255, 128));
-        brush136.setStyle(Qt::NoBrush);
-
         palette52.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette52.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush137(QColor(255, 255, 255, 128));
-        brush137.setStyle(Qt::NoBrush);
-
-        palette52.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette52.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush138(QColor(255, 255, 255, 128));
-        brush138.setStyle(Qt::NoBrush);
-
+        palette52.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette52.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp2_5->setPalette(palette52);
         P2_Temp2_5->setFont(font6);
         P2_Temp2_5->setLayoutDirection(Qt::LeftToRight);
@@ -2621,19 +2202,10 @@ public:
         QPalette palette53;
         palette53.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette53.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush139(QColor(255, 255, 255, 128));
-        brush139.setStyle(Qt::NoBrush);
-
         palette53.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette53.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush140(QColor(255, 255, 255, 128));
-        brush140.setStyle(Qt::NoBrush);
-
-        palette53.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette53.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush141(QColor(255, 255, 255, 128));
-        brush141.setStyle(Qt::NoBrush);
-
+        palette53.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette53.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp3_5->setPalette(palette53);
         P2_Temp3_5->setFont(font6);
         P2_Temp3_5->setLayoutDirection(Qt::LeftToRight);
@@ -2645,19 +2217,10 @@ public:
         QPalette palette54;
         palette54.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette54.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush142(QColor(255, 255, 255, 128));
-        brush142.setStyle(Qt::NoBrush);
-
         palette54.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette54.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush143(QColor(255, 255, 255, 128));
-        brush143.setStyle(Qt::NoBrush);
-
-        palette54.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette54.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush144(QColor(255, 255, 255, 128));
-        brush144.setStyle(Qt::NoBrush);
-
+        palette54.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette54.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp4_5->setPalette(palette54);
         P2_Temp4_5->setFont(font6);
         P2_Temp4_5->setLayoutDirection(Qt::LeftToRight);
@@ -2669,19 +2232,10 @@ public:
         QPalette palette55;
         palette55.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette55.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush145(QColor(255, 255, 255, 128));
-        brush145.setStyle(Qt::NoBrush);
-
         palette55.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette55.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush146(QColor(255, 255, 255, 128));
-        brush146.setStyle(Qt::NoBrush);
-
-        palette55.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette55.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush147(QColor(255, 255, 255, 128));
-        brush147.setStyle(Qt::NoBrush);
-
+        palette55.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette55.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp1_5->setPalette(palette55);
         P2_Temp1_5->setFont(font6);
         P2_Temp1_5->setLayoutDirection(Qt::LeftToRight);
@@ -2693,19 +2247,10 @@ public:
         QPalette palette56;
         palette56.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette56.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush148(QColor(255, 255, 255, 128));
-        brush148.setStyle(Qt::NoBrush);
-
         palette56.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette56.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush149(QColor(255, 255, 255, 128));
-        brush149.setStyle(Qt::NoBrush);
-
-        palette56.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette56.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush150(QColor(255, 255, 255, 128));
-        brush150.setStyle(Qt::NoBrush);
-
+        palette56.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette56.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp5_5->setPalette(palette56);
         P2_Temp5_5->setFont(font6);
         P2_Temp5_5->setLayoutDirection(Qt::LeftToRight);
@@ -2717,19 +2262,10 @@ public:
         QPalette palette57;
         palette57.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette57.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush151(QColor(255, 255, 255, 128));
-        brush151.setStyle(Qt::NoBrush);
-
         palette57.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette57.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush152(QColor(255, 255, 255, 128));
-        brush152.setStyle(Qt::NoBrush);
-
-        palette57.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette57.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush153(QColor(255, 255, 255, 128));
-        brush153.setStyle(Qt::NoBrush);
-
+        palette57.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette57.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp2_6->setPalette(palette57);
         P2_Temp2_6->setFont(font6);
         P2_Temp2_6->setLayoutDirection(Qt::LeftToRight);
@@ -2741,19 +2277,10 @@ public:
         QPalette palette58;
         palette58.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette58.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush154(QColor(255, 255, 255, 128));
-        brush154.setStyle(Qt::NoBrush);
-
         palette58.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette58.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush155(QColor(255, 255, 255, 128));
-        brush155.setStyle(Qt::NoBrush);
-
-        palette58.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette58.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush156(QColor(255, 255, 255, 128));
-        brush156.setStyle(Qt::NoBrush);
-
+        palette58.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette58.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp3_6->setPalette(palette58);
         P2_Temp3_6->setFont(font6);
         P2_Temp3_6->setLayoutDirection(Qt::LeftToRight);
@@ -2765,19 +2292,10 @@ public:
         QPalette palette59;
         palette59.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette59.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush157(QColor(255, 255, 255, 128));
-        brush157.setStyle(Qt::NoBrush);
-
         palette59.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette59.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush158(QColor(255, 255, 255, 128));
-        brush158.setStyle(Qt::NoBrush);
-
-        palette59.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette59.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush159(QColor(255, 255, 255, 128));
-        brush159.setStyle(Qt::NoBrush);
-
+        palette59.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette59.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp4_6->setPalette(palette59);
         P2_Temp4_6->setFont(font6);
         P2_Temp4_6->setLayoutDirection(Qt::LeftToRight);
@@ -2789,19 +2307,10 @@ public:
         QPalette palette60;
         palette60.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette60.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush160(QColor(255, 255, 255, 128));
-        brush160.setStyle(Qt::NoBrush);
-
         palette60.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette60.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush161(QColor(255, 255, 255, 128));
-        brush161.setStyle(Qt::NoBrush);
-
-        palette60.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette60.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush162(QColor(255, 255, 255, 128));
-        brush162.setStyle(Qt::NoBrush);
-
+        palette60.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette60.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp1_6->setPalette(palette60);
         P2_Temp1_6->setFont(font6);
         P2_Temp1_6->setLayoutDirection(Qt::LeftToRight);
@@ -2813,19 +2322,10 @@ public:
         QPalette palette61;
         palette61.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette61.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush163(QColor(255, 255, 255, 128));
-        brush163.setStyle(Qt::NoBrush);
-
         palette61.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette61.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush164(QColor(255, 255, 255, 128));
-        brush164.setStyle(Qt::NoBrush);
-
-        palette61.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette61.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush165(QColor(255, 255, 255, 128));
-        brush165.setStyle(Qt::NoBrush);
-
+        palette61.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette61.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp5_6->setPalette(palette61);
         P2_Temp5_6->setFont(font6);
         P2_Temp5_6->setLayoutDirection(Qt::LeftToRight);
@@ -2837,19 +2337,10 @@ public:
         QPalette palette62;
         palette62.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette62.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush166(QColor(255, 255, 255, 128));
-        brush166.setStyle(Qt::NoBrush);
-
         palette62.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette62.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush167(QColor(255, 255, 255, 128));
-        brush167.setStyle(Qt::NoBrush);
-
-        palette62.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette62.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush168(QColor(255, 255, 255, 128));
-        brush168.setStyle(Qt::NoBrush);
-
+        palette62.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette62.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp2_7->setPalette(palette62);
         P2_Temp2_7->setFont(font6);
         P2_Temp2_7->setLayoutDirection(Qt::LeftToRight);
@@ -2861,19 +2352,10 @@ public:
         QPalette palette63;
         palette63.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette63.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush169(QColor(255, 255, 255, 128));
-        brush169.setStyle(Qt::NoBrush);
-
         palette63.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette63.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush170(QColor(255, 255, 255, 128));
-        brush170.setStyle(Qt::NoBrush);
-
-        palette63.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette63.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush171(QColor(255, 255, 255, 128));
-        brush171.setStyle(Qt::NoBrush);
-
+        palette63.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette63.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp3_7->setPalette(palette63);
         P2_Temp3_7->setFont(font6);
         P2_Temp3_7->setLayoutDirection(Qt::LeftToRight);
@@ -2885,19 +2367,10 @@ public:
         QPalette palette64;
         palette64.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette64.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush172(QColor(255, 255, 255, 128));
-        brush172.setStyle(Qt::NoBrush);
-
         palette64.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette64.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush173(QColor(255, 255, 255, 128));
-        brush173.setStyle(Qt::NoBrush);
-
-        palette64.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette64.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush174(QColor(255, 255, 255, 128));
-        brush174.setStyle(Qt::NoBrush);
-
+        palette64.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette64.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp4_7->setPalette(palette64);
         P2_Temp4_7->setFont(font6);
         P2_Temp4_7->setLayoutDirection(Qt::LeftToRight);
@@ -2909,19 +2382,10 @@ public:
         QPalette palette65;
         palette65.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette65.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush175(QColor(255, 255, 255, 128));
-        brush175.setStyle(Qt::NoBrush);
-
         palette65.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette65.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush176(QColor(255, 255, 255, 128));
-        brush176.setStyle(Qt::NoBrush);
-
-        palette65.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette65.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush177(QColor(255, 255, 255, 128));
-        brush177.setStyle(Qt::NoBrush);
-
+        palette65.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette65.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp1_7->setPalette(palette65);
         P2_Temp1_7->setFont(font6);
         P2_Temp1_7->setLayoutDirection(Qt::LeftToRight);
@@ -2933,19 +2397,10 @@ public:
         QPalette palette66;
         palette66.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette66.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush178(QColor(255, 255, 255, 128));
-        brush178.setStyle(Qt::NoBrush);
-
         palette66.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette66.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush179(QColor(255, 255, 255, 128));
-        brush179.setStyle(Qt::NoBrush);
-
-        palette66.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette66.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush180(QColor(255, 255, 255, 128));
-        brush180.setStyle(Qt::NoBrush);
-
+        palette66.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette66.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp5_7->setPalette(palette66);
         P2_Temp5_7->setFont(font6);
         P2_Temp5_7->setLayoutDirection(Qt::LeftToRight);
@@ -2957,19 +2412,10 @@ public:
         QPalette palette67;
         palette67.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette67.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush181(QColor(255, 255, 255, 128));
-        brush181.setStyle(Qt::NoBrush);
-
         palette67.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette67.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush182(QColor(255, 255, 255, 128));
-        brush182.setStyle(Qt::NoBrush);
-
-        palette67.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette67.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush183(QColor(255, 255, 255, 128));
-        brush183.setStyle(Qt::NoBrush);
-
+        palette67.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette67.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp2_8->setPalette(palette67);
         P2_Temp2_8->setFont(font6);
         P2_Temp2_8->setLayoutDirection(Qt::LeftToRight);
@@ -2981,19 +2427,10 @@ public:
         QPalette palette68;
         palette68.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette68.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush184(QColor(255, 255, 255, 128));
-        brush184.setStyle(Qt::NoBrush);
-
         palette68.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette68.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush185(QColor(255, 255, 255, 128));
-        brush185.setStyle(Qt::NoBrush);
-
-        palette68.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette68.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush186(QColor(255, 255, 255, 128));
-        brush186.setStyle(Qt::NoBrush);
-
+        palette68.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette68.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp3_8->setPalette(palette68);
         P2_Temp3_8->setFont(font6);
         P2_Temp3_8->setLayoutDirection(Qt::LeftToRight);
@@ -3005,19 +2442,10 @@ public:
         QPalette palette69;
         palette69.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette69.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush187(QColor(255, 255, 255, 128));
-        brush187.setStyle(Qt::NoBrush);
-
         palette69.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette69.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush188(QColor(255, 255, 255, 128));
-        brush188.setStyle(Qt::NoBrush);
-
-        palette69.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette69.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush189(QColor(255, 255, 255, 128));
-        brush189.setStyle(Qt::NoBrush);
-
+        palette69.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette69.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp4_8->setPalette(palette69);
         P2_Temp4_8->setFont(font6);
         P2_Temp4_8->setLayoutDirection(Qt::LeftToRight);
@@ -3029,19 +2457,10 @@ public:
         QPalette palette70;
         palette70.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette70.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush190(QColor(255, 255, 255, 128));
-        brush190.setStyle(Qt::NoBrush);
-
         palette70.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette70.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush191(QColor(255, 255, 255, 128));
-        brush191.setStyle(Qt::NoBrush);
-
-        palette70.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette70.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush192(QColor(255, 255, 255, 128));
-        brush192.setStyle(Qt::NoBrush);
-
+        palette70.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette70.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp1_8->setPalette(palette70);
         P2_Temp1_8->setFont(font6);
         P2_Temp1_8->setLayoutDirection(Qt::LeftToRight);
@@ -3053,19 +2472,10 @@ public:
         QPalette palette71;
         palette71.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette71.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush193(QColor(255, 255, 255, 128));
-        brush193.setStyle(Qt::NoBrush);
-
         palette71.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette71.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush194(QColor(255, 255, 255, 128));
-        brush194.setStyle(Qt::NoBrush);
-
-        palette71.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette71.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush195(QColor(255, 255, 255, 128));
-        brush195.setStyle(Qt::NoBrush);
-
+        palette71.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette71.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp5_8->setPalette(palette71);
         P2_Temp5_8->setFont(font6);
         P2_Temp5_8->setLayoutDirection(Qt::LeftToRight);
@@ -3077,19 +2487,10 @@ public:
         QPalette palette72;
         palette72.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette72.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush196(QColor(255, 255, 255, 128));
-        brush196.setStyle(Qt::NoBrush);
-
         palette72.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette72.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush197(QColor(255, 255, 255, 128));
-        brush197.setStyle(Qt::NoBrush);
-
-        palette72.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette72.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush198(QColor(255, 255, 255, 128));
-        brush198.setStyle(Qt::NoBrush);
-
+        palette72.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette72.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp2_9->setPalette(palette72);
         P2_Temp2_9->setFont(font6);
         P2_Temp2_9->setLayoutDirection(Qt::LeftToRight);
@@ -3101,19 +2502,10 @@ public:
         QPalette palette73;
         palette73.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette73.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush199(QColor(255, 255, 255, 128));
-        brush199.setStyle(Qt::NoBrush);
-
         palette73.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette73.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush200(QColor(255, 255, 255, 128));
-        brush200.setStyle(Qt::NoBrush);
-
-        palette73.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette73.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush201(QColor(255, 255, 255, 128));
-        brush201.setStyle(Qt::NoBrush);
-
+        palette73.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette73.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp3_9->setPalette(palette73);
         P2_Temp3_9->setFont(font6);
         P2_Temp3_9->setLayoutDirection(Qt::LeftToRight);
@@ -3125,19 +2517,10 @@ public:
         QPalette palette74;
         palette74.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette74.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush202(QColor(255, 255, 255, 128));
-        brush202.setStyle(Qt::NoBrush);
-
         palette74.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette74.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush203(QColor(255, 255, 255, 128));
-        brush203.setStyle(Qt::NoBrush);
-
-        palette74.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette74.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush204(QColor(255, 255, 255, 128));
-        brush204.setStyle(Qt::NoBrush);
-
+        palette74.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette74.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp4_9->setPalette(palette74);
         P2_Temp4_9->setFont(font6);
         P2_Temp4_9->setLayoutDirection(Qt::LeftToRight);
@@ -3149,19 +2532,10 @@ public:
         QPalette palette75;
         palette75.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette75.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush205(QColor(255, 255, 255, 128));
-        brush205.setStyle(Qt::NoBrush);
-
         palette75.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette75.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush206(QColor(255, 255, 255, 128));
-        brush206.setStyle(Qt::NoBrush);
-
-        palette75.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette75.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush207(QColor(255, 255, 255, 128));
-        brush207.setStyle(Qt::NoBrush);
-
+        palette75.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette75.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp1_9->setPalette(palette75);
         P2_Temp1_9->setFont(font6);
         P2_Temp1_9->setLayoutDirection(Qt::LeftToRight);
@@ -3173,19 +2547,10 @@ public:
         QPalette palette76;
         palette76.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette76.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush208(QColor(255, 255, 255, 128));
-        brush208.setStyle(Qt::NoBrush);
-
         palette76.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette76.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush209(QColor(255, 255, 255, 128));
-        brush209.setStyle(Qt::NoBrush);
-
-        palette76.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette76.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush210(QColor(255, 255, 255, 128));
-        brush210.setStyle(Qt::NoBrush);
-
+        palette76.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette76.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp5_9->setPalette(palette76);
         P2_Temp5_9->setFont(font6);
         P2_Temp5_9->setLayoutDirection(Qt::LeftToRight);
@@ -3197,19 +2562,10 @@ public:
         QPalette palette77;
         palette77.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette77.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush211(QColor(255, 255, 255, 128));
-        brush211.setStyle(Qt::NoBrush);
-
         palette77.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette77.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush212(QColor(255, 255, 255, 128));
-        brush212.setStyle(Qt::NoBrush);
-
-        palette77.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette77.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush213(QColor(255, 255, 255, 128));
-        brush213.setStyle(Qt::NoBrush);
-
+        palette77.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette77.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp2_10->setPalette(palette77);
         P2_Temp2_10->setFont(font6);
         P2_Temp2_10->setLayoutDirection(Qt::LeftToRight);
@@ -3221,19 +2577,10 @@ public:
         QPalette palette78;
         palette78.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette78.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush214(QColor(255, 255, 255, 128));
-        brush214.setStyle(Qt::NoBrush);
-
         palette78.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette78.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush215(QColor(255, 255, 255, 128));
-        brush215.setStyle(Qt::NoBrush);
-
-        palette78.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette78.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush216(QColor(255, 255, 255, 128));
-        brush216.setStyle(Qt::NoBrush);
-
+        palette78.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette78.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp3_10->setPalette(palette78);
         P2_Temp3_10->setFont(font6);
         P2_Temp3_10->setLayoutDirection(Qt::LeftToRight);
@@ -3245,19 +2592,10 @@ public:
         QPalette palette79;
         palette79.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette79.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush217(QColor(255, 255, 255, 128));
-        brush217.setStyle(Qt::NoBrush);
-
         palette79.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette79.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush218(QColor(255, 255, 255, 128));
-        brush218.setStyle(Qt::NoBrush);
-
-        palette79.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette79.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush219(QColor(255, 255, 255, 128));
-        brush219.setStyle(Qt::NoBrush);
-
+        palette79.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette79.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp4_10->setPalette(palette79);
         P2_Temp4_10->setFont(font6);
         P2_Temp4_10->setLayoutDirection(Qt::LeftToRight);
@@ -3269,19 +2607,10 @@ public:
         QPalette palette80;
         palette80.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette80.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush220(QColor(255, 255, 255, 128));
-        brush220.setStyle(Qt::NoBrush);
-
         palette80.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette80.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush221(QColor(255, 255, 255, 128));
-        brush221.setStyle(Qt::NoBrush);
-
-        palette80.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette80.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush222(QColor(255, 255, 255, 128));
-        brush222.setStyle(Qt::NoBrush);
-
+        palette80.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette80.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp1_10->setPalette(palette80);
         P2_Temp1_10->setFont(font6);
         P2_Temp1_10->setLayoutDirection(Qt::LeftToRight);
@@ -3293,19 +2622,10 @@ public:
         QPalette palette81;
         palette81.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette81.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush223(QColor(255, 255, 255, 128));
-        brush223.setStyle(Qt::NoBrush);
-
         palette81.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette81.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush224(QColor(255, 255, 255, 128));
-        brush224.setStyle(Qt::NoBrush);
-
-        palette81.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette81.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush225(QColor(255, 255, 255, 128));
-        brush225.setStyle(Qt::NoBrush);
-
+        palette81.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette81.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_Temp5_10->setPalette(palette81);
         P2_Temp5_10->setFont(font6);
         P2_Temp5_10->setLayoutDirection(Qt::LeftToRight);
@@ -3359,53 +2679,50 @@ public:
         P2_ValMotor1_1->setGeometry(QRect(109, 131, 70, 30));
         QPalette palette82;
         palette82.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette82.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette82.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette82.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette82.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette82.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette82.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette82.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette82.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette82.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette82.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette82.setBrush(QPalette::Active, QPalette::Text, brush);
         palette82.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette82.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette82.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette82.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette82.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette82.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette82.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette82.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette82.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette82.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette82.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette82.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette82.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette82.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette82.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette82.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette82.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette82.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette82.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette82.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette82.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette82.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette82.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette82.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette82.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette82.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette82.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette82.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette82.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette82.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette82.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette82.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette82.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette82.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette82.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette82.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette82.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette82.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette82.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette82.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette82.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette82.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette82.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette82.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette82.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette82.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette82.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette82.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette82.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette82.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette82.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette82.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette82.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette82.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette82.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette82.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette82.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette82.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette82.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette82.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette82.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette82.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette82.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette82.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette82.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette82.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette82.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette82.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette82.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P2_ValMotor1_1->setPalette(palette82);
         P2_ValMotor1_1->setFont(font5);
         P2_ValMotor1_1->setLayoutDirection(Qt::LeftToRight);
@@ -3416,53 +2733,50 @@ public:
         P2_ValMotor2_1->setGeometry(QRect(109, 200, 70, 30));
         QPalette palette83;
         palette83.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette83.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette83.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette83.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette83.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette83.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette83.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette83.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette83.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette83.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette83.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette83.setBrush(QPalette::Active, QPalette::Text, brush);
         palette83.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette83.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette83.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette83.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette83.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette83.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette83.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette83.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette83.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette83.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette83.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette83.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette83.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette83.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette83.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette83.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette83.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette83.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette83.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette83.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette83.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette83.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette83.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette83.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette83.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette83.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette83.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette83.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette83.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette83.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette83.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette83.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette83.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette83.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette83.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette83.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette83.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette83.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette83.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette83.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette83.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette83.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette83.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette83.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette83.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette83.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette83.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette83.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette83.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette83.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette83.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette83.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette83.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette83.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette83.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette83.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette83.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette83.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette83.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette83.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette83.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette83.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette83.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette83.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette83.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette83.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette83.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette83.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette83.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P2_ValMotor2_1->setPalette(palette83);
         P2_ValMotor2_1->setFont(font5);
         P2_ValMotor2_1->setLayoutDirection(Qt::LeftToRight);
@@ -3473,53 +2787,50 @@ public:
         P2_ValMotor3_1->setGeometry(QRect(109, 264, 70, 30));
         QPalette palette84;
         palette84.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette84.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette84.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette84.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette84.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette84.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette84.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette84.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette84.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette84.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette84.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette84.setBrush(QPalette::Active, QPalette::Text, brush);
         palette84.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette84.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette84.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette84.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette84.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette84.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette84.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette84.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette84.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette84.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette84.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette84.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette84.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette84.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette84.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette84.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette84.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette84.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette84.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette84.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette84.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette84.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette84.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette84.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette84.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette84.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette84.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette84.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette84.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette84.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette84.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette84.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette84.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette84.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette84.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette84.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette84.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette84.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette84.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette84.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette84.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette84.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette84.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette84.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette84.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette84.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette84.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette84.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette84.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette84.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette84.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette84.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette84.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette84.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette84.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette84.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette84.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette84.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette84.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette84.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette84.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette84.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette84.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette84.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette84.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette84.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette84.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette84.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette84.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P2_ValMotor3_1->setPalette(palette84);
         P2_ValMotor3_1->setFont(font5);
         P2_ValMotor3_1->setLayoutDirection(Qt::LeftToRight);
@@ -3530,53 +2841,50 @@ public:
         P2_ValBR1_1->setGeometry(QRect(109, 330, 70, 30));
         QPalette palette85;
         palette85.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette85.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette85.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette85.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette85.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette85.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette85.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette85.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette85.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette85.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette85.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette85.setBrush(QPalette::Active, QPalette::Text, brush);
         palette85.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette85.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette85.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette85.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette85.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette85.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette85.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette85.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette85.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette85.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette85.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette85.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette85.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette85.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette85.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette85.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette85.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette85.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette85.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette85.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette85.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette85.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette85.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette85.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette85.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette85.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette85.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette85.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette85.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette85.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette85.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette85.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette85.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette85.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette85.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette85.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette85.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette85.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette85.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette85.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette85.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette85.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette85.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette85.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette85.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette85.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette85.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette85.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette85.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette85.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette85.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette85.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette85.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette85.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette85.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette85.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette85.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette85.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette85.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette85.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette85.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette85.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette85.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette85.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette85.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette85.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette85.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette85.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette85.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P2_ValBR1_1->setPalette(palette85);
         P2_ValBR1_1->setFont(font5);
         P2_ValBR1_1->setLayoutDirection(Qt::LeftToRight);
@@ -3587,53 +2895,50 @@ public:
         P2_ValBR2_1->setGeometry(QRect(109, 400, 70, 30));
         QPalette palette86;
         palette86.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette86.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette86.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette86.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette86.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette86.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette86.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette86.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette86.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette86.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette86.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette86.setBrush(QPalette::Active, QPalette::Text, brush);
         palette86.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette86.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette86.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette86.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette86.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette86.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette86.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette86.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette86.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette86.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette86.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette86.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette86.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette86.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette86.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette86.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette86.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette86.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette86.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette86.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette86.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette86.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette86.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette86.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette86.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette86.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette86.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette86.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette86.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette86.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette86.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette86.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette86.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette86.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette86.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette86.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette86.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette86.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette86.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette86.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette86.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette86.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette86.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette86.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette86.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette86.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette86.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette86.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette86.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette86.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette86.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette86.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette86.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette86.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette86.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette86.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette86.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette86.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette86.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette86.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette86.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette86.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette86.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette86.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette86.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette86.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette86.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette86.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette86.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P2_ValBR2_1->setPalette(palette86);
         P2_ValBR2_1->setFont(font5);
         P2_ValBR2_1->setLayoutDirection(Qt::LeftToRight);
@@ -3644,53 +2949,50 @@ public:
         P2_ValBR1_2->setGeometry(QRect(111, 339, 164, 55));
         QPalette palette87;
         palette87.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette87.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette87.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette87.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette87.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette87.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette87.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette87.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette87.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette87.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette87.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette87.setBrush(QPalette::Active, QPalette::Text, brush);
         palette87.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette87.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette87.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette87.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette87.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette87.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette87.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette87.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette87.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette87.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette87.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette87.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette87.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette87.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette87.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette87.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette87.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette87.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette87.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette87.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette87.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette87.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette87.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette87.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette87.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette87.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette87.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette87.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette87.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette87.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette87.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette87.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette87.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette87.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette87.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette87.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette87.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette87.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette87.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette87.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette87.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette87.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette87.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette87.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette87.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette87.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette87.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette87.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette87.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette87.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette87.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette87.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette87.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette87.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette87.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette87.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette87.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette87.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette87.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette87.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette87.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette87.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette87.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette87.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette87.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette87.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette87.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette87.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette87.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P2_ValBR1_2->setPalette(palette87);
         P2_ValBR1_2->setFont(font5);
         P2_ValBR1_2->setLayoutDirection(Qt::LeftToRight);
@@ -3701,53 +3003,50 @@ public:
         P2_ValBR2_2->setGeometry(QRect(111, 405, 164, 55));
         QPalette palette88;
         palette88.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette88.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette88.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette88.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette88.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette88.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette88.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette88.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette88.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette88.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette88.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette88.setBrush(QPalette::Active, QPalette::Text, brush);
         palette88.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette88.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette88.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette88.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette88.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette88.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette88.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette88.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette88.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette88.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette88.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette88.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette88.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette88.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette88.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette88.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette88.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette88.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette88.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette88.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette88.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette88.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette88.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette88.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette88.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette88.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette88.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette88.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette88.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette88.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette88.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette88.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette88.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette88.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette88.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette88.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette88.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette88.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette88.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette88.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette88.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette88.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette88.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette88.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette88.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette88.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette88.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette88.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette88.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette88.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette88.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette88.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette88.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette88.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette88.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette88.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette88.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette88.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette88.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette88.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette88.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette88.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette88.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette88.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette88.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette88.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette88.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette88.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette88.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P2_ValBR2_2->setPalette(palette88);
         P2_ValBR2_2->setFont(font5);
         P2_ValBR2_2->setLayoutDirection(Qt::LeftToRight);
@@ -3758,53 +3057,50 @@ public:
         P2_ValMotor1_2->setGeometry(QRect(111, 140, 164, 55));
         QPalette palette89;
         palette89.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette89.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette89.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette89.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette89.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette89.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette89.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette89.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette89.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette89.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette89.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette89.setBrush(QPalette::Active, QPalette::Text, brush);
         palette89.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette89.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette89.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette89.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette89.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette89.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette89.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette89.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette89.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette89.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette89.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette89.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette89.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette89.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette89.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette89.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette89.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette89.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette89.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette89.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette89.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette89.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette89.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette89.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette89.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette89.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette89.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette89.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette89.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette89.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette89.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette89.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette89.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette89.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette89.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette89.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette89.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette89.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette89.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette89.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette89.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette89.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette89.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette89.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette89.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette89.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette89.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette89.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette89.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette89.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette89.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette89.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette89.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette89.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette89.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette89.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette89.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette89.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette89.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette89.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette89.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette89.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette89.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette89.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette89.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette89.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette89.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette89.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette89.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P2_ValMotor1_2->setPalette(palette89);
         P2_ValMotor1_2->setFont(font5);
         P2_ValMotor1_2->setLayoutDirection(Qt::LeftToRight);
@@ -3815,53 +3111,50 @@ public:
         P2_ValMotor2_2->setGeometry(QRect(111, 207, 164, 55));
         QPalette palette90;
         palette90.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette90.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette90.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette90.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette90.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette90.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette90.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette90.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette90.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette90.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette90.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette90.setBrush(QPalette::Active, QPalette::Text, brush);
         palette90.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette90.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette90.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette90.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette90.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette90.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette90.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette90.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette90.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette90.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette90.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette90.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette90.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette90.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette90.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette90.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette90.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette90.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette90.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette90.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette90.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette90.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette90.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette90.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette90.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette90.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette90.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette90.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette90.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette90.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette90.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette90.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette90.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette90.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette90.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette90.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette90.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette90.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette90.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette90.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette90.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette90.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette90.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette90.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette90.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette90.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette90.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette90.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette90.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette90.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette90.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette90.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette90.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette90.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette90.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette90.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette90.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette90.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette90.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette90.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette90.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette90.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette90.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette90.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette90.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette90.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette90.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette90.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette90.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P2_ValMotor2_2->setPalette(palette90);
         P2_ValMotor2_2->setFont(font5);
         P2_ValMotor2_2->setLayoutDirection(Qt::LeftToRight);
@@ -3872,53 +3165,50 @@ public:
         P2_ValMotor3_2->setGeometry(QRect(111, 273, 164, 55));
         QPalette palette91;
         palette91.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette91.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette91.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette91.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette91.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette91.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette91.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette91.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette91.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette91.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette91.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette91.setBrush(QPalette::Active, QPalette::Text, brush);
         palette91.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette91.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette91.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette91.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette91.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette91.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette91.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette91.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette91.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette91.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette91.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette91.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette91.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette91.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette91.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette91.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette91.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette91.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette91.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette91.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette91.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette91.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette91.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette91.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette91.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette91.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette91.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette91.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette91.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette91.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette91.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette91.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette91.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette91.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette91.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette91.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette91.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette91.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette91.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette91.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette91.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette91.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette91.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette91.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette91.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette91.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette91.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette91.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette91.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette91.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette91.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette91.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette91.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette91.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette91.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette91.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette91.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette91.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette91.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette91.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette91.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette91.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette91.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette91.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette91.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette91.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette91.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette91.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette91.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P2_ValMotor3_2->setPalette(palette91);
         P2_ValMotor3_2->setFont(font5);
         P2_ValMotor3_2->setLayoutDirection(Qt::LeftToRight);
@@ -3929,53 +3219,50 @@ public:
         P2_ValMotor1_3->setGeometry(QRect(320, 160, 450, 46));
         QPalette palette92;
         palette92.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette92.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette92.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette92.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette92.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette92.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette92.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette92.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette92.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette92.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette92.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette92.setBrush(QPalette::Active, QPalette::Text, brush);
         palette92.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette92.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette92.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette92.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette92.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette92.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette92.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette92.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette92.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette92.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette92.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette92.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette92.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette92.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette92.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette92.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette92.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette92.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette92.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette92.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette92.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette92.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette92.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette92.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette92.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette92.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette92.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette92.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette92.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette92.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette92.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette92.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette92.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette92.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette92.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette92.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette92.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette92.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette92.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette92.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette92.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette92.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette92.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette92.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette92.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette92.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette92.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette92.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette92.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette92.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette92.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette92.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette92.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette92.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette92.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette92.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette92.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette92.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette92.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette92.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette92.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette92.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette92.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette92.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette92.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette92.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette92.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette92.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette92.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P2_ValMotor1_3->setPalette(palette92);
         P2_ValMotor1_3->setFont(font5);
         P2_ValMotor1_3->setLayoutDirection(Qt::LeftToRight);
@@ -3986,53 +3273,50 @@ public:
         P2_ValMotor2_3->setGeometry(QRect(320, 223, 450, 46));
         QPalette palette93;
         palette93.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette93.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette93.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette93.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette93.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette93.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette93.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette93.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette93.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette93.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette93.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette93.setBrush(QPalette::Active, QPalette::Text, brush);
         palette93.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette93.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette93.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette93.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette93.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette93.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette93.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette93.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette93.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette93.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette93.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette93.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette93.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette93.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette93.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette93.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette93.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette93.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette93.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette93.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette93.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette93.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette93.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette93.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette93.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette93.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette93.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette93.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette93.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette93.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette93.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette93.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette93.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette93.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette93.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette93.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette93.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette93.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette93.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette93.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette93.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette93.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette93.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette93.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette93.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette93.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette93.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette93.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette93.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette93.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette93.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette93.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette93.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette93.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette93.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette93.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette93.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette93.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette93.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette93.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette93.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette93.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette93.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette93.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette93.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette93.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette93.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette93.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette93.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P2_ValMotor2_3->setPalette(palette93);
         P2_ValMotor2_3->setFont(font5);
         P2_ValMotor2_3->setLayoutDirection(Qt::LeftToRight);
@@ -4043,53 +3327,50 @@ public:
         P2_ValMotor3_3->setGeometry(QRect(320, 290, 450, 46));
         QPalette palette94;
         palette94.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette94.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette94.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette94.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette94.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette94.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette94.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette94.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette94.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette94.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette94.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette94.setBrush(QPalette::Active, QPalette::Text, brush);
         palette94.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette94.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette94.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette94.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette94.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette94.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette94.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette94.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette94.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette94.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette94.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette94.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette94.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette94.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette94.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette94.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette94.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette94.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette94.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette94.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette94.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette94.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette94.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette94.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette94.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette94.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette94.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette94.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette94.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette94.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette94.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette94.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette94.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette94.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette94.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette94.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette94.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette94.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette94.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette94.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette94.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette94.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette94.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette94.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette94.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette94.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette94.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette94.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette94.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette94.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette94.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette94.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette94.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette94.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette94.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette94.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette94.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette94.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette94.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette94.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette94.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette94.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette94.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette94.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette94.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette94.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette94.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette94.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette94.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P2_ValMotor3_3->setPalette(palette94);
         P2_ValMotor3_3->setFont(font5);
         P2_ValMotor3_3->setLayoutDirection(Qt::LeftToRight);
@@ -4100,53 +3381,50 @@ public:
         P2_ValBR1_3->setGeometry(QRect(320, 353, 450, 46));
         QPalette palette95;
         palette95.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette95.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette95.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette95.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette95.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette95.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette95.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette95.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette95.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette95.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette95.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette95.setBrush(QPalette::Active, QPalette::Text, brush);
         palette95.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette95.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette95.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette95.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette95.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette95.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette95.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette95.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette95.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette95.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette95.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette95.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette95.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette95.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette95.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette95.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette95.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette95.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette95.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette95.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette95.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette95.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette95.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette95.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette95.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette95.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette95.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette95.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette95.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette95.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette95.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette95.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette95.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette95.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette95.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette95.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette95.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette95.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette95.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette95.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette95.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette95.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette95.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette95.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette95.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette95.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette95.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette95.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette95.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette95.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette95.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette95.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette95.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette95.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette95.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette95.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette95.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette95.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette95.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette95.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette95.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette95.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette95.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette95.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette95.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette95.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette95.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette95.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette95.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P2_ValBR1_3->setPalette(palette95);
         P2_ValBR1_3->setFont(font5);
         P2_ValBR1_3->setLayoutDirection(Qt::LeftToRight);
@@ -4157,53 +3435,50 @@ public:
         P2_ValBR2_3->setGeometry(QRect(320, 414, 450, 46));
         QPalette palette96;
         palette96.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette96.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette96.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette96.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette96.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette96.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette96.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette96.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette96.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette96.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette96.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette96.setBrush(QPalette::Active, QPalette::Text, brush);
         palette96.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette96.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette96.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette96.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette96.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette96.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette96.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette96.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette96.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette96.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette96.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette96.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette96.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette96.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette96.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette96.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette96.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette96.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette96.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette96.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette96.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette96.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette96.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette96.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette96.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette96.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette96.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette96.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette96.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette96.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette96.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette96.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette96.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette96.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette96.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette96.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette96.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette96.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette96.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette96.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette96.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette96.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette96.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette96.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette96.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette96.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette96.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette96.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette96.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette96.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette96.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette96.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette96.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette96.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette96.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette96.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette96.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette96.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette96.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette96.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette96.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette96.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette96.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette96.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette96.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette96.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette96.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette96.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette96.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         P2_ValBR2_3->setPalette(palette96);
         P2_ValBR2_3->setFont(font5);
         P2_ValBR2_3->setLayoutDirection(Qt::LeftToRight);
@@ -4215,19 +3490,10 @@ public:
         QPalette palette97;
         palette97.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette97.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush226(QColor(255, 255, 255, 128));
-        brush226.setStyle(Qt::NoBrush);
-
         palette97.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette97.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush227(QColor(255, 255, 255, 128));
-        brush227.setStyle(Qt::NoBrush);
-
-        palette97.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette97.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush228(QColor(255, 255, 255, 128));
-        brush228.setStyle(Qt::NoBrush);
-
+        palette97.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette97.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_LABEL1->setPalette(palette97);
         P2_LABEL1->setFont(font4);
         P2_LABEL1->setLayoutDirection(Qt::LeftToRight);
@@ -4239,19 +3505,10 @@ public:
         QPalette palette98;
         palette98.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette98.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush229(QColor(255, 255, 255, 128));
-        brush229.setStyle(Qt::NoBrush);
-
         palette98.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette98.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush230(QColor(255, 255, 255, 128));
-        brush230.setStyle(Qt::NoBrush);
-
-        palette98.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette98.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush231(QColor(255, 255, 255, 128));
-        brush231.setStyle(Qt::NoBrush);
-
+        palette98.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette98.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P2_LABEL2->setPalette(palette98);
         P2_LABEL2->setFont(font4);
         P2_LABEL2->setLayoutDirection(Qt::LeftToRight);
@@ -4373,19 +3630,10 @@ public:
         QPalette palette99;
         palette99.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette99.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush232(QColor(255, 255, 255, 128));
-        brush232.setStyle(Qt::NoBrush);
-
         palette99.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette99.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush233(QColor(255, 255, 255, 128));
-        brush233.setStyle(Qt::NoBrush);
-
-        palette99.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette99.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush234(QColor(255, 255, 255, 128));
-        brush234.setStyle(Qt::NoBrush);
-
+        palette99.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette99.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_ValR->setPalette(palette99);
         P3_ValR->setFont(font);
         P3_ValR->setLayoutDirection(Qt::LeftToRight);
@@ -4413,19 +3661,10 @@ public:
         QPalette palette100;
         palette100.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette100.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush235(QColor(255, 255, 255, 128));
-        brush235.setStyle(Qt::NoBrush);
-
         palette100.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette100.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush236(QColor(255, 255, 255, 128));
-        brush236.setStyle(Qt::NoBrush);
-
-        palette100.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette100.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush237(QColor(255, 255, 255, 128));
-        brush237.setStyle(Qt::NoBrush);
-
+        palette100.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette100.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_ValBAL->setPalette(palette100);
         P3_ValBAL->setFont(font);
         P3_ValBAL->setLayoutDirection(Qt::LeftToRight);
@@ -4437,19 +3676,10 @@ public:
         QPalette palette101;
         palette101.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette101.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush238(QColor(255, 255, 255, 128));
-        brush238.setStyle(Qt::NoBrush);
-
         palette101.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette101.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush239(QColor(255, 255, 255, 128));
-        brush239.setStyle(Qt::NoBrush);
-
-        palette101.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette101.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush240(QColor(255, 255, 255, 128));
-        brush240.setStyle(Qt::NoBrush);
-
+        palette101.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette101.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_ValS->setPalette(palette101);
         P3_ValS->setFont(font);
         P3_ValS->setLayoutDirection(Qt::LeftToRight);
@@ -4461,19 +3691,10 @@ public:
         QPalette palette102;
         palette102.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette102.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush241(QColor(255, 255, 255, 128));
-        brush241.setStyle(Qt::NoBrush);
-
         palette102.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette102.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush242(QColor(255, 255, 255, 128));
-        brush242.setStyle(Qt::NoBrush);
-
-        palette102.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette102.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush243(QColor(255, 255, 255, 128));
-        brush243.setStyle(Qt::NoBrush);
-
+        palette102.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette102.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_ValT->setPalette(palette102);
         P3_ValT->setFont(font);
         P3_ValT->setLayoutDirection(Qt::LeftToRight);
@@ -4489,19 +3710,10 @@ public:
         QPalette palette103;
         palette103.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette103.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush244(QColor(255, 255, 255, 128));
-        brush244.setStyle(Qt::NoBrush);
-
         palette103.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette103.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush245(QColor(255, 255, 255, 128));
-        brush245.setStyle(Qt::NoBrush);
-
-        palette103.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette103.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush246(QColor(255, 255, 255, 128));
-        brush246.setStyle(Qt::NoBrush);
-
+        palette103.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette103.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentR_7->setPalette(palette103);
         P3_CurrentR_7->setFont(font5);
         P3_CurrentR_7->setLayoutDirection(Qt::LeftToRight);
@@ -4513,19 +3725,10 @@ public:
         QPalette palette104;
         palette104.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette104.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush247(QColor(255, 255, 255, 128));
-        brush247.setStyle(Qt::NoBrush);
-
         palette104.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette104.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush248(QColor(255, 255, 255, 128));
-        brush248.setStyle(Qt::NoBrush);
-
-        palette104.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette104.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush249(QColor(255, 255, 255, 128));
-        brush249.setStyle(Qt::NoBrush);
-
+        palette104.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette104.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentR_8->setPalette(palette104);
         P3_CurrentR_8->setFont(font5);
         P3_CurrentR_8->setLayoutDirection(Qt::LeftToRight);
@@ -4537,19 +3740,10 @@ public:
         QPalette palette105;
         palette105.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette105.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush250(QColor(255, 255, 255, 128));
-        brush250.setStyle(Qt::NoBrush);
-
         palette105.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette105.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush251(QColor(255, 255, 255, 128));
-        brush251.setStyle(Qt::NoBrush);
-
-        palette105.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette105.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush252(QColor(255, 255, 255, 128));
-        brush252.setStyle(Qt::NoBrush);
-
+        palette105.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette105.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentR_9->setPalette(palette105);
         P3_CurrentR_9->setFont(font5);
         P3_CurrentR_9->setLayoutDirection(Qt::LeftToRight);
@@ -4561,19 +3755,10 @@ public:
         QPalette palette106;
         palette106.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette106.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush253(QColor(255, 255, 255, 128));
-        brush253.setStyle(Qt::NoBrush);
-
         palette106.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette106.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush254(QColor(255, 255, 255, 128));
-        brush254.setStyle(Qt::NoBrush);
-
-        palette106.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette106.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush255(QColor(255, 255, 255, 128));
-        brush255.setStyle(Qt::NoBrush);
-
+        palette106.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette106.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentR_4->setPalette(palette106);
         P3_CurrentR_4->setFont(font5);
         P3_CurrentR_4->setLayoutDirection(Qt::LeftToRight);
@@ -4585,19 +3770,10 @@ public:
         QPalette palette107;
         palette107.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette107.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush256(QColor(255, 255, 255, 128));
-        brush256.setStyle(Qt::NoBrush);
-
         palette107.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette107.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush257(QColor(255, 255, 255, 128));
-        brush257.setStyle(Qt::NoBrush);
-
-        palette107.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette107.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush258(QColor(255, 255, 255, 128));
-        brush258.setStyle(Qt::NoBrush);
-
+        palette107.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette107.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentR_6->setPalette(palette107);
         P3_CurrentR_6->setFont(font5);
         P3_CurrentR_6->setLayoutDirection(Qt::LeftToRight);
@@ -4609,19 +3785,10 @@ public:
         QPalette palette108;
         palette108.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette108.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush259(QColor(255, 255, 255, 128));
-        brush259.setStyle(Qt::NoBrush);
-
         palette108.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette108.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush260(QColor(255, 255, 255, 128));
-        brush260.setStyle(Qt::NoBrush);
-
-        palette108.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette108.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush261(QColor(255, 255, 255, 128));
-        brush261.setStyle(Qt::NoBrush);
-
+        palette108.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette108.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentR_3->setPalette(palette108);
         P3_CurrentR_3->setFont(font5);
         P3_CurrentR_3->setLayoutDirection(Qt::LeftToRight);
@@ -4637,19 +3804,10 @@ public:
         QPalette palette109;
         palette109.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette109.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush262(QColor(255, 255, 255, 128));
-        brush262.setStyle(Qt::NoBrush);
-
         palette109.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette109.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush263(QColor(255, 255, 255, 128));
-        brush263.setStyle(Qt::NoBrush);
-
-        palette109.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette109.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush264(QColor(255, 255, 255, 128));
-        brush264.setStyle(Qt::NoBrush);
-
+        palette109.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette109.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentR_2->setPalette(palette109);
         P3_CurrentR_2->setFont(font5);
         P3_CurrentR_2->setLayoutDirection(Qt::LeftToRight);
@@ -4661,19 +3819,10 @@ public:
         QPalette palette110;
         palette110.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette110.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush265(QColor(255, 255, 255, 128));
-        brush265.setStyle(Qt::NoBrush);
-
         palette110.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette110.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush266(QColor(255, 255, 255, 128));
-        brush266.setStyle(Qt::NoBrush);
-
-        palette110.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette110.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush267(QColor(255, 255, 255, 128));
-        brush267.setStyle(Qt::NoBrush);
-
+        palette110.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette110.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentR_10->setPalette(palette110);
         P3_CurrentR_10->setFont(font5);
         P3_CurrentR_10->setLayoutDirection(Qt::LeftToRight);
@@ -4685,19 +3834,10 @@ public:
         QPalette palette111;
         palette111.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette111.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush268(QColor(255, 255, 255, 128));
-        brush268.setStyle(Qt::NoBrush);
-
         palette111.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette111.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush269(QColor(255, 255, 255, 128));
-        brush269.setStyle(Qt::NoBrush);
-
-        palette111.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette111.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush270(QColor(255, 255, 255, 128));
-        brush270.setStyle(Qt::NoBrush);
-
+        palette111.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette111.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentR->setPalette(palette111);
         P3_CurrentR->setFont(font5);
         P3_CurrentR->setLayoutDirection(Qt::LeftToRight);
@@ -4709,19 +3849,10 @@ public:
         QPalette palette112;
         palette112.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette112.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush271(QColor(255, 255, 255, 128));
-        brush271.setStyle(Qt::NoBrush);
-
         palette112.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette112.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush272(QColor(255, 255, 255, 128));
-        brush272.setStyle(Qt::NoBrush);
-
-        palette112.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette112.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush273(QColor(255, 255, 255, 128));
-        brush273.setStyle(Qt::NoBrush);
-
+        palette112.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette112.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentR_5->setPalette(palette112);
         P3_CurrentR_5->setFont(font5);
         P3_CurrentR_5->setLayoutDirection(Qt::LeftToRight);
@@ -4733,19 +3864,10 @@ public:
         QPalette palette113;
         palette113.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette113.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush274(QColor(255, 255, 255, 128));
-        brush274.setStyle(Qt::NoBrush);
-
         palette113.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette113.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush275(QColor(255, 255, 255, 128));
-        brush275.setStyle(Qt::NoBrush);
-
-        palette113.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette113.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush276(QColor(255, 255, 255, 128));
-        brush276.setStyle(Qt::NoBrush);
-
+        palette113.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette113.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentS->setPalette(palette113);
         P3_CurrentS->setFont(font5);
         P3_CurrentS->setLayoutDirection(Qt::LeftToRight);
@@ -4757,19 +3879,10 @@ public:
         QPalette palette114;
         palette114.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette114.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush277(QColor(255, 255, 255, 128));
-        brush277.setStyle(Qt::NoBrush);
-
         palette114.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette114.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush278(QColor(255, 255, 255, 128));
-        brush278.setStyle(Qt::NoBrush);
-
-        palette114.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette114.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush279(QColor(255, 255, 255, 128));
-        brush279.setStyle(Qt::NoBrush);
-
+        palette114.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette114.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentS_10->setPalette(palette114);
         P3_CurrentS_10->setFont(font5);
         P3_CurrentS_10->setLayoutDirection(Qt::LeftToRight);
@@ -4781,19 +3894,10 @@ public:
         QPalette palette115;
         palette115.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette115.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush280(QColor(255, 255, 255, 128));
-        brush280.setStyle(Qt::NoBrush);
-
         palette115.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette115.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush281(QColor(255, 255, 255, 128));
-        brush281.setStyle(Qt::NoBrush);
-
-        palette115.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette115.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush282(QColor(255, 255, 255, 128));
-        brush282.setStyle(Qt::NoBrush);
-
+        palette115.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette115.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentS_4->setPalette(palette115);
         P3_CurrentS_4->setFont(font5);
         P3_CurrentS_4->setLayoutDirection(Qt::LeftToRight);
@@ -4805,19 +3909,10 @@ public:
         QPalette palette116;
         palette116.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette116.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush283(QColor(255, 255, 255, 128));
-        brush283.setStyle(Qt::NoBrush);
-
         palette116.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette116.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush284(QColor(255, 255, 255, 128));
-        brush284.setStyle(Qt::NoBrush);
-
-        palette116.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette116.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush285(QColor(255, 255, 255, 128));
-        brush285.setStyle(Qt::NoBrush);
-
+        palette116.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette116.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentS_7->setPalette(palette116);
         P3_CurrentS_7->setFont(font5);
         P3_CurrentS_7->setLayoutDirection(Qt::LeftToRight);
@@ -4829,19 +3924,10 @@ public:
         QPalette palette117;
         palette117.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette117.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush286(QColor(255, 255, 255, 128));
-        brush286.setStyle(Qt::NoBrush);
-
         palette117.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette117.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush287(QColor(255, 255, 255, 128));
-        brush287.setStyle(Qt::NoBrush);
-
-        palette117.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette117.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush288(QColor(255, 255, 255, 128));
-        brush288.setStyle(Qt::NoBrush);
-
+        palette117.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette117.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentS_3->setPalette(palette117);
         P3_CurrentS_3->setFont(font5);
         P3_CurrentS_3->setLayoutDirection(Qt::LeftToRight);
@@ -4860,19 +3946,10 @@ public:
         QPalette palette118;
         palette118.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette118.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush289(QColor(255, 255, 255, 128));
-        brush289.setStyle(Qt::NoBrush);
-
         palette118.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette118.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush290(QColor(255, 255, 255, 128));
-        brush290.setStyle(Qt::NoBrush);
-
-        palette118.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette118.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush291(QColor(255, 255, 255, 128));
-        brush291.setStyle(Qt::NoBrush);
-
+        palette118.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette118.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentS_6->setPalette(palette118);
         P3_CurrentS_6->setFont(font5);
         P3_CurrentS_6->setLayoutDirection(Qt::LeftToRight);
@@ -4884,19 +3961,10 @@ public:
         QPalette palette119;
         palette119.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette119.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush292(QColor(255, 255, 255, 128));
-        brush292.setStyle(Qt::NoBrush);
-
         palette119.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette119.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush293(QColor(255, 255, 255, 128));
-        brush293.setStyle(Qt::NoBrush);
-
-        palette119.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette119.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush294(QColor(255, 255, 255, 128));
-        brush294.setStyle(Qt::NoBrush);
-
+        palette119.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette119.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentS_9->setPalette(palette119);
         P3_CurrentS_9->setFont(font5);
         P3_CurrentS_9->setLayoutDirection(Qt::LeftToRight);
@@ -4908,19 +3976,10 @@ public:
         QPalette palette120;
         palette120.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette120.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush295(QColor(255, 255, 255, 128));
-        brush295.setStyle(Qt::NoBrush);
-
         palette120.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette120.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush296(QColor(255, 255, 255, 128));
-        brush296.setStyle(Qt::NoBrush);
-
-        palette120.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette120.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush297(QColor(255, 255, 255, 128));
-        brush297.setStyle(Qt::NoBrush);
-
+        palette120.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette120.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentS_5->setPalette(palette120);
         P3_CurrentS_5->setFont(font5);
         P3_CurrentS_5->setLayoutDirection(Qt::LeftToRight);
@@ -4932,19 +3991,10 @@ public:
         QPalette palette121;
         palette121.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette121.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush298(QColor(255, 255, 255, 128));
-        brush298.setStyle(Qt::NoBrush);
-
         palette121.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette121.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush299(QColor(255, 255, 255, 128));
-        brush299.setStyle(Qt::NoBrush);
-
-        palette121.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette121.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush300(QColor(255, 255, 255, 128));
-        brush300.setStyle(Qt::NoBrush);
-
+        palette121.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette121.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentS_8->setPalette(palette121);
         P3_CurrentS_8->setFont(font5);
         P3_CurrentS_8->setLayoutDirection(Qt::LeftToRight);
@@ -4956,19 +4006,10 @@ public:
         QPalette palette122;
         palette122.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette122.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush301(QColor(255, 255, 255, 128));
-        brush301.setStyle(Qt::NoBrush);
-
         palette122.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette122.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush302(QColor(255, 255, 255, 128));
-        brush302.setStyle(Qt::NoBrush);
-
-        palette122.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette122.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush303(QColor(255, 255, 255, 128));
-        brush303.setStyle(Qt::NoBrush);
-
+        palette122.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette122.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentS_2->setPalette(palette122);
         P3_CurrentS_2->setFont(font5);
         P3_CurrentS_2->setLayoutDirection(Qt::LeftToRight);
@@ -4980,19 +4021,10 @@ public:
         QPalette palette123;
         palette123.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette123.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush304(QColor(255, 255, 255, 128));
-        brush304.setStyle(Qt::NoBrush);
-
         palette123.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette123.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush305(QColor(255, 255, 255, 128));
-        brush305.setStyle(Qt::NoBrush);
-
-        palette123.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette123.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush306(QColor(255, 255, 255, 128));
-        brush306.setStyle(Qt::NoBrush);
-
+        palette123.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette123.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentT_7->setPalette(palette123);
         P3_CurrentT_7->setFont(font5);
         P3_CurrentT_7->setLayoutDirection(Qt::LeftToRight);
@@ -5008,19 +4040,10 @@ public:
         QPalette palette124;
         palette124.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette124.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush307(QColor(255, 255, 255, 128));
-        brush307.setStyle(Qt::NoBrush);
-
         palette124.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette124.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush308(QColor(255, 255, 255, 128));
-        brush308.setStyle(Qt::NoBrush);
-
-        palette124.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette124.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush309(QColor(255, 255, 255, 128));
-        brush309.setStyle(Qt::NoBrush);
-
+        palette124.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette124.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentT_5->setPalette(palette124);
         P3_CurrentT_5->setFont(font5);
         P3_CurrentT_5->setLayoutDirection(Qt::LeftToRight);
@@ -5032,19 +4055,10 @@ public:
         QPalette palette125;
         palette125.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette125.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush310(QColor(255, 255, 255, 128));
-        brush310.setStyle(Qt::NoBrush);
-
         palette125.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette125.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush311(QColor(255, 255, 255, 128));
-        brush311.setStyle(Qt::NoBrush);
-
-        palette125.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette125.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush312(QColor(255, 255, 255, 128));
-        brush312.setStyle(Qt::NoBrush);
-
+        palette125.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette125.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentT_2->setPalette(palette125);
         P3_CurrentT_2->setFont(font5);
         P3_CurrentT_2->setLayoutDirection(Qt::LeftToRight);
@@ -5056,19 +4070,10 @@ public:
         QPalette palette126;
         palette126.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette126.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush313(QColor(255, 255, 255, 128));
-        brush313.setStyle(Qt::NoBrush);
-
         palette126.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette126.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush314(QColor(255, 255, 255, 128));
-        brush314.setStyle(Qt::NoBrush);
-
-        palette126.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette126.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush315(QColor(255, 255, 255, 128));
-        brush315.setStyle(Qt::NoBrush);
-
+        palette126.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette126.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentT_10->setPalette(palette126);
         P3_CurrentT_10->setFont(font5);
         P3_CurrentT_10->setLayoutDirection(Qt::LeftToRight);
@@ -5080,19 +4085,10 @@ public:
         QPalette palette127;
         palette127.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette127.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush316(QColor(255, 255, 255, 128));
-        brush316.setStyle(Qt::NoBrush);
-
         palette127.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette127.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush317(QColor(255, 255, 255, 128));
-        brush317.setStyle(Qt::NoBrush);
-
-        palette127.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette127.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush318(QColor(255, 255, 255, 128));
-        brush318.setStyle(Qt::NoBrush);
-
+        palette127.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette127.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentT->setPalette(palette127);
         P3_CurrentT->setFont(font5);
         P3_CurrentT->setLayoutDirection(Qt::LeftToRight);
@@ -5104,19 +4100,10 @@ public:
         QPalette palette128;
         palette128.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette128.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush319(QColor(255, 255, 255, 128));
-        brush319.setStyle(Qt::NoBrush);
-
         palette128.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette128.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush320(QColor(255, 255, 255, 128));
-        brush320.setStyle(Qt::NoBrush);
-
-        palette128.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette128.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush321(QColor(255, 255, 255, 128));
-        brush321.setStyle(Qt::NoBrush);
-
+        palette128.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette128.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentT_9->setPalette(palette128);
         P3_CurrentT_9->setFont(font5);
         P3_CurrentT_9->setLayoutDirection(Qt::LeftToRight);
@@ -5128,19 +4115,10 @@ public:
         QPalette palette129;
         palette129.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette129.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush322(QColor(255, 255, 255, 128));
-        brush322.setStyle(Qt::NoBrush);
-
         palette129.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette129.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush323(QColor(255, 255, 255, 128));
-        brush323.setStyle(Qt::NoBrush);
-
-        palette129.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette129.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush324(QColor(255, 255, 255, 128));
-        brush324.setStyle(Qt::NoBrush);
-
+        palette129.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette129.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentT_6->setPalette(palette129);
         P3_CurrentT_6->setFont(font5);
         P3_CurrentT_6->setLayoutDirection(Qt::LeftToRight);
@@ -5152,19 +4130,10 @@ public:
         QPalette palette130;
         palette130.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette130.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush325(QColor(255, 255, 255, 128));
-        brush325.setStyle(Qt::NoBrush);
-
         palette130.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette130.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush326(QColor(255, 255, 255, 128));
-        brush326.setStyle(Qt::NoBrush);
-
-        palette130.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette130.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush327(QColor(255, 255, 255, 128));
-        brush327.setStyle(Qt::NoBrush);
-
+        palette130.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette130.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentT_4->setPalette(palette130);
         P3_CurrentT_4->setFont(font5);
         P3_CurrentT_4->setLayoutDirection(Qt::LeftToRight);
@@ -5176,19 +4145,10 @@ public:
         QPalette palette131;
         palette131.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette131.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush328(QColor(255, 255, 255, 128));
-        brush328.setStyle(Qt::NoBrush);
-
         palette131.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette131.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush329(QColor(255, 255, 255, 128));
-        brush329.setStyle(Qt::NoBrush);
-
-        palette131.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette131.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush330(QColor(255, 255, 255, 128));
-        brush330.setStyle(Qt::NoBrush);
-
+        palette131.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette131.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentT_3->setPalette(palette131);
         P3_CurrentT_3->setFont(font5);
         P3_CurrentT_3->setLayoutDirection(Qt::LeftToRight);
@@ -5200,19 +4160,10 @@ public:
         QPalette palette132;
         palette132.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette132.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush331(QColor(255, 255, 255, 128));
-        brush331.setStyle(Qt::NoBrush);
-
         palette132.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette132.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush332(QColor(255, 255, 255, 128));
-        brush332.setStyle(Qt::NoBrush);
-
-        palette132.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette132.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush333(QColor(255, 255, 255, 128));
-        brush333.setStyle(Qt::NoBrush);
-
+        palette132.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette132.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentT_8->setPalette(palette132);
         P3_CurrentT_8->setFont(font5);
         P3_CurrentT_8->setLayoutDirection(Qt::LeftToRight);
@@ -5224,19 +4175,10 @@ public:
         QPalette palette133;
         palette133.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette133.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush334(QColor(255, 255, 255, 128));
-        brush334.setStyle(Qt::NoBrush);
-
         palette133.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette133.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush335(QColor(255, 255, 255, 128));
-        brush335.setStyle(Qt::NoBrush);
-
-        palette133.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette133.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush336(QColor(255, 255, 255, 128));
-        brush336.setStyle(Qt::NoBrush);
-
+        palette133.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette133.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentUB_7->setPalette(palette133);
         P3_CurrentUB_7->setFont(font5);
         P3_CurrentUB_7->setLayoutDirection(Qt::LeftToRight);
@@ -5248,19 +4190,10 @@ public:
         QPalette palette134;
         palette134.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette134.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush337(QColor(255, 255, 255, 128));
-        brush337.setStyle(Qt::NoBrush);
-
         palette134.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette134.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush338(QColor(255, 255, 255, 128));
-        brush338.setStyle(Qt::NoBrush);
-
-        palette134.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette134.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush339(QColor(255, 255, 255, 128));
-        brush339.setStyle(Qt::NoBrush);
-
+        palette134.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette134.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentUB_6->setPalette(palette134);
         P3_CurrentUB_6->setFont(font5);
         P3_CurrentUB_6->setLayoutDirection(Qt::LeftToRight);
@@ -5272,19 +4205,10 @@ public:
         QPalette palette135;
         palette135.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette135.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush340(QColor(255, 255, 255, 128));
-        brush340.setStyle(Qt::NoBrush);
-
         palette135.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette135.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush341(QColor(255, 255, 255, 128));
-        brush341.setStyle(Qt::NoBrush);
-
-        palette135.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette135.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush342(QColor(255, 255, 255, 128));
-        brush342.setStyle(Qt::NoBrush);
-
+        palette135.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette135.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentUB_4->setPalette(palette135);
         P3_CurrentUB_4->setFont(font5);
         P3_CurrentUB_4->setLayoutDirection(Qt::LeftToRight);
@@ -5296,19 +4220,10 @@ public:
         QPalette palette136;
         palette136.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette136.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush343(QColor(255, 255, 255, 128));
-        brush343.setStyle(Qt::NoBrush);
-
         palette136.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette136.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush344(QColor(255, 255, 255, 128));
-        brush344.setStyle(Qt::NoBrush);
-
-        palette136.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette136.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush345(QColor(255, 255, 255, 128));
-        brush345.setStyle(Qt::NoBrush);
-
+        palette136.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette136.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentUB_3->setPalette(palette136);
         P3_CurrentUB_3->setFont(font5);
         P3_CurrentUB_3->setLayoutDirection(Qt::LeftToRight);
@@ -5320,19 +4235,10 @@ public:
         QPalette palette137;
         palette137.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette137.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush346(QColor(255, 255, 255, 128));
-        brush346.setStyle(Qt::NoBrush);
-
         palette137.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette137.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush347(QColor(255, 255, 255, 128));
-        brush347.setStyle(Qt::NoBrush);
-
-        palette137.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette137.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush348(QColor(255, 255, 255, 128));
-        brush348.setStyle(Qt::NoBrush);
-
+        palette137.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette137.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentUB_2->setPalette(palette137);
         P3_CurrentUB_2->setFont(font5);
         P3_CurrentUB_2->setLayoutDirection(Qt::LeftToRight);
@@ -5344,19 +4250,10 @@ public:
         QPalette palette138;
         palette138.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette138.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush349(QColor(255, 255, 255, 128));
-        brush349.setStyle(Qt::NoBrush);
-
         palette138.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette138.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush350(QColor(255, 255, 255, 128));
-        brush350.setStyle(Qt::NoBrush);
-
-        palette138.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette138.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush351(QColor(255, 255, 255, 128));
-        brush351.setStyle(Qt::NoBrush);
-
+        palette138.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette138.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentUB_9->setPalette(palette138);
         P3_CurrentUB_9->setFont(font5);
         P3_CurrentUB_9->setLayoutDirection(Qt::LeftToRight);
@@ -5368,19 +4265,10 @@ public:
         QPalette palette139;
         palette139.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette139.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush352(QColor(255, 255, 255, 128));
-        brush352.setStyle(Qt::NoBrush);
-
         palette139.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette139.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush353(QColor(255, 255, 255, 128));
-        brush353.setStyle(Qt::NoBrush);
-
-        palette139.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette139.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush354(QColor(255, 255, 255, 128));
-        brush354.setStyle(Qt::NoBrush);
-
+        palette139.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette139.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentUB_5->setPalette(palette139);
         P3_CurrentUB_5->setFont(font5);
         P3_CurrentUB_5->setLayoutDirection(Qt::LeftToRight);
@@ -5392,19 +4280,10 @@ public:
         QPalette palette140;
         palette140.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette140.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush355(QColor(255, 255, 255, 128));
-        brush355.setStyle(Qt::NoBrush);
-
         palette140.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette140.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush356(QColor(255, 255, 255, 128));
-        brush356.setStyle(Qt::NoBrush);
-
-        palette140.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette140.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush357(QColor(255, 255, 255, 128));
-        brush357.setStyle(Qt::NoBrush);
-
+        palette140.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette140.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentUB_8->setPalette(palette140);
         P3_CurrentUB_8->setFont(font5);
         P3_CurrentUB_8->setLayoutDirection(Qt::LeftToRight);
@@ -5420,19 +4299,10 @@ public:
         QPalette palette141;
         palette141.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette141.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush358(QColor(255, 255, 255, 128));
-        brush358.setStyle(Qt::NoBrush);
-
         palette141.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette141.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush359(QColor(255, 255, 255, 128));
-        brush359.setStyle(Qt::NoBrush);
-
-        palette141.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette141.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush360(QColor(255, 255, 255, 128));
-        brush360.setStyle(Qt::NoBrush);
-
+        palette141.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette141.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentUB->setPalette(palette141);
         P3_CurrentUB->setFont(font5);
         P3_CurrentUB->setLayoutDirection(Qt::LeftToRight);
@@ -5444,19 +4314,10 @@ public:
         QPalette palette142;
         palette142.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette142.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush361(QColor(255, 255, 255, 128));
-        brush361.setStyle(Qt::NoBrush);
-
         palette142.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette142.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush362(QColor(255, 255, 255, 128));
-        brush362.setStyle(Qt::NoBrush);
-
-        palette142.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette142.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush363(QColor(255, 255, 255, 128));
-        brush363.setStyle(Qt::NoBrush);
-
+        palette142.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette142.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentUB_10->setPalette(palette142);
         P3_CurrentUB_10->setFont(font5);
         P3_CurrentUB_10->setLayoutDirection(Qt::LeftToRight);
@@ -5468,19 +4329,10 @@ public:
         QPalette palette143;
         palette143.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette143.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush364(QColor(255, 255, 255, 128));
-        brush364.setStyle(Qt::NoBrush);
-
         palette143.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette143.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush365(QColor(255, 255, 255, 128));
-        brush365.setStyle(Qt::NoBrush);
-
-        palette143.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette143.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush366(QColor(255, 255, 255, 128));
-        brush366.setStyle(Qt::NoBrush);
-
+        palette143.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette143.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_ValTime->setPalette(palette143);
         P3_ValTime->setFont(font4);
         P3_ValTime->setLayoutDirection(Qt::LeftToRight);
@@ -5492,19 +4344,10 @@ public:
         QPalette palette144;
         palette144.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette144.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush367(QColor(255, 255, 255, 128));
-        brush367.setStyle(Qt::NoBrush);
-
         palette144.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette144.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush368(QColor(255, 255, 255, 128));
-        brush368.setStyle(Qt::NoBrush);
-
-        palette144.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette144.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush369(QColor(255, 255, 255, 128));
-        brush369.setStyle(Qt::NoBrush);
-
+        palette144.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette144.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_LABEL1->setPalette(palette144);
         P3_LABEL1->setFont(font4);
         P3_LABEL1->setLayoutDirection(Qt::LeftToRight);
@@ -5516,19 +4359,10 @@ public:
         QPalette palette145;
         palette145.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette145.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush370(QColor(255, 255, 255, 128));
-        brush370.setStyle(Qt::NoBrush);
-
         palette145.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette145.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush371(QColor(255, 255, 255, 128));
-        brush371.setStyle(Qt::NoBrush);
-
-        palette145.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette145.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush372(QColor(255, 255, 255, 128));
-        brush372.setStyle(Qt::NoBrush);
-
+        palette145.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette145.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_LABEL2->setPalette(palette145);
         P3_LABEL2->setFont(font4);
         P3_LABEL2->setLayoutDirection(Qt::LeftToRight);
@@ -5768,19 +4602,10 @@ public:
         QPalette palette146;
         palette146.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette146.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush373(QColor(255, 255, 255, 128));
-        brush373.setStyle(Qt::NoBrush);
-
         palette146.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette146.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush374(QColor(255, 255, 255, 128));
-        brush374.setStyle(Qt::NoBrush);
-
-        palette146.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette146.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush375(QColor(255, 255, 255, 128));
-        brush375.setStyle(Qt::NoBrush);
-
+        palette146.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette146.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentR_41->setPalette(palette146);
         QFont font8;
         font8.setPointSize(13);
@@ -5796,19 +4621,10 @@ public:
         QPalette palette147;
         palette147.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette147.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush376(QColor(255, 255, 255, 128));
-        brush376.setStyle(Qt::NoBrush);
-
         palette147.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette147.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush377(QColor(255, 255, 255, 128));
-        brush377.setStyle(Qt::NoBrush);
-
-        palette147.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette147.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush378(QColor(255, 255, 255, 128));
-        brush378.setStyle(Qt::NoBrush);
-
+        palette147.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette147.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentR_42->setPalette(palette147);
         P3_CurrentR_42->setFont(font8);
         P3_CurrentR_42->setLayoutDirection(Qt::LeftToRight);
@@ -5820,19 +4636,10 @@ public:
         QPalette palette148;
         palette148.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette148.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush379(QColor(255, 255, 255, 128));
-        brush379.setStyle(Qt::NoBrush);
-
         palette148.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette148.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush380(QColor(255, 255, 255, 128));
-        brush380.setStyle(Qt::NoBrush);
-
-        palette148.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette148.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush381(QColor(255, 255, 255, 128));
-        brush381.setStyle(Qt::NoBrush);
-
+        palette148.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette148.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentR_43->setPalette(palette148);
         P3_CurrentR_43->setFont(font8);
         P3_CurrentR_43->setLayoutDirection(Qt::LeftToRight);
@@ -5844,19 +4651,10 @@ public:
         QPalette palette149;
         palette149.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette149.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush382(QColor(255, 255, 255, 128));
-        brush382.setStyle(Qt::NoBrush);
-
         palette149.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette149.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush383(QColor(255, 255, 255, 128));
-        brush383.setStyle(Qt::NoBrush);
-
-        palette149.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette149.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush384(QColor(255, 255, 255, 128));
-        brush384.setStyle(Qt::NoBrush);
-
+        palette149.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette149.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentR_44->setPalette(palette149);
         QFont font9;
         font9.setPointSize(14);
@@ -5872,19 +4670,10 @@ public:
         QPalette palette150;
         palette150.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette150.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush385(QColor(255, 255, 255, 128));
-        brush385.setStyle(Qt::NoBrush);
-
         palette150.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette150.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush386(QColor(255, 255, 255, 128));
-        brush386.setStyle(Qt::NoBrush);
-
-        palette150.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette150.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush387(QColor(255, 255, 255, 128));
-        brush387.setStyle(Qt::NoBrush);
-
+        palette150.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette150.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentR_45->setPalette(palette150);
         P3_CurrentR_45->setFont(font9);
         P3_CurrentR_45->setLayoutDirection(Qt::LeftToRight);
@@ -5896,19 +4685,10 @@ public:
         QPalette palette151;
         palette151.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette151.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush388(QColor(255, 255, 255, 128));
-        brush388.setStyle(Qt::NoBrush);
-
         palette151.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette151.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush389(QColor(255, 255, 255, 128));
-        brush389.setStyle(Qt::NoBrush);
-
-        palette151.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette151.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush390(QColor(255, 255, 255, 128));
-        brush390.setStyle(Qt::NoBrush);
-
+        palette151.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette151.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentR_46->setPalette(palette151);
         P3_CurrentR_46->setFont(font9);
         P3_CurrentR_46->setLayoutDirection(Qt::LeftToRight);
@@ -5932,19 +4712,10 @@ public:
         QPalette palette152;
         palette152.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette152.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush391(QColor(255, 255, 255, 128));
-        brush391.setStyle(Qt::NoBrush);
-
         palette152.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette152.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush392(QColor(255, 255, 255, 128));
-        brush392.setStyle(Qt::NoBrush);
-
-        palette152.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette152.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush393(QColor(255, 255, 255, 128));
-        brush393.setStyle(Qt::NoBrush);
-
+        palette152.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette152.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentR_47->setPalette(palette152);
         QFont font10;
         font10.setPointSize(13);
@@ -5960,19 +4731,10 @@ public:
         QPalette palette153;
         palette153.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette153.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush394(QColor(255, 255, 255, 128));
-        brush394.setStyle(Qt::NoBrush);
-
         palette153.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette153.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush395(QColor(255, 255, 255, 128));
-        brush395.setStyle(Qt::NoBrush);
-
-        palette153.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette153.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush396(QColor(255, 255, 255, 128));
-        brush396.setStyle(Qt::NoBrush);
-
+        palette153.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette153.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentR_48->setPalette(palette153);
         P3_CurrentR_48->setFont(font10);
         P3_CurrentR_48->setLayoutDirection(Qt::LeftToRight);
@@ -5984,19 +4746,10 @@ public:
         QPalette palette154;
         palette154.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette154.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush397(QColor(255, 255, 255, 128));
-        brush397.setStyle(Qt::NoBrush);
-
         palette154.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette154.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush398(QColor(255, 255, 255, 128));
-        brush398.setStyle(Qt::NoBrush);
-
-        palette154.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette154.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush399(QColor(255, 255, 255, 128));
-        brush399.setStyle(Qt::NoBrush);
-
+        palette154.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette154.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_CurrentR_49->setPalette(palette154);
         P3_CurrentR_49->setFont(font10);
         P3_CurrentR_49->setLayoutDirection(Qt::LeftToRight);
@@ -6008,19 +4761,10 @@ public:
         QPalette palette155;
         palette155.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette155.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush400(QColor(255, 255, 255, 128));
-        brush400.setStyle(Qt::NoBrush);
-
         palette155.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette155.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush401(QColor(255, 255, 255, 128));
-        brush401.setStyle(Qt::NoBrush);
-
-        palette155.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette155.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush402(QColor(255, 255, 255, 128));
-        brush402.setStyle(Qt::NoBrush);
-
+        palette155.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette155.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P4_Set1_T->setPalette(palette155);
         P4_Set1_T->setFont(font10);
         P4_Set1_T->setLayoutDirection(Qt::LeftToRight);
@@ -6032,19 +4776,10 @@ public:
         QPalette palette156;
         palette156.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette156.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush403(QColor(255, 255, 255, 128));
-        brush403.setStyle(Qt::NoBrush);
-
         palette156.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette156.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush404(QColor(255, 255, 255, 128));
-        brush404.setStyle(Qt::NoBrush);
-
-        palette156.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette156.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush405(QColor(255, 255, 255, 128));
-        brush405.setStyle(Qt::NoBrush);
-
+        palette156.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette156.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P4_Set3_T->setPalette(palette156);
         P4_Set3_T->setFont(font10);
         P4_Set3_T->setLayoutDirection(Qt::LeftToRight);
@@ -6056,19 +4791,10 @@ public:
         QPalette palette157;
         palette157.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette157.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush406(QColor(255, 255, 255, 128));
-        brush406.setStyle(Qt::NoBrush);
-
         palette157.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette157.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush407(QColor(255, 255, 255, 128));
-        brush407.setStyle(Qt::NoBrush);
-
-        palette157.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette157.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush408(QColor(255, 255, 255, 128));
-        brush408.setStyle(Qt::NoBrush);
-
+        palette157.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette157.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P4_Set2_T->setPalette(palette157);
         P4_Set2_T->setFont(font10);
         P4_Set2_T->setLayoutDirection(Qt::LeftToRight);
@@ -6092,19 +4818,10 @@ public:
         QPalette palette158;
         palette158.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette158.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush409(QColor(255, 255, 255, 128));
-        brush409.setStyle(Qt::NoBrush);
-
         palette158.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette158.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush410(QColor(255, 255, 255, 128));
-        brush410.setStyle(Qt::NoBrush);
-
-        palette158.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette158.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush411(QColor(255, 255, 255, 128));
-        brush411.setStyle(Qt::NoBrush);
-
+        palette158.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette158.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P4_ValTime->setPalette(palette158);
         P4_ValTime->setFont(font4);
         P4_ValTime->setLayoutDirection(Qt::LeftToRight);
@@ -6128,19 +4845,10 @@ public:
         QPalette palette159;
         palette159.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette159.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush412(QColor(255, 255, 255, 128));
-        brush412.setStyle(Qt::NoBrush);
-
         palette159.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette159.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush413(QColor(255, 255, 255, 128));
-        brush413.setStyle(Qt::NoBrush);
-
-        palette159.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette159.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush414(QColor(255, 255, 255, 128));
-        brush414.setStyle(Qt::NoBrush);
-
+        palette159.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette159.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P4_LABEL1->setPalette(palette159);
         P4_LABEL1->setFont(font4);
         P4_LABEL1->setLayoutDirection(Qt::LeftToRight);
@@ -6152,19 +4860,10 @@ public:
         QPalette palette160;
         palette160.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette160.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush415(QColor(255, 255, 255, 128));
-        brush415.setStyle(Qt::NoBrush);
-
         palette160.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette160.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush416(QColor(255, 255, 255, 128));
-        brush416.setStyle(Qt::NoBrush);
-
-        palette160.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette160.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush417(QColor(255, 255, 255, 128));
-        brush417.setStyle(Qt::NoBrush);
-
+        palette160.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette160.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P4_LABEL2->setPalette(palette160);
         P4_LABEL2->setFont(font4);
         P4_LABEL2->setLayoutDirection(Qt::LeftToRight);
@@ -6470,19 +5169,10 @@ public:
         QPalette palette161;
         palette161.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette161.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush418(QColor(255, 255, 255, 128));
-        brush418.setStyle(Qt::NoBrush);
-
         palette161.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette161.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush419(QColor(255, 255, 255, 128));
-        brush419.setStyle(Qt::NoBrush);
-
-        palette161.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette161.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush420(QColor(255, 255, 255, 128));
-        brush420.setStyle(Qt::NoBrush);
-
+        palette161.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette161.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P5_ValTime->setPalette(palette161);
         P5_ValTime->setFont(font4);
         P5_ValTime->setLayoutDirection(Qt::LeftToRight);
@@ -6554,19 +5244,10 @@ public:
         QPalette palette162;
         palette162.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette162.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush421(QColor(255, 255, 255, 128));
-        brush421.setStyle(Qt::NoBrush);
-
         palette162.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette162.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush422(QColor(255, 255, 255, 128));
-        brush422.setStyle(Qt::NoBrush);
-
-        palette162.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette162.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush423(QColor(255, 255, 255, 128));
-        brush423.setStyle(Qt::NoBrush);
-
+        palette162.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette162.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P5_Set1_L_txt->setPalette(palette162);
         P5_Set1_L_txt->setFont(font10);
         P5_Set1_L_txt->setLayoutDirection(Qt::LeftToRight);
@@ -6578,19 +5259,10 @@ public:
         QPalette palette163;
         palette163.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette163.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush424(QColor(255, 255, 255, 128));
-        brush424.setStyle(Qt::NoBrush);
-
         palette163.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette163.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush425(QColor(255, 255, 255, 128));
-        brush425.setStyle(Qt::NoBrush);
-
-        palette163.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette163.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush426(QColor(255, 255, 255, 128));
-        brush426.setStyle(Qt::NoBrush);
-
+        palette163.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette163.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P5_Set2_L_txt->setPalette(palette163);
         P5_Set2_L_txt->setFont(font10);
         P5_Set2_L_txt->setLayoutDirection(Qt::LeftToRight);
@@ -6602,19 +5274,10 @@ public:
         QPalette palette164;
         palette164.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette164.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush427(QColor(255, 255, 255, 128));
-        brush427.setStyle(Qt::NoBrush);
-
         palette164.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette164.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush428(QColor(255, 255, 255, 128));
-        brush428.setStyle(Qt::NoBrush);
-
-        palette164.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette164.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush429(QColor(255, 255, 255, 128));
-        brush429.setStyle(Qt::NoBrush);
-
+        palette164.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette164.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P5_Set3_L_txt->setPalette(palette164);
         P5_Set3_L_txt->setFont(font10);
         P5_Set3_L_txt->setLayoutDirection(Qt::LeftToRight);
@@ -6626,19 +5289,10 @@ public:
         QPalette palette165;
         palette165.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette165.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush430(QColor(255, 255, 255, 128));
-        brush430.setStyle(Qt::NoBrush);
-
         palette165.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette165.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush431(QColor(255, 255, 255, 128));
-        brush431.setStyle(Qt::NoBrush);
-
-        palette165.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette165.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush432(QColor(255, 255, 255, 128));
-        brush432.setStyle(Qt::NoBrush);
-
+        palette165.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette165.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P5_Set4_L_txt->setPalette(palette165);
         P5_Set4_L_txt->setFont(font10);
         P5_Set4_L_txt->setLayoutDirection(Qt::LeftToRight);
@@ -6650,19 +5304,10 @@ public:
         QPalette palette166;
         palette166.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette166.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush433(QColor(255, 255, 255, 128));
-        brush433.setStyle(Qt::NoBrush);
-
         palette166.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette166.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush434(QColor(255, 255, 255, 128));
-        brush434.setStyle(Qt::NoBrush);
-
-        palette166.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette166.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush435(QColor(255, 255, 255, 128));
-        brush435.setStyle(Qt::NoBrush);
-
+        palette166.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette166.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P5_Set5_L_txt->setPalette(palette166);
         P5_Set5_L_txt->setFont(font10);
         P5_Set5_L_txt->setLayoutDirection(Qt::LeftToRight);
@@ -6674,19 +5319,10 @@ public:
         QPalette palette167;
         palette167.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette167.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush436(QColor(255, 255, 255, 128));
-        brush436.setStyle(Qt::NoBrush);
-
         palette167.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette167.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush437(QColor(255, 255, 255, 128));
-        brush437.setStyle(Qt::NoBrush);
-
-        palette167.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette167.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush438(QColor(255, 255, 255, 128));
-        brush438.setStyle(Qt::NoBrush);
-
+        palette167.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette167.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P5_Set4_M_txt->setPalette(palette167);
         P5_Set4_M_txt->setFont(font10);
         P5_Set4_M_txt->setLayoutDirection(Qt::LeftToRight);
@@ -6698,19 +5334,10 @@ public:
         QPalette palette168;
         palette168.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette168.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush439(QColor(255, 255, 255, 128));
-        brush439.setStyle(Qt::NoBrush);
-
         palette168.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette168.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush440(QColor(255, 255, 255, 128));
-        brush440.setStyle(Qt::NoBrush);
-
-        palette168.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette168.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush441(QColor(255, 255, 255, 128));
-        brush441.setStyle(Qt::NoBrush);
-
+        palette168.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette168.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P5_Set1_M_txt->setPalette(palette168);
         P5_Set1_M_txt->setFont(font10);
         P5_Set1_M_txt->setLayoutDirection(Qt::LeftToRight);
@@ -6722,19 +5349,10 @@ public:
         QPalette palette169;
         palette169.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette169.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush442(QColor(255, 255, 255, 128));
-        brush442.setStyle(Qt::NoBrush);
-
         palette169.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette169.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush443(QColor(255, 255, 255, 128));
-        brush443.setStyle(Qt::NoBrush);
-
-        palette169.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette169.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush444(QColor(255, 255, 255, 128));
-        brush444.setStyle(Qt::NoBrush);
-
+        palette169.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette169.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P5_Set3_M_txt->setPalette(palette169);
         P5_Set3_M_txt->setFont(font10);
         P5_Set3_M_txt->setLayoutDirection(Qt::LeftToRight);
@@ -6746,19 +5364,10 @@ public:
         QPalette palette170;
         palette170.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette170.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush445(QColor(255, 255, 255, 128));
-        brush445.setStyle(Qt::NoBrush);
-
         palette170.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette170.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush446(QColor(255, 255, 255, 128));
-        brush446.setStyle(Qt::NoBrush);
-
-        palette170.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette170.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush447(QColor(255, 255, 255, 128));
-        brush447.setStyle(Qt::NoBrush);
-
+        palette170.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette170.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P5_Set2_M_txt->setPalette(palette170);
         P5_Set2_M_txt->setFont(font10);
         P5_Set2_M_txt->setLayoutDirection(Qt::LeftToRight);
@@ -6770,19 +5379,10 @@ public:
         QPalette palette171;
         palette171.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette171.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush448(QColor(255, 255, 255, 128));
-        brush448.setStyle(Qt::NoBrush);
-
         palette171.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette171.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush449(QColor(255, 255, 255, 128));
-        brush449.setStyle(Qt::NoBrush);
-
-        palette171.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette171.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush450(QColor(255, 255, 255, 128));
-        brush450.setStyle(Qt::NoBrush);
-
+        palette171.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette171.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P5_Set5_M_txt->setPalette(palette171);
         P5_Set5_M_txt->setFont(font10);
         P5_Set5_M_txt->setLayoutDirection(Qt::LeftToRight);
@@ -6794,19 +5394,10 @@ public:
         QPalette palette172;
         palette172.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette172.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush451(QColor(255, 255, 255, 128));
-        brush451.setStyle(Qt::NoBrush);
-
         palette172.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette172.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush452(QColor(255, 255, 255, 128));
-        brush452.setStyle(Qt::NoBrush);
-
-        palette172.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette172.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush453(QColor(255, 255, 255, 128));
-        brush453.setStyle(Qt::NoBrush);
-
+        palette172.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette172.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P5_Set1_H_txt->setPalette(palette172);
         P5_Set1_H_txt->setFont(font10);
         P5_Set1_H_txt->setLayoutDirection(Qt::LeftToRight);
@@ -6818,19 +5409,10 @@ public:
         QPalette palette173;
         palette173.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette173.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush454(QColor(255, 255, 255, 128));
-        brush454.setStyle(Qt::NoBrush);
-
         palette173.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette173.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush455(QColor(255, 255, 255, 128));
-        brush455.setStyle(Qt::NoBrush);
-
-        palette173.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette173.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush456(QColor(255, 255, 255, 128));
-        brush456.setStyle(Qt::NoBrush);
-
+        palette173.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette173.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P5_Set4_H_txt->setPalette(palette173);
         P5_Set4_H_txt->setFont(font10);
         P5_Set4_H_txt->setLayoutDirection(Qt::LeftToRight);
@@ -6842,19 +5424,10 @@ public:
         QPalette palette174;
         palette174.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette174.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush457(QColor(255, 255, 255, 128));
-        brush457.setStyle(Qt::NoBrush);
-
         palette174.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette174.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush458(QColor(255, 255, 255, 128));
-        brush458.setStyle(Qt::NoBrush);
-
-        palette174.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette174.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush459(QColor(255, 255, 255, 128));
-        brush459.setStyle(Qt::NoBrush);
-
+        palette174.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette174.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P5_Set3_H_txt->setPalette(palette174);
         P5_Set3_H_txt->setFont(font10);
         P5_Set3_H_txt->setLayoutDirection(Qt::LeftToRight);
@@ -6866,19 +5439,10 @@ public:
         QPalette palette175;
         palette175.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette175.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush460(QColor(255, 255, 255, 128));
-        brush460.setStyle(Qt::NoBrush);
-
         palette175.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette175.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush461(QColor(255, 255, 255, 128));
-        brush461.setStyle(Qt::NoBrush);
-
-        palette175.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette175.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush462(QColor(255, 255, 255, 128));
-        brush462.setStyle(Qt::NoBrush);
-
+        palette175.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette175.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P5_Set2_H_txt->setPalette(palette175);
         P5_Set2_H_txt->setFont(font10);
         P5_Set2_H_txt->setLayoutDirection(Qt::LeftToRight);
@@ -6890,19 +5454,10 @@ public:
         QPalette palette176;
         palette176.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette176.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush463(QColor(255, 255, 255, 128));
-        brush463.setStyle(Qt::NoBrush);
-
         palette176.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette176.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush464(QColor(255, 255, 255, 128));
-        brush464.setStyle(Qt::NoBrush);
-
-        palette176.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette176.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush465(QColor(255, 255, 255, 128));
-        brush465.setStyle(Qt::NoBrush);
-
+        palette176.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette176.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P5_Set5_H_txt->setPalette(palette176);
         P5_Set5_H_txt->setFont(font10);
         P5_Set5_H_txt->setLayoutDirection(Qt::LeftToRight);
@@ -6914,19 +5469,10 @@ public:
         QPalette palette177;
         palette177.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette177.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush466(QColor(255, 255, 255, 128));
-        brush466.setStyle(Qt::NoBrush);
-
         palette177.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette177.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush467(QColor(255, 255, 255, 128));
-        brush467.setStyle(Qt::NoBrush);
-
-        palette177.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette177.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush468(QColor(255, 255, 255, 128));
-        brush468.setStyle(Qt::NoBrush);
-
+        palette177.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette177.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P5_LABEL1->setPalette(palette177);
         P5_LABEL1->setFont(font4);
         P5_LABEL1->setLayoutDirection(Qt::LeftToRight);
@@ -6938,19 +5484,10 @@ public:
         QPalette palette178;
         palette178.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette178.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush469(QColor(255, 255, 255, 128));
-        brush469.setStyle(Qt::NoBrush);
-
         palette178.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette178.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush470(QColor(255, 255, 255, 128));
-        brush470.setStyle(Qt::NoBrush);
-
-        palette178.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette178.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush471(QColor(255, 255, 255, 128));
-        brush471.setStyle(Qt::NoBrush);
-
+        palette178.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette178.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P5_LABEL2->setPalette(palette178);
         P5_LABEL2->setFont(font4);
         P5_LABEL2->setLayoutDirection(Qt::LeftToRight);
@@ -7075,19 +5612,10 @@ public:
         QPalette palette179;
         palette179.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette179.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush472(QColor(255, 255, 255, 128));
-        brush472.setStyle(Qt::NoBrush);
-
         palette179.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette179.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush473(QColor(255, 255, 255, 128));
-        brush473.setStyle(Qt::NoBrush);
-
-        palette179.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette179.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush474(QColor(255, 255, 255, 128));
-        brush474.setStyle(Qt::NoBrush);
-
+        palette179.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette179.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P6_ValTime->setPalette(palette179);
         P6_ValTime->setFont(font4);
         P6_ValTime->setLayoutDirection(Qt::LeftToRight);
@@ -7143,19 +5671,10 @@ public:
         QPalette palette180;
         palette180.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette180.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush475(QColor(255, 255, 255, 128));
-        brush475.setStyle(Qt::NoBrush);
-
         palette180.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette180.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush476(QColor(255, 255, 255, 128));
-        brush476.setStyle(Qt::NoBrush);
-
-        palette180.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette180.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush477(QColor(255, 255, 255, 128));
-        brush477.setStyle(Qt::NoBrush);
-
+        palette180.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette180.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P6_V1->setPalette(palette180);
         P6_V1->setFont(font10);
         P6_V1->setLayoutDirection(Qt::LeftToRight);
@@ -7167,19 +5686,10 @@ public:
         QPalette palette181;
         palette181.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette181.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush478(QColor(255, 255, 255, 128));
-        brush478.setStyle(Qt::NoBrush);
-
         palette181.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette181.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush479(QColor(255, 255, 255, 128));
-        brush479.setStyle(Qt::NoBrush);
-
-        palette181.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette181.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush480(QColor(255, 255, 255, 128));
-        brush480.setStyle(Qt::NoBrush);
-
+        palette181.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette181.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P6_V1_2->setPalette(palette181);
         P6_V1_2->setFont(font10);
         P6_V1_2->setLayoutDirection(Qt::LeftToRight);
@@ -7191,19 +5701,10 @@ public:
         QPalette palette182;
         palette182.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette182.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush481(QColor(255, 255, 255, 128));
-        brush481.setStyle(Qt::NoBrush);
-
         palette182.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette182.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush482(QColor(255, 255, 255, 128));
-        brush482.setStyle(Qt::NoBrush);
-
-        palette182.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette182.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush483(QColor(255, 255, 255, 128));
-        brush483.setStyle(Qt::NoBrush);
-
+        palette182.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette182.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P6_V1_3->setPalette(palette182);
         P6_V1_3->setFont(font10);
         P6_V1_3->setLayoutDirection(Qt::LeftToRight);
@@ -7215,19 +5716,10 @@ public:
         QPalette palette183;
         palette183.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette183.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush484(QColor(255, 255, 255, 128));
-        brush484.setStyle(Qt::NoBrush);
-
         palette183.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette183.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush485(QColor(255, 255, 255, 128));
-        brush485.setStyle(Qt::NoBrush);
-
-        palette183.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette183.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush486(QColor(255, 255, 255, 128));
-        brush486.setStyle(Qt::NoBrush);
-
+        palette183.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette183.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P6_V1_4->setPalette(palette183);
         P6_V1_4->setFont(font10);
         P6_V1_4->setLayoutDirection(Qt::LeftToRight);
@@ -7239,19 +5731,10 @@ public:
         QPalette palette184;
         palette184.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette184.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush487(QColor(255, 255, 255, 128));
-        brush487.setStyle(Qt::NoBrush);
-
         palette184.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette184.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush488(QColor(255, 255, 255, 128));
-        brush488.setStyle(Qt::NoBrush);
-
-        palette184.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette184.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush489(QColor(255, 255, 255, 128));
-        brush489.setStyle(Qt::NoBrush);
-
+        palette184.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette184.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P6_V1_5->setPalette(palette184);
         P6_V1_5->setFont(font10);
         P6_V1_5->setLayoutDirection(Qt::LeftToRight);
@@ -7263,19 +5746,10 @@ public:
         QPalette palette185;
         palette185.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette185.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush490(QColor(255, 255, 255, 128));
-        brush490.setStyle(Qt::NoBrush);
-
         palette185.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette185.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush491(QColor(255, 255, 255, 128));
-        brush491.setStyle(Qt::NoBrush);
-
-        palette185.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette185.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush492(QColor(255, 255, 255, 128));
-        brush492.setStyle(Qt::NoBrush);
-
+        palette185.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette185.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P6_V1_6->setPalette(palette185);
         P6_V1_6->setFont(font10);
         P6_V1_6->setLayoutDirection(Qt::LeftToRight);
@@ -7287,19 +5761,10 @@ public:
         QPalette palette186;
         palette186.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette186.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush493(QColor(255, 255, 255, 128));
-        brush493.setStyle(Qt::NoBrush);
-
         palette186.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette186.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush494(QColor(255, 255, 255, 128));
-        brush494.setStyle(Qt::NoBrush);
-
-        palette186.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette186.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush495(QColor(255, 255, 255, 128));
-        brush495.setStyle(Qt::NoBrush);
-
+        palette186.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette186.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P6_V1_7->setPalette(palette186);
         P6_V1_7->setFont(font10);
         P6_V1_7->setLayoutDirection(Qt::LeftToRight);
@@ -7311,19 +5776,10 @@ public:
         QPalette palette187;
         palette187.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette187.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush496(QColor(255, 255, 255, 128));
-        brush496.setStyle(Qt::NoBrush);
-
         palette187.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette187.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush497(QColor(255, 255, 255, 128));
-        brush497.setStyle(Qt::NoBrush);
-
-        palette187.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette187.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush498(QColor(255, 255, 255, 128));
-        brush498.setStyle(Qt::NoBrush);
-
+        palette187.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette187.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P6_V1_8->setPalette(palette187);
         P6_V1_8->setFont(font10);
         P6_V1_8->setLayoutDirection(Qt::LeftToRight);
@@ -7335,19 +5791,10 @@ public:
         QPalette palette188;
         palette188.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette188.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush499(QColor(255, 255, 255, 128));
-        brush499.setStyle(Qt::NoBrush);
-
         palette188.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette188.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush500(QColor(255, 255, 255, 128));
-        brush500.setStyle(Qt::NoBrush);
-
-        palette188.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette188.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush501(QColor(255, 255, 255, 128));
-        brush501.setStyle(Qt::NoBrush);
-
+        palette188.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette188.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P6_V1_9->setPalette(palette188);
         P6_V1_9->setFont(font10);
         P6_V1_9->setLayoutDirection(Qt::LeftToRight);
@@ -7359,19 +5806,10 @@ public:
         QPalette palette189;
         palette189.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette189.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush502(QColor(255, 255, 255, 128));
-        brush502.setStyle(Qt::NoBrush);
-
         palette189.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette189.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush503(QColor(255, 255, 255, 128));
-        brush503.setStyle(Qt::NoBrush);
-
-        palette189.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette189.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush504(QColor(255, 255, 255, 128));
-        brush504.setStyle(Qt::NoBrush);
-
+        palette189.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette189.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P6_V1_10->setPalette(palette189);
         P6_V1_10->setFont(font10);
         P6_V1_10->setLayoutDirection(Qt::LeftToRight);
@@ -7383,19 +5821,10 @@ public:
         QPalette palette190;
         palette190.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette190.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush505(QColor(255, 255, 255, 128));
-        brush505.setStyle(Qt::NoBrush);
-
         palette190.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette190.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush506(QColor(255, 255, 255, 128));
-        brush506.setStyle(Qt::NoBrush);
-
-        palette190.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette190.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush507(QColor(255, 255, 255, 128));
-        brush507.setStyle(Qt::NoBrush);
-
+        palette190.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette190.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P6_V1_11->setPalette(palette190);
         P6_V1_11->setFont(font10);
         P6_V1_11->setLayoutDirection(Qt::LeftToRight);
@@ -7406,53 +5835,50 @@ public:
         label_200->setGeometry(QRect(360, 431, 70, 30));
         QPalette palette191;
         palette191.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette191.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette191.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette191.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette191.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette191.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette191.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette191.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette191.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette191.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette191.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette191.setBrush(QPalette::Active, QPalette::Text, brush);
         palette191.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette191.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette191.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette191.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette191.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette191.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette191.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette191.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette191.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette191.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette191.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette191.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette191.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette191.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette191.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette191.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette191.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette191.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette191.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette191.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette191.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette191.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette191.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette191.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette191.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette191.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette191.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette191.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette191.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette191.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette191.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette191.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette191.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette191.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette191.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette191.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette191.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette191.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette191.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette191.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette191.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette191.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette191.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette191.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette191.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette191.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette191.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette191.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette191.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette191.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette191.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette191.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette191.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette191.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette191.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette191.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette191.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette191.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette191.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette191.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette191.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette191.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette191.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette191.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette191.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette191.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette191.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette191.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette191.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         label_200->setPalette(palette191);
         label_200->setFont(font5);
         label_200->setLayoutDirection(Qt::LeftToRight);
@@ -7463,53 +5889,50 @@ public:
         label_201->setGeometry(QRect(714, 443, 70, 30));
         QPalette palette192;
         palette192.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette192.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette192.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette192.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette192.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette192.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette192.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette192.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette192.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette192.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette192.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette192.setBrush(QPalette::Active, QPalette::Text, brush);
         palette192.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette192.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette192.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette192.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette192.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette192.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette192.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette192.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette192.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette192.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette192.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette192.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette192.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette192.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette192.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette192.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette192.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette192.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette192.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette192.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette192.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette192.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette192.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette192.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette192.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette192.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette192.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette192.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette192.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette192.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette192.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette192.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette192.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette192.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette192.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette192.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette192.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette192.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette192.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette192.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette192.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette192.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette192.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette192.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette192.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette192.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette192.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette192.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette192.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette192.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette192.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette192.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette192.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette192.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette192.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette192.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette192.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette192.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette192.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette192.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette192.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette192.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette192.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette192.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette192.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette192.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette192.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette192.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette192.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         label_201->setPalette(palette192);
         label_201->setFont(font5);
         label_201->setLayoutDirection(Qt::LeftToRight);
@@ -7520,53 +5943,50 @@ public:
         label_202->setGeometry(QRect(423, 369, 70, 30));
         QPalette palette193;
         palette193.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette193.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette193.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette193.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette193.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette193.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette193.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette193.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette193.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette193.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette193.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette193.setBrush(QPalette::Active, QPalette::Text, brush);
         palette193.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette193.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette193.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette193.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette193.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette193.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette193.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette193.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette193.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette193.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette193.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette193.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette193.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette193.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette193.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette193.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette193.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette193.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette193.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette193.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette193.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette193.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette193.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette193.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette193.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette193.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette193.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette193.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette193.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette193.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette193.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette193.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette193.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette193.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette193.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette193.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette193.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette193.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette193.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette193.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette193.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette193.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette193.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette193.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette193.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette193.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette193.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette193.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette193.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette193.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette193.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette193.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette193.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette193.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette193.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette193.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette193.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette193.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette193.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette193.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette193.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette193.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette193.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette193.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette193.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette193.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette193.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette193.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette193.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         label_202->setPalette(palette193);
         label_202->setFont(font5);
         label_202->setLayoutDirection(Qt::LeftToRight);
@@ -7577,53 +5997,50 @@ public:
         label_203->setGeometry(QRect(425, 429, 70, 30));
         QPalette palette194;
         palette194.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette194.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette194.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette194.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette194.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette194.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette194.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette194.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette194.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette194.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette194.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette194.setBrush(QPalette::Active, QPalette::Text, brush);
         palette194.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette194.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette194.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette194.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette194.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette194.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette194.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette194.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette194.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette194.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette194.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette194.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette194.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette194.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette194.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette194.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette194.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette194.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette194.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette194.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette194.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette194.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette194.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette194.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette194.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette194.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette194.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette194.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette194.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette194.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette194.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette194.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette194.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette194.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette194.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette194.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette194.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette194.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette194.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette194.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette194.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette194.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette194.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette194.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette194.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette194.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette194.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette194.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette194.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette194.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette194.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette194.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette194.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette194.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette194.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette194.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette194.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette194.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette194.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette194.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette194.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette194.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette194.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette194.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette194.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette194.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette194.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette194.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette194.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         label_203->setPalette(palette194);
         label_203->setFont(font5);
         label_203->setLayoutDirection(Qt::LeftToRight);
@@ -7635,19 +6052,10 @@ public:
         QPalette palette195;
         palette195.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette195.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush508(QColor(255, 255, 255, 128));
-        brush508.setStyle(Qt::NoBrush);
-
         palette195.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette195.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush509(QColor(255, 255, 255, 128));
-        brush509.setStyle(Qt::NoBrush);
-
-        palette195.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette195.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush510(QColor(255, 255, 255, 128));
-        brush510.setStyle(Qt::NoBrush);
-
+        palette195.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette195.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P6_LABEL1->setPalette(palette195);
         P6_LABEL1->setFont(font4);
         P6_LABEL1->setLayoutDirection(Qt::LeftToRight);
@@ -7659,19 +6067,10 @@ public:
         QPalette palette196;
         palette196.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette196.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush511(QColor(255, 255, 255, 128));
-        brush511.setStyle(Qt::NoBrush);
-
         palette196.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette196.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush512(QColor(255, 255, 255, 128));
-        brush512.setStyle(Qt::NoBrush);
-
-        palette196.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette196.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush513(QColor(255, 255, 255, 128));
-        brush513.setStyle(Qt::NoBrush);
-
+        palette196.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette196.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P6_LABEL2->setPalette(palette196);
         P6_LABEL2->setFont(font4);
         P6_LABEL2->setLayoutDirection(Qt::LeftToRight);
@@ -7682,53 +6081,50 @@ public:
         label_209->setGeometry(QRect(711, 209, 70, 17));
         QPalette palette197;
         palette197.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette197.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette197.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette197.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette197.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette197.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette197.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette197.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette197.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette197.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette197.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette197.setBrush(QPalette::Active, QPalette::Text, brush);
         palette197.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette197.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette197.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette197.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette197.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette197.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette197.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette197.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette197.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette197.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette197.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette197.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette197.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette197.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette197.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette197.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette197.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette197.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette197.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette197.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette197.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette197.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette197.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette197.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette197.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette197.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette197.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette197.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette197.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette197.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette197.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette197.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette197.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette197.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette197.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette197.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette197.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette197.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette197.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette197.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette197.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette197.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette197.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette197.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette197.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette197.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette197.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette197.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette197.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette197.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette197.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette197.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette197.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette197.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette197.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette197.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette197.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette197.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette197.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette197.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette197.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette197.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette197.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette197.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette197.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette197.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette197.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette197.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette197.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         label_209->setPalette(palette197);
         label_209->setFont(font5);
         label_209->setLayoutDirection(Qt::LeftToRight);
@@ -7898,19 +6294,10 @@ public:
         QPalette palette198;
         palette198.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette198.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush514(QColor(255, 255, 255, 128));
-        brush514.setStyle(Qt::NoBrush);
-
         palette198.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette198.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush515(QColor(255, 255, 255, 128));
-        brush515.setStyle(Qt::NoBrush);
-
-        palette198.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette198.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush516(QColor(255, 255, 255, 128));
-        brush516.setStyle(Qt::NoBrush);
-
+        palette198.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette198.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P7_ValTime->setPalette(palette198);
         P7_ValTime->setFont(font4);
         P7_ValTime->setLayoutDirection(Qt::LeftToRight);
@@ -7938,19 +6325,10 @@ public:
         QPalette palette199;
         palette199.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette199.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush517(QColor(255, 255, 255, 128));
-        brush517.setStyle(Qt::NoBrush);
-
         palette199.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette199.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush518(QColor(255, 255, 255, 128));
-        brush518.setStyle(Qt::NoBrush);
-
-        palette199.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette199.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush519(QColor(255, 255, 255, 128));
-        brush519.setStyle(Qt::NoBrush);
-
+        palette199.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette199.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P7_V1_1->setPalette(palette199);
         P7_V1_1->setFont(font10);
         P7_V1_1->setLayoutDirection(Qt::LeftToRight);
@@ -7962,19 +6340,10 @@ public:
         QPalette palette200;
         palette200.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette200.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush520(QColor(255, 255, 255, 128));
-        brush520.setStyle(Qt::NoBrush);
-
         palette200.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette200.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush521(QColor(255, 255, 255, 128));
-        brush521.setStyle(Qt::NoBrush);
-
-        palette200.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette200.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush522(QColor(255, 255, 255, 128));
-        brush522.setStyle(Qt::NoBrush);
-
+        palette200.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette200.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P7_V1_2->setPalette(palette200);
         P7_V1_2->setFont(font10);
         P7_V1_2->setLayoutDirection(Qt::LeftToRight);
@@ -7986,19 +6355,10 @@ public:
         QPalette palette201;
         palette201.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette201.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush523(QColor(255, 255, 255, 128));
-        brush523.setStyle(Qt::NoBrush);
-
         palette201.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette201.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush524(QColor(255, 255, 255, 128));
-        brush524.setStyle(Qt::NoBrush);
-
-        palette201.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette201.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush525(QColor(255, 255, 255, 128));
-        brush525.setStyle(Qt::NoBrush);
-
+        palette201.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette201.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P7_V1_3->setPalette(palette201);
         P7_V1_3->setFont(font10);
         P7_V1_3->setLayoutDirection(Qt::LeftToRight);
@@ -8010,19 +6370,10 @@ public:
         QPalette palette202;
         palette202.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette202.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush526(QColor(255, 255, 255, 128));
-        brush526.setStyle(Qt::NoBrush);
-
         palette202.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette202.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush527(QColor(255, 255, 255, 128));
-        brush527.setStyle(Qt::NoBrush);
-
-        palette202.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette202.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush528(QColor(255, 255, 255, 128));
-        brush528.setStyle(Qt::NoBrush);
-
+        palette202.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette202.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P7_V1_4->setPalette(palette202);
         P7_V1_4->setFont(font10);
         P7_V1_4->setLayoutDirection(Qt::LeftToRight);
@@ -8034,19 +6385,10 @@ public:
         QPalette palette203;
         palette203.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette203.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush529(QColor(255, 255, 255, 128));
-        brush529.setStyle(Qt::NoBrush);
-
         palette203.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette203.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush530(QColor(255, 255, 255, 128));
-        brush530.setStyle(Qt::NoBrush);
-
-        palette203.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette203.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush531(QColor(255, 255, 255, 128));
-        brush531.setStyle(Qt::NoBrush);
-
+        palette203.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette203.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_ValTime_8->setPalette(palette203);
         P3_ValTime_8->setFont(font5);
         P3_ValTime_8->setLayoutDirection(Qt::LeftToRight);
@@ -8058,19 +6400,10 @@ public:
         QPalette palette204;
         palette204.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette204.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush532(QColor(255, 255, 255, 128));
-        brush532.setStyle(Qt::NoBrush);
-
         palette204.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette204.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush533(QColor(255, 255, 255, 128));
-        brush533.setStyle(Qt::NoBrush);
-
-        palette204.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette204.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush534(QColor(255, 255, 255, 128));
-        brush534.setStyle(Qt::NoBrush);
-
+        palette204.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette204.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_ValTime_9->setPalette(palette204);
         P3_ValTime_9->setFont(font5);
         P3_ValTime_9->setLayoutDirection(Qt::LeftToRight);
@@ -8082,19 +6415,10 @@ public:
         QPalette palette205;
         palette205.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette205.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush535(QColor(255, 255, 255, 128));
-        brush535.setStyle(Qt::NoBrush);
-
         palette205.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette205.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush536(QColor(255, 255, 255, 128));
-        brush536.setStyle(Qt::NoBrush);
-
-        palette205.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette205.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush537(QColor(255, 255, 255, 128));
-        brush537.setStyle(Qt::NoBrush);
-
+        palette205.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette205.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_ValTime_10->setPalette(palette205);
         P3_ValTime_10->setFont(font5);
         P3_ValTime_10->setLayoutDirection(Qt::LeftToRight);
@@ -8106,19 +6430,10 @@ public:
         QPalette palette206;
         palette206.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette206.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush538(QColor(255, 255, 255, 128));
-        brush538.setStyle(Qt::NoBrush);
-
         palette206.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette206.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush539(QColor(255, 255, 255, 128));
-        brush539.setStyle(Qt::NoBrush);
-
-        palette206.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette206.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush540(QColor(255, 255, 255, 128));
-        brush540.setStyle(Qt::NoBrush);
-
+        palette206.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette206.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_ValTime_11->setPalette(palette206);
         P3_ValTime_11->setFont(font5);
         P3_ValTime_11->setLayoutDirection(Qt::LeftToRight);
@@ -8130,19 +6445,10 @@ public:
         QPalette palette207;
         palette207.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette207.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush541(QColor(255, 255, 255, 128));
-        brush541.setStyle(Qt::NoBrush);
-
         palette207.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette207.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush542(QColor(255, 255, 255, 128));
-        brush542.setStyle(Qt::NoBrush);
-
-        palette207.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette207.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush543(QColor(255, 255, 255, 128));
-        brush543.setStyle(Qt::NoBrush);
-
+        palette207.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette207.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_ValTime_12->setPalette(palette207);
         P3_ValTime_12->setFont(font5);
         P3_ValTime_12->setLayoutDirection(Qt::LeftToRight);
@@ -8154,19 +6460,10 @@ public:
         QPalette palette208;
         palette208.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette208.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush544(QColor(255, 255, 255, 128));
-        brush544.setStyle(Qt::NoBrush);
-
         palette208.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette208.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush545(QColor(255, 255, 255, 128));
-        brush545.setStyle(Qt::NoBrush);
-
-        palette208.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette208.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush546(QColor(255, 255, 255, 128));
-        brush546.setStyle(Qt::NoBrush);
-
+        palette208.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette208.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P3_ValTime_13->setPalette(palette208);
         P3_ValTime_13->setFont(font5);
         P3_ValTime_13->setLayoutDirection(Qt::LeftToRight);
@@ -8178,19 +6475,10 @@ public:
         QPalette palette209;
         palette209.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette209.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush547(QColor(255, 255, 255, 128));
-        brush547.setStyle(Qt::NoBrush);
-
         palette209.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette209.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush548(QColor(255, 255, 255, 128));
-        brush548.setStyle(Qt::NoBrush);
-
-        palette209.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette209.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush549(QColor(255, 255, 255, 128));
-        brush549.setStyle(Qt::NoBrush);
-
+        palette209.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette209.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P7_LABEL1->setPalette(palette209);
         P7_LABEL1->setFont(font4);
         P7_LABEL1->setLayoutDirection(Qt::LeftToRight);
@@ -8202,19 +6490,10 @@ public:
         QPalette palette210;
         palette210.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette210.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush550(QColor(255, 255, 255, 128));
-        brush550.setStyle(Qt::NoBrush);
-
         palette210.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette210.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush551(QColor(255, 255, 255, 128));
-        brush551.setStyle(Qt::NoBrush);
-
-        palette210.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette210.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush552(QColor(255, 255, 255, 128));
-        brush552.setStyle(Qt::NoBrush);
-
+        palette210.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette210.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P7_LABEL2->setPalette(palette210);
         P7_LABEL2->setFont(font4);
         P7_LABEL2->setLayoutDirection(Qt::LeftToRight);
@@ -8251,19 +6530,10 @@ public:
         QPalette palette211;
         palette211.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette211.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush553(QColor(255, 255, 255, 128));
-        brush553.setStyle(Qt::NoBrush);
-
         palette211.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette211.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush554(QColor(255, 255, 255, 128));
-        brush554.setStyle(Qt::NoBrush);
-
-        palette211.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette211.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush555(QColor(255, 255, 255, 128));
-        brush555.setStyle(Qt::NoBrush);
-
+        palette211.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette211.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P8_ValTime->setPalette(palette211);
         P8_ValTime->setFont(font4);
         P8_ValTime->setLayoutDirection(Qt::LeftToRight);
@@ -8514,53 +6784,50 @@ public:
         label_205->setGeometry(QRect(244, 249, 40, 30));
         QPalette palette212;
         palette212.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette212.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette212.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette212.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette212.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette212.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette212.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette212.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette212.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette212.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette212.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette212.setBrush(QPalette::Active, QPalette::Text, brush);
         palette212.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette212.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette212.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette212.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette212.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette212.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette212.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette212.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette212.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette212.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette212.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette212.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette212.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette212.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette212.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette212.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette212.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette212.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette212.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette212.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette212.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette212.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette212.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette212.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette212.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette212.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette212.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette212.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette212.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette212.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette212.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette212.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette212.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette212.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette212.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette212.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette212.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette212.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette212.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette212.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette212.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette212.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette212.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette212.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette212.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette212.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette212.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette212.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette212.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette212.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette212.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette212.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette212.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette212.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette212.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette212.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette212.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette212.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette212.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette212.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette212.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette212.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette212.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette212.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette212.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette212.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette212.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette212.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette212.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         label_205->setPalette(palette212);
         label_205->setFont(font5);
         label_205->setLayoutDirection(Qt::LeftToRight);
@@ -8571,53 +6838,50 @@ public:
         label_220->setGeometry(QRect(244, 322, 40, 30));
         QPalette palette213;
         palette213.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette213.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette213.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette213.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette213.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette213.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette213.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette213.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette213.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette213.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette213.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette213.setBrush(QPalette::Active, QPalette::Text, brush);
         palette213.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette213.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette213.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette213.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette213.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette213.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette213.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette213.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette213.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette213.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette213.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette213.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette213.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette213.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette213.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette213.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette213.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette213.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette213.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette213.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette213.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette213.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette213.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette213.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette213.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette213.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette213.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette213.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette213.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette213.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette213.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette213.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette213.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette213.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette213.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette213.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette213.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette213.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette213.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette213.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette213.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette213.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette213.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette213.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette213.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette213.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette213.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette213.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette213.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette213.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette213.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette213.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette213.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette213.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette213.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette213.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette213.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette213.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette213.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette213.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette213.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette213.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette213.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette213.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette213.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette213.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette213.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette213.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette213.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         label_220->setPalette(palette213);
         label_220->setFont(font5);
         label_220->setLayoutDirection(Qt::LeftToRight);
@@ -8628,53 +6892,50 @@ public:
         label_221->setGeometry(QRect(244, 408, 40, 30));
         QPalette palette214;
         palette214.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette214.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette214.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette214.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette214.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette214.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette214.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette214.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette214.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette214.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette214.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette214.setBrush(QPalette::Active, QPalette::Text, brush);
         palette214.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette214.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette214.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette214.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette214.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette214.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette214.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette214.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette214.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette214.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette214.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette214.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette214.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette214.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette214.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette214.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette214.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette214.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette214.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette214.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette214.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette214.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette214.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette214.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette214.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette214.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette214.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette214.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette214.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette214.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette214.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette214.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette214.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette214.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette214.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette214.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette214.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette214.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette214.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette214.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette214.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette214.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette214.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette214.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette214.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette214.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette214.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette214.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette214.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette214.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette214.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette214.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette214.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette214.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette214.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette214.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette214.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette214.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette214.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette214.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette214.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette214.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette214.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette214.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette214.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette214.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette214.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette214.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette214.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         label_221->setPalette(palette214);
         label_221->setFont(font5);
         label_221->setLayoutDirection(Qt::LeftToRight);
@@ -8685,53 +6946,50 @@ public:
         label_222->setGeometry(QRect(243, 433, 40, 20));
         QPalette palette215;
         palette215.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette215.setBrush(QPalette::Active, QPalette::Button, brush44);
-        palette215.setBrush(QPalette::Active, QPalette::Light, brush45);
-        palette215.setBrush(QPalette::Active, QPalette::Midlight, brush46);
-        palette215.setBrush(QPalette::Active, QPalette::Dark, brush47);
-        palette215.setBrush(QPalette::Active, QPalette::Mid, brush48);
+        palette215.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette215.setBrush(QPalette::Active, QPalette::Light, brush3);
+        palette215.setBrush(QPalette::Active, QPalette::Midlight, brush4);
+        palette215.setBrush(QPalette::Active, QPalette::Dark, brush5);
+        palette215.setBrush(QPalette::Active, QPalette::Mid, brush6);
         palette215.setBrush(QPalette::Active, QPalette::Text, brush);
         palette215.setBrush(QPalette::Active, QPalette::BrightText, brush);
         palette215.setBrush(QPalette::Active, QPalette::ButtonText, brush);
-        palette215.setBrush(QPalette::Active, QPalette::Base, brush49);
-        palette215.setBrush(QPalette::Active, QPalette::Window, brush44);
-        palette215.setBrush(QPalette::Active, QPalette::Shadow, brush49);
-        palette215.setBrush(QPalette::Active, QPalette::AlternateBase, brush47);
-        palette215.setBrush(QPalette::Active, QPalette::ToolTipBase, brush50);
-        palette215.setBrush(QPalette::Active, QPalette::ToolTipText, brush49);
-
+        palette215.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette215.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette215.setBrush(QPalette::Active, QPalette::Shadow, brush7);
+        palette215.setBrush(QPalette::Active, QPalette::AlternateBase, brush5);
+        palette215.setBrush(QPalette::Active, QPalette::ToolTipBase, brush8);
+        palette215.setBrush(QPalette::Active, QPalette::ToolTipText, brush7);
         palette215.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette215.setBrush(QPalette::Inactive, QPalette::Button, brush44);
-        palette215.setBrush(QPalette::Inactive, QPalette::Light, brush45);
-        palette215.setBrush(QPalette::Inactive, QPalette::Midlight, brush46);
-        palette215.setBrush(QPalette::Inactive, QPalette::Dark, brush47);
-        palette215.setBrush(QPalette::Inactive, QPalette::Mid, brush48);
+        palette215.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette215.setBrush(QPalette::Inactive, QPalette::Light, brush3);
+        palette215.setBrush(QPalette::Inactive, QPalette::Midlight, brush4);
+        palette215.setBrush(QPalette::Inactive, QPalette::Dark, brush5);
+        palette215.setBrush(QPalette::Inactive, QPalette::Mid, brush6);
         palette215.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette215.setBrush(QPalette::Inactive, QPalette::BrightText, brush);
         palette215.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
-        palette215.setBrush(QPalette::Inactive, QPalette::Base, brush49);
-        palette215.setBrush(QPalette::Inactive, QPalette::Window, brush44);
-        palette215.setBrush(QPalette::Inactive, QPalette::Shadow, brush49);
-        palette215.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush47);
-        palette215.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush50);
-        palette215.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush49);
-
-        palette215.setBrush(QPalette::Disabled, QPalette::WindowText, brush47);
-        palette215.setBrush(QPalette::Disabled, QPalette::Button, brush44);
-        palette215.setBrush(QPalette::Disabled, QPalette::Light, brush45);
-        palette215.setBrush(QPalette::Disabled, QPalette::Midlight, brush46);
-        palette215.setBrush(QPalette::Disabled, QPalette::Dark, brush47);
-        palette215.setBrush(QPalette::Disabled, QPalette::Mid, brush48);
-        palette215.setBrush(QPalette::Disabled, QPalette::Text, brush47);
+        palette215.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette215.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette215.setBrush(QPalette::Inactive, QPalette::Shadow, brush7);
+        palette215.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush5);
+        palette215.setBrush(QPalette::Inactive, QPalette::ToolTipBase, brush8);
+        palette215.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush7);
+        palette215.setBrush(QPalette::Disabled, QPalette::WindowText, brush5);
+        palette215.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette215.setBrush(QPalette::Disabled, QPalette::Light, brush3);
+        palette215.setBrush(QPalette::Disabled, QPalette::Midlight, brush4);
+        palette215.setBrush(QPalette::Disabled, QPalette::Dark, brush5);
+        palette215.setBrush(QPalette::Disabled, QPalette::Mid, brush6);
+        palette215.setBrush(QPalette::Disabled, QPalette::Text, brush5);
         palette215.setBrush(QPalette::Disabled, QPalette::BrightText, brush);
-        palette215.setBrush(QPalette::Disabled, QPalette::ButtonText, brush47);
-        palette215.setBrush(QPalette::Disabled, QPalette::Base, brush44);
-        palette215.setBrush(QPalette::Disabled, QPalette::Window, brush44);
-        palette215.setBrush(QPalette::Disabled, QPalette::Shadow, brush49);
-        palette215.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush44);
-        palette215.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush50);
-        palette215.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush49);
-
+        palette215.setBrush(QPalette::Disabled, QPalette::ButtonText, brush5);
+        palette215.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette215.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        palette215.setBrush(QPalette::Disabled, QPalette::Shadow, brush7);
+        palette215.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush2);
+        palette215.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
+        palette215.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush7);
         label_222->setPalette(palette215);
         label_222->setFont(font5);
         label_222->setLayoutDirection(Qt::LeftToRight);
@@ -8743,19 +7001,10 @@ public:
         QPalette palette216;
         palette216.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette216.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush556(QColor(255, 255, 255, 128));
-        brush556.setStyle(Qt::NoBrush);
-
         palette216.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette216.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush557(QColor(255, 255, 255, 128));
-        brush557.setStyle(Qt::NoBrush);
-
-        palette216.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette216.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush558(QColor(255, 255, 255, 128));
-        brush558.setStyle(Qt::NoBrush);
-
+        palette216.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette216.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P8_LABEL1->setPalette(palette216);
         P8_LABEL1->setFont(font4);
         P8_LABEL1->setLayoutDirection(Qt::LeftToRight);
@@ -8767,19 +7016,10 @@ public:
         QPalette palette217;
         palette217.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette217.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush559(QColor(255, 255, 255, 128));
-        brush559.setStyle(Qt::NoBrush);
-
         palette217.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette217.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush560(QColor(255, 255, 255, 128));
-        brush560.setStyle(Qt::NoBrush);
-
-        palette217.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette217.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush561(QColor(255, 255, 255, 128));
-        brush561.setStyle(Qt::NoBrush);
-
+        palette217.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette217.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P8_LABEL2->setPalette(palette217);
         P8_LABEL2->setFont(font4);
         P8_LABEL2->setLayoutDirection(Qt::LeftToRight);
@@ -8884,19 +7124,10 @@ public:
         QPalette palette218;
         palette218.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette218.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush562(QColor(255, 255, 255, 128));
-        brush562.setStyle(Qt::NoBrush);
-
         palette218.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette218.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush563(QColor(255, 255, 255, 128));
-        brush563.setStyle(Qt::NoBrush);
-
-        palette218.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette218.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush564(QColor(255, 255, 255, 128));
-        brush564.setStyle(Qt::NoBrush);
-
+        palette218.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette218.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P9_ValTime->setPalette(palette218);
         P9_ValTime->setFont(font4);
         P9_ValTime->setLayoutDirection(Qt::LeftToRight);
@@ -8936,7 +7167,7 @@ public:
         QPalette palette219;
         palette219.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette219.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette219.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette219.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
         P9_ValYear->setPalette(palette219);
         QFont font11;
         font11.setFamily(QStringLiteral("Arial"));
@@ -8951,7 +7182,7 @@ public:
         QPalette palette220;
         palette220.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette220.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette220.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette220.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
         P9_ValMonth->setPalette(palette220);
         P9_ValMonth->setFont(font11);
         P9_ValMonth->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
@@ -8961,7 +7192,7 @@ public:
         QPalette palette221;
         palette221.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette221.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette221.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette221.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
         P9_ValDay->setPalette(palette221);
         P9_ValDay->setFont(font11);
         P9_ValDay->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
@@ -8971,7 +7202,7 @@ public:
         QPalette palette222;
         palette222.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette222.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette222.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette222.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
         P9_ValHour->setPalette(palette222);
         P9_ValHour->setFont(font11);
         P9_ValHour->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
@@ -8981,7 +7212,7 @@ public:
         QPalette palette223;
         palette223.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette223.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette223.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette223.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
         P9_ValMinute->setPalette(palette223);
         P9_ValMinute->setFont(font11);
         P9_ValMinute->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
@@ -8991,7 +7222,7 @@ public:
         QPalette palette224;
         palette224.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette224.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette224.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette224.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
         P9_ValSecond->setPalette(palette224);
         P9_ValSecond->setFont(font11);
         P9_ValSecond->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
@@ -9001,19 +7232,10 @@ public:
         QPalette palette225;
         palette225.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette225.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush565(QColor(255, 255, 255, 128));
-        brush565.setStyle(Qt::NoBrush);
-
         palette225.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette225.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush566(QColor(255, 255, 255, 128));
-        brush566.setStyle(Qt::NoBrush);
-
-        palette225.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette225.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush567(QColor(255, 255, 255, 128));
-        brush567.setStyle(Qt::NoBrush);
-
+        palette225.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette225.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P9_LABEL1->setPalette(palette225);
         P9_LABEL1->setFont(font4);
         P9_LABEL1->setLayoutDirection(Qt::LeftToRight);
@@ -9025,19 +7247,10 @@ public:
         QPalette palette226;
         palette226.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette226.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush568(QColor(255, 255, 255, 128));
-        brush568.setStyle(Qt::NoBrush);
-
         palette226.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette226.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush569(QColor(255, 255, 255, 128));
-        brush569.setStyle(Qt::NoBrush);
-
-        palette226.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette226.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush570(QColor(255, 255, 255, 128));
-        brush570.setStyle(Qt::NoBrush);
-
+        palette226.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette226.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P9_LABEL2->setPalette(palette226);
         P9_LABEL2->setFont(font4);
         P9_LABEL2->setLayoutDirection(Qt::LeftToRight);
@@ -9058,19 +7271,10 @@ public:
         QPalette palette227;
         palette227.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette227.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush571(QColor(255, 255, 255, 128));
-        brush571.setStyle(Qt::NoBrush);
-
         palette227.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette227.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush572(QColor(255, 255, 255, 128));
-        brush572.setStyle(Qt::NoBrush);
-
-        palette227.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette227.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush573(QColor(255, 255, 255, 128));
-        brush573.setStyle(Qt::NoBrush);
-
+        palette227.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette227.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_ValTime->setPalette(palette227);
         P10_ValTime->setFont(font4);
         P10_ValTime->setLayoutDirection(Qt::LeftToRight);
@@ -9094,19 +7298,10 @@ public:
         QPalette palette228;
         palette228.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette228.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush574(QColor(255, 255, 255, 128));
-        brush574.setStyle(Qt::NoBrush);
-
         palette228.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette228.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush575(QColor(255, 255, 255, 128));
-        brush575.setStyle(Qt::NoBrush);
-
-        palette228.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette228.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush576(QColor(255, 255, 255, 128));
-        brush576.setStyle(Qt::NoBrush);
-
+        palette228.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette228.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_LABEL1->setPalette(palette228);
         P10_LABEL1->setFont(font4);
         P10_LABEL1->setLayoutDirection(Qt::LeftToRight);
@@ -9118,19 +7313,10 @@ public:
         QPalette palette229;
         palette229.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette229.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush577(QColor(255, 255, 255, 128));
-        brush577.setStyle(Qt::NoBrush);
-
         palette229.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette229.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush578(QColor(255, 255, 255, 128));
-        brush578.setStyle(Qt::NoBrush);
-
-        palette229.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette229.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush579(QColor(255, 255, 255, 128));
-        brush579.setStyle(Qt::NoBrush);
-
+        palette229.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette229.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_LABEL2->setPalette(palette229);
         P10_LABEL2->setFont(font4);
         P10_LABEL2->setLayoutDirection(Qt::LeftToRight);
@@ -9142,19 +7328,10 @@ public:
         QPalette palette230;
         palette230.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette230.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush580(QColor(255, 255, 255, 128));
-        brush580.setStyle(Qt::NoBrush);
-
         palette230.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette230.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush581(QColor(255, 255, 255, 128));
-        brush581.setStyle(Qt::NoBrush);
-
-        palette230.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette230.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush582(QColor(255, 255, 255, 128));
-        brush582.setStyle(Qt::NoBrush);
-
+        palette230.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette230.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_index_0->setPalette(palette230);
         P10_index_0->setFont(font10);
         P10_index_0->setLayoutDirection(Qt::LeftToRight);
@@ -9166,19 +7343,10 @@ public:
         QPalette palette231;
         palette231.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette231.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush583(QColor(255, 255, 255, 128));
-        brush583.setStyle(Qt::NoBrush);
-
         palette231.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette231.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush584(QColor(255, 255, 255, 128));
-        brush584.setStyle(Qt::NoBrush);
-
-        palette231.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette231.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush585(QColor(255, 255, 255, 128));
-        brush585.setStyle(Qt::NoBrush);
-
+        palette231.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette231.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_index_1->setPalette(palette231);
         P10_index_1->setFont(font10);
         P10_index_1->setLayoutDirection(Qt::LeftToRight);
@@ -9190,19 +7358,10 @@ public:
         QPalette palette232;
         palette232.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette232.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush586(QColor(255, 255, 255, 128));
-        brush586.setStyle(Qt::NoBrush);
-
         palette232.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette232.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush587(QColor(255, 255, 255, 128));
-        brush587.setStyle(Qt::NoBrush);
-
-        palette232.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette232.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush588(QColor(255, 255, 255, 128));
-        brush588.setStyle(Qt::NoBrush);
-
+        palette232.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette232.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_index_2->setPalette(palette232);
         P10_index_2->setFont(font10);
         P10_index_2->setLayoutDirection(Qt::LeftToRight);
@@ -9214,19 +7373,10 @@ public:
         QPalette palette233;
         palette233.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette233.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush589(QColor(255, 255, 255, 128));
-        brush589.setStyle(Qt::NoBrush);
-
         palette233.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette233.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush590(QColor(255, 255, 255, 128));
-        brush590.setStyle(Qt::NoBrush);
-
-        palette233.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette233.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush591(QColor(255, 255, 255, 128));
-        brush591.setStyle(Qt::NoBrush);
-
+        palette233.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette233.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_index_3->setPalette(palette233);
         P10_index_3->setFont(font10);
         P10_index_3->setLayoutDirection(Qt::LeftToRight);
@@ -9238,19 +7388,10 @@ public:
         QPalette palette234;
         palette234.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette234.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush592(QColor(255, 255, 255, 128));
-        brush592.setStyle(Qt::NoBrush);
-
         palette234.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette234.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush593(QColor(255, 255, 255, 128));
-        brush593.setStyle(Qt::NoBrush);
-
-        palette234.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette234.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush594(QColor(255, 255, 255, 128));
-        brush594.setStyle(Qt::NoBrush);
-
+        palette234.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette234.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_index_4->setPalette(palette234);
         P10_index_4->setFont(font10);
         P10_index_4->setLayoutDirection(Qt::LeftToRight);
@@ -9262,19 +7403,10 @@ public:
         QPalette palette235;
         palette235.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette235.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush595(QColor(255, 255, 255, 128));
-        brush595.setStyle(Qt::NoBrush);
-
         palette235.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette235.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush596(QColor(255, 255, 255, 128));
-        brush596.setStyle(Qt::NoBrush);
-
-        palette235.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette235.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush597(QColor(255, 255, 255, 128));
-        brush597.setStyle(Qt::NoBrush);
-
+        palette235.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette235.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_index_5->setPalette(palette235);
         P10_index_5->setFont(font10);
         P10_index_5->setLayoutDirection(Qt::LeftToRight);
@@ -9286,19 +7418,10 @@ public:
         QPalette palette236;
         palette236.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette236.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush598(QColor(255, 255, 255, 128));
-        brush598.setStyle(Qt::NoBrush);
-
         palette236.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette236.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush599(QColor(255, 255, 255, 128));
-        brush599.setStyle(Qt::NoBrush);
-
-        palette236.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette236.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush600(QColor(255, 255, 255, 128));
-        brush600.setStyle(Qt::NoBrush);
-
+        palette236.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette236.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_index_6->setPalette(palette236);
         P10_index_6->setFont(font10);
         P10_index_6->setLayoutDirection(Qt::LeftToRight);
@@ -9310,19 +7433,10 @@ public:
         QPalette palette237;
         palette237.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette237.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush601(QColor(255, 255, 255, 128));
-        brush601.setStyle(Qt::NoBrush);
-
         palette237.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette237.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush602(QColor(255, 255, 255, 128));
-        brush602.setStyle(Qt::NoBrush);
-
-        palette237.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette237.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush603(QColor(255, 255, 255, 128));
-        brush603.setStyle(Qt::NoBrush);
-
+        palette237.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette237.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_index_7->setPalette(palette237);
         P10_index_7->setFont(font10);
         P10_index_7->setLayoutDirection(Qt::LeftToRight);
@@ -9334,19 +7448,10 @@ public:
         QPalette palette238;
         palette238.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette238.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush604(QColor(255, 255, 255, 128));
-        brush604.setStyle(Qt::NoBrush);
-
         palette238.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette238.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush605(QColor(255, 255, 255, 128));
-        brush605.setStyle(Qt::NoBrush);
-
-        palette238.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette238.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush606(QColor(255, 255, 255, 128));
-        brush606.setStyle(Qt::NoBrush);
-
+        palette238.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette238.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_index_8->setPalette(palette238);
         P10_index_8->setFont(font10);
         P10_index_8->setLayoutDirection(Qt::LeftToRight);
@@ -9358,19 +7463,10 @@ public:
         QPalette palette239;
         palette239.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette239.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush607(QColor(255, 255, 255, 128));
-        brush607.setStyle(Qt::NoBrush);
-
         palette239.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette239.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush608(QColor(255, 255, 255, 128));
-        brush608.setStyle(Qt::NoBrush);
-
-        palette239.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette239.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush609(QColor(255, 255, 255, 128));
-        brush609.setStyle(Qt::NoBrush);
-
+        palette239.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette239.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_time_0->setPalette(palette239);
         P10_time_0->setFont(font10);
         P10_time_0->setLayoutDirection(Qt::LeftToRight);
@@ -9382,19 +7478,10 @@ public:
         QPalette palette240;
         palette240.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette240.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush610(QColor(255, 255, 255, 128));
-        brush610.setStyle(Qt::NoBrush);
-
         palette240.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette240.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush611(QColor(255, 255, 255, 128));
-        brush611.setStyle(Qt::NoBrush);
-
-        palette240.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette240.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush612(QColor(255, 255, 255, 128));
-        brush612.setStyle(Qt::NoBrush);
-
+        palette240.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette240.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_process_0->setPalette(palette240);
         P10_process_0->setFont(font10);
         P10_process_0->setLayoutDirection(Qt::LeftToRight);
@@ -9406,19 +7493,10 @@ public:
         QPalette palette241;
         palette241.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette241.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush613(QColor(255, 255, 255, 128));
-        brush613.setStyle(Qt::NoBrush);
-
         palette241.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette241.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush614(QColor(255, 255, 255, 128));
-        brush614.setStyle(Qt::NoBrush);
-
-        palette241.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette241.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush615(QColor(255, 255, 255, 128));
-        brush615.setStyle(Qt::NoBrush);
-
+        palette241.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette241.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_info_0->setPalette(palette241);
         P10_info_0->setFont(font10);
         P10_info_0->setLayoutDirection(Qt::LeftToRight);
@@ -9430,19 +7508,10 @@ public:
         QPalette palette242;
         palette242.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette242.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush616(QColor(255, 255, 255, 128));
-        brush616.setStyle(Qt::NoBrush);
-
         palette242.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette242.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush617(QColor(255, 255, 255, 128));
-        brush617.setStyle(Qt::NoBrush);
-
-        palette242.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette242.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush618(QColor(255, 255, 255, 128));
-        brush618.setStyle(Qt::NoBrush);
-
+        palette242.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette242.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_info_1->setPalette(palette242);
         P10_info_1->setFont(font10);
         P10_info_1->setLayoutDirection(Qt::LeftToRight);
@@ -9454,19 +7523,10 @@ public:
         QPalette palette243;
         palette243.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette243.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush619(QColor(255, 255, 255, 128));
-        brush619.setStyle(Qt::NoBrush);
-
         palette243.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette243.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush620(QColor(255, 255, 255, 128));
-        brush620.setStyle(Qt::NoBrush);
-
-        palette243.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette243.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush621(QColor(255, 255, 255, 128));
-        brush621.setStyle(Qt::NoBrush);
-
+        palette243.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette243.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_process_1->setPalette(palette243);
         P10_process_1->setFont(font10);
         P10_process_1->setLayoutDirection(Qt::LeftToRight);
@@ -9478,19 +7538,10 @@ public:
         QPalette palette244;
         palette244.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette244.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush622(QColor(255, 255, 255, 128));
-        brush622.setStyle(Qt::NoBrush);
-
         palette244.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette244.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush623(QColor(255, 255, 255, 128));
-        brush623.setStyle(Qt::NoBrush);
-
-        palette244.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette244.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush624(QColor(255, 255, 255, 128));
-        brush624.setStyle(Qt::NoBrush);
-
+        palette244.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette244.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_time_1->setPalette(palette244);
         P10_time_1->setFont(font10);
         P10_time_1->setLayoutDirection(Qt::LeftToRight);
@@ -9502,19 +7553,10 @@ public:
         QPalette palette245;
         palette245.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette245.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush625(QColor(255, 255, 255, 128));
-        brush625.setStyle(Qt::NoBrush);
-
         palette245.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette245.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush626(QColor(255, 255, 255, 128));
-        brush626.setStyle(Qt::NoBrush);
-
-        palette245.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette245.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush627(QColor(255, 255, 255, 128));
-        brush627.setStyle(Qt::NoBrush);
-
+        palette245.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette245.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_process_2->setPalette(palette245);
         P10_process_2->setFont(font10);
         P10_process_2->setLayoutDirection(Qt::LeftToRight);
@@ -9526,19 +7568,10 @@ public:
         QPalette palette246;
         palette246.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette246.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush628(QColor(255, 255, 255, 128));
-        brush628.setStyle(Qt::NoBrush);
-
         palette246.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette246.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush629(QColor(255, 255, 255, 128));
-        brush629.setStyle(Qt::NoBrush);
-
-        palette246.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette246.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush630(QColor(255, 255, 255, 128));
-        brush630.setStyle(Qt::NoBrush);
-
+        palette246.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette246.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_info_2->setPalette(palette246);
         P10_info_2->setFont(font10);
         P10_info_2->setLayoutDirection(Qt::LeftToRight);
@@ -9550,19 +7583,10 @@ public:
         QPalette palette247;
         palette247.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette247.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush631(QColor(255, 255, 255, 128));
-        brush631.setStyle(Qt::NoBrush);
-
         palette247.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette247.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush632(QColor(255, 255, 255, 128));
-        brush632.setStyle(Qt::NoBrush);
-
-        palette247.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette247.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush633(QColor(255, 255, 255, 128));
-        brush633.setStyle(Qt::NoBrush);
-
+        palette247.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette247.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_time_2->setPalette(palette247);
         P10_time_2->setFont(font10);
         P10_time_2->setLayoutDirection(Qt::LeftToRight);
@@ -9574,19 +7598,10 @@ public:
         QPalette palette248;
         palette248.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette248.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush634(QColor(255, 255, 255, 128));
-        brush634.setStyle(Qt::NoBrush);
-
         palette248.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette248.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush635(QColor(255, 255, 255, 128));
-        brush635.setStyle(Qt::NoBrush);
-
-        palette248.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette248.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush636(QColor(255, 255, 255, 128));
-        brush636.setStyle(Qt::NoBrush);
-
+        palette248.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette248.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_process_3->setPalette(palette248);
         P10_process_3->setFont(font10);
         P10_process_3->setLayoutDirection(Qt::LeftToRight);
@@ -9598,19 +7613,10 @@ public:
         QPalette palette249;
         palette249.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette249.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush637(QColor(255, 255, 255, 128));
-        brush637.setStyle(Qt::NoBrush);
-
         palette249.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette249.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush638(QColor(255, 255, 255, 128));
-        brush638.setStyle(Qt::NoBrush);
-
-        palette249.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette249.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush639(QColor(255, 255, 255, 128));
-        brush639.setStyle(Qt::NoBrush);
-
+        palette249.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette249.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_info_3->setPalette(palette249);
         P10_info_3->setFont(font10);
         P10_info_3->setLayoutDirection(Qt::LeftToRight);
@@ -9622,19 +7628,10 @@ public:
         QPalette palette250;
         palette250.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette250.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush640(QColor(255, 255, 255, 128));
-        brush640.setStyle(Qt::NoBrush);
-
         palette250.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette250.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush641(QColor(255, 255, 255, 128));
-        brush641.setStyle(Qt::NoBrush);
-
-        palette250.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette250.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush642(QColor(255, 255, 255, 128));
-        brush642.setStyle(Qt::NoBrush);
-
+        palette250.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette250.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_time_3->setPalette(palette250);
         P10_time_3->setFont(font10);
         P10_time_3->setLayoutDirection(Qt::LeftToRight);
@@ -9646,19 +7643,10 @@ public:
         QPalette palette251;
         palette251.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette251.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush643(QColor(255, 255, 255, 128));
-        brush643.setStyle(Qt::NoBrush);
-
         palette251.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette251.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush644(QColor(255, 255, 255, 128));
-        brush644.setStyle(Qt::NoBrush);
-
-        palette251.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette251.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush645(QColor(255, 255, 255, 128));
-        brush645.setStyle(Qt::NoBrush);
-
+        palette251.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette251.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_process_4->setPalette(palette251);
         P10_process_4->setFont(font10);
         P10_process_4->setLayoutDirection(Qt::LeftToRight);
@@ -9670,19 +7658,10 @@ public:
         QPalette palette252;
         palette252.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette252.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush646(QColor(255, 255, 255, 128));
-        brush646.setStyle(Qt::NoBrush);
-
         palette252.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette252.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush647(QColor(255, 255, 255, 128));
-        brush647.setStyle(Qt::NoBrush);
-
-        palette252.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette252.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush648(QColor(255, 255, 255, 128));
-        brush648.setStyle(Qt::NoBrush);
-
+        palette252.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette252.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_info_4->setPalette(palette252);
         P10_info_4->setFont(font10);
         P10_info_4->setLayoutDirection(Qt::LeftToRight);
@@ -9694,19 +7673,10 @@ public:
         QPalette palette253;
         palette253.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette253.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush649(QColor(255, 255, 255, 128));
-        brush649.setStyle(Qt::NoBrush);
-
         palette253.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette253.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush650(QColor(255, 255, 255, 128));
-        brush650.setStyle(Qt::NoBrush);
-
-        palette253.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette253.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush651(QColor(255, 255, 255, 128));
-        brush651.setStyle(Qt::NoBrush);
-
+        palette253.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette253.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_time_4->setPalette(palette253);
         P10_time_4->setFont(font10);
         P10_time_4->setLayoutDirection(Qt::LeftToRight);
@@ -9718,19 +7688,10 @@ public:
         QPalette palette254;
         palette254.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette254.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush652(QColor(255, 255, 255, 128));
-        brush652.setStyle(Qt::NoBrush);
-
         palette254.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette254.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush653(QColor(255, 255, 255, 128));
-        brush653.setStyle(Qt::NoBrush);
-
-        palette254.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette254.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush654(QColor(255, 255, 255, 128));
-        brush654.setStyle(Qt::NoBrush);
-
+        palette254.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette254.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_process_5->setPalette(palette254);
         P10_process_5->setFont(font10);
         P10_process_5->setLayoutDirection(Qt::LeftToRight);
@@ -9742,19 +7703,10 @@ public:
         QPalette palette255;
         palette255.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette255.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush655(QColor(255, 255, 255, 128));
-        brush655.setStyle(Qt::NoBrush);
-
         palette255.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette255.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush656(QColor(255, 255, 255, 128));
-        brush656.setStyle(Qt::NoBrush);
-
-        palette255.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette255.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush657(QColor(255, 255, 255, 128));
-        brush657.setStyle(Qt::NoBrush);
-
+        palette255.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette255.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_info_5->setPalette(palette255);
         P10_info_5->setFont(font10);
         P10_info_5->setLayoutDirection(Qt::LeftToRight);
@@ -9766,19 +7718,10 @@ public:
         QPalette palette256;
         palette256.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette256.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush658(QColor(255, 255, 255, 128));
-        brush658.setStyle(Qt::NoBrush);
-
         palette256.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette256.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush659(QColor(255, 255, 255, 128));
-        brush659.setStyle(Qt::NoBrush);
-
-        palette256.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette256.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush660(QColor(255, 255, 255, 128));
-        brush660.setStyle(Qt::NoBrush);
-
+        palette256.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette256.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_time_5->setPalette(palette256);
         P10_time_5->setFont(font10);
         P10_time_5->setLayoutDirection(Qt::LeftToRight);
@@ -9790,19 +7733,10 @@ public:
         QPalette palette257;
         palette257.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette257.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush661(QColor(255, 255, 255, 128));
-        brush661.setStyle(Qt::NoBrush);
-
         palette257.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette257.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush662(QColor(255, 255, 255, 128));
-        brush662.setStyle(Qt::NoBrush);
-
-        palette257.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette257.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush663(QColor(255, 255, 255, 128));
-        brush663.setStyle(Qt::NoBrush);
-
+        palette257.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette257.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_info_6->setPalette(palette257);
         P10_info_6->setFont(font10);
         P10_info_6->setLayoutDirection(Qt::LeftToRight);
@@ -9814,19 +7748,10 @@ public:
         QPalette palette258;
         palette258.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette258.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush664(QColor(255, 255, 255, 128));
-        brush664.setStyle(Qt::NoBrush);
-
         palette258.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette258.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush665(QColor(255, 255, 255, 128));
-        brush665.setStyle(Qt::NoBrush);
-
-        palette258.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette258.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush666(QColor(255, 255, 255, 128));
-        brush666.setStyle(Qt::NoBrush);
-
+        palette258.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette258.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_process_6->setPalette(palette258);
         P10_process_6->setFont(font10);
         P10_process_6->setLayoutDirection(Qt::LeftToRight);
@@ -9838,19 +7763,10 @@ public:
         QPalette palette259;
         palette259.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette259.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush667(QColor(255, 255, 255, 128));
-        brush667.setStyle(Qt::NoBrush);
-
         palette259.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette259.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush668(QColor(255, 255, 255, 128));
-        brush668.setStyle(Qt::NoBrush);
-
-        palette259.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette259.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush669(QColor(255, 255, 255, 128));
-        brush669.setStyle(Qt::NoBrush);
-
+        palette259.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette259.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_time_6->setPalette(palette259);
         P10_time_6->setFont(font10);
         P10_time_6->setLayoutDirection(Qt::LeftToRight);
@@ -9862,19 +7778,10 @@ public:
         QPalette palette260;
         palette260.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette260.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush670(QColor(255, 255, 255, 128));
-        brush670.setStyle(Qt::NoBrush);
-
         palette260.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette260.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush671(QColor(255, 255, 255, 128));
-        brush671.setStyle(Qt::NoBrush);
-
-        palette260.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette260.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush672(QColor(255, 255, 255, 128));
-        brush672.setStyle(Qt::NoBrush);
-
+        palette260.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette260.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_info_7->setPalette(palette260);
         P10_info_7->setFont(font10);
         P10_info_7->setLayoutDirection(Qt::LeftToRight);
@@ -9886,19 +7793,10 @@ public:
         QPalette palette261;
         palette261.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette261.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush673(QColor(255, 255, 255, 128));
-        brush673.setStyle(Qt::NoBrush);
-
         palette261.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette261.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush674(QColor(255, 255, 255, 128));
-        brush674.setStyle(Qt::NoBrush);
-
-        palette261.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette261.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush675(QColor(255, 255, 255, 128));
-        brush675.setStyle(Qt::NoBrush);
-
+        palette261.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette261.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_process_7->setPalette(palette261);
         P10_process_7->setFont(font10);
         P10_process_7->setLayoutDirection(Qt::LeftToRight);
@@ -9910,19 +7808,10 @@ public:
         QPalette palette262;
         palette262.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette262.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush676(QColor(255, 255, 255, 128));
-        brush676.setStyle(Qt::NoBrush);
-
         palette262.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette262.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush677(QColor(255, 255, 255, 128));
-        brush677.setStyle(Qt::NoBrush);
-
-        palette262.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette262.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush678(QColor(255, 255, 255, 128));
-        brush678.setStyle(Qt::NoBrush);
-
+        palette262.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette262.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_time_7->setPalette(palette262);
         P10_time_7->setFont(font10);
         P10_time_7->setLayoutDirection(Qt::LeftToRight);
@@ -9934,19 +7823,10 @@ public:
         QPalette palette263;
         palette263.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette263.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush679(QColor(255, 255, 255, 128));
-        brush679.setStyle(Qt::NoBrush);
-
         palette263.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette263.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush680(QColor(255, 255, 255, 128));
-        brush680.setStyle(Qt::NoBrush);
-
-        palette263.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette263.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush681(QColor(255, 255, 255, 128));
-        brush681.setStyle(Qt::NoBrush);
-
+        palette263.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette263.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_info_8->setPalette(palette263);
         P10_info_8->setFont(font10);
         P10_info_8->setLayoutDirection(Qt::LeftToRight);
@@ -9958,19 +7838,10 @@ public:
         QPalette palette264;
         palette264.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette264.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush682(QColor(255, 255, 255, 128));
-        brush682.setStyle(Qt::NoBrush);
-
         palette264.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette264.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush683(QColor(255, 255, 255, 128));
-        brush683.setStyle(Qt::NoBrush);
-
-        palette264.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette264.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush684(QColor(255, 255, 255, 128));
-        brush684.setStyle(Qt::NoBrush);
-
+        palette264.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette264.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_process_8->setPalette(palette264);
         P10_process_8->setFont(font10);
         P10_process_8->setLayoutDirection(Qt::LeftToRight);
@@ -9982,19 +7853,10 @@ public:
         QPalette palette265;
         palette265.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette265.setBrush(QPalette::Active, QPalette::Text, brush);
-        QBrush brush685(QColor(255, 255, 255, 128));
-        brush685.setStyle(Qt::NoBrush);
-
         palette265.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette265.setBrush(QPalette::Inactive, QPalette::Text, brush);
-        QBrush brush686(QColor(255, 255, 255, 128));
-        brush686.setStyle(Qt::NoBrush);
-
-        palette265.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette265.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        QBrush brush687(QColor(255, 255, 255, 128));
-        brush687.setStyle(Qt::NoBrush);
-
+        palette265.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette265.setBrush(QPalette::Disabled, QPalette::Text, brush1);
         P10_time_8->setPalette(palette265);
         P10_time_8->setFont(font10);
         P10_time_8->setLayoutDirection(Qt::LeftToRight);
@@ -10013,16 +7875,16 @@ public:
         CMD_SelUART->setGeometry(QRect(80, 110, 181, 71));
         MainWindow->setCentralWidget(centralwidget);
         frame_2->raise();
-        frame_5->raise();
         frame_6->raise();
-        frame_7->raise();
-        frame_8->raise();
         frame_9->raise();
         frame_3->raise();
-        frame_4->raise();
         frame->raise();
         frame_11->raise();
         frame_10->raise();
+        frame_4->raise();
+        frame_5->raise();
+        frame_7->raise();
+        frame_8->raise();
 
         retranslateUi(MainWindow);
 
@@ -10651,4 +8513,3 @@ namespace Ui {
 QT_END_NAMESPACE
 
 #endif // UI_MAINWINDOW_H
-

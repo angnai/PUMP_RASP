@@ -193,11 +193,11 @@ class MainWindow : public QMainWindow
 #define SET_DISABLE	0
 #define SET_ENABLE	1
 
-#define	S_P5_V1		0	// S1 [T_NONE / T_SET_M1 / SET_DEF_M2 / T_SET_M2 / T_SET_B1 / T_SET_B2]
-#define	S_P5_V2		1	// S2 [T_NONE / T_SET_M1 / SET_DEF_M2 / T_SET_M2 / T_SET_B1 / T_SET_B2]
-#define	S_P5_V3		2	// S3 [T_NONE / T_SET_M1 / SET_DEF_M2 / T_SET_M2 / T_SET_B1 / T_SET_B2]
-#define	S_P5_V4		3	// S4 [T_NONE / T_SET_M1 / SET_DEF_M2 / T_SET_M2 / T_SET_B1 / T_SET_B2]
-#define	S_P5_V5		4	// S5 [T_NONE / T_SET_M1 / SET_DEF_M2 / T_SET_M2 / T_SET_B1 / T_SET_B2]
+#define	S_P5_V1		0	// S1 [T_NONE / T_SET_M1 / T_SET_M2 / T_SET_M3 / T_SET_B1 / T_SET_B2]
+#define	S_P5_V2		1	// S2 [T_NONE / T_SET_M1 / T_SET_M2 / T_SET_M3 / T_SET_B1 / T_SET_B2]
+#define	S_P5_V3		2	// S3 [T_NONE / T_SET_M1 / T_SET_M2 / T_SET_M3 / T_SET_B1 / T_SET_B2]
+#define	S_P5_V4		3	// S4 [T_NONE / T_SET_M1 / T_SET_M2 / T_SET_M3 / T_SET_B1 / T_SET_B2]
+#define	S_P5_V5		4	// S5 [T_NONE / T_SET_M1 / T_SET_M2 / T_SET_M3 / T_SET_B1 / T_SET_B2]
 #define	S_P5_V6		5	// P5_Set1_L 
 #define	S_P5_V7		6	// P5_Set1_M
 #define	S_P5_V8		7	// P5_Set1_H
