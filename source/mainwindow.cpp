@@ -717,7 +717,7 @@ void MainWindow::Display_UI_Value(void)
 		}
 		return;
 	case 0x10:
-		switch(m_rcvData.at(1))
+        switch(m_rcvData.at(0))
 		{
 		case ERROR_NO1:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,온도 모터1 경보\r\n"); break;
 		case ERROR_NO2:		mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d,",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); mm.append("가동,온도 모터2 경보\r\n"); break;
