@@ -38,6 +38,9 @@ MainWindow::MainWindow(QWidget *parent)
 	rdFile = "";
 	file.setFileName("ErrorList.txt");
 	
+	rcvfile.setFileName("RcvStream.txt");
+	rcvfile.open(QFile::WriteOnly | QFile::Append );//QIODevice::ReadWrite | QIODevice::Append | QFile::read);
+		
 	file.open(QFile::ReadOnly);//QIODevice::ReadWrite | QIODevice::Append | QFile::read);
 	QTextStream stream(&file);
 	while (!stream.atEnd()) { 
@@ -611,6 +614,7 @@ void MainWindow::Display_UI_Value(void)
 	int nLeftVal,valueCheck,nRightVal;
 	QString mm;
 
+	m_backrcvData = m_rcvData;
 
 	switch(i_rcvHeader){
 	case 0x01:
@@ -765,7 +769,12 @@ void MainWindow::Display_UI_Value(void)
 	for(i=0;i<i_rcvDataCnt;i+=2){
 		Motor_Var[(i/2) + i_VarAddr] = m_rcvData.at(i)*256 + m_rcvData.at(i+1);
 	}
-	
+
+	mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d > ",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); 
+	mm += m_backrcvData.toHex();
+	mm.append("\r\n");
+	rcvfile.write(mm.toLocal8Bit());
+
 	QString m;
 	m.sprintf("20%02d. %d. %d  %d:%d:%d",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100));
 	ui->P1_ValTime->setText(m);
@@ -5837,113 +5846,194 @@ void MainWindow::ChangeWindow_WIN2(void)
 void MainWindow::ChangeWindow_WIN3(void)
 {
 	QString m;
+	
+	if( ((Setting_Var[S_P6_V2]*10) < Motor_Var[PUMP_M1C]) || ((Setting_Var[S_P6_V4]*10) > Motor_Var[PUMP_M1C]) ){	// 과전류,저전류 ERROR
+		ui->P3_ValR->setStyleSheet("color:rgb(255,0,0)");
+		if((i_BlinkTime%FONT_BLINKING_TIME) != 0 ){
+			ui->P3_ValR->setVisible(true);
+		}
+		else{
+			ui->P3_ValR->setVisible(false);
+		}
+	}
+	else if( ((Setting_Var[S_P6_V1]*10) < Motor_Var[PUMP_M1C]) || ((Setting_Var[S_P6_V3]*10) > Motor_Var[PUMP_M1C]) ){	// 과전류,저전류 Warning
+		ui->P3_ValR->setStyleSheet("color:rgb(255,242,0)");
+		if((i_BlinkTime%FONT_BLINKING_TIME) != 0 ){
+			ui->P3_ValR->setVisible(true);
+		}
+		else{
+			ui->P3_ValR->setVisible(false);
+		}
+	}
+	else{
+		ui->P3_ValR->setVisible(true);
+		ui->P3_ValR->setStyleSheet("color:rgb(255,255,255)");
+	}
+	
 
+	if( ((Setting_Var[S_P6_V2]*10) < Motor_Var[PUMP_M2C]) || ((Setting_Var[S_P6_V4]*10) > Motor_Var[PUMP_M2C]) ){	// 과전류,저전류 ERROR
+		ui->P3_ValS->setStyleSheet("color:rgb(255,0,0)");
+		if((i_BlinkTime%FONT_BLINKING_TIME) != 0 ){
+			ui->P3_ValS->setVisible(true);
+		}
+		else{
+			ui->P3_ValS->setVisible(false);
+		}
+	}
+	else if( ((Setting_Var[S_P6_V1]*10) < Motor_Var[PUMP_M2C]) || ((Setting_Var[S_P6_V3]*10) > Motor_Var[PUMP_M2C]) ){	// 과전류,저전류 Warning
+		ui->P3_ValS->setStyleSheet("color:rgb(255,242,0)");
+		if((i_BlinkTime%FONT_BLINKING_TIME) != 0 ){
+			ui->P3_ValS->setVisible(true);
+		}
+		else{
+			ui->P3_ValS->setVisible(false);
+		}
+	}
+	else{
+		ui->P3_ValS->setVisible(true);
+		ui->P3_ValS->setStyleSheet("color:rgb(255,255,255)");
+	}
 
+	
+	if( ((Setting_Var[S_P6_V2]*10) < Motor_Var[PUMP_M3C]) || ((Setting_Var[S_P6_V4]*10) > Motor_Var[PUMP_M3C]) ){	// 과전류,저전류 ERROR
+		ui->P3_ValT->setStyleSheet("color:rgb(255,0,0)");
+		if((i_BlinkTime%FONT_BLINKING_TIME) != 0 ){
+			ui->P3_ValT->setVisible(true);
+		}
+		else{
+			ui->P3_ValT->setVisible(false);
+		}
+	}
+	else if( ((Setting_Var[S_P6_V1]*10) < Motor_Var[PUMP_M3C]) || ((Setting_Var[S_P6_V3]*10) > Motor_Var[PUMP_M3C]) ){	// 과전류,저전류 Warning
+		ui->P3_ValT->setStyleSheet("color:rgb(255,242,0)");
+		if((i_BlinkTime%FONT_BLINKING_TIME) != 0 ){
+			ui->P3_ValT->setVisible(true);
+		}
+		else{
+			ui->P3_ValT->setVisible(false);
+		}
+	}
+	else{
+		ui->P3_ValT->setVisible(true);
+		ui->P3_ValT->setStyleSheet("color:rgb(255,255,255)");
+	}
 
-	if(Motor_Var[PUMP_M1C] >= ERROR_TEMP_VAL) ui->P3_ValR->setStyleSheet("color:rgb(255,0,0)");
-	else if(Motor_Var[PUMP_M1C] >= WARNING_TEMP_VAL) ui->P3_ValR->setStyleSheet("color:rgb(255,242,0)");
-	else ui->P3_ValR->setStyleSheet("color:rgb(255,255,255)");
+	if((Setting_Var[S_P6_V6]*100) < Motor_Var[PUMP_UB]){	// 불평형 ERROR
+		ui->P3_ValBAL->setStyleSheet("color:rgb(255,0,0)");
+		if((i_BlinkTime%FONT_BLINKING_TIME) != 0 ){
+			ui->P3_ValBAL->setVisible(true);
+		}
+		else{
+			ui->P3_ValBAL->setVisible(false);
+		}
+	}
+	else if((Setting_Var[S_P6_V5]*100) < Motor_Var[PUMP_UC]) {	// 불평형 Warning
+		ui->P3_ValBAL->setStyleSheet("color:rgb(255,242,0)");
+		if((i_BlinkTime%FONT_BLINKING_TIME) != 0 ){
+			ui->P3_ValBAL->setVisible(true);
+		}
+		else{
+			ui->P3_ValBAL->setVisible(false);
+		}
+	}
+	else{
+		ui->P3_ValBAL->setVisible(true);
+		ui->P3_ValBAL->setStyleSheet("color:rgb(255,255,255)");
+	}
 
-	if(Motor_Var[PUMP_M2C] >= ERROR_TEMP_VAL) ui->P3_ValS->setStyleSheet("color:rgb(255,0,0)");
-	else if(Motor_Var[PUMP_M2C] >= WARNING_TEMP_VAL) ui->P3_ValS->setStyleSheet("color:rgb(255,242,0)");
-	else ui->P3_ValS->setStyleSheet("color:rgb(255,255,255)");
-
-	if(Motor_Var[PUMP_M3C] >= ERROR_TEMP_VAL) ui->P3_ValT->setStyleSheet("color:rgb(255,0,0)");
-	else if(Motor_Var[PUMP_M3C] >= WARNING_TEMP_VAL) ui->P3_ValT->setStyleSheet("color:rgb(255,242,0)");
-	else ui->P3_ValT->setStyleSheet("color:rgb(255,255,255)");
-
-    m.sprintf("%d",Motor_Var[PUMP_M1C]);
+	
+	m.sprintf("%d.%d",Motor_Var[PUMP_M1C]/10,Motor_Var[PUMP_M1C]%10);
     ui->P3_ValR->setText(m);
-    m.sprintf("%d",Motor_Var[PUMP_M2C]);
+	m.sprintf("%d.%d",Motor_Var[PUMP_M2C]/10,Motor_Var[PUMP_M2C]%10);
     ui->P3_ValS->setText(m);
-    m.sprintf("%d",Motor_Var[PUMP_M3C]);
+	m.sprintf("%d.%d",Motor_Var[PUMP_M3C]/10,Motor_Var[PUMP_M3C]%10);
     ui->P3_ValT->setText(m);
-    m.sprintf("%d",Motor_Var[PUMP_UB]);
+	m.sprintf("%d.%d%d",Motor_Var[PUMP_UB]/100,(Motor_Var[PUMP_UB]%100)/10,Motor_Var[PUMP_UB]%10);
     ui->P3_ValBAL->setText(m);
 
-
-	m.sprintf("%d",historyCurrent[0][0]);
+    
+	m.sprintf("%d.%d",historyCurrent[0][0]/10,historyCurrent[0][0]%10);
 	ui->P3_CurrentR->setText(m);
-	m.sprintf("%d",historyCurrent[0][1]);
+	m.sprintf("%d.%d",historyCurrent[0][1]/10,historyCurrent[0][1]%10);
 	ui->P3_CurrentR_2->setText(m);
-	m.sprintf("%d",historyCurrent[0][2]);
+	m.sprintf("%d.%d",historyCurrent[0][2]/10,historyCurrent[0][2]%10);
 	ui->P3_CurrentR_3->setText(m);
-	m.sprintf("%d",historyCurrent[0][3]);
+	m.sprintf("%d.%d",historyCurrent[0][3]/10,historyCurrent[0][3]%10);
 	ui->P3_CurrentR_4->setText(m);
-	m.sprintf("%d",historyCurrent[0][4]);
+	m.sprintf("%d.%d",historyCurrent[0][4]/10,historyCurrent[0][4]%10);
 	ui->P3_CurrentR_5->setText(m);
-	m.sprintf("%d",historyCurrent[0][5]);
+	m.sprintf("%d.%d",historyCurrent[0][5]/10,historyCurrent[0][5]%10);
 	ui->P3_CurrentR_6->setText(m);
-	m.sprintf("%d",historyCurrent[0][6]);
+	m.sprintf("%d.%d",historyCurrent[0][6]/10,historyCurrent[0][6]%10);
 	ui->P3_CurrentR_7->setText(m);
-	m.sprintf("%d",historyCurrent[0][7]);
+	m.sprintf("%d.%d",historyCurrent[0][7]/10,historyCurrent[0][7]%10);
 	ui->P3_CurrentR_8->setText(m);
-	m.sprintf("%d",historyCurrent[0][8]);
+	m.sprintf("%d.%d",historyCurrent[0][8]/10,historyCurrent[0][8]%10);
 	ui->P3_CurrentR_9->setText(m);
-	m.sprintf("%d",historyCurrent[0][9]);
+	m.sprintf("%d.%d",historyCurrent[0][9]/10,historyCurrent[0][9]%10);
 	ui->P3_CurrentR_10->setText(m);
 
-	m.sprintf("%d",historyCurrent[1][0]);
+	m.sprintf("%d.%d",historyCurrent[1][0]/10,historyCurrent[1][0]%10);
 	ui->P3_CurrentS->setText(m);
-	m.sprintf("%d",historyCurrent[1][1]);
+	m.sprintf("%d.%d",historyCurrent[1][1]/10,historyCurrent[1][1]%10);
 	ui->P3_CurrentS_2->setText(m);
-	m.sprintf("%d",historyCurrent[1][2]);
+	m.sprintf("%d.%d",historyCurrent[1][2]/10,historyCurrent[1][2]%10);
 	ui->P3_CurrentS_3->setText(m);
-	m.sprintf("%d",historyCurrent[1][3]);
+	m.sprintf("%d.%d",historyCurrent[1][3]/10,historyCurrent[1][3]%10);
 	ui->P3_CurrentS_4->setText(m);
-	m.sprintf("%d",historyCurrent[1][4]);
+	m.sprintf("%d.%d",historyCurrent[1][4]/10,historyCurrent[1][4]%10);
 	ui->P3_CurrentS_5->setText(m);
-	m.sprintf("%d",historyCurrent[1][5]);
+	m.sprintf("%d.%d",historyCurrent[1][5]/10,historyCurrent[1][5]%10);
 	ui->P3_CurrentS_6->setText(m);
-	m.sprintf("%d",historyCurrent[1][6]);
+	m.sprintf("%d.%d",historyCurrent[1][6]/10,historyCurrent[1][6]%10);
 	ui->P3_CurrentS_7->setText(m);
-	m.sprintf("%d",historyCurrent[1][7]);
+	m.sprintf("%d.%d",historyCurrent[1][7]/10,historyCurrent[1][7]%10);
 	ui->P3_CurrentS_8->setText(m);
-	m.sprintf("%d",historyCurrent[1][8]);
+	m.sprintf("%d.%d",historyCurrent[1][8]/10,historyCurrent[1][8]%10);
 	ui->P3_CurrentS_9->setText(m);
-	m.sprintf("%d",historyCurrent[1][9]);
+	m.sprintf("%d.%d",historyCurrent[1][9]/10,historyCurrent[1][9]%10);
 	ui->P3_CurrentS_10->setText(m);
 
-	m.sprintf("%d",historyCurrent[2][0]);
+	m.sprintf("%d.%d",historyCurrent[2][0]/10,historyCurrent[2][0]%10);
 	ui->P3_CurrentT->setText(m);
-	m.sprintf("%d",historyCurrent[2][1]);
+	m.sprintf("%d.%d",historyCurrent[2][1]/10,historyCurrent[2][1]%10);
 	ui->P3_CurrentT_2->setText(m);
-	m.sprintf("%d",historyCurrent[2][2]);
+	m.sprintf("%d.%d",historyCurrent[2][2]/10,historyCurrent[2][2]%10);
 	ui->P3_CurrentT_3->setText(m);
-	m.sprintf("%d",historyCurrent[2][3]);
+	m.sprintf("%d.%d",historyCurrent[2][3]/10,historyCurrent[2][3]%10);
 	ui->P3_CurrentT_4->setText(m);
-	m.sprintf("%d",historyCurrent[2][4]);
+	m.sprintf("%d.%d",historyCurrent[2][4]/10,historyCurrent[2][4]%10);
 	ui->P3_CurrentT_5->setText(m);
-	m.sprintf("%d",historyCurrent[2][5]);
+	m.sprintf("%d.%d",historyCurrent[2][5]/10,historyCurrent[2][5]%10);
 	ui->P3_CurrentT_6->setText(m);
-	m.sprintf("%d",historyCurrent[2][6]);
+	m.sprintf("%d.%d",historyCurrent[2][6]/10,historyCurrent[2][6]%10);
 	ui->P3_CurrentT_7->setText(m);
-	m.sprintf("%d",historyCurrent[2][7]);
+	m.sprintf("%d.%d",historyCurrent[2][7]/10,historyCurrent[2][7]%10);
 	ui->P3_CurrentT_8->setText(m);
-	m.sprintf("%d",historyCurrent[2][8]);
+	m.sprintf("%d.%d",historyCurrent[2][8]/10,historyCurrent[2][8]%10);
 	ui->P3_CurrentT_9->setText(m);
-	m.sprintf("%d",historyCurrent[2][9]);
+	m.sprintf("%d.%d",historyCurrent[2][9]/10,historyCurrent[2][9]%10);
 	ui->P3_CurrentT_10->setText(m);
 
-	m.sprintf("%d",historyCurrent[3][0]);
+	m.sprintf("%d.%d",historyCurrent[3][0]/10,historyCurrent[3][0]%10);
 	ui->P3_CurrentUB->setText(m);
-	m.sprintf("%d",historyCurrent[3][1]);
+	m.sprintf("%d.%d",historyCurrent[3][1]/10,historyCurrent[3][1]%10);
 	ui->P3_CurrentUB_2->setText(m);
-	m.sprintf("%d",historyCurrent[3][2]);
+	m.sprintf("%d.%d",historyCurrent[3][2]/10,historyCurrent[3][2]%10);
 	ui->P3_CurrentUB_3->setText(m);
-	m.sprintf("%d",historyCurrent[3][3]);
+	m.sprintf("%d.%d",historyCurrent[3][3]/10,historyCurrent[3][3]%10);
 	ui->P3_CurrentUB_4->setText(m);
-	m.sprintf("%d",historyCurrent[3][4]);
+	m.sprintf("%d.%d",historyCurrent[3][4]/10,historyCurrent[3][4]%10);
 	ui->P3_CurrentUB_5->setText(m);
-	m.sprintf("%d",historyCurrent[3][5]);
+	m.sprintf("%d.%d",historyCurrent[3][5]/10,historyCurrent[3][5]%10);
 	ui->P3_CurrentUB_6->setText(m);
-	m.sprintf("%d",historyCurrent[3][6]);
+	m.sprintf("%d.%d",historyCurrent[3][6]/10,historyCurrent[3][6]%10);
 	ui->P3_CurrentUB_7->setText(m);
-	m.sprintf("%d",historyCurrent[3][7]);
+	m.sprintf("%d.%d",historyCurrent[3][7]/10,historyCurrent[3][7]%10);
 	ui->P3_CurrentUB_8->setText(m);
-	m.sprintf("%d",historyCurrent[3][8]);
+	m.sprintf("%d.%d",historyCurrent[3][8]/10,historyCurrent[3][8]%10);
 	ui->P3_CurrentUB_9->setText(m);
-	m.sprintf("%d",historyCurrent[3][9]);
+	m.sprintf("%d.%d",historyCurrent[3][9]/10,historyCurrent[3][9]%10);
 	ui->P3_CurrentUB_10->setText(m);
 
 

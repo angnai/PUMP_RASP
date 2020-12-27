@@ -425,6 +425,7 @@ class MainWindow : public QMainWindow
 	int ScrollVar[50][4];
 
 	QFile file;
+	QFile rcvfile;
 	QString rdFile;
 	QStringList ErrorList;
 
@@ -491,6 +492,7 @@ public:
 	int i_rcvCnt;
 	int i_rcvHeader;
 	QByteArray m_rcvData;
+	QByteArray m_backrcvData;
 	int i_rcvDataCnt;
 	int i_rcvCRC;
 
