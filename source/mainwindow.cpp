@@ -902,7 +902,7 @@ void MainWindow::timer_Update(void)
 	
 
 	if((count%UPDATE_CURRENT_HISTORY_TIME) == 0){
-		for(i=9;i<1;i--){
+		for(i=9;i>=1;i--){
 			historyCurrent[0][i] = historyCurrent[0][i-1];
 			historyCurrent[1][i] = historyCurrent[1][i-1];
 			historyCurrent[2][i] = historyCurrent[2][i-1];
@@ -917,7 +917,7 @@ void MainWindow::timer_Update(void)
 	}
 
 	if((count%UPDATE_TEMP_HISTORY_TIME) == 0){
-		for(i=9;i<1;i--){
+		for(i=9;i>=1;i--){
 			historyTemp[0][i] = historyTemp[0][i-1];
 			historyTemp[1][i] = historyTemp[1][i-1];
 			historyTemp[2][i] = historyTemp[2][i-1];
