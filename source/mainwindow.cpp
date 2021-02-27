@@ -3664,7 +3664,7 @@ void MainWindow::TouchProcess_WIN9(int x, int y)
 		int t_year = 2000+((set_ym/100)%100);
 
 		QString cmd;
-		cmd.sprintf("date -s %04d-%02d-%02d %02d:%02d:%02d", t_year, (set_ym%100),
+        cmd.sprintf("date -s \"%04d-%02d-%02d %02d:%02d:%02d\"", t_year, (set_ym%100),
 					((set_dh/100)%100),(set_dh%100),((set_ms/100)%100),(set_ms%100));
 		system(cmd.toStdString().c_str());
 		cmd = "hwclock -w";
