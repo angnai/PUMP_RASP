@@ -31,7 +31,7 @@ class MainWindow : public QMainWindow
 #define DEFAULT_WINDOW_CHANGE_TIME (30000 / (DEFAULT_TIMER_TIME))
 #define UPDATE_TEMP_HISTORY_TIME			(1000 / (DEFAULT_TIMER_TIME))
 #define UPDATE_CURRENT_HISTORY_TIME			(1000 / (DEFAULT_TIMER_TIME))
-
+#define UPDATE_DATETIME_VIEW				(300 / (DEFAULT_TIMER_TIME))
 #define FONT_BLINKING_TIME			(500 / (DEFAULT_TIMER_TIME))
 
 // P1 UI Scale
@@ -428,6 +428,8 @@ class MainWindow : public QMainWindow
 	QFile rcvfile;
 	QString rdFile;
 	QStringList ErrorList;
+
+	QDateTime dateTime;
 
 	int P10_PageIndex = 0;
 	int P10_LineCnt = 0;

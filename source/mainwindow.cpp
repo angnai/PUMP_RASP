@@ -34,6 +34,7 @@ MainWindow::MainWindow(QWidget *parent)
 		historyCurrent[4][i] = 0;
 	}
 
+	dateTime = QDateTime::currentDateTime();
 
 	rdFile = "";
 	file.setFileName("ErrorList.txt");
@@ -122,7 +123,6 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 	i_BlinkTime = 0;
-
 
 	//ui->label_204->installEventFilter(this);
 	ui->P1_ValRPM->installEventFilter(this);
@@ -770,13 +770,16 @@ void MainWindow::Display_UI_Value(void)
 		Motor_Var[(i/2) + i_VarAddr] = m_rcvData.at(i)*256 + m_rcvData.at(i+1);
 	}
 
-	mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d > ",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100)); 
+	Motor_Var[PUMP_TIME_YM] = ((dateTime.date().year()%100)*100) + (dateTime.date().month()%100);
+	Motor_Var[PUMP_TIME_DH] = ((dateTime.date().day()%100)*100) + (dateTime.time().hour()%100);
+	Motor_Var[PUMP_TIME_MS] = ((dateTime.time().minute()%100)*100) + (dateTime.time().second()%100);
+	mm.sprintf("20%02d-%02d-%02d  %02d:%02d:%02d > ",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100));
 	mm += m_backrcvData.toHex();
 	mm.append("\r\n");
 	rcvfile.write(mm.toLocal8Bit());
 
 	QString m;
-	m.sprintf("20%02d. %d. %d  %d:%d:%d",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100));
+	m.sprintf("20%02d. %02d. %02d  %02d:%02d:%02d",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100));
 	ui->P1_ValTime->setText(m);
 	ui->P2_ValTime->setText(m);
 	ui->P3_ValTime->setText(m);
@@ -793,6 +796,8 @@ void MainWindow::Display_UI_Value(void)
 
 void MainWindow::Select_Window(WIN_VAR nSelWin)
 {
+		QString mm;
+		int tempN;
 	nNowWindow = nSelWin;
 
 	ui->frame->setHidden(true);
@@ -845,6 +850,26 @@ void MainWindow::Select_Window(WIN_VAR nSelWin)
 		set_ym = Motor_Var[PUMP_TIME_YM];
 		set_dh = Motor_Var[PUMP_TIME_DH];
 		set_ms = Motor_Var[PUMP_TIME_MS];
+		
+		tempN = set_ym/100;
+		mm.sprintf("20%d",tempN);
+		ui->P9_ValYear->setText(mm);
+		tempN = set_ym%100;
+		mm.sprintf("%d",tempN);
+		ui->P9_ValMonth->setText(mm);
+		tempN = set_dh/100;
+		mm.sprintf("%d",tempN);
+		ui->P9_ValDay->setText(mm);
+		tempN = set_dh%100;
+		mm.sprintf("%d",tempN);
+		ui->P9_ValHour->setText(mm);
+		tempN = set_ms/100;
+		mm.sprintf("%d",tempN);
+		ui->P9_ValMinute->setText(mm);
+		tempN = set_ms%100;
+		mm.sprintf("%d",tempN);
+		ui->P9_ValSecond->setText(mm);
+
 		ui->frame_9->setHidden(false);
 	break;
 	case WIN_10:
@@ -900,6 +925,27 @@ void MainWindow::timer_Update(void)
 	count++;
 	i_BlinkTime++;
 	
+	if((count%UPDATE_DATETIME_VIEW) == 0){
+		dateTime = QDateTime::currentDateTime();
+		Motor_Var[PUMP_TIME_YM] = ((dateTime.date().year()%100)*100) + (dateTime.date().month()%100);
+		Motor_Var[PUMP_TIME_DH] = ((dateTime.date().day()%100)*100) + (dateTime.time().hour()%100);
+		Motor_Var[PUMP_TIME_MS] = ((dateTime.time().minute()%100)*100) + (dateTime.time().second()%100);
+
+		QString m;
+		m.sprintf("20%02d. %02d. %02d  %02d:%02d:%02d",int((Motor_Var[PUMP_TIME_YM])/100),int(Motor_Var[PUMP_TIME_YM]%100),int(Motor_Var[PUMP_TIME_DH]/100),int(Motor_Var[PUMP_TIME_DH]%100),int(Motor_Var[PUMP_TIME_MS]/100),int(Motor_Var[PUMP_TIME_MS]%100));
+
+		ui->P1_ValTime->setText(m);
+		ui->P2_ValTime->setText(m);
+		ui->P3_ValTime->setText(m);
+		ui->P4_ValTime->setText(m);
+		ui->P5_ValTime->setText(m);
+		ui->P6_ValTime->setText(m);
+		ui->P7_ValTime->setText(m);
+		ui->P8_ValTime->setText(m);
+		ui->P9_ValTime->setText(m);
+		ui->P10_ValTime->setText(m);
+
+	}
 
 	if((count%UPDATE_CURRENT_HISTORY_TIME) == 0){
 		for(i=9;i>=1;i--){
@@ -1173,7 +1219,7 @@ void MainWindow::TouchProcess_WIN1(int x, int y)
 		// ��������
 		mm.sprintf("Manual run");
 		//QMessageBox::critical(this, "SERIAL PORT NOT CONNECTED", mm);
-		QMessageBox::critical(this, "SERIAL PORT NOT CONNECTED", toUniString(rdFile));
+		//QMessageBox::critical(this, "SERIAL PORT NOT CONNECTED", toUniString(rdFile));
 	}
 	else if(TouchMatching(x,P1_DEF_B3_X1,P1_DEF_B3_X2) && TouchMatching(y,P1_DEF_B3_Y1,P1_DEF_B3_Y2)){
 		// ����ȭ��
@@ -3615,6 +3661,15 @@ void MainWindow::TouchProcess_WIN9(int x, int y)
 		m_port->write(m_send,m_send.size());
 		m_port->waitForBytesWritten(1000);
 
+		int t_year = 2000+((set_ym/100)%100);
+
+		QString cmd;
+		cmd.sprintf("date -s %04d-%02d-%02d %02d:%02d:%02d", t_year, (set_ym%100),
+					((set_dh/100)%100),(set_dh%100),((set_ms/100)%100),(set_ms%100));
+		system(cmd.toStdString().c_str());
+		cmd = "hwclock -w";
+		system(cmd.toStdString().c_str());
+		
 		Select_Window(WIN_1);
 	}
 	else if(TouchMatching(x,P9_DEF_EXIT_X1,P9_DEF_EXIT_X2) && TouchMatching(y,P9_DEF_EXIT_Y1,P9_DEF_EXIT_Y2)){
@@ -3629,6 +3684,7 @@ void MainWindow::TouchProcess_WIN9(int x, int y)
 	else if(TouchMatching(x,P9_B1_X1,P9_B1_X2) && TouchMatching(y,P9_B1_Y1,P9_B1_Y2)){
 		tempN = set_ym/100;
 		if((tempN-1) <= 1) tempN = 1;
+		else tempN --;
 		
 		set_ym = (tempN*100) + (set_ym%100);
 		mm.sprintf("20%d",tempN);
@@ -3637,6 +3693,7 @@ void MainWindow::TouchProcess_WIN9(int x, int y)
 	else if(TouchMatching(x,P9_B2_X1,P9_B2_X2) && TouchMatching(y,P9_B2_Y1,P9_B2_Y2)){
 		tempN = set_ym/100;
 		if((tempN+1) >= 100) tempN = 99;
+		else tempN ++;
 		
 		set_ym = (tempN*100) + (set_ym%100);
 		mm.sprintf("20%d",tempN);
@@ -3646,6 +3703,7 @@ void MainWindow::TouchProcess_WIN9(int x, int y)
 	else if(TouchMatching(x,P9_B3_X1,P9_B3_X2) && TouchMatching(y,P9_B3_Y1,P9_B3_Y2)){
 		tempN = set_ym%100;
 		if((tempN-1) <= 1) tempN = 1;
+		else tempN --;
 		
 		set_ym = ((set_ym/100)*100) + (tempN%100);
 		mm.sprintf("%d",tempN);
@@ -3654,6 +3712,7 @@ void MainWindow::TouchProcess_WIN9(int x, int y)
 	else if(TouchMatching(x,P9_B4_X1,P9_B4_X2) && TouchMatching(y,P9_B4_Y1,P9_B4_Y2)){
 		tempN = set_ym%100;
 		if((tempN+1) >= 12) tempN = 12;
+		else tempN ++;
 		
 		set_ym = ((set_ym/100)*100) + (tempN%100);
 		mm.sprintf("%d",tempN);
@@ -3663,6 +3722,7 @@ void MainWindow::TouchProcess_WIN9(int x, int y)
 	else if(TouchMatching(x,P9_B5_X1,P9_B5_X2) && TouchMatching(y,P9_B5_Y1,P9_B5_Y2)){
 		tempN = set_dh/100;
 		if((tempN-1) <= 1) tempN = 1;
+		else tempN --;
 		
 		set_dh = (tempN*100) + (set_dh%100);
 		mm.sprintf("%d",tempN);
@@ -3671,6 +3731,7 @@ void MainWindow::TouchProcess_WIN9(int x, int y)
 	else if(TouchMatching(x,P9_B6_X1,P9_B6_X2) && TouchMatching(y,P9_B6_Y1,P9_B6_Y2)){
 		tempN = set_dh/100;
 		if((tempN+1) >= 31) tempN = 31;
+		else tempN ++;
 		
 		set_dh = (tempN*100) + (set_dh%100);
 		mm.sprintf("%d",tempN);
@@ -3683,6 +3744,7 @@ void MainWindow::TouchProcess_WIN9(int x, int y)
 	else if(TouchMatching(x,P9_B7_X1,P9_B7_X2) && TouchMatching(y,P9_B7_Y1,P9_B7_Y2)){
 		tempN = set_dh%100;
 		if((tempN-1) <= 0) tempN = 0;
+		else tempN --;
 		
 		set_dh = ((set_dh/100)*100) + (tempN%100);
 		mm.sprintf("%d",tempN);
@@ -3691,6 +3753,7 @@ void MainWindow::TouchProcess_WIN9(int x, int y)
 	else if(TouchMatching(x,P9_B8_X1,P9_B8_X2) && TouchMatching(y,P9_B8_Y1,P9_B8_Y2)){
 		tempN = set_dh%100;
 		if((tempN+1) >= 23) tempN = 23;
+		else tempN ++;
 		
 		set_dh = ((set_dh/100)*100) + (tempN%100);
 		mm.sprintf("%d",tempN);
@@ -3700,6 +3763,7 @@ void MainWindow::TouchProcess_WIN9(int x, int y)
 	else if(TouchMatching(x,P9_B9_X1,P9_B9_X2) && TouchMatching(y,P9_B9_Y1,P9_B9_Y2)){
 		tempN = set_ms/100;
 		if((tempN-1) <= 0) tempN = 0;
+		else tempN --;
 		
 		set_ms = (tempN*100) + (set_ms%100);
 		mm.sprintf("%d",tempN);
@@ -3708,6 +3772,7 @@ void MainWindow::TouchProcess_WIN9(int x, int y)
 	else if(TouchMatching(x,P9_B10_X1,P9_B10_X2) && TouchMatching(y,P9_B10_Y1,P9_B10_Y2)){
 		tempN = set_ms/100;
 		if((tempN+1) >= 59) tempN = 59;
+		else tempN ++;
 		
 		set_ms = (tempN*100) + (set_ms%100);
 		mm.sprintf("%d",tempN);
@@ -3716,6 +3781,7 @@ void MainWindow::TouchProcess_WIN9(int x, int y)
 	else if(TouchMatching(x,P9_B11_X1,P9_B11_X2) && TouchMatching(y,P9_B11_Y1,P9_B11_Y2)){
 		tempN = set_ms%100;
 		if((tempN-1) <= 0) tempN = 0;
+		else tempN --;
 		
 		set_ms = ((set_ms/100)*100) + (tempN%100);
 		mm.sprintf("%d",tempN);
@@ -3724,6 +3790,7 @@ void MainWindow::TouchProcess_WIN9(int x, int y)
 	else if(TouchMatching(x,P9_B12_X1,P9_B12_X2) && TouchMatching(y,P9_B12_Y1,P9_B12_Y2)){
 		tempN = set_ms%100;
 		if((tempN+1) >= 59) tempN = 59;
+		else tempN ++;
 		
 		set_ms = ((set_ms/100)*100) + (tempN%100);
 		mm.sprintf("%d",tempN);
